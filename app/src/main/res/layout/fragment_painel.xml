@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/main_padding"
+    tools:context=".FragmentPainel">
+
+    <TextView
+        android:id="@+id/main_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/menu_blue"
+        android:textSize="@dimen/title_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/main_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/appname_title_padding"
+        android:text="@string/label_today"
+        android:textColor="@color/black"
+        android:textSize="@dimen/title_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_title" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_calory_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/header_padding"
+        android:padding="@dimen/header_padding"
+        android:background="@drawable/background_gray_shadow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_day">
+
+        <TextView
+            android:id="@+id/label_calory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calory"
+            android:textColor="@color/black"
+            android:textSize="@dimen/body_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/bt_main_calory_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mais"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/calory_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/header_padding"
+            android:max="100"
+            android:progress="0"
+            app:indicatorColor="@color/menu_blue"
+            app:indicatorSize="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_calory"
+            app:trackColor="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/calory_goal_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/calory_goal_default"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/calory_progress"
+            app:layout_constraintStart_toStartOf="@id/calory_progress"
+            app:layout_constraintTop_toBottomOf="@id/calory_progress" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/restantes"
+            android:textSize="@dimen/body_size"
+            app:layout_constraintEnd_toEndOf="@id/calory_goal_progress"
+            app:layout_constraintStart_toStartOf="@id/calory_goal_progress"
+            app:layout_constraintTop_toBottomOf="@id/calory_goal_progress" />
+
+        <TextView
+            android:id="@+id/meta_base_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/header_padding"
+            android:text="@string/goal_base"
+            android:textSize="@dimen/body_size"
+            app:layout_constraintEnd_toEndOf="@id/bt_main_calory_add"
+            app:layout_constraintTop_toBottomOf="@id/bt_main_calory_add" />
+
+        <TextView
+            android:id="@+id/meta_base_output"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="start"
+            android:text="@string/meta_base"
+            android:textColor="@color/black"
+            android:textSize="@dimen/body_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/meta_base_label"
+            app:layout_constraintTop_toBottomOf="@id/meta_base_label" />
+
+        <TextView
+            android:id="@+id/main_alimentos_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/header_padding"
+            android:text="@string/foods"
+            android:textSize="@dimen/body_size"
+            app:layout_constraintEnd_toEndOf="@id/meta_base_output"
+            app:layout_constraintTop_toBottomOf="@id/meta_base_output" />
+
+        <TextView
+            android:id="@+id/main_alimentos_output"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="start"
+            android:text="@string/meta_base"
+            android:textColor="@color/black"
+            android:textSize="@dimen/body_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/main_alimentos_label"
+            app:layout_constraintStart_toStartOf="@id/main_alimentos_label"
+            app:layout_constraintTop_toBottomOf="@id/main_alimentos_label" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_peso_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/main_padding"
+        android:layout_marginBottom="@dimen/main_padding"
+        android:background="@drawable/background_gray_shadow"
+        android:padding="@dimen/header_padding"
+        app:layout_constraintBottom_toTopOf="@id/bt_detalhes_pessoais"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_calory_container">
+
+        <TextView
+            android:id="@+id/main_peso_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weight"
+            android:textColor="@color/black"
+            android:textSize="@dimen/body_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/bt_main_peso_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mais"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_peso_label">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingVertical="@dimen/main_padding"
+                >
+
+                <TextView
+                    android:id="@+id/label_mes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/last_month_label"
+                    android:textSize="@dimen/main_peso_label"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="@dimen/main_padding"
+                    />
+
+                <TextView
+                    android:id="@+id/last_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/caloria_almoco_output"
+                    android:textSize="@dimen/body_size"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@id/label_mes"
+                    app:layout_constraintStart_toStartOf="@id/label_mes"
+                    app:layout_constraintTop_toBottomOf="@id/label_mes"
+                    android:layout_marginTop="@dimen/grouped_spacing"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/espacamento_corpo"
+                    android:text="@string/label_kg"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintBottom_toBottomOf="@id/last_month"
+                    app:layout_constraintStart_toEndOf="@id/last_month"
+                    app:layout_constraintTop_toTopOf="@id/last_month" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/main_padding"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/label_semana"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/last_week_label"
+                    android:textSize="@dimen/main_peso_label"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="@dimen/main_padding"
+                    />
+
+                <TextView
+                    android:id="@+id/last_week"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/caloria_almoco_output"
+                    android:textSize="@dimen/body_size"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@id/label_semana"
+                    app:layout_constraintStart_toStartOf="@id/label_semana"
+                    app:layout_constraintTop_toBottomOf="@id/label_semana"
+                    android:layout_marginTop="@dimen/grouped_spacing"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/espacamento_corpo"
+                    android:text="@string/label_kg"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintBottom_toBottomOf="@id/last_week"
+                    app:layout_constraintStart_toEndOf="@id/last_week"
+                    app:layout_constraintTop_toTopOf="@id/last_week" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/main_padding"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/label_hoje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/label_today"
+                    android:textSize="@dimen/main_peso_label"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="@dimen/main_padding"
+                    />
+
+                <TextView
+                    android:id="@+id/main_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/caloria_almoco_output"
+                    android:textSize="@dimen/body_size"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@id/label_hoje"
+                    app:layout_constraintStart_toStartOf="@id/label_hoje"
+                    app:layout_constraintTop_toBottomOf="@id/label_hoje"
+                    android:layout_marginTop="@dimen/grouped_spacing"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/espacamento_corpo"
+                    android:text="@string/label_kg"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintBottom_toBottomOf="@id/main_today"
+                    app:layout_constraintStart_toEndOf="@id/main_today"
+                    app:layout_constraintTop_toTopOf="@id/main_today" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_detalhes_pessoais"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bt_atualizar_detalhes"
+        android:backgroundTint="@color/bt_light_gray"
+        android:text="@string/bt_detalhes_submeter"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

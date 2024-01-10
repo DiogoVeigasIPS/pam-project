@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context=".UpdateDetailsActivity">
+
+    <LinearLayout
+        android:id="@+id/detail_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/grouped_spacing"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/header_padding"
+        android:weightSum="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/bt_voltar"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.1"
+            android:background="@color/white"
+            android:contentDescription="@string/seta_tras"
+            android:src="@drawable/seta_atras"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/texto_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:text="@string/add_details"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_size" />
+
+        <ImageButton
+            android:id="@+id/bt_submit"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_weight="0.1"
+            android:background="@color/white"
+            android:src="@drawable/certo_submeter" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/group_body"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/body_size"
+        android:layout_marginBottom="@dimen/espacamento_corpo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detail_header"
+        >
+
+        <LinearLayout
+            android:id="@+id/birthday_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/birthday_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:text="@string/birthdate"
+                android:textSize="@dimen/body_size" />
+
+            <EditText
+                android:id="@+id/birthdate_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_weight="0.4"
+                android:ems="5"
+                android:inputType="datetime"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/height_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/espacamento_corpo"
+            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="@id/birthday_group"
+            app:layout_constraintStart_toStartOf="@id/birthday_group"
+            app:layout_constraintTop_toBottomOf="@id/birthday_group">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.28"
+                android:text="@string/height"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/height_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:gravity="end"
+                android:hint="@string/hint_altura"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/black"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.02"
+                android:text="@string/label_cm"
+                android:textColor="@color/black"
+                android:textSize="@dimen/body_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/group_weight"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/espacamento_corpo"
+            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="@id/height_group"
+            app:layout_constraintStart_toStartOf="@id/height_group"
+            app:layout_constraintTop_toBottomOf="@id/height_group">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.28"
+                android:text="@string/weight"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/weight_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:gravity="end"
+                android:hint="@string/hint_peso"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/black"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.02"
+                android:text="@string/label_kg"
+                android:textColor="@color/black"
+                android:textSize="@dimen/body_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/objective_group"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/espacamento_corpo"
+            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="@id/group_weight"
+            app:layout_constraintStart_toStartOf="@id/group_weight"
+            app:layout_constraintTop_toBottomOf="@id/group_weight">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:text="@string/objective"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/spinner_objective"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:textAlignment="center"
+                android:spinnerMode="dropdown"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ativity_group"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/espacamento_corpo"
+            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="@id/objective_group"
+            app:layout_constraintStart_toStartOf="@id/objective_group"
+            app:layout_constraintTop_toBottomOf="@id/objective_group">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:text="@string/ativity"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/spinner_ativity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:spinnerMode="dropdown"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/label_tip"
+        android:textSize="@dimen/main_peso_label"
+        android:gravity="center"
+        android:padding="@dimen/header_padding"
+        android:layout_marginTop="@dimen/appname_title_padding"
+        android:background="@drawable/container_blackborder"
+        app:layout_constraintTop_toBottomOf="@id/group_body"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

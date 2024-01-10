@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context=".QuickAddActivity">
+
+    <LinearLayout
+        android:id="@+id/titulo_quickadd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/grouped_spacing"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/header_padding"
+        android:weightSum="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/bt_voltar"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.1"
+            android:background="@color/white"
+            android:contentDescription="@string/seta_tras"
+            android:src="@drawable/seta_atras"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:text="@string/quickadd"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_size" />
+
+        <ImageButton
+            android:id="@+id/bt_submit"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_weight="0.1"
+            android:background="@color/white"
+            android:src="@drawable/certo_submeter"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/body_group"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/body_size"
+        android:layout_marginBottom="@dimen/espacamento_corpo"
+        app:layout_constraintEnd_toEndOf="@id/titulo_quickadd"
+        app:layout_constraintStart_toStartOf="@id/titulo_quickadd"
+        app:layout_constraintTop_toBottomOf="@+id/titulo_quickadd">
+
+        <LinearLayout
+            android:id="@+id/meal_group"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/espacamento_botao_submeter"
+            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="@string/meal"
+                android:textColor="@color/black"
+                android:textSize="@dimen/body_size" />
+
+            <TextView
+                android:id="@+id/meal_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:gravity="end"
+                android:text="@string/breakfast"
+                android:textColor="@color/black"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/height_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/espacamento_corpo"
+            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="@id/meal_group"
+            app:layout_constraintStart_toStartOf="@+id/meal_group"
+            app:layout_constraintTop_toBottomOf="@+id/meal_group">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="@string/name"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/name_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:gravity="end"
+                android:hint="@string/hint_name_label"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/weight_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/espacamento_corpo"
+            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="@id/height_group"
+            app:layout_constraintStart_toStartOf="@+id/height_group"
+            app:layout_constraintTop_toBottomOf="@+id/height_group">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="@string/calory"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/calory_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:gravity="end"
+                android:hint="@string/hint_calory_qty"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context=".QuantityActivity">
+
+    <LinearLayout
+        android:id="@+id/header_quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/grouped_spacing"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/header_padding"
+        android:weightSum="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/bt_voltar"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.1"
+            android:background="@color/white"
+            android:contentDescription="@string/seta_tras"
+            android:src="@drawable/seta_atras"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:text="@string/quantity"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_size" />
+
+        <ImageButton
+            android:id="@+id/bt_submit"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_weight="0.1"
+            android:background="@color/white"
+            android:src="@drawable/certo_submeter" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/body_group"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/body_size"
+        android:layout_marginBottom="@dimen/espacamento_corpo"
+        app:layout_constraintEnd_toEndOf="@id/header_quantity"
+        app:layout_constraintStart_toStartOf="@id/header_quantity"
+        app:layout_constraintTop_toBottomOf="@+id/header_quantity">
+
+        <LinearLayout
+            android:id="@+id/dish_group"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/espacamento_botao_submeter"
+            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="@string/meal"
+                android:textColor="@color/black"
+                android:textSize="@dimen/body_size" />
+
+            <TextView
+                android:id="@+id/meal_output"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:gravity="end"
+                android:text="@string/meal_example"
+                android:textColor="@color/black"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/height_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/espacamento_corpo"
+            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="@id/dish_group"
+            app:layout_constraintStart_toStartOf="@+id/dish_group"
+            app:layout_constraintTop_toBottomOf="@+id/dish_group">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="@string/label_detail"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/quickadd_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:gravity="end"
+                android:inputType="textPersonName"
+                android:hint="@string/hint_name_label"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/weight_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/espacamento_corpo"
+            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="@id/height_group"
+            app:layout_constraintStart_toStartOf="@+id/height_group"
+            app:layout_constraintTop_toBottomOf="@+id/height_group">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="@string/quantity"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/quickadd_calory"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:gravity="end"
+                android:hint="@string/quantity"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

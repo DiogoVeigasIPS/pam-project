@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context=".FragmentDiary">
+
+
+    <LinearLayout
+        android:id="@+id/first_group"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:weightSum="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:layout_weight="2"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/header_padding">
+
+            <ImageButton
+                android:id="@+id/bt_back"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_marginEnd="10dp"
+                android:background="@color/white"
+                android:contentDescription="@string/seta_tras"
+                android:src="@drawable/seta_atras"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:text="@string/diary"
+                android:textColor="@color/black"
+                android:textSize="@dimen/title_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/grouped_spacing"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/grouped_spacing"
+            android:weightSum="1">
+
+            <ImageButton
+                android:id="@+id/bt_date_back"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_weight="0.1"
+                android:background="@color/white"
+                android:contentDescription="@string/seta_tras"
+                android:src="@drawable/seta_atras"
+                tools:ignore="NestedWeights,TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/dateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="@string/label_today"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/bt_date_forward"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_weight="0.1"
+                android:background="@color/white"
+                android:contentDescription="@string/seta_frente"
+                android:src="@drawable/seta_frente"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/grouped_spacing"
+            android:layout_weight="7"
+            android:paddingHorizontal="@dimen/main_padding"
+            android:paddingVertical="@dimen/header_padding">
+
+            <TextView
+                android:id="@+id/goal_output"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/valor_meta"
+                android:textColor="@color/black"
+                android:textSize="@dimen/meta_value_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/goal"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintEnd_toEndOf="@id/goal_output"
+                app:layout_constraintStart_toStartOf="@id/goal_output"
+                app:layout_constraintTop_toBottomOf="@id/goal_output" />
+
+            <TextView
+                android:id="@+id/minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/simbolo_menos"
+                android:textSize="@dimen/meta_value_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/food_output"
+                app:layout_constraintStart_toEndOf="@id/goal_output"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/food_output"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/valor_alimentos"
+                android:textColor="@color/black"
+                android:textSize="@dimen/meta_value_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/equal"
+                app:layout_constraintStart_toEndOf="@id/minus"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/foods"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintEnd_toEndOf="@id/food_output"
+                app:layout_constraintStart_toStartOf="@id/food_output"
+                app:layout_constraintTop_toBottomOf="@id/food_output" />
+
+            <TextView
+                android:id="@+id/equal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/simbolo_igual"
+                android:textSize="@dimen/meta_value_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/leftover_goal_ouput"
+                app:layout_constraintStart_toEndOf="@id/food_output"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/leftover_goal_ouput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/valor_meta"
+                android:textColor="@color/black"
+                android:textSize="@dimen/meta_value_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/restantes"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintEnd_toEndOf="@id/leftover_goal_ouput"
+                app:layout_constraintStart_toStartOf="@id/leftover_goal_ouput"
+                app:layout_constraintTop_toBottomOf="@id/leftover_goal_ouput" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/first_group"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:fillViewport="true"
+        >
+        <LinearLayout
+            android:id="@+id/second_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="6"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/espacamento_corpo"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:paddingHorizontal="@dimen/main_padding">
+
+                <TextView
+                    android:id="@+id/pequeno_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/breakfast"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/body_size"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/breakfast_calory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="@string/valor_alimentos"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/grouped_spacing"
+                android:layout_weight="0.5"
+                android:background="@color/white"
+                android:paddingHorizontal="@dimen/main_padding">
+
+                <TextView
+                    android:id="@+id/add_breakfast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:text="@string/add_food"
+                    android:textColor="@color/clicable_blue"
+                    android:textSize="@dimen/adicionar_alimento"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/bt_editDeleteBreakfast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:clickable="true"
+                    android:text="@string/bt_editDelete"
+                    android:textColor="@color/clicable_blue"
+                    android:textSize="@dimen/body_size"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/espacamento_corpo"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:paddingHorizontal="@dimen/main_padding">
+
+                <TextView
+                    android:id="@+id/lunch_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lunch"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/body_size"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/lunch_calory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="@string/caloria_almoco_output"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/grouped_spacing"
+                android:layout_weight="0.5"
+                android:background="@color/white"
+                android:paddingHorizontal="@dimen/main_padding">
+
+                <TextView
+                    android:id="@+id/add_lunch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:text="@string/add_food"
+                    android:textColor="@color/clicable_blue"
+                    android:textSize="@dimen/adicionar_alimento"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/bt_editDeleteLunch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:clickable="true"
+                    android:text="@string/bt_editDelete"
+                    android:textColor="@color/clicable_blue"
+                    android:textSize="@dimen/body_size"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/espacamento_corpo"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:paddingHorizontal="@dimen/main_padding">
+
+                <TextView
+                    android:id="@+id/dinner_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dinner"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/body_size"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/dinner_calory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="@string/caloria_almoco_output"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/grouped_spacing"
+                android:layout_weight="0.5"
+                android:background="@color/white"
+                android:paddingHorizontal="@dimen/main_padding">
+
+                <TextView
+                    android:id="@+id/add_dinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:text="@string/add_food"
+                    android:textColor="@color/clicable_blue"
+                    android:textSize="@dimen/adicionar_alimento"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/bt_editDeleteDinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:clickable="true"
+                    android:text="@string/bt_editDelete"
+                    android:textColor="@color/clicable_blue"
+                    android:textSize="@dimen/body_size"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/espacamento_corpo"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:paddingHorizontal="@dimen/main_padding">
+
+                <TextView
+                    android:id="@+id/lanche_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lanche"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/body_size"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/lanche_calory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="@string/caloria_almoco_output"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/grouped_spacing"
+                android:layout_weight="0.5"
+                android:background="@color/white"
+                android:paddingHorizontal="@dimen/main_padding">
+
+                <TextView
+                    android:id="@+id/add_lanche"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:text="@string/add_food"
+                    android:textColor="@color/clicable_blue"
+                    android:textSize="@dimen/adicionar_alimento"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/bt_editDeleteLanche"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:clickable="true"
+                    android:text="@string/bt_editDelete"
+                    android:textColor="@color/clicable_blue"
+                    android:textSize="@dimen/body_size"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context=".MainActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.99">
+
+    </androidx.fragment.app.FragmentContainerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.01"
+        android:background="@color/menu_blue"
+        android:orientation="horizontal"
+        android:weightSum="3">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+
+            <ImageButton
+                android:id="@+id/bt_painel"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:backgroundTint="@color/menu_blue"
+                android:scaleX="@dimen/scale_button_bottom"
+                android:scaleY="@dimen/scale_button_bottom"
+                android:src="@drawable/painel_icon"
+                tools:ignore="SpeakableTextPresentCheck" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bt_painel"
+                android:text="@string/painel"
+                android:gravity="center"
+                android:textSize="@dimen/body_size"
+                android:textColor="@color/white"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+
+            <ImageButton
+                android:id="@+id/bt_diario"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:backgroundTint="@color/menu_blue"
+                android:scaleX="@dimen/scale_button_bottom"
+                android:scaleY="@dimen/scale_button_bottom"
+                android:src="@drawable/diario_icon"
+                tools:ignore="SpeakableTextPresentCheck" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bt_diario"
+                android:text="@string/diary"
+                android:gravity="center"
+                android:textSize="@dimen/body_size"
+                android:textColor="@color/white"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+
+            <ImageButton
+                android:id="@+id/bt_alimentos"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:backgroundTint="@color/menu_blue"
+                android:scaleX="@dimen/scale_button_bottom"
+                android:scaleY="@dimen/scale_button_bottom"
+                android:src="@drawable/alimentos_icon"
+                tools:ignore="SpeakableTextPresentCheck" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bt_alimentos"
+                android:text="@string/meal"
+                android:gravity="center"
+                android:textSize="@dimen/body_size"
+                android:textColor="@color/white"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
