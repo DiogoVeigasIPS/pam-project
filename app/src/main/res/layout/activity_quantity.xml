@@ -27,9 +27,9 @@
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="10dp"
             android:layout_weight="0.1"
-            android:background="@color/white"
-            android:contentDescription="@string/seta_tras"
-            android:src="@drawable/seta_atras"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/back_arrow"
+            android:src="@drawable/back_arrow"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
@@ -45,8 +45,8 @@
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
             android:layout_weight="0.1"
-            android:background="@color/white"
-            android:src="@drawable/certo_submeter" />
+            android:background="@android:color/transparent"
+            android:src="@drawable/submit_right" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/body_size"
-        android:layout_marginBottom="@dimen/espacamento_corpo"
+        android:layout_marginBottom="@dimen/body_spacing"
         app:layout_constraintEnd_toEndOf="@id/header_quantity"
         app:layout_constraintStart_toStartOf="@id/header_quantity"
         app:layout_constraintTop_toBottomOf="@+id/header_quantity">
@@ -62,8 +62,8 @@
         <LinearLayout
             android:id="@+id/dish_group"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/espacamento_botao_submeter"
-            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:layout_height="@dimen/input_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
             android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
@@ -96,11 +96,11 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/height_group"
+            android:id="@+id/detail_group"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/espacamento_corpo"
-            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:layout_marginTop="@dimen/body_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
             android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
@@ -121,31 +121,31 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/quickadd_name"
+                android:id="@+id/qqName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.7"
                 android:gravity="end"
-                android:inputType="textPersonName"
                 android:hint="@string/hint_name_label"
+                android:inputType="textPersonName"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/weight_group"
+            android:id="@+id/quantity_group"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/espacamento_corpo"
-            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:layout_marginTop="@dimen/body_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
             android:background="@color/white"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/header_padding"
             android:weightSum="1"
-            app:layout_constraintEnd_toEndOf="@id/height_group"
-            app:layout_constraintStart_toStartOf="@+id/height_group"
-            app:layout_constraintTop_toBottomOf="@+id/height_group">
+            app:layout_constraintEnd_toEndOf="@id/detail_group"
+            app:layout_constraintStart_toStartOf="@+id/detail_group"
+            app:layout_constraintTop_toBottomOf="@+id/detail_group">
 
             <TextView
                 android:layout_width="0dp"
@@ -158,7 +158,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/quickadd_calory"
+                android:id="@+id/qqQuantity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.7"

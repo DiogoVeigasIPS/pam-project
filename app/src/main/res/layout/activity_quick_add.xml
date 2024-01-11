@@ -27,9 +27,9 @@
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="10dp"
             android:layout_weight="0.1"
-            android:background="@color/white"
-            android:contentDescription="@string/seta_tras"
-            android:src="@drawable/seta_atras"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/back_arrow"
+            android:src="@drawable/back_arrow"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
@@ -45,8 +45,8 @@
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
             android:layout_weight="0.1"
-            android:background="@color/white"
-            android:src="@drawable/certo_submeter"
+            android:background="@android:color/transparent"
+            android:src="@drawable/submit_right"
             tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
@@ -55,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/body_size"
-        android:layout_marginBottom="@dimen/espacamento_corpo"
+        android:layout_marginBottom="@dimen/body_spacing"
         app:layout_constraintEnd_toEndOf="@id/titulo_quickadd"
         app:layout_constraintStart_toStartOf="@id/titulo_quickadd"
         app:layout_constraintTop_toBottomOf="@+id/titulo_quickadd">
@@ -63,8 +63,8 @@
         <LinearLayout
             android:id="@+id/meal_group"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/espacamento_botao_submeter"
-            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:layout_height="@dimen/input_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
             android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
@@ -100,8 +100,8 @@
             android:id="@+id/height_group"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/espacamento_corpo"
-            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:layout_marginTop="@dimen/body_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
             android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
@@ -139,8 +139,8 @@
             android:id="@+id/weight_group"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/espacamento_corpo"
-            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:layout_marginTop="@dimen/body_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
             android:background="@color/white"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/header_padding"

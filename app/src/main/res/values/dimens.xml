@@ -4,7 +4,7 @@
     <dimen name="scale_button_bottom">1.3</dimen>
 
     <!-- Icon -->
-    <dimen name="icon_size">48dp</dimen>
+    <dimen name="icon_size">50dp</dimen>
 
     <!-- Paddings and Margins-->
     <dimen name="main_padding">25dp</dimen>
@@ -12,18 +12,19 @@
     <dimen name="header_padding">15dp</dimen>
     <dimen name="grouped_spacing">10dp</dimen>
     <dimen name="padding_button_selector">20dp</dimen>
-    <dimen name="espacamento_corpo">3dp</dimen>
-    <dimen name="espacamento_botao_submeter">40dp</dimen>
+    <dimen name="body_spacing">3dp</dimen>
+    <dimen name="input_spacing">40dp</dimen>
     <dimen name="spacing_popup">1.5</dimen>
+    <dimen name="main_menu_padding">30dp</dimen>
 
 
     <!-- Text Sizes -->
     <dimen name="title_size">26sp</dimen>
-    <dimen name="meta_value_size">34sp</dimen>
+    <dimen name="goalt_value_size">34sp</dimen>
     <dimen name="body_size">20sp</dimen>
-    <dimen name="main_peso_label">16sp</dimen>
-    <dimen name="adicionar_alimento">18sp</dimen>
-    <dimen name="tamanho_form_input">42sp</dimen>
+    <dimen name="label_main_weight">16sp</dimen>
+    <dimen name="add_spacing">18sp</dimen>
+    <dimen name="form_input_size">42sp</dimen>
     <dimen name="main_labels">14sp</dimen>
     <dimen name="text_margin">16dp</dimen>
 </resources>

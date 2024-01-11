@@ -27,13 +27,12 @@
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="10dp"
             android:layout_weight="0.1"
-            android:background="@color/white"
-            android:contentDescription="@string/seta_tras"
-            android:src="@drawable/seta_atras"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/back_arrow"
+            android:src="@drawable/back_arrow"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
-            android:id="@+id/texto_titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
@@ -46,8 +45,8 @@
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
             android:layout_weight="0.1"
-            android:background="@color/white"
-            android:src="@drawable/certo_submeter" />
+            android:background="@android:color/transparent"
+            android:src="@drawable/submit_right" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,17 +54,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/body_size"
-        android:layout_marginBottom="@dimen/espacamento_corpo"
+        android:layout_marginBottom="@dimen/body_spacing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/detail_header"
-        >
+        app:layout_constraintTop_toBottomOf="@id/detail_header">
 
         <LinearLayout
             android:id="@+id/birthday_group"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:layout_marginBottom="@dimen/body_spacing"
             android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
@@ -76,7 +74,6 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/birthday_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.6"
@@ -100,8 +97,8 @@
             android:id="@+id/height_group"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/espacamento_corpo"
-            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:layout_marginTop="@dimen/body_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
             android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
@@ -127,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.7"
                 android:gravity="end"
-                android:hint="@string/hint_altura"
+                android:hint="@string/hint_height"
                 android:inputType="numberDecimal"
                 android:textColorHint="@color/black"
                 android:textSize="@dimen/body_size"
@@ -146,11 +143,11 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/group_weight"
+            android:id="@+id/weight_group"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/espacamento_corpo"
-            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:layout_marginTop="@dimen/body_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
             android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
@@ -176,7 +173,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.7"
                 android:gravity="end"
-                android:hint="@string/hint_peso"
+                android:hint="@string/hint_weight"
                 android:inputType="numberDecimal"
                 android:textColorHint="@color/black"
                 android:textSize="@dimen/body_size"
@@ -198,16 +195,16 @@
             android:id="@+id/objective_group"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="@dimen/espacamento_corpo"
-            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:layout_marginTop="@dimen/body_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
             android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/header_padding"
             android:weightSum="1"
-            app:layout_constraintEnd_toEndOf="@id/group_weight"
-            app:layout_constraintStart_toStartOf="@id/group_weight"
-            app:layout_constraintTop_toBottomOf="@id/group_weight">
+            app:layout_constraintEnd_toEndOf="@id/weight_group"
+            app:layout_constraintStart_toStartOf="@id/weight_group"
+            app:layout_constraintTop_toBottomOf="@id/weight_group">
 
             <TextView
                 android:layout_width="0dp"
@@ -224,18 +221,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:textAlignment="center"
                 android:spinnerMode="dropdown"
+                android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/ativity_group"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="@dimen/espacamento_corpo"
-            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:layout_marginTop="@dimen/body_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
             android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
@@ -272,14 +270,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/label_tip"
-        android:textSize="@dimen/main_peso_label"
-        android:gravity="center"
-        android:padding="@dimen/header_padding"
         android:layout_marginTop="@dimen/appname_title_padding"
         android:background="@drawable/container_blackborder"
-        app:layout_constraintTop_toBottomOf="@id/group_body"
-        />
+        android:gravity="center"
+        android:padding="@dimen/header_padding"
+        android:text="@string/label_tip"
+        android:textSize="@dimen/label_main_weight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group_body" />
 </androidx.constraintlayout.widget.ConstraintLayout>

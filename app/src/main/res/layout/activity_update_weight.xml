@@ -28,12 +28,11 @@
             android:layout_marginEnd="10dp"
             android:layout_weight="0.1"
             android:background="@color/white"
-            android:contentDescription="@string/seta_tras"
-            android:src="@drawable/seta_atras"
+            android:contentDescription="@string/back_arrow"
+            android:src="@drawable/back_arrow"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
-            android:id="@+id/weight_title_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
@@ -47,7 +46,7 @@
             android:layout_height="@dimen/icon_size"
             android:layout_weight="0.1"
             android:background="@color/white"
-            android:src="@drawable/certo_submeter"
+            android:src="@drawable/submit_right"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </LinearLayout>
 
@@ -55,7 +54,7 @@
         android:id="@+id/weight_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_peso"
+        android:hint="@string/hint_weight"
         android:textColorHint="@color/black"
         android:textSize="@dimen/body_size"
         app:layout_constraintBottom_toBottomOf="parent"
