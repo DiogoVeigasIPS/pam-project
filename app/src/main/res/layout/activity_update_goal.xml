@@ -28,8 +28,8 @@
             android:layout_marginEnd="10dp"
             android:layout_weight="0.1"
             android:background="@color/white"
-            android:contentDescription="@string/seta_tras"
-            android:src="@drawable/seta_atras"
+            android:contentDescription="@string/back_arrow"
+            android:src="@drawable/back_arrow"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
@@ -46,7 +46,7 @@
             android:layout_height="@dimen/icon_size"
             android:layout_weight="0.1"
             android:background="@color/white"
-            android:src="@drawable/certo_submeter"
+            android:src="@drawable/submit_right"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </LinearLayout>
 
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@id/update_goal_title">
 
         <ToggleButton
-            android:id="@+id/alimentos_button"
+            android:id="@+id/bt_calculated"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_switch_selector"
@@ -73,11 +73,11 @@
             android:textOn="@string/calculated"
             android:textSize="@dimen/body_size"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/refeicoes_button"
+            app:layout_constraintEnd_toStartOf="@id/bt_personalised"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ToggleButton
-            android:id="@+id/refeicoes_button"
+            android:id="@+id/bt_personalised"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_switch_selector"
@@ -88,9 +88,10 @@
             android:textSize="@dimen/body_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/alimentos_button" />
+            app:layout_constraintStart_toEndOf="@id/bt_calculated" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <EditText
         android:id="@+id/goal_input"
         android:layout_width="wrap_content"
@@ -98,10 +99,10 @@
         android:hint="@string/hint_calory"
         android:textColorHint="@color/black"
         android:textSize="@dimen/body_size"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toggle_buttons_container"
-        app:layout_constraintVertical_bias="0.20"
-        android:visibility="visible" /> <!-- Mudar para gone para ficar inv -->
+        app:layout_constraintVertical_bias="0.20" /> <!-- Mudar para gone para ficar inv -->
 </androidx.constraintlayout.widget.ConstraintLayout>

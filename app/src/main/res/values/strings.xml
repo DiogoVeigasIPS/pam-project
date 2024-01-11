@@ -12,7 +12,7 @@
     <string name="lanche">Lanche</string>
     <string name="calory">Calorias</string>
     <string name="goal_base">Meta Base</string>
-    <string name="restantes">Restantes</string>
+    <string name="remaining">Restantes</string>
     <string name="weight">Peso</string>
     <string name="height">Altura</string>
     <string name="birthdate">Data de Nascimento</string>
@@ -29,21 +29,25 @@
     <string name="bt_detalhes_submeter">Atualizar Detalhes Pessoais</string>
     <string name="bt_editDelete">...</string>
     <!-- Label para a descrição do botao -->
-    <string name="seta_tras">seta atras</string>
-    <string name="seta_frente">seta frente</string>
+    <string name="back_arrow">seta atras</string>
+    <string name="front_arrow">seta frente</string>
 
     <!-- Labels Tempo -->
-    <string name="label_today">Hoje</string>
-    <string name="last_month_label">Último Mês</string>
-    <string name="last_week_label">Última Semana</string>
+    <string name="today">Hoje</string>
+    <string name="last_month">Último Mês</string>
+    <string name="last_week">Última Semana</string>
 
-    <string name="simbolo_menos">-</string>
-    <string name="simbolo_igual">=</string>
-    <string name="valor_meta">2800</string>
-    <string name="valor_alimentos">000</string>
-    <string name="caloria_almoco_output">00</string>
-    <string name="meta_base">00000</string>
-    <string name="calory_goal_default">2200</string>
+    <string name="minus">-</string>
+    <string name="equal">=</string>
+    <string name="goal_value">2800</string>
+    <string name="output_value">0</string>
+    <string name="foods_goal">500</string>
+    <string name="temp_value">000</string>
+    <string name="temp_month">80</string>
+    <string name="temp_week">75</string>
+    <string name="temp_today">70</string>
+    <string name="goal_base_value">00000</string>
+    <string name="calory_goal_value">2200</string>
     <string name="label_kg">kg</string>
     <string name="label_cm">cm</string>
 
@@ -60,15 +64,15 @@
 
     <string name="hint_name_label">Insira o nome do que irá comer</string>
     <string name="hint_calory_qty">Insira a quantidade calórica</string>
-    <string name="hint_altura">Insira a sua altura em</string>
-    <string name="hint_peso">Insira o seu peso em</string>
+    <string name="hint_height">Insira a sua altura em</string>
+    <string name="hint_weight">Insira o seu peso em</string>
     <string name="hint_calory">Insira a sua meta calórica</string>
 
     <string name="label_tip">
         "Dica:\nNão Ativo passa a maior parte do dia sentado\nMuito Ativo passa a maior parte do dia a exercitar-se
     </string>
     <string name="label_detail">Detalhes</string>
-    <string name="label_refeicoes">Refeições</string>
+    <string name="label_meals">Refeições</string>
 
     <string-array name="ativity_spinner">
         <!-- This will be the hint.

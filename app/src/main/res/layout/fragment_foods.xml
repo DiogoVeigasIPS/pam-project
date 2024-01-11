@@ -7,7 +7,7 @@
     tools:context=".FragmentFoods">
 
     <LinearLayout
-        android:id="@+id/header_alimentos"
+        android:id="@+id/header_foods"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/grouped_spacing"
@@ -27,8 +27,8 @@
             android:layout_marginEnd="10dp"
             android:layout_weight="0.1"
             android:background="@color/white"
-            android:contentDescription="@string/seta_tras"
-            android:src="@drawable/seta_atras"
+            android:contentDescription="@string/back_arrow"
+            android:src="@drawable/back_arrow"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
@@ -49,7 +49,7 @@
         android:paddingVertical="@dimen/appname_title_padding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_alimentos">
+        app:layout_constraintTop_toBottomOf="@id/header_foods">
 
         <ToggleButton
             android:id="@+id/alimentos_button"
@@ -73,8 +73,8 @@
             android:background="@drawable/button_switch_selector"
             android:paddingHorizontal="@dimen/header_padding"
             android:paddingVertical="@dimen/padding_button_selector"
-            android:textOff="@string/label_refeicoes"
-            android:textOn="@string/label_refeicoes"
+            android:textOff="@string/label_meals"
+            android:textOn="@string/label_meals"
             android:textSize="@dimen/body_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,24 +83,23 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/foods_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="@dimen/header_padding"
+        app:layout_constraintBottom_toTopOf="@id/button_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/button_layout"
         app:layout_constraintTop_toBottomOf="@id/toggle_buttons_container" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/button_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:padding="@dimen/body_size"
-        >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/bt_add"
@@ -108,8 +107,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/big_add"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

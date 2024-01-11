@@ -22,7 +22,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/espacamento_corpo"
+            android:layout_marginBottom="@dimen/body_spacing"
             android:layout_weight="2"
             android:background="@color/white"
             android:gravity="center"
@@ -35,8 +35,8 @@
                 android:layout_height="@dimen/icon_size"
                 android:layout_marginEnd="10dp"
                 android:background="@color/white"
-                android:contentDescription="@string/seta_tras"
-                android:src="@drawable/seta_atras"
+                android:contentDescription="@string/back_arrow"
+                android:src="@drawable/back_arrow"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
@@ -66,8 +66,8 @@
                 android:layout_height="@dimen/icon_size"
                 android:layout_weight="0.1"
                 android:background="@color/white"
-                android:contentDescription="@string/seta_tras"
-                android:src="@drawable/seta_atras"
+                android:contentDescription="@string/back_arrow"
+                android:src="@drawable/back_arrow"
                 tools:ignore="NestedWeights,TouchTargetSizeCheck" />
 
             <TextView
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:gravity="center"
-                android:text="@string/label_today"
+                android:text="@string/today"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -86,8 +86,8 @@
                 android:layout_height="@dimen/icon_size"
                 android:layout_weight="0.1"
                 android:background="@color/white"
-                android:contentDescription="@string/seta_frente"
-                android:src="@drawable/seta_frente"
+                android:contentDescription="@string/front_arrow"
+                android:src="@drawable/forward_arrow"
                 tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
 
@@ -103,9 +103,9 @@
                 android:id="@+id/goal_output"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/valor_meta"
+                android:text="@string/goal_value"
                 android:textColor="@color/black"
-                android:textSize="@dimen/meta_value_size"
+                android:textSize="@dimen/goalt_value_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -123,8 +123,8 @@
                 android:id="@+id/minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/simbolo_menos"
-                android:textSize="@dimen/meta_value_size"
+                android:text="@string/minus"
+                android:textSize="@dimen/goalt_value_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/food_output"
                 app:layout_constraintStart_toEndOf="@id/goal_output"
@@ -134,9 +134,9 @@
                 android:id="@+id/food_output"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/valor_alimentos"
+                android:text="@string/output_value"
                 android:textColor="@color/black"
-                android:textSize="@dimen/meta_value_size"
+                android:textSize="@dimen/goalt_value_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/equal"
                 app:layout_constraintStart_toEndOf="@id/minus"
@@ -155,8 +155,8 @@
                 android:id="@+id/equal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/simbolo_igual"
-                android:textSize="@dimen/meta_value_size"
+                android:text="@string/equal"
+                android:textSize="@dimen/goalt_value_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/leftover_goal_ouput"
                 app:layout_constraintStart_toEndOf="@id/food_output"
@@ -166,9 +166,9 @@
                 android:id="@+id/leftover_goal_ouput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/valor_meta"
+                android:text="@string/goal_value"
                 android:textColor="@color/black"
-                android:textSize="@dimen/meta_value_size"
+                android:textSize="@dimen/goalt_value_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -176,7 +176,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/restantes"
+                android:text="@string/remaining"
                 android:textSize="@dimen/body_size"
                 app:layout_constraintEnd_toEndOf="@id/leftover_goal_ouput"
                 app:layout_constraintStart_toStartOf="@id/leftover_goal_ouput"
@@ -189,23 +189,23 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/first_group"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:fillViewport="true"
-        >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/first_group">
+
         <LinearLayout
             android:id="@+id/second_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:weightSum="6"
-            >
+            android:weightSum="6">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/espacamento_corpo"
+                android:layout_marginBottom="@dimen/body_spacing"
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:paddingHorizontal="@dimen/main_padding">
@@ -227,7 +227,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:text="@string/valor_alimentos"
+                    android:text="@string/output_value"
                     android:textColor="@color/black"
                     android:textSize="@dimen/body_size"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -251,7 +251,7 @@
                     android:clickable="true"
                     android:text="@string/add_food"
                     android:textColor="@color/clicable_blue"
-                    android:textSize="@dimen/adicionar_alimento"
+                    android:textSize="@dimen/add_spacing"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -277,7 +277,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/espacamento_corpo"
+                android:layout_marginBottom="@dimen/body_spacing"
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:paddingHorizontal="@dimen/main_padding">
@@ -299,7 +299,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:text="@string/caloria_almoco_output"
+                    android:text="@string/output_value"
                     android:textColor="@color/black"
                     android:textSize="@dimen/body_size"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -323,7 +323,7 @@
                     android:clickable="true"
                     android:text="@string/add_food"
                     android:textColor="@color/clicable_blue"
-                    android:textSize="@dimen/adicionar_alimento"
+                    android:textSize="@dimen/add_spacing"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -348,7 +348,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/espacamento_corpo"
+                android:layout_marginBottom="@dimen/body_spacing"
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:paddingHorizontal="@dimen/main_padding">
@@ -370,7 +370,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:text="@string/caloria_almoco_output"
+                    android:text="@string/output_value"
                     android:textColor="@color/black"
                     android:textSize="@dimen/body_size"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -394,7 +394,7 @@
                     android:clickable="true"
                     android:text="@string/add_food"
                     android:textColor="@color/clicable_blue"
-                    android:textSize="@dimen/adicionar_alimento"
+                    android:textSize="@dimen/add_spacing"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -419,7 +419,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/espacamento_corpo"
+                android:layout_marginBottom="@dimen/body_spacing"
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:paddingHorizontal="@dimen/main_padding">
@@ -441,7 +441,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:text="@string/caloria_almoco_output"
+                    android:text="@string/output_value"
                     android:textColor="@color/black"
                     android:textSize="@dimen/body_size"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -465,7 +465,7 @@
                     android:clickable="true"
                     android:text="@string/add_food"
                     android:textColor="@color/clicable_blue"
-                    android:textSize="@dimen/adicionar_alimento"
+                    android:textSize="@dimen/add_spacing"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -16,94 +16,47 @@
 
     </androidx.fragment.app.FragmentContainerView>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.01"
         android:background="@color/menu_blue"
         android:orientation="horizontal"
-        android:weightSum="3">
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            >
+        android:paddingVertical="@dimen/body_spacing">
 
-            <ImageButton
-                android:id="@+id/bt_painel"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
-                android:backgroundTint="@color/menu_blue"
-                android:scaleX="@dimen/scale_button_bottom"
-                android:scaleY="@dimen/scale_button_bottom"
-                android:src="@drawable/painel_icon"
-                tools:ignore="SpeakableTextPresentCheck" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/bt_painel"
-                android:text="@string/painel"
-                android:gravity="center"
-                android:textSize="@dimen/body_size"
-                android:textColor="@color/white"
-                />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            >
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_painel"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/main_menu_padding"
+            android:background="@drawable/icon_painel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="NestedWeights,SpeakableTextPresentCheck" />
 
-            <ImageButton
-                android:id="@+id/bt_diario"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
-                android:backgroundTint="@color/menu_blue"
-                android:scaleX="@dimen/scale_button_bottom"
-                android:scaleY="@dimen/scale_button_bottom"
-                android:src="@drawable/diario_icon"
-                tools:ignore="SpeakableTextPresentCheck" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/bt_diario"
-                android:text="@string/diary"
-                android:gravity="center"
-                android:textSize="@dimen/body_size"
-                android:textColor="@color/white"
-                />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            >
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_diario"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/icon_diary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/bt_alimentos"
+            app:layout_constraintStart_toEndOf="@id/bt_painel"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-            <ImageButton
-                android:id="@+id/bt_alimentos"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
-                android:backgroundTint="@color/menu_blue"
-                android:scaleX="@dimen/scale_button_bottom"
-                android:scaleY="@dimen/scale_button_bottom"
-                android:src="@drawable/alimentos_icon"
-                tools:ignore="SpeakableTextPresentCheck" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/bt_alimentos"
-                android:text="@string/meal"
-                android:gravity="center"
-                android:textSize="@dimen/body_size"
-                android:textColor="@color/white"
-                />
-        </RelativeLayout>
-    </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_alimentos"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginEnd="@dimen/main_menu_padding"
+            android:background="@drawable/icon_foods"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
