@@ -53,6 +53,7 @@
 
     <string name="quickadd">Adição Rapida</string>
     <string name="add_food">Adicionar Alimento</string>
+    <string name="title_addfoods">Adicionar Alimentos</string>
     <string name="add_weight">Atualizar Peso</string>
     <string name="add_details">Atualizar Detalhes</string>
     <string name="edit_food">Editar Refeição</string>
@@ -73,6 +74,12 @@
     </string>
     <string name="label_detail">Detalhes</string>
     <string name="label_meals">Refeições</string>
+    <string name="search_foods">Pesquise por alguma comida</string>
+    <string name="placeholder_mealname">Temp: Pequeno Almoço</string>
+    <string name="label_myfood">Meus Alimentos</string>
+    <string name="label_mymeals">Minhas Refeições</string>
+    <string name="popup_edit">Edit</string>
+    <string name="popup_delete">Delete</string>
 
     <string-array name="ativity_spinner">
         <!-- This will be the hint.

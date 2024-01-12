@@ -16,6 +16,7 @@
     <dimen name="input_spacing">40dp</dimen>
     <dimen name="spacing_popup">1.5</dimen>
     <dimen name="main_menu_padding">30dp</dimen>
+    <dimen name="foodstomeal_bottom">60dp</dimen>
 
 
     <!-- Text Sizes -->

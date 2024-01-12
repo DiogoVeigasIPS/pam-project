@@ -247,7 +247,8 @@
                 <TextView
                     android:id="@+id/add_breakfast"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_height="@dimen/goalt_value_size"
                     android:clickable="true"
                     android:text="@string/add_food"
                     android:textColor="@color/clicable_blue"
@@ -260,9 +261,10 @@
 
                 <TextView
                     android:id="@+id/bt_editDeleteBreakfast"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/goalt_value_size"
+                    android:layout_height="@dimen/goalt_value_size"
                     android:layout_gravity="end"
+                    android:gravity="end"
                     android:clickable="true"
                     android:text="@string/bt_editDelete"
                     android:textColor="@color/clicable_blue"
@@ -319,7 +321,8 @@
                 <TextView
                     android:id="@+id/add_lunch"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/goalt_value_size"
+                    android:gravity="center"
                     android:clickable="true"
                     android:text="@string/add_food"
                     android:textColor="@color/clicable_blue"
@@ -332,9 +335,10 @@
 
                 <TextView
                     android:id="@+id/bt_editDeleteLunch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/goalt_value_size"
+                    android:layout_height="@dimen/goalt_value_size"
                     android:layout_gravity="end"
+                    android:gravity="end"
                     android:clickable="true"
                     android:text="@string/bt_editDelete"
                     android:textColor="@color/clicable_blue"
@@ -390,7 +394,8 @@
                 <TextView
                     android:id="@+id/add_dinner"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_height="@dimen/goalt_value_size"
                     android:clickable="true"
                     android:text="@string/add_food"
                     android:textColor="@color/clicable_blue"
@@ -403,9 +408,10 @@
 
                 <TextView
                     android:id="@+id/bt_editDeleteDinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/goalt_value_size"
+                    android:layout_height="@dimen/goalt_value_size"
                     android:layout_gravity="end"
+                    android:gravity="end"
                     android:clickable="true"
                     android:text="@string/bt_editDelete"
                     android:textColor="@color/clicable_blue"
@@ -461,8 +467,9 @@
                 <TextView
                     android:id="@+id/add_lanche"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/goalt_value_size"
                     android:clickable="true"
+                    android:gravity="center"
                     android:text="@string/add_food"
                     android:textColor="@color/clicable_blue"
                     android:textSize="@dimen/add_spacing"
@@ -474,9 +481,10 @@
 
                 <TextView
                     android:id="@+id/bt_editDeleteLanche"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/goalt_value_size"
+                    android:layout_height="@dimen/goalt_value_size"
                     android:layout_gravity="end"
+                    android:gravity="end"
                     android:clickable="true"
                     android:text="@string/bt_editDelete"
                     android:textColor="@color/clicable_blue"

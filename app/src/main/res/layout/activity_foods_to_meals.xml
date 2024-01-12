@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentFoods">
-
+    tools:context=".FoodsToMealsActivity">
     <LinearLayout
         android:id="@+id/header_foods"
         android:layout_width="match_parent"
@@ -35,24 +34,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.9"
-            android:text="@string/foods"
+            android:text="@string/title_addfoods"
             android:textColor="@color/black"
             android:textSize="@dimen/title_size" />
+
+
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/toggle_buttons_container"
+        android:id="@+id/buttons_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/light_gray"
         android:paddingHorizontal="@dimen/main_padding"
-        android:paddingVertical="@dimen/main_menu_padding"
+        android:paddingTop="@dimen/main_menu_padding"
+        android:paddingBottom="@dimen/foodstomeal_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_foods">
+        app:layout_constraintTop_toBottomOf="@id/header_foods"
+        >
 
         <EditText
-            android:id="@+id/foods_search"
+            android:id="@+id/foodmeal_search"
             android:layout_width="0dp"
             android:layout_height="@dimen/icon_size"
             android:background="@drawable/container_blackborder"
@@ -63,63 +66,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ToggleButton
-            android:id="@+id/bt_foods"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_button_selector"
-            android:background="@drawable/button_switch_selector"
-            android:checked="true"
-            android:paddingHorizontal="@dimen/padding_button_selector"
-            android:paddingVertical="@dimen/main_padding"
-            android:textOff="@string/foods"
-            android:textOn="@string/foods"
-            android:textSize="@dimen/body_size"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/bt_meals"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/foods_search" />
-
-        <ToggleButton
-            android:id="@+id/bt_meals"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="@dimen/padding_button_selector"
-            android:background="@drawable/button_switch_selector"
-            android:paddingHorizontal="@dimen/padding_button_selector"
-            android:paddingVertical="@dimen/main_padding"
-            android:textOff="@string/label_meals"
-            android:textOn="@string/label_meals"
-            android:textSize="@dimen/body_size"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/bt_foods"
-            app:layout_constraintTop_toBottomOf="@id/foods_search" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/mymeals_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/header_padding"
+        android:text="@string/label_myfood"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttons_container" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/foods_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/padding_button_selector"
-        android:padding="@dimen/main_padding"
-        app:layout_constraintBottom_toTopOf="@id/bt_add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toggle_buttons_container" />
-
-
-    <ImageButton
-        android:id="@+id/bt_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/big_add"
+        android:padding="@dimen/header_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/main_padding"
-        android:layout_marginBottom="@dimen/main_padding"/>
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mymeals_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
