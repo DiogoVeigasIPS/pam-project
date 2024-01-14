@@ -1,14 +1,16 @@
-package com.example.myfitnessbuddy;
+package com.example.myfitnessbuddy.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class UpdateDetailsActivity extends AppCompatActivity {
+import com.example.myfitnessbuddy.R;
+
+public class AddFoodActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_details);
+        setContentView(R.layout.activity_add_food);
     }
 }

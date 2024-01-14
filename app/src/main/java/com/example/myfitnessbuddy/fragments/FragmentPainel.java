@@ -1,4 +1,4 @@
-package com.example.myfitnessbuddy;
+package com.example.myfitnessbuddy.fragments;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myfitnessbuddy.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragmentFoods#newInstance} factory method to
+ * Use the {@link FragmentPainel#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentFoods extends Fragment {
+public class FragmentPainel extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class FragmentFoods extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public FragmentFoods() {
+    public FragmentPainel() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class FragmentFoods extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentFoods.
+     * @return A new instance of fragment FragmentPainel.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentFoods newInstance(String param1, String param2) {
-        FragmentFoods fragment = new FragmentFoods();
+    public static FragmentPainel newInstance(String param1, String param2) {
+        FragmentPainel fragment = new FragmentPainel();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,6 @@ public class FragmentFoods extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_foods, container, false);
+        return inflater.inflate(R.layout.fragment_painel, container, false);
     }
 }
