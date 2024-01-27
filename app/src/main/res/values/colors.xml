@@ -6,8 +6,9 @@
     <color name="card_gray">#B9B9B9</color>
     <color name="bt_light_gray">#C4C4C4</color>
     <color name="ash_color">#808080</color>
-    <color name="lighest_gray">#F0F0F0</color>
-    <color name="clicable_blue">#3498db</color>
+    <color name="lightest_gray">#F0F0F0</color>
+    <color name="clickable_blue">#3498db</color>
     <color name="menu_blue">#3263E2</color>
+    <color name="ripple_menu_blue">#16378F</color>
     <color name="containers_shadow">#33000000</color>
 </resources>

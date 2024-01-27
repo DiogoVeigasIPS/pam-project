@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MealsActivities">
+    tools:context=".activities.MealsActivities">
 
     <LinearLayout
         android:id="@+id/header_foods"
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
-            android:text="@string/placeholder_mealname"
+            android:text="@string/placeholder_meal_name"
             android:textColor="@color/black"
             android:textSize="@dimen/title_size" />
 
@@ -45,7 +45,7 @@
             android:layout_height="@dimen/icon_size"
             android:layout_weight="0.1"
             android:background="@android:color/transparent"
-            android:src="@drawable/submit_right" />
+            android:src="@drawable/confirm_check" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -94,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/header_padding"
-        android:text="@string/label_myfood"
+        android:text="@string/label_my_food"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
