@@ -247,7 +247,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
-                android:text="@string/ativity"
+                android:text="@string/activity"
                 android:textSize="@dimen/body_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -270,7 +270,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/appname_title_padding"
+        android:layout_marginTop="@dimen/app_name_title_padding"
         android:background="@drawable/container_blackborder"
         android:gravity="center"
         android:padding="@dimen/header_padding"

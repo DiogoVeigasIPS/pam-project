@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/main_padding"
-    tools:context=".fragments.FragmentPainel">
+    tools:context=".fragments.FragmentPanel">
 
     <TextView
         android:id="@+id/main_title"
@@ -23,7 +23,7 @@
         android:id="@+id/main_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/appname_title_padding"
+        android:layout_marginTop="@dimen/app_name_title_padding"
         android:text="@string/today"
         android:textColor="@color/black"
         android:textSize="@dimen/title_size"
@@ -46,7 +46,7 @@
             android:id="@+id/label_calory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/calory"
+            android:text="@string/calorie"
             android:textColor="@color/black"
             android:textSize="@dimen/body_size"
             android:textStyle="bold"
@@ -55,11 +55,13 @@
 
         <ImageButton
             android:id="@+id/mbt_calory_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/plus"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/add_black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/add_calorie_goal"/>
 
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
@@ -173,9 +175,11 @@
 
         <ImageButton
             android:id="@+id/mbt_weight_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/plus"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/set_weight"
+            android:src="@drawable/add_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -187,7 +191,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/main_weight_label">
+            app:layout_constraintTop_toBottomOf="@id/main_weight_label"
+            android:baselineAligned="false">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
@@ -328,15 +333,13 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_personal_details"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bt_update_details"
+        android:layout_height="@dimen/icon_size"
         android:backgroundTint="@color/bt_light_gray"
-        android:text="@string/bt_detalhes_submeter"
+        android:text="@string/bt_details_submit"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

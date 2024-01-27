@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
-            android:text="@string/placeholder_mealname"
+            android:text="@string/placeholder_meal_name"
             android:textColor="@color/black"
             android:textSize="@dimen/title_size" />
 
@@ -94,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/header_padding"
-        android:text="@string/label_myfood"
+        android:text="@string/label_my_food"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

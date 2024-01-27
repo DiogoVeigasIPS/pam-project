@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.9"
-            android:text="@string/title_addfoods"
+            android:text="@string/title_add_foods"
             android:textColor="@color/black"
             android:textSize="@dimen/title_size" />
 
@@ -48,7 +48,7 @@
         android:background="@color/light_gray"
         android:paddingHorizontal="@dimen/main_padding"
         android:paddingTop="@dimen/main_menu_padding"
-        android:paddingBottom="@dimen/foodstomeal_bottom"
+        android:paddingBottom="@dimen/foods_to_meal_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header_foods"
@@ -74,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/header_padding"
-        android:text="@string/label_myfood"
+        android:text="@string/label_my_food"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

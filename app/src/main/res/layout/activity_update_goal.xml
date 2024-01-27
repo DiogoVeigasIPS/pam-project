@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
-            android:text="@string/add_calory_custom"
+            android:text="@string/add_calorie_custom"
             android:textColor="@color/black"
             android:textSize="@dimen/title_size" />
 
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:background="@color/light_gray"
         android:paddingHorizontal="@dimen/header_padding"
-        android:paddingVertical="@dimen/appname_title_padding"
+        android:paddingVertical="@dimen/app_name_title_padding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/update_goal_title">
@@ -96,7 +96,7 @@
         android:id="@+id/goal_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_calory"
+        android:hint="@string/hint_calorie_goal"
         android:textColorHint="@color/black"
         android:textSize="@dimen/body_size"
         android:visibility="visible"

@@ -8,7 +8,7 @@
 
     <!-- Paddings and Margins-->
     <dimen name="main_padding">25dp</dimen>
-    <dimen name="appname_title_padding">35dp</dimen>
+    <dimen name="app_name_title_padding">35dp</dimen>
     <dimen name="header_padding">15dp</dimen>
     <dimen name="grouped_spacing">10dp</dimen>
     <dimen name="padding_button_selector">20dp</dimen>
@@ -16,12 +16,12 @@
     <dimen name="input_spacing">40dp</dimen>
     <dimen name="spacing_popup">1.5</dimen>
     <dimen name="main_menu_padding">30dp</dimen>
-    <dimen name="foodstomeal_bottom">60dp</dimen>
+    <dimen name="foods_to_meal_bottom">60dp</dimen>
 
 
     <!-- Text Sizes -->
     <dimen name="title_size">26sp</dimen>
-    <dimen name="goalt_value_size">34sp</dimen>
+    <dimen name="goal_value_size">34sp</dimen>
     <dimen name="body_size">20sp</dimen>
     <dimen name="label_main_weight">16sp</dimen>
     <dimen name="add_spacing">18sp</dimen>

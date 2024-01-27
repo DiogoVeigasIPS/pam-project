@@ -1,41 +1,42 @@
 <resources>
     <string name="app_name">MyFitBuddy</string>
 
-    <string name="painel">Painel</string>
-    <string name="diary">Diário</string>
-    <string name="foods">Alimentos</string>
-    <string name="goal">Meta</string>
-    <string name="quantity">Quantidade</string>
-    <string name="breakfast">Pequeno Almoço</string>
-    <string name="lunch">Almoço</string>
-    <string name="dinner">Jantar</string>
-    <string name="lanche">Lanche</string>
-    <string name="calory">Calorias</string>
-    <string name="goal_base">Meta Base</string>
-    <string name="remaining">Restantes</string>
-    <string name="weight">Peso</string>
-    <string name="height">Altura</string>
-    <string name="birthdate">Data de Nascimento</string>
-    <string name="objective">Objetivo</string>
-    <string name="ativity">Atividade</string>
-    <string name="meal">Refeição</string>
-    <string name="name">Nome</string>
-    <string name="food_name">Nome do Alimento</string>
-    <string name="calculated">Calculada</string>
-    <string name="customised">Personalizada</string>
+    <string name="panel">Dashboard</string>
+    <string name="diary">Diary</string>
+    <string name="foods">Foods</string>
+    <string name="goal">Goal</string>
+    <string name="quantity">Quantity</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="lunch">Lunch</string>
+    <string name="dinner">Dinner</string>
+    <string name="snack">Snack</string>
+    <string name="calorie">Calories</string>
+    <string name="goal_base">Base Goal</string>
+    <string name="remaining">Left</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="objective">Objective</string>
+    <string name="activity">Activity</string>
+    <string name="meal">Meal</string>
+    <string name="name">Name</string>
+    <string name="food_name">Food Name</string>
+    <string name="calculated">Calculated</string>
+    <string name="customised">Customized</string>
 
-    <!-- Botões -->
-    <string name="bt_submeter">Submeter</string>
-    <string name="bt_detalhes_submeter">Atualizar Detalhes Pessoais</string>
+    <!-- Buttons -->
+    <string name="bt_submit">Submit</string>
+    <string name="bt_details_submit">Update Personal Details</string>
     <string name="bt_editDelete">...</string>
-    <!-- Label para a descrição do botao -->
-    <string name="back_arrow">seta atras</string>
-    <string name="front_arrow">seta frente</string>
 
-    <!-- Labels Tempo -->
-    <string name="today">Hoje</string>
-    <string name="last_month">Último Mês</string>
-    <string name="last_week">Última Semana</string>
+    <!-- Label for button description -->
+    <string name="back_arrow">back arrow</string>
+    <string name="front_arrow">forward arrow</string>
+
+    <!-- Time Labels -->
+    <string name="today">Today</string>
+    <string name="last_month">Last Month</string>
+    <string name="last_week">Last Week</string>
 
     <string name="minus">-</string>
     <string name="equal">=</string>
@@ -47,52 +48,59 @@
     <string name="temp_week">75</string>
     <string name="temp_today">70</string>
     <string name="goal_base_value">00000</string>
-    <string name="calory_goal_value">2200</string>
+    <string name="calorie_goal_value">2200</string>
     <string name="label_kg">kg</string>
     <string name="label_cm">cm</string>
 
-    <string name="quickadd">Adição Rapida</string>
-    <string name="add_food">Adicionar Alimento</string>
-    <string name="title_addfoods">Adicionar Alimentos</string>
-    <string name="add_weight">Atualizar Peso</string>
-    <string name="add_details">Atualizar Detalhes</string>
-    <string name="edit_food">Editar Refeição</string>
+    <string name="quick_add">Quick Add</string>
+    <string name="add_food">Add Food</string>
+    <string name="title_add_foods">Add Foods</string>
+    <string name="add_weight">Update Weight</string>
+    <string name="add_details">Update Details</string>
+    <string name="edit_food">Edit Meal</string>
     <string name="delete_food">Delete Food</string>
-    <string name="add_calory_custom">Atualizar Meta</string>
+    <string name="add_calorie_custom">Update Goal</string>
 
-    <string name="meal_example">Peito de Frango</string>
-    <string name="aditional_details">Informação Adicional</string>
 
-    <string name="hint_name_label">Insira o nome do que irá comer</string>
-    <string name="hint_calory_qty">Insira a quantidade calórica</string>
-    <string name="hint_height">Insira a sua altura em</string>
-    <string name="hint_weight">Insira o seu peso em</string>
-    <string name="hint_calory">Insira a sua meta calórica</string>
+    <string name="meal_example">Chicken Breast</string>
+    <string name="additional_details">Additional Information</string>
+
+    <string name="hint_name_label">Enter the name of what you will eat</string>
+    <string name="hint_calorie_qty">Enter the caloric quantity</string>
+    <string name="hint_height">Enter your height in</string>
+    <string name="hint_weight">Enter your weight in</string>
+    <string name="hint_calorie_goal">Enter your caloric goal</string>
+
 
     <string name="label_tip">
-        "Dica:\nNão Ativo passa a maior parte do dia sentado\nMuito Ativo passa a maior parte do dia a exercitar-se
+        "Tip:\nInactive spends most of the day sitting\nVery Active spends most of the day exercising"
     </string>
-    <string name="label_detail">Detalhes</string>
-    <string name="label_meals">Refeições</string>
-    <string name="search_foods">Pesquise por alguma comida</string>
-    <string name="placeholder_mealname">Temp: Pequeno Almoço</string>
-    <string name="label_myfood">Meus Alimentos</string>
-    <string name="label_mymeals">Minhas Refeições</string>
+    <string name="label_detail">Details</string>
+    <string name="label_meals">Meals</string>
+    <string name="search_foods">Search for some food</string>
+    <string name="placeholder_meal_name">Meal Type: Breakfast</string>
+    <string name="label_my_food">My Foods</string>
+    <string name="label_my_meals">My Meals</string>
     <string name="popup_edit">Edit</string>
     <string name="popup_delete">Delete</string>
+    <string name="add_calorie_goal">Add calorie goal</string>
+    <string name="set_weight">Set weight</string>
+    <string name="home">Home</string>
 
-    <string-array name="ativity_spinner">
+
+    <string-array name="activity_spinner">
         <!-- This will be the hint.
-         Disable or make it impossible for the person to submit the info with it on-->
-        <item>Escolha uma opção</item>
-        <item>Não Ativo</item>
-        <item>Ativo</item>
-        <item>Muito Ativo</item>
+             Disable or make it impossible for the person to submit the info with it on-->
+        <item>Choose an option</item>
+        <item>Not Active</item>
+        <item>Active</item>
+        <item>Very Active</item>
     </string-array>
 
-    <string-array name="objetive_spinner">
-        <item>Escolha uma opção</item>
-        <!-- Ver se é preciso mais opções ou fazer dinamico -->
+    <string-array name="objective_spinner">
+        <item>Choose an option</item>
+        <!-- Check if more options are needed or make it dynamic -->
     </string-array>
+
 
 </resources>
