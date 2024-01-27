@@ -58,10 +58,10 @@
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
             android:backgroundTint="@color/white"
+            android:contentDescription="@string/add_calorie_goal"
             android:src="@drawable/add_black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/add_calorie_goal"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
@@ -185,13 +185,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:baselineAligned="false"
             android:orientation="horizontal"
             android:weightSum="3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/main_weight_label"
-            android:baselineAligned="false">
+            app:layout_constraintTop_toBottomOf="@id/main_weight_label">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"

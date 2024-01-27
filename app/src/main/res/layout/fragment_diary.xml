@@ -15,50 +15,46 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="@dimen/header_padding"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/bt_back"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="10dp"
+            android:layout_weight="0.05"
             android:backgroundTint="@color/white"
             android:contentDescription="@string/back_arrow"
-            android:src="@drawable/back_arrow"
-            android:layout_weight="0.05"/>
+            android:src="@drawable/back_arrow" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.95"
             android:text="@string/diary"
             android:textColor="@color/black"
-            android:textSize="@dimen/title_size"
-            android:layout_weight="0.95"/>
+            android:textSize="@dimen/title_size" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/first_group"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:weightSum="10"
         android:layout_marginTop="@dimen/body_spacing"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/navigation_bar">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/body_spacing"
             android:layout_marginBottom="@dimen/grouped_spacing"
-            android:layout_weight="1"
             android:background="@color/white"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="@dimen/grouped_spacing"
-            android:weightSum="1">
+            android:padding="@dimen/grouped_spacing">
 
             <ImageButton
                 android:id="@+id/bt_date_back"
@@ -67,7 +63,10 @@
                 android:layout_weight="0.1"
                 android:backgroundTint="@color/white"
                 android:contentDescription="@string/back_arrow"
-                android:src="@drawable/backward_arrow" />
+                android:src="@drawable/backward_arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/dateText"
@@ -77,7 +76,11 @@
                 android:gravity="center"
                 android:text="@string/today"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/bt_date_forward"
+                app:layout_constraintStart_toEndOf="@id/bt_date_back"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/bt_date_forward"
@@ -86,14 +89,16 @@
                 android:layout_weight="0.1"
                 android:backgroundTint="@color/white"
                 android:contentDescription="@string/front_arrow"
-                android:src="@drawable/forward_arrow" />
-        </LinearLayout>
+                android:src="@drawable/forward_arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/grouped_spacing"
-            android:layout_weight="7"
             android:paddingHorizontal="@dimen/main_padding"
             android:paddingVertical="@dimen/header_padding">
 
@@ -222,7 +227,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/breakfast_calory"
+                    android:id="@+id/breakfast_calorie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
@@ -263,7 +268,9 @@
                     android:id="@+id/bt_editDeleteBreakfast"
                     android:layout_width="@dimen/icon_size"
                     android:layout_height="@dimen/icon_size"
+                    android:backgroundTint="@color/white"
                     android:gravity="center_vertical|end"
+                    android:paddingHorizontal="0dp"
                     android:text="@string/bt_editDelete"
                     android:textColor="@color/clickable_blue"
                     android:textSize="@dimen/body_size"
@@ -271,9 +278,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:backgroundTint="@color/white"
-                    android:paddingHorizontal="0dp"
-                    app:rippleColor="@color/light_gray"/>
+                    app:rippleColor="@color/light_gray" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -299,7 +304,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/lunch_calory"
+                    android:id="@+id/lunch_calorie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
@@ -324,7 +329,9 @@
                     android:id="@+id/add_lunch"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/icon_size"
+                    android:backgroundTint="@color/white"
                     android:gravity="center"
+                    android:paddingHorizontal="0dp"
                     android:text="@string/add_food"
                     android:textColor="@color/clickable_blue"
                     android:textSize="@dimen/add_spacing"
@@ -332,15 +339,15 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:backgroundTint="@color/white"
-                    android:paddingHorizontal="0dp"
-                    app:rippleColor="@color/light_gray"/>
+                    app:rippleColor="@color/light_gray" />
 
                 <Button
                     android:id="@+id/bt_editDeleteLunch"
                     android:layout_width="@dimen/icon_size"
                     android:layout_height="@dimen/icon_size"
+                    android:backgroundTint="@color/white"
                     android:gravity="center_vertical|end"
+                    android:paddingHorizontal="0dp"
                     android:text="@string/bt_editDelete"
                     android:textColor="@color/clickable_blue"
                     android:textSize="@dimen/body_size"
@@ -348,9 +355,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:backgroundTint="@color/white"
-                    android:paddingHorizontal="0dp"
-                    app:rippleColor="@color/light_gray"/>
+                    app:rippleColor="@color/light_gray" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -375,7 +380,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/dinner_calory"
+                    android:id="@+id/dinner_calorie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
@@ -400,7 +405,9 @@
                     android:id="@+id/add_dinner"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/icon_size"
+                    android:backgroundTint="@color/white"
                     android:gravity="center"
+                    android:paddingHorizontal="0dp"
                     android:text="@string/add_food"
                     android:textColor="@color/clickable_blue"
                     android:textSize="@dimen/add_spacing"
@@ -408,15 +415,15 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:backgroundTint="@color/white"
-                    android:paddingHorizontal="0dp"
-                    app:rippleColor="@color/light_gray"/>
+                    app:rippleColor="@color/light_gray" />
 
                 <Button
                     android:id="@+id/bt_editDeleteDinner"
                     android:layout_width="@dimen/icon_size"
                     android:layout_height="@dimen/icon_size"
+                    android:backgroundTint="@color/white"
                     android:gravity="center_vertical|end"
+                    android:paddingHorizontal="0dp"
                     android:text="@string/bt_editDelete"
                     android:textColor="@color/clickable_blue"
                     android:textSize="@dimen/body_size"
@@ -424,9 +431,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:backgroundTint="@color/white"
-                    android:paddingHorizontal="0dp"
-                    app:rippleColor="@color/light_gray"/>
+                    app:rippleColor="@color/light_gray" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -451,7 +456,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/lanche_calory"
+                    android:id="@+id/snack_calorie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
@@ -476,7 +481,9 @@
                     android:id="@+id/add_lanche"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/icon_size"
+                    android:backgroundTint="@color/white"
                     android:gravity="center"
+                    android:paddingHorizontal="0dp"
                     android:text="@string/add_food"
                     android:textColor="@color/clickable_blue"
                     android:textSize="@dimen/add_spacing"
@@ -484,15 +491,15 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:backgroundTint="@color/white"
-                    android:paddingHorizontal="0dp"
-                    app:rippleColor="@color/light_gray"/>
+                    app:rippleColor="@color/light_gray" />
 
                 <Button
                     android:id="@+id/bt_editDeleteLanche"
                     android:layout_width="@dimen/icon_size"
                     android:layout_height="@dimen/icon_size"
+                    android:backgroundTint="@color/white"
                     android:gravity="center_vertical|end"
+                    android:paddingHorizontal="0dp"
                     android:text="@string/bt_editDelete"
                     android:textColor="@color/clickable_blue"
                     android:textSize="@dimen/body_size"
@@ -500,9 +507,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:backgroundTint="@color/white"
-                    android:paddingHorizontal="0dp"
-                    app:rippleColor="@color/light_gray"/>
+                    app:rippleColor="@color/light_gray" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

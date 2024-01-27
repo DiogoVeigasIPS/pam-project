@@ -32,6 +32,7 @@
     <!-- Label for button description -->
     <string name="back_arrow">back arrow</string>
     <string name="front_arrow">forward arrow</string>
+    <string name="check_submit">check submit</string>
 
     <!-- Time Labels -->
     <string name="today">Today</string>
@@ -60,7 +61,9 @@
     <string name="edit_food">Edit Meal</string>
     <string name="delete_food">Delete Food</string>
     <string name="add_calorie_custom">Update Goal</string>
-
+    <string name="details_form">Insert the Details</string>
+    <string name="quantity_form">Insert the Quantity</string>
+    <string name="birthidate_form">Enter your birthdate</string>
 
     <string name="meal_example">Chicken Breast</string>
     <string name="additional_details">Additional Information</string>
@@ -86,6 +89,9 @@
     <string name="add_calorie_goal">Add calorie goal</string>
     <string name="set_weight">Set weight</string>
     <string name="home">Home</string>
+    <string name="card_icon">Card Icon</string>
+    <string name="card_add">Card Add Icon</string>
+    <string name="card_edit">Card Edit Icon</string>
 
 
     <string-array name="activity_spinner">
