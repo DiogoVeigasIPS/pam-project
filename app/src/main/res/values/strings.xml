@@ -89,10 +89,11 @@
     <string name="add_calorie_goal">Add calorie goal</string>
     <string name="set_weight">Set weight</string>
     <string name="home">Home</string>
+    <string name="confirm_weight_changes">Confirm weight changes</string>
+    <string name="confirm_calorie_goal">Confirm calorie goal</string>
     <string name="card_icon">Card Icon</string>
     <string name="card_add">Card Add Icon</string>
     <string name="card_edit">Card Edit Icon</string>
-
 
     <string-array name="activity_spinner">
         <!-- This will be the hint.
