@@ -11,4 +11,5 @@
     <color name="menu_blue">#3263E2</color>
     <color name="ripple_menu_blue">#16378F</color>
     <color name="containers_shadow">#33000000</color>
+    <color name="hint_gray">#757575</color>
 </resources>

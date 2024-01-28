@@ -15,27 +15,27 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="@dimen/header_padding"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/bt_back"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="10dp"
+            android:layout_weight="0.05"
             android:backgroundTint="@color/white"
             android:contentDescription="@string/back_arrow"
-            android:src="@drawable/back_arrow"
-            android:layout_weight="0.05"/>
+            android:src="@drawable/back_arrow" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.90"
             android:text="@string/add_calorie_goal"
             android:textColor="@color/black"
-            android:textSize="@dimen/title_size"
-            android:layout_weight="0.90"/>
+            android:textSize="@dimen/title_size" />
 
         <ImageButton
             android:id="@+id/bt_submit"
@@ -43,6 +43,7 @@
             android:layout_height="@dimen/icon_size"
             android:layout_weight="0.05"
             android:backgroundTint="@color/white"
+            android:contentDescription="@string/check_submit"
             android:src="@drawable/confirm_check" />
     </LinearLayout>
 
@@ -93,6 +94,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/hint_calorie_goal"
+        android:importantForAutofill="no"
+        android:inputType="number"
         android:textColorHint="@color/black"
         android:textSize="@dimen/body_size"
         android:visibility="visible"

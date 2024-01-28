@@ -4,7 +4,10 @@
     <dimen name="scale_button_bottom">1.3</dimen>
 
     <!-- Icon -->
-    <dimen name="icon_size">50dp</dimen>
+    <dimen name="icon_size">61dp</dimen>
+    <!-- Add Data-->
+    <dimen name="edit_text_height">50dp</dimen>
+    <dimen name="spinner_size">48dp</dimen>
 
     <!-- Paddings and Margins-->
     <dimen name="main_padding">25dp</dimen>
@@ -28,4 +31,5 @@
     <dimen name="form_input_size">42sp</dimen>
     <dimen name="main_labels">14sp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="card_additional_info">40dp</dimen>
 </resources>

@@ -22,15 +22,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/bt_voltar"
+            android:id="@+id/bt_back"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="10dp"
             android:layout_weight="0.1"
             android:background="@android:color/transparent"
             android:contentDescription="@string/back_arrow"
-            android:src="@drawable/back_arrow"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:src="@drawable/back_arrow" />
 
         <TextView
             android:layout_width="match_parent"
@@ -46,6 +45,7 @@
             android:layout_height="@dimen/icon_size"
             android:layout_weight="0.1"
             android:background="@android:color/transparent"
+            android:contentDescription="@string/check_submit"
             android:src="@drawable/confirm_check" />
     </LinearLayout>
 
@@ -121,13 +121,15 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/qqName"
+                android:id="@+id/qqDetails"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/edit_text_height"
                 android:layout_weight="0.7"
                 android:gravity="end"
-                android:hint="@string/hint_name_label"
+                android:hint="@string/details_form"
+                android:importantForAutofill="no"
                 android:inputType="textPersonName"
+                android:textColorHint="@color/hint_gray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -160,10 +162,13 @@
             <EditText
                 android:id="@+id/qqQuantity"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/edit_text_height"
                 android:layout_weight="0.7"
                 android:gravity="end"
-                android:hint="@string/quantity"
+                android:hint="@string/quantity_form"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:textColorHint="@color/hint_gray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

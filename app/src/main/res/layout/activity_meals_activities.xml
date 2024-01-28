@@ -21,15 +21,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/bt_voltar"
+            android:id="@+id/bt_back"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="10dp"
             android:layout_weight="0.1"
             android:background="@color/white"
             android:contentDescription="@string/back_arrow"
-            android:src="@drawable/back_arrow"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:src="@drawable/back_arrow" />
 
         <TextView
             android:layout_width="match_parent"
@@ -45,6 +44,7 @@
             android:layout_height="@dimen/icon_size"
             android:layout_weight="0.1"
             android:background="@android:color/transparent"
+            android:contentDescription="@string/check_submit"
             android:src="@drawable/confirm_check" />
     </LinearLayout>
 
@@ -66,6 +66,8 @@
             android:background="@drawable/container_blackborder"
             android:hint="@string/search_foods"
             android:imeOptions="actionSearch"
+            android:importantForAutofill="no"
+            android:inputType="text"
             android:padding="@dimen/grouped_spacing"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

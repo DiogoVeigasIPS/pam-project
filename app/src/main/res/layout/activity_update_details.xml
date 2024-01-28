@@ -15,34 +15,35 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="@dimen/header_padding"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/bt_back"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="10dp"
+            android:layout_weight="0.1"
             android:backgroundTint="@color/white"
             android:contentDescription="@string/back_arrow"
-            android:src="@drawable/back_arrow"
-            android:layout_weight="0.05"/>
+            android:src="@drawable/back_arrow" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.8"
             android:text="@string/add_details"
             android:textColor="@color/black"
-            android:textSize="@dimen/title_size"
-            android:layout_weight="0.90"/>
+            android:textSize="@dimen/title_size" />
 
         <ImageButton
             android:id="@+id/bt_submit"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
-            android:layout_weight="0.05"
+            android:layout_weight="0.1"
             android:backgroundTint="@color/white"
+            android:contentDescription="@string/check_submit"
             android:src="@drawable/confirm_check" />
     </LinearLayout>
 
@@ -73,21 +74,22 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.6"
+                android:layout_weight="0.30"
                 android:text="@string/birthdate"
                 android:textSize="@dimen/body_size" />
 
             <EditText
                 android:id="@+id/birthdate_input"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/edit_text_height"
                 android:layout_gravity="end"
-                android:layout_weight="0.4"
-                android:ems="5"
+                android:layout_weight="0.7"
+                android:gravity="end"
+                android:hint="@string/birthidate_form"
+                android:importantForAutofill="no"
                 android:inputType="datetime"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textColorHint="@color/hint_gray"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -110,24 +112,20 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.28"
                 android:text="@string/height"
-                android:textSize="@dimen/body_size"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="@dimen/body_size" />
 
             <EditText
                 android:id="@+id/height_input"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/edit_text_height"
                 android:layout_weight="0.7"
+                android:autofillHints="no"
                 android:gravity="end"
                 android:hint="@string/hint_height"
                 android:inputType="numberDecimal"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -167,16 +165,15 @@
             <EditText
                 android:id="@+id/weight_input"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/edit_text_height"
                 android:layout_weight="0.7"
                 android:gravity="end"
                 android:hint="@string/hint_weight"
+                android:importantForAutofill="no"
                 android:inputType="numberDecimal"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -209,20 +206,16 @@
                 android:layout_weight="0.8"
                 android:text="@string/objective"
                 android:textSize="@dimen/body_size"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                />
 
             <Spinner
                 android:id="@+id/spinner_objective"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/spinner_size"
                 android:layout_weight="0.2"
                 android:spinnerMode="dropdown"
                 android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -246,20 +239,16 @@
                 android:layout_weight="0.8"
                 android:text="@string/activity"
                 android:textSize="@dimen/body_size"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                />
 
             <Spinner
                 android:id="@+id/spinner_ativity"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/spinner_size"
                 android:layout_weight="0.2"
                 android:spinnerMode="dropdown"
                 android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
