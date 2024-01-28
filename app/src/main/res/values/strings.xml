@@ -98,6 +98,7 @@
     <string name="invalid_details">Details not valid!</string>
     <string name="invalid_height_format">Invalid height format!</string>
     <string name="press_to_calendar">Press to calendar</string>
+    <string name="invalid_date">Invalid date format!</string>
 
     <string-array name="activity_spinner">
         <!-- This will be the hint.

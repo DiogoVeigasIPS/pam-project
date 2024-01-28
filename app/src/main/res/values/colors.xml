@@ -3,7 +3,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="primary">#3263E2</color>
+    <!-- Try to change calendar color-->
+    <color name="colorPrimary">#3263E2</color>
+    <color name="colorPrimaryDark">#3C72FF</color>
+    <color name="colorSecondary">#BBCBF4</color>
     <color name="colorAccent">#17DABD</color>
 
     <color name="light_gray">#D9D9D9</color>

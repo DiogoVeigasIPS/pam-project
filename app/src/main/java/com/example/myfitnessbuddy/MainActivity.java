@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.FrameLayout;
 
@@ -29,17 +32,21 @@ public class MainActivity extends AppCompatActivity {
         Navigation.setFragmentManager(getSupportFragmentManager());
 
         setFragmentNavigation();
+
+        //clearSharedPreferences();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        User user = UserPreferences.readUserPreferences(this);
-        if(user == null) return;
-        Log.d("SHARED_PREFERENCES", user.getActivity().name());
-        Log.d("SHARED_PREFERENCES", user.getGoal().name());
-        Log.d("SHARED_PREFERENCES", String.valueOf(user.getAge()));
-        Log.d("SHARED_PREFERENCES", String.valueOf(user.getHeight()));
+//        User user = UserPreferences.readUserPreferences(this);
+//        if(user != null){
+//            Log.d("SHARED_PREFERENCES", user.getActivity().name());
+//            Log.d("SHARED_PREFERENCES", user.getGoal().name());
+//            Log.d("SHARED_PREFERENCES", String.valueOf(user.getAge()));
+//            Log.d("SHARED_PREFERENCES", String.valueOf(user.getHeight()));
+//        }
+
     }
 
     private void setFragmentNavigation(){
@@ -58,5 +65,16 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private void clearSharedPreferences() {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        // Clear all preferences
+        editor.clear();
+
+        // Apply the changes synchronously
+        editor.commit();
     }
 }

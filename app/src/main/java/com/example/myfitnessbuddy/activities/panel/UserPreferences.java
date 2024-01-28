@@ -23,6 +23,11 @@ public class UserPreferences {
     private static final String ACTIVITY = "ACTIVITY";
     private static final String BIRTH_DATE = "BIRTH_DATE";
     private static final String CALORIE_GOAL = "BIRTH_DATE";
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+    public static SimpleDateFormat getDateFormat() {
+        return dateFormat;
+    }
 
     public static void writeUserPreferences(Context context, User user) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
@@ -32,7 +37,7 @@ public class UserPreferences {
         editor.putString(GOAL, user.getGoal().name());
         editor.putString(ACTIVITY, user.getActivity().name());
 
-        String birthDateString = user.getBirthDate().toString();
+        String birthDateString = convertLocalDateToString(user.getBirthDate());
         editor.putString(BIRTH_DATE, birthDateString);
 
         editor.apply();
@@ -57,17 +62,24 @@ public class UserPreferences {
         return new User(birthDate, height, goal, activity);
     }
 
-    public static String convertLocalDateToString(LocalDate localDate) {
-       return localDate.toString();
+    public static String convertLocalDateToString(LocalDate date){
+        return dateFormat.format(java.sql.Date.valueOf(date.toString()));
     }
 
     public static LocalDate convertStringToLocalDate(String dateString) {
         try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
             return dateFormat.parse(dateString).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         } catch (ParseException e) {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public void addWeight(){
+        // Todo
+    }
+
+    public void getWeight(){
+        // Todo
     }
 }
