@@ -2,12 +2,11 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
+    android:layout_height="80dp"
     android:layout_marginBottom="@dimen/grouped_spacing"
     android:backgroundTint="@color/light_gray"
     app:cardCornerRadius="15dp"
-    app:cardElevation="2dp"
-    >
+    app:cardElevation="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,12 +15,14 @@
 
         <ImageButton
             android:id="@+id/bt_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:contentDescription="@string/card_edit"
             android:src="@drawable/add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/black" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -37,33 +38,31 @@
                 android:layout_height="@dimen/icon_size"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:contentDescription="@string/card_icon"
                 android:src="@drawable/steak_card" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
-                android:orientation="vertical"
-                android:weightSum="4">
+                android:orientation="vertical">
 
-                <EditText
+                <TextView
                     android:id="@+id/food_name"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/form_input_size"
-                    android:layout_weight="1"
+                    android:layout_height="@dimen/main_menu_padding"
                     android:background="@drawable/no_underline_hint"
-                    android:hint="@string/food_name"
                     android:gravity="top"
-                    android:maxLines="2"
+                    android:hint="@string/food_name"
+                    android:maxLines="1"
                     android:textColorHint="@color/black"
                     android:textSize="@dimen/label_main_weight"
                     android:textStyle="bold" />
 
-                <EditText
+                <TextView
                     android:id="@+id/food_description"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/form_input_size"
-                    android:layout_weight="3"
+                    android:layout_height="@dimen/card_additional_info"
                     android:background="@drawable/no_underline_hint"
                     android:gravity="top"
                     android:hint="@string/additional_details"

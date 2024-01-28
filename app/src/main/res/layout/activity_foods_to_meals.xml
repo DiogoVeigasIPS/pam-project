@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.FoodsToMealsActivity">
+
     <LinearLayout
         android:id="@+id/header_foods"
         android:layout_width="match_parent"
@@ -20,25 +21,30 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/bt_voltar"
+            android:id="@+id/bt_back"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="10dp"
             android:layout_weight="0.1"
             android:background="@color/white"
             android:contentDescription="@string/back_arrow"
-            android:src="@drawable/back_arrow"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:src="@drawable/back_arrow" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.9"
+            android:layout_weight="0.8"
             android:text="@string/title_add_foods"
             android:textColor="@color/black"
             android:textSize="@dimen/title_size" />
-
-
+        <ImageButton
+            android:id="@+id/bt_submit"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_weight="0.1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/check_submit"
+            android:src="@drawable/confirm_check" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,8 +57,7 @@
         android:paddingBottom="@dimen/foods_to_meal_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_foods"
-        >
+        app:layout_constraintTop_toBottomOf="@id/header_foods">
 
         <EditText
             android:id="@+id/foodmeal_search"
@@ -61,6 +66,8 @@
             android:background="@drawable/container_blackborder"
             android:hint="@string/search_foods"
             android:imeOptions="actionSearch"
+            android:importantForAutofill="no"
+            android:inputType="text"
             android:padding="@dimen/grouped_spacing"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
