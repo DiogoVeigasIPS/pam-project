@@ -122,7 +122,7 @@
                 android:autofillHints="no"
                 android:gravity="end"
                 android:hint="@string/hint_height"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
                 />

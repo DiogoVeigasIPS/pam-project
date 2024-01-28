@@ -96,7 +96,6 @@
         android:layout_height="wrap_content"
         android:hint="@string/hint_calorie_goal"
         android:importantForAutofill="no"
-        android:inputType="number"
         android:textColorHint="@color/black"
         android:textSize="@dimen/body_size"
         android:visibility="visible"
