@@ -1,2 +1,3 @@
-# Projeto Pam
-O seguinte projeto é uma aplicação móvel para Android utilizada para calcular as calorias consumidas diariamente.
+# PAM Project
+
+This is a project being made for school. It consists in an Android app that helps people calculate their calorie intake. 
