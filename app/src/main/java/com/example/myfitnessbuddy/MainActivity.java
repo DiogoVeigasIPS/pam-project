@@ -6,12 +6,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.FrameLayout;
 
+import com.example.myfitnessbuddy.activities.panel.UserPreferences;
 import com.example.myfitnessbuddy.fragments.FragmentDiary;
 import com.example.myfitnessbuddy.fragments.FragmentFoods;
 import com.example.myfitnessbuddy.fragments.FragmentPanel;
 import com.example.myfitnessbuddy.fragments.Navigation;
+import com.example.myfitnessbuddy.models.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +29,17 @@ public class MainActivity extends AppCompatActivity {
         Navigation.setFragmentManager(getSupportFragmentManager());
 
         setFragmentNavigation();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        User user = UserPreferences.readUserPreferences(this);
+        if(user == null) return;
+        Log.d("SHARED_PREFERENCES", user.getActivity().name());
+        Log.d("SHARED_PREFERENCES", user.getGoal().name());
+        Log.d("SHARED_PREFERENCES", String.valueOf(user.getAge()));
+        Log.d("SHARED_PREFERENCES", String.valueOf(user.getHeight()));
     }
 
     private void setFragmentNavigation(){

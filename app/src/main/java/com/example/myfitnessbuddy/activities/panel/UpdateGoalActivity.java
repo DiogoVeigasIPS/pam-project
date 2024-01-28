@@ -1,4 +1,4 @@
-package com.example.myfitnessbuddy.activities;
+package com.example.myfitnessbuddy.activities.panel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,12 +7,12 @@ import android.widget.ImageButton;
 
 import com.example.myfitnessbuddy.R;
 
-public class UpdateDetailsActivity extends AppCompatActivity {
+public class UpdateGoalActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_details);
+        setContentView(R.layout.activity_update_goal);
 
         ImageButton btBack = findViewById(R.id.bt_back);
         btBack.setOnClickListener(v -> finish());

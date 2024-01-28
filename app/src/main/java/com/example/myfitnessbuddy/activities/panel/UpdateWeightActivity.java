@@ -1,4 +1,4 @@
-package com.example.myfitnessbuddy.activities;
+package com.example.myfitnessbuddy.activities.panel;
 
 import androidx.appcompat.app.AppCompatActivity;
 

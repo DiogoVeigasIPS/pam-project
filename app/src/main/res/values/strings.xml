@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">MyFitBuddy</string>
+    <string name="app_full_name">MyFitnessBuddy</string>
 
     <string name="panel">Dashboard</string>
     <string name="diary">Diary</string>
@@ -94,6 +95,9 @@
     <string name="card_icon">Card Icon</string>
     <string name="card_add">Card Add Icon</string>
     <string name="card_edit">Card Edit Icon</string>
+    <string name="invalid_details">Details not valid!</string>
+    <string name="invalid_height_format">Invalid height format!</string>
+    <string name="press_to_calendar">Press to calendar</string>
 
     <string-array name="activity_spinner">
         <!-- This will be the hint.
