@@ -43,7 +43,9 @@
             android:layout_height="@dimen/icon_size"
             android:layout_weight="0.05"
             android:backgroundTint="@color/white"
-            android:src="@drawable/confirm_check" />
+            android:src="@drawable/confirm_check"
+            android:contentDescription="@string/confirm_weight_changes"
+            />
     </LinearLayout>
 
     <EditText
@@ -57,7 +59,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/navigation_bar"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.25"
+        android:inputType="number"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

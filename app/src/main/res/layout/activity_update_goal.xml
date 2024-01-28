@@ -43,7 +43,8 @@
             android:layout_height="@dimen/icon_size"
             android:layout_weight="0.05"
             android:backgroundTint="@color/white"
-            android:src="@drawable/confirm_check" />
+            android:src="@drawable/confirm_check"
+            android:contentDescription="@string/confirm_calorie_goal"/>
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -100,5 +101,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toggle_buttons_container"
+        android:inputType="number"
         app:layout_constraintVertical_bias="0.20" /> <!-- Mudar para gone para ficar inv -->
 </androidx.constraintlayout.widget.ConstraintLayout>
