@@ -1,5 +1,6 @@
 package com.example.myfitnessbuddy.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,6 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.myfitnessbuddy.DatabaseHelper;
@@ -82,6 +86,16 @@ public class FragmentFoods extends Fragment {
             Intent intent = new Intent(getActivity(), AddFoodActivity.class);
             startActivity(intent);
         });
+
+        EditText foodsSearch = getView().findViewById(R.id.foods_search);
+        foodsSearch.setOnEditorActionListener((textView, actionId, keyEvent) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                String search = foodsSearch.getText().toString();
+                updateFoodList(search);
+                return true;
+            }
+            return false;
+        });
     }
 
     private void updateFoodList() {
@@ -94,6 +108,29 @@ public class FragmentFoods extends Fragment {
                 FoodAdapter foodAdapter = new FoodAdapter(foods);
                 foodsList.setAdapter(foodAdapter);
                 foodsList.setLayoutManager(new LinearLayoutManager(requireActivity()));
+            });
+        });
+    }
+
+    private void hideKeyboard() {
+        View view = requireActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+    private void updateFoodList(String search) {
+        RecyclerView foodsList = getView().findViewById(R.id.foods_list);
+
+        DatabaseHelper.executeInBackground(() -> {
+            List<Food> foods = DatabaseHelper.getFoodsByName(search);
+
+            requireActivity().runOnUiThread(() -> {
+                FoodAdapter foodAdapter = new FoodAdapter(foods);
+                foodsList.setAdapter(foodAdapter);
+                foodsList.setLayoutManager(new LinearLayoutManager(requireActivity()));
+                hideKeyboard();
             });
         });
     }

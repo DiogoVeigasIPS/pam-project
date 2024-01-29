@@ -34,10 +34,6 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         Navigation.setFragmentNavigation(bottomNavigationView);
 
-        hideOnKeyboard(bottomNavigationView);
-
-
-
         //clearSharedPreferences();
     }
 
@@ -51,21 +47,6 @@ public class MainActivity extends AppCompatActivity {
 //            Log.d("SHARED_PREFERENCES", String.valueOf(user.getAge()));
 //            Log.d("SHARED_PREFERENCES", String.valueOf(user.getHeight()));
 //        }
-    }
-
-    private void hideOnKeyboard(BottomNavigationView bottomNavigationView){
-        ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener = () -> {
-            int heightDiff = findViewById(android.R.id.content).getHeight() - bottomNavigationView.getHeight();
-            if (heightDiff < 900) {
-                // Keyboard is open, hide BottomNavigationView
-                bottomNavigationView.setVisibility(View.GONE);
-            } else {
-                // Keyboard is closed, show BottomNavigationView
-                bottomNavigationView.setVisibility(View.VISIBLE);
-            }
-        };
-
-        findViewById(android.R.id.content).getViewTreeObserver().addOnGlobalLayoutListener(onGlobalLayoutListener);
     }
 
     private void clearSharedPreferences() {

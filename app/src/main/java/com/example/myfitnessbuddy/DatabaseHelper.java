@@ -29,4 +29,16 @@ public class DatabaseHelper {
     public static void addNewFood(Food food) {
         executorService.execute(() -> appDatabase.foodDao().insert(food));
     }
+
+    public static Food getFoodById(int foodId) {
+        return appDatabase.foodDao().findById(foodId);
+    }
+
+    public static void updateFood(Food food) {
+        executorService.execute(() -> appDatabase.foodDao().update(food));
+    }
+
+    public static List<Food> getFoodsByName(String searchQuery) {
+        return appDatabase.foodDao().searchByName("%" + searchQuery + "%");
+    }
 }

@@ -112,9 +112,8 @@
         android:id="@+id/foods_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/padding_button_selector"
         android:padding="@dimen/main_padding"
-        app:layout_constraintBottom_toTopOf="@id/bt_add"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toggle_buttons_container" />
@@ -129,7 +128,6 @@
         android:backgroundTint="@color/clickable_blue"
         android:contentDescription="@string/add_food"
         android:src="@drawable/add"
-        android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="50dp" />

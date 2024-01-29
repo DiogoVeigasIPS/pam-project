@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfitnessbuddy.R;
+import com.example.myfitnessbuddy.activities.AddFoodActivity;
 import com.example.myfitnessbuddy.models.Food;
 
 import java.util.List;
@@ -35,17 +36,17 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
         Food food = foods.get(position);
         holder.setValues(food);
-        /*holder.itemView.findViewById(R.id.ibDetails).setOnClickListener(new View.OnClickListener() {
+        holder.itemView.findViewById(R.id.bt_action).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
 
-                Intent intent = new Intent(context, FoodDetails.class);
+                Intent intent = new Intent(context, AddFoodActivity.class);
 
-                intent.putExtra(FoodDetails.ID, food.getId());
+                intent.putExtra(AddFoodActivity.FOOD_ID, food.getId());
                 context.startActivity(intent);
             }
-        });*/
+        });
     }
 
     @Override
