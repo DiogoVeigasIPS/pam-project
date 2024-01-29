@@ -58,7 +58,12 @@ public class UpdateDetailsActivity extends AppCompatActivity {
     }
 
     private void getUserDetails() {
-        User user = UserPreferences.readUserPreferences(this);
+        User user;
+        try{
+            user = UserPreferences.readUserPreferences(this);
+        }catch(IllegalArgumentException illegalArgumentException){
+            return;
+        }
 
         if (user == null) return;
 

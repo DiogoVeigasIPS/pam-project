@@ -1,23 +1,18 @@
 package com.example.myfitnessbuddy;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+
 import android.util.Log;
+import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
-import com.example.myfitnessbuddy.activities.panel.UserPreferences;
-import com.example.myfitnessbuddy.fragments.FragmentDiary;
-import com.example.myfitnessbuddy.fragments.FragmentFoods;
-import com.example.myfitnessbuddy.fragments.FragmentPanel;
+
 import com.example.myfitnessbuddy.fragments.Navigation;
-import com.example.myfitnessbuddy.models.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +26,10 @@ public class MainActivity extends AppCompatActivity {
         Navigation.setFragmentContainer(fragmentContainer);
         Navigation.setFragmentManager(getSupportFragmentManager());
 
-        setFragmentNavigation();
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        Navigation.setFragmentNavigation(bottomNavigationView);
+
+        hideOnKeyboard(bottomNavigationView);
 
         //clearSharedPreferences();
     }
@@ -46,25 +44,21 @@ public class MainActivity extends AppCompatActivity {
 //            Log.d("SHARED_PREFERENCES", String.valueOf(user.getAge()));
 //            Log.d("SHARED_PREFERENCES", String.valueOf(user.getHeight()));
 //        }
-
     }
 
-    private void setFragmentNavigation(){
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            if(item.getItemId() == R.id.bt_home) {
-                Navigation.updateFragment(FragmentPanel.newInstance());
-                return true;
-            }else if(item.getItemId() == R.id.bt_diary) {
-                Navigation.updateFragment(FragmentDiary.newInstance());
-                return true;
-            }else if(item.getItemId() == R.id.bt_foods){
-                Navigation.updateFragment(FragmentFoods.newInstance());
-                return true;
-            }else{
-                return false;
+    private void hideOnKeyboard(BottomNavigationView bottomNavigationView){
+        ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener = () -> {
+            int heightDiff = findViewById(android.R.id.content).getHeight() - bottomNavigationView.getHeight();
+            if (heightDiff < 900) {
+                // Keyboard is open, hide BottomNavigationView
+                bottomNavigationView.setVisibility(View.GONE);
+            } else {
+                // Keyboard is closed, show BottomNavigationView
+                bottomNavigationView.setVisibility(View.VISIBLE);
             }
-        });
+        };
+
+        findViewById(android.R.id.content).getViewTreeObserver().addOnGlobalLayoutListener(onGlobalLayoutListener);
     }
 
     private void clearSharedPreferences() {

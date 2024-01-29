@@ -20,7 +20,8 @@
     <dimen name="spacing_popup">1.5</dimen>
     <dimen name="main_menu_padding">30dp</dimen>
     <dimen name="foods_to_meal_bottom">60dp</dimen>
-
+    <dimen name="nav_arrow_margin">10dp</dimen>
+    <dimen name="magnifying_glass">35dp</dimen>
 
     <!-- Text Sizes -->
     <dimen name="title_size">26sp</dimen>
@@ -33,5 +34,4 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="card_additional_info">40dp</dimen>
 
-    <dimen name="nav_arrow_margin">10dp</dimen>
 </resources>
