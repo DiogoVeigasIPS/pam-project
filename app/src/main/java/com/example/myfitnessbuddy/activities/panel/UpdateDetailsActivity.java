@@ -90,24 +90,24 @@ public class UpdateDetailsActivity extends AppCompatActivity {
     private void updateUserPreferences() {
         Goal selectedGoal = (Goal) objectiveSpinner.getSelectedItem();
         Activity selectedActivity = (Activity) activitySpinner.getSelectedItem();
-        String birthDateString = birthDateInput.getText().toString();
-        String heightString = heightInput.getText().toString();
+        String birthDateStr = birthDateInput.getText().toString();
+        String heightStr = heightInput.getText().toString();
 
-        if (heightString.equals("") || selectedGoal == Goal.NOT_DEFINED || selectedActivity == Activity.NOT_DEFINED) {
-            Toast.makeText(UpdateDetailsActivity.this, R.string.invalid_details, Toast.LENGTH_SHORT).show();
+        if (heightStr.equals("") || selectedGoal == Goal.NOT_DEFINED || selectedActivity == Activity.NOT_DEFINED) {
+            Toast.makeText(UpdateDetailsActivity.this, R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (!dateIsValid(birthDateString)) {
+        if (!dateIsValid(birthDateStr)) {
             Toast.makeText(UpdateDetailsActivity.this, R.string.invalid_date, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        LocalDate birthDate = UserPreferences.convertStringToLocalDate(birthDateString);
+        LocalDate birthDate = UserPreferences.convertStringToLocalDate(birthDateStr);
 
         int height;
         try {
-            height = Integer.parseInt(heightString);
+            height = Integer.parseInt(heightStr);
         } catch (NumberFormatException numberFormatException) {
             Log.d("UpdateDetailsActivity", numberFormatException.toString());
             Toast.makeText(UpdateDetailsActivity.this, R.string.invalid_height_format, Toast.LENGTH_SHORT).show();

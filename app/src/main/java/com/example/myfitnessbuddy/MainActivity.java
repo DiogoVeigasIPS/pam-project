@@ -21,15 +21,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // DB
+        DatabaseHelper.init(getApplicationContext());
+
+        // Fragments
         FrameLayout fragmentContainer = findViewById(R.id.fragment_container);
 
         Navigation.setFragmentContainer(fragmentContainer);
         Navigation.setFragmentManager(getSupportFragmentManager());
 
+        // Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         Navigation.setFragmentNavigation(bottomNavigationView);
 
         hideOnKeyboard(bottomNavigationView);
+
+
 
         //clearSharedPreferences();
     }

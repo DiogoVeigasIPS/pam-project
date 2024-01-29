@@ -11,7 +11,7 @@
         android:id="@+id/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/top_bar"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="@dimen/header_padding"
@@ -24,7 +24,7 @@
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="@dimen/nav_arrow_margin"
             android:layout_weight="0.2"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/top_bar"
             android:contentDescription="@string/back_arrow"
             android:src="@drawable/back_arrow" />
 
@@ -43,7 +43,7 @@
             android:layout_height="@dimen/icon_size"
             android:layout_weight="0.2"
             android:layout_marginStart="@dimen/nav_arrow_margin"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/top_bar"
             android:contentDescription="@string/check_submit"
             android:src="@drawable/confirm_check" />
     </LinearLayout>

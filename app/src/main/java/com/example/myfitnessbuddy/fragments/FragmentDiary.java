@@ -48,8 +48,8 @@ public class FragmentDiary extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ImageButton bt_back = getView().findViewById(R.id.bt_back);
-        bt_back.setOnClickListener(new View.OnClickListener() {
+        ImageButton btBack = getView().findViewById(R.id.bt_back);
+        btBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(getClass().getSimpleName(), "Someone clicked me!");
