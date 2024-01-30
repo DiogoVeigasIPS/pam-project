@@ -125,6 +125,7 @@
     <string name="details_edited">Personal details were successfully edited.</string>
     <string name="invalid_goal">Please enter a valid goal.</string>
     <string name="goal_edited">Calorie goal has been successfully edited.</string>
+    <string name="weight_edited">The weight was successfully edited.</string>
     <string name="food_created">The food was successfully created.</string>
     <string name="food_edited">The food was successfully edited.</string>
     <string name="food_deleted">The food was successfully deleted.</string>
