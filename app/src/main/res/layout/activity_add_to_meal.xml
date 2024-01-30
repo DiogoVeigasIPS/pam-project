@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main_fragments.FragmentFoods">
+    tools:context=".activities.diary.AddToMealActivity">
 
     <LinearLayout
         android:id="@+id/navigation_bar"
@@ -33,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/foods"
+            android:text="Breakfast: 865 kcal"
             android:textColor="@color/black"
             android:textSize="@dimen/title_size" />
     </LinearLayout>
@@ -103,7 +103,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="@dimen/main_padding"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bt_quick_addition"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tab_selector" />
@@ -124,19 +124,22 @@
         android:visibility="gone"
         />
 
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/bt_add"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/bt_quick_addition"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/main_padding"
-        android:layout_marginBottom="@dimen/main_padding"
-        android:backgroundTint="@color/clickable_blue"
-        android:contentDescription="@string/add_food"
-        android:src="@drawable/add"
+        android:layout_margin="@dimen/padding_button_selector"
+        android:backgroundTint="@color/white"
+        android:padding="13dp"
+        android:text="@string/quick_add"
+        android:textAllCaps="false"
+        android:textColor="@color/menu_blue"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:maxImageSize="50dp" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="@color/light_gray"
+        app:strokeColor="@color/menu_blue"
+        app:strokeWidth="3dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
