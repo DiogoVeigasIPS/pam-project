@@ -1,14 +1,14 @@
 package com.example.myfitnessbuddy.models;
 
 public interface Consumable {
-    public void setType(String type);
+    void setType(String type);
 
-    public String getType();
+    String getType();
 
-    public int getCalories();
+    int getCalories();
 
-    public String getName();
+    String getName();
 
-    public String detailsLabel();
+    String detailsLabel();
 
 }
