@@ -1,4 +1,4 @@
-package com.example.myfitnessbuddy.fragments;
+package com.example.myfitnessbuddy.main_fragments;
 
 import android.widget.FrameLayout;
 
@@ -12,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class Navigation {
     private static FrameLayout fragmentContainer;
     private static FragmentManager fragmentManager;
+    private static int currentTab;
 
     public static void setFragmentManager(FragmentManager manager) {
         Navigation.fragmentManager = manager;
@@ -37,14 +38,17 @@ public class Navigation {
 
     public static void setFragmentNavigation(BottomNavigationView bottomNavigationView){
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            if(item.getItemId() == R.id.bt_home) {
+            if(item.getItemId() == R.id.bt_home && currentTab != 0) {
                 Navigation.updateFragment(FragmentPanel.newInstance());
+                currentTab = 0;
                 return true;
-            }else if(item.getItemId() == R.id.bt_diary) {
+            }else if(item.getItemId() == R.id.bt_diary && currentTab != 1) {
                 Navigation.updateFragment(FragmentDiary.newInstance());
+                currentTab = 1;
                 return true;
-            }else if(item.getItemId() == R.id.bt_foods){
+            }else if(item.getItemId() == R.id.bt_foods && currentTab != 2){
                 Navigation.updateFragment(FragmentFoods.newInstance());
+                currentTab = 2;
                 return true;
             }else{
                 return false;

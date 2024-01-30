@@ -119,5 +119,7 @@
     <string name="fill_all_fields">You must fill all fields!</string>
     <string name="invalid_portion_format">Invalid portion format!</string>
     <string name="invalid_calorie_format">Invalid calorie format!</string>
+    <string name="this_list_seems_to_be_empty">This list seems to be empty…</string>
+    <string name="not_found_in_list">There is nothing like that in this list…</string>
 
 </resources>

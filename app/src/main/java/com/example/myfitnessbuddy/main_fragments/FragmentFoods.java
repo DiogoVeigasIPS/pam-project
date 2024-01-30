@@ -1,4 +1,4 @@
-package com.example.myfitnessbuddy.fragments;
+package com.example.myfitnessbuddy.main_fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,11 +18,11 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.myfitnessbuddy.DatabaseHelper;
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
-import com.example.myfitnessbuddy.adapters.ActionType;
 import com.example.myfitnessbuddy.adapters.FoodAdapter;
 import com.example.myfitnessbuddy.models.Food;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -36,6 +36,10 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class FragmentFoods extends Fragment {
+
+    private RecyclerView foodsList;
+    private TextView emptyList;
+    private FoodAdapter foodAdapter;
 
     public FragmentFoods() {
         // Required empty public constructor
@@ -67,12 +71,16 @@ public class FragmentFoods extends Fragment {
         setNavigationalButtons();
 
         setTabNavigation();
+
+        foodsList = getView().findViewById(R.id.foods_list);
+        emptyList = getView().findViewById(R.id.empty_list);
+        setListAdapter();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        updateFoodList();
+        if(foodAdapter != null) updateFoodList();
     }
 
     private void setNavigationalButtons(){
@@ -99,18 +107,68 @@ public class FragmentFoods extends Fragment {
         });
     }
 
-    private void updateFoodList() {
-        RecyclerView foodsList = getView().findViewById(R.id.foods_list);
-
+    private void setListAdapter() {
         DatabaseHelper.executeInBackground(() -> {
             List<Food> foods = DatabaseHelper.getAllFoods();
 
             requireActivity().runOnUiThread(() -> {
-                FoodAdapter foodAdapter = new FoodAdapter(foods);
+                foodAdapter = new FoodAdapter(foods);
                 foodsList.setAdapter(foodAdapter);
                 foodsList.setLayoutManager(new LinearLayoutManager(requireActivity()));
+
+                if (foods.isEmpty()) {
+                    showEmptyListMessage(R.string.this_list_seems_to_be_empty, foodsList);
+                    return;
+                }
+                hideEmptyListMessage();
             });
         });
+    }
+
+    private void updateFoodList() {
+        DatabaseHelper.executeInBackground(() -> {
+            List<Food> foods = DatabaseHelper.getAllFoods();
+
+            requireActivity().runOnUiThread(() -> {
+                if(foods.isEmpty()){
+                    showEmptyListMessage(R.string.this_list_seems_to_be_empty, foodsList);
+                    return;
+                }
+
+                hideEmptyListMessage();
+                Log.d("ATAOPA", "updateFoodList: ");
+                foodAdapter.setFoods(foods);
+            });
+        });
+    }
+
+    private void updateFoodList(String search) {
+        DatabaseHelper.executeInBackground(() -> {
+            List<Food> foods = DatabaseHelper.getFoodsByName(search);
+
+            requireActivity().runOnUiThread(() -> {
+                if(foods.isEmpty()){
+                    showEmptyListMessage(R.string.not_found_in_list, foodsList);
+                    return;
+                }else{
+                    hideEmptyListMessage();
+                }
+
+                foodAdapter.setFoods(foods);
+                hideKeyboard();
+            });
+        });
+    }
+
+    private void hideEmptyListMessage() {
+        emptyList.setVisibility(View.GONE);
+        foodsList.setVisibility(View.VISIBLE);
+    }
+
+    private void showEmptyListMessage(int message, RecyclerView foodsList){
+        emptyList.setText(message);
+        emptyList.setVisibility(View.VISIBLE);
+        foodsList.setVisibility(View.GONE);
     }
 
     private void hideKeyboard() {
@@ -119,21 +177,6 @@ public class FragmentFoods extends Fragment {
             InputMethodManager imm = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
-    }
-
-    private void updateFoodList(String search) {
-        RecyclerView foodsList = getView().findViewById(R.id.foods_list);
-
-        DatabaseHelper.executeInBackground(() -> {
-            List<Food> foods = DatabaseHelper.getFoodsByName(search);
-
-            requireActivity().runOnUiThread(() -> {
-                FoodAdapter foodAdapter = new FoodAdapter(foods);
-                foodsList.setAdapter(foodAdapter);
-                foodsList.setLayoutManager(new LinearLayoutManager(requireActivity()));
-                hideKeyboard();
-            });
-        });
     }
 
     private void updateDishList(){

@@ -23,6 +23,7 @@
     <dimen name="foods_to_meal_bottom">60dp</dimen>
     <dimen name="nav_arrow_margin">10dp</dimen>
     <dimen name="magnifying_glass">35dp</dimen>
+    <dimen name="empty_list_margin">100dp</dimen>
 
     <!-- Text Sizes -->
     <dimen name="title_size">26sp</dimen>
