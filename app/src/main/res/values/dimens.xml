@@ -18,7 +18,7 @@
     <dimen name="padding_button_selector">20dp</dimen>
     <dimen name="body_spacing">3dp</dimen>
     <dimen name="input_spacing">40dp</dimen>
-    <dimen name="spacing_popup">1.5</dimen>
+    <dimen name="spacing_popup">1.5dp</dimen>
     <dimen name="main_menu_padding">30dp</dimen>
     <dimen name="foods_to_meal_bottom">60dp</dimen>
     <dimen name="nav_arrow_margin">10dp</dimen>
@@ -26,13 +26,15 @@
 
     <!-- Text Sizes -->
     <dimen name="title_size">26sp</dimen>
-    <dimen name="goal_value_size">34sp</dimen>
+    <dimen name="goal_value_size">30sp</dimen>
     <dimen name="body_size">20sp</dimen>
     <dimen name="label_main_weight">16sp</dimen>
     <dimen name="add_spacing">18sp</dimen>
     <dimen name="form_input_size">42sp</dimen>
     <dimen name="main_labels">14sp</dimen>
     <dimen name="text_margin">16dp</dimen>
-    <dimen name="card_additional_info">40dp</dimen>
+    <dimen name="card_additional_info">40sp</dimen>
+    <dimen name="diary_time">22sp</dimen>
+    <dimen name="diary_head_number">34sp</dimen>
 
 </resources>
