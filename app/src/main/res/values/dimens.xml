@@ -13,6 +13,7 @@
     <dimen name="main_padding">25dp</dimen>
     <dimen name="app_name_title_padding">35dp</dimen>
     <dimen name="header_padding">15dp</dimen>
+    <dimen name="header_vertical_padding">7dp</dimen>
     <dimen name="grouped_spacing">10dp</dimen>
     <dimen name="padding_button_selector">20dp</dimen>
     <dimen name="body_spacing">3dp</dimen>
