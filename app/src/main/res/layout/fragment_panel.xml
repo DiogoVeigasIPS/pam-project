@@ -332,18 +332,19 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/label_today">
+                            app:layout_constraintTop_toTopOf="@+id/last_week_layout"
+                            tools:ignore="NotSibling">
 
                             <TextView
                                 android:id="@+id/main_today"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:layout_marginEnd="@dimen/nav_arrow_margin"
                                 android:text="@string/temp_today"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/title_size"
-                                android:textStyle="bold"
-                                android:layout_marginEnd="@dimen/nav_arrow_margin" />
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"

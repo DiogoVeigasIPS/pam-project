@@ -14,7 +14,8 @@
         android:background="@color/top_bar"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="@dimen/header_padding"
+        android:paddingHorizontal="@dimen/header_padding"
+        android:paddingVertical="@dimen/header_vertical_padding"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -158,6 +159,7 @@
                 android:autofillHints="no"
                 android:gravity="end"
                 android:hint="@string/_100"
+                android:text="@string/_100"
                 android:inputType="numberDecimal"
                 android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
@@ -194,6 +196,7 @@
                 android:autofillHints="no"
                 android:gravity="end"
                 android:hint="@string/g"
+                android:text="@string/g"
                 android:inputType="text"
                 android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
