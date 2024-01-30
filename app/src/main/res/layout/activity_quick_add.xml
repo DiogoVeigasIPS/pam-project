@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context=".activities.diary.QuickAddActivity">
+
+    <LinearLayout
+        android:id="@+id/navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/top_bar"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/header_padding"
+        android:paddingVertical="@dimen/header_vertical_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/bt_back"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/icon_size"
+            android:layout_marginEnd="@dimen/nav_arrow_margin"
+            android:layout_weight="0.2"
+            android:backgroundTint="@color/top_bar"
+            android:contentDescription="@string/back_arrow"
+            android:src="@drawable/back_arrow" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:text="Quick Breakfast"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_size" />
+
+        <ImageButton
+            android:id="@+id/bt_submit"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/icon_size"
+            android:layout_weight="0.2"
+            android:layout_marginStart="@dimen/nav_arrow_margin"
+            android:backgroundTint="@color/top_bar"
+            android:contentDescription="@string/check_submit"
+            android:src="@drawable/confirm_check" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/group_body"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/body_size"
+        android:layout_marginBottom="@dimen/body_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navigation_bar">
+
+        <LinearLayout
+            android:id="@+id/name_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/body_spacing"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="@string/name"
+                android:textSize="@dimen/body_size" />
+
+            <EditText
+                android:id="@+id/birthdate_input"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edit_text_height"
+                android:layout_gravity="end"
+                android:layout_weight="0.7"
+                android:gravity="end"
+                android:hint="@string/hot_chicken_wings"
+                android:inputType="textCapSentences"
+                android:textColorHint="@color/hint_gray"
+                android:textSize="@dimen/body_size"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/description_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/body_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            app:layout_constraintEnd_toEndOf="@id/name_group"
+            app:layout_constraintStart_toStartOf="@id/name_group"
+            app:layout_constraintTop_toBottomOf="@id/name_group">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="@string/calories"
+                android:textSize="@dimen/body_size" />
+
+            <EditText
+                android:id="@+id/description_input"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edit_text_height"
+                android:layout_weight="0.7"
+                android:autofillHints="no"
+                android:gravity="end"
+                android:hint="@string/_957"
+                android:inputType="textCapSentences"
+                android:textColorHint="@color/hint_gray"
+                android:textSize="@dimen/body_size"
+                />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

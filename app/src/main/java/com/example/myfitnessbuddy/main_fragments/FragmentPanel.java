@@ -1,4 +1,4 @@
-package com.example.myfitnessbuddy.fragments;
+package com.example.myfitnessbuddy.main_fragments;
 
 import android.content.Intent;
 import android.os.Bundle;

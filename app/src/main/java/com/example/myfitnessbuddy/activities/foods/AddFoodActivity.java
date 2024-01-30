@@ -1,7 +1,11 @@
-package com.example.myfitnessbuddy.activities;
+package com.example.myfitnessbuddy.activities.foods;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -12,7 +16,6 @@ import android.widget.Toast;
 
 import com.example.myfitnessbuddy.DatabaseHelper;
 import com.example.myfitnessbuddy.R;
-import com.example.myfitnessbuddy.activities.panel.UpdateDetailsActivity;
 import com.example.myfitnessbuddy.models.Food;
 
 public class AddFoodActivity extends AppCompatActivity {
@@ -28,37 +31,53 @@ public class AddFoodActivity extends AppCompatActivity {
         ImageButton btBack = findViewById(R.id.bt_back);
         btBack.setOnClickListener(v -> finish());
 
-        nameInput = findViewById(R.id.birthdate_input);
-        descriptionInput = findViewById(R.id.description_input);
-        portionInput = findViewById(R.id.portion_input);
-        unitInput = findViewById(R.id.unit_input);
-        calorieInput = findViewById(R.id.calorie_input);
-
-        radioBtn1 = findViewById(R.id.radio_button1);
-        radioBtn2 = findViewById(R.id.radio_button2);
-        radioBtn3 = findViewById(R.id.radio_button3);
+        initializeInputs();
 
         ImageButton btSubmit = findViewById(R.id.bt_submit);
 
         Bundle extras = getIntent().getExtras();
         if(extras == null){
             btSubmit.setOnClickListener(v -> addFood());
-        }else{
-            int id = extras.getInt(FOOD_ID);
-            updateTitle("Edit Food");
-            DatabaseHelper.executeInBackground(() -> {
-                Food food = DatabaseHelper.getFoodById(id);
-                if(food == null){
-                    runOnUiThread(() -> finish());
-                    return;
-                }
-
-                runOnUiThread(() -> {
-                    fillInputs(food);
-                    btSubmit.setOnClickListener(v -> editFood(food));
-                });
-            });
+            return;
         }
+
+        int id = extras.getInt(FOOD_ID);
+        updateTitle("Edit Food");
+        DatabaseHelper.executeInBackground(() -> {
+            Food food = DatabaseHelper.getFoodById(id);
+            if(food == null){
+                runOnUiThread(() -> finish());
+                return;
+            }
+
+            runOnUiThread(() -> {
+                AppCompatButton deleteButton = findViewById(R.id.bt_delete);
+                setDeleteButton(deleteButton, food);
+                fillInputs(food);
+                btSubmit.setOnClickListener(v -> editFood(food));
+            });
+        });
+    }
+
+    private void setDeleteButton(AppCompatButton deleteButton, Food food) {
+        deleteButton.setVisibility(View.VISIBLE);
+        deleteButton.setOnClickListener(v -> {
+            showDeleteConfirmationDialog(food);
+        });
+    }
+
+    private void showDeleteConfirmationDialog(Food food) {
+        String message = "Are you sure you want to delete the <b>" + food.getCompoundName() + "</b> ?";
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(Html.fromHtml(message))
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    DatabaseHelper.deleteFood(food);
+                    finish();
+                })
+                .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                .create()
+                .show();
     }
 
     private void updateTitle(String newTitle) {
@@ -154,5 +173,17 @@ public class AddFoodActivity extends AppCompatActivity {
             return null;
         }
         return food;
+    }
+
+    private void initializeInputs() {
+        nameInput = findViewById(R.id.birthdate_input);
+        descriptionInput = findViewById(R.id.description_input);
+        portionInput = findViewById(R.id.portion_input);
+        unitInput = findViewById(R.id.unit_input);
+        calorieInput = findViewById(R.id.calorie_input);
+
+        radioBtn1 = findViewById(R.id.radio_button1);
+        radioBtn2 = findViewById(R.id.radio_button2);
+        radioBtn3 = findViewById(R.id.radio_button3);
     }
 }

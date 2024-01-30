@@ -32,7 +32,7 @@
             android:layout_height="@dimen/icon_size"
             android:layout_gravity="center"
             android:contentDescription="@string/card_icon"
-            android:src="@drawable/apple"
+            android:src="@drawable/flatware"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

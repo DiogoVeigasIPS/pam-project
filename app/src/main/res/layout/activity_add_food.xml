@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray"
-    tools:context=".activities.AddFoodActivity">
+    tools:context=".activities.foods.AddFoodActivity">
 
     <LinearLayout
         android:id="@+id/navigation_bar"
@@ -88,7 +88,7 @@
                 android:gravity="end"
                 android:hint="@string/chicken"
                 android:importantForAutofill="no"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
                 />
@@ -123,7 +123,7 @@
                 android:autofillHints="no"
                 android:gravity="end"
                 android:hint="@string/breast"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
                 />
@@ -347,8 +347,21 @@
 
         </LinearLayout>
 
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_delete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/icon_size"
+        android:backgroundTint="@color/danger"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group_body"
+        android:textColor="@color/white"
+        android:text="@string/delete_food"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/main_padding"
+        android:visibility="gone"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
-package com.example.myfitnessbuddy.fragments;
+package com.example.myfitnessbuddy.main_fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,9 +11,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.myfitnessbuddy.R;
+import com.example.myfitnessbuddy.activities.diary.AddToMealActivity;
+import com.example.myfitnessbuddy.models.Meal;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,13 +52,28 @@ public class FragmentDiary extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        setNavigationalButtons();
+    }
+
+    private void setNavigationalButtons() {
         ImageButton btBack = getView().findViewById(R.id.bt_back);
-        btBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(getClass().getSimpleName(), "Someone clicked me!");
-                Navigation.updateFragment(FragmentPanel.newInstance());
-            }
-        });
+        btBack.setOnClickListener(v -> Navigation.updateFragment(FragmentPanel.newInstance()));
+
+        Button addBreakfast = getView().findViewById(R.id.add_breakfast);
+        Button addLunch = getView().findViewById(R.id.add_lunch);
+        Button addDinner = getView().findViewById(R.id.add_dinner);
+        Button addSnack = getView().findViewById(R.id.add_snack);
+
+        addBreakfast.setOnClickListener(v -> addFoodToMeal(R.string.breakfast));
+        addLunch.setOnClickListener(v -> addFoodToMeal(R.string.lunch));
+        addDinner.setOnClickListener(v -> addFoodToMeal(R.string.dinner));
+        addSnack.setOnClickListener(v -> addFoodToMeal(R.string.snack));
+    }
+
+    // Send meal or something (like an id)
+    private void addFoodToMeal(int title){
+        Intent intent = new Intent(getContext(), AddToMealActivity.class);
+        intent.putExtra(AddToMealActivity.TITLE, title);
+        startActivity(intent);
     }
 }
