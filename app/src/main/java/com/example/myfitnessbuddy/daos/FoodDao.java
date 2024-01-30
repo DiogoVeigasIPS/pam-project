@@ -22,7 +22,7 @@ public interface FoodDao {
     void insert(Food... foods);
 
     @Update
-    void update(Food foods);
+    void update(Food food);
 
     @Delete
     void delete(Food food);
