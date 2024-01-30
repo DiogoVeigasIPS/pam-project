@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Myfitnessbuddy"
         tools:targetApi="31">
         <activity
+            android:name=".activities.diary.QuickAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.foods.AddDishActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.diary.AddToMealActivity"
             android:exported="false" />
         <activity
