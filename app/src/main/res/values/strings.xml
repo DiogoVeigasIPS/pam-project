@@ -129,8 +129,8 @@
     <string name="food_created">The food was successfully created.</string>
     <string name="food_edited">The food was successfully edited.</string>
     <string name="food_deleted">The food was successfully deleted.</string>
-    <string name="meal_created">The dish was successfully created.</string>
-    <string name="meal_edited">The dish was successfully edited.</string>
-    <string name="meal_delete">The dish was successfully deleted.</string>
+    <string name="dish_created">The dish was successfully created.</string>
+    <string name="dish_edited">The dish was successfully edited.</string>
+    <string name="dish_delete">The dish was successfully deleted.</string>
 
 </resources>
