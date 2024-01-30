@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/main_padding"
-    tools:context=".fragments.FragmentPanel">
+    tools:context=".main_fragments.FragmentPanel">
 
     <TextView
         android:id="@+id/main_title"

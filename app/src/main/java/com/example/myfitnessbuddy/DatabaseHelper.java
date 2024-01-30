@@ -41,4 +41,8 @@ public class DatabaseHelper {
     public static List<Food> getFoodsByName(String searchQuery) {
         return appDatabase.foodDao().searchByName("%" + searchQuery + "%");
     }
+
+    public static void deleteFood(Food food) {
+        executorService.execute(() -> appDatabase.foodDao().delete(food));
+    }
 }

@@ -10,7 +10,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"
-        android:name="com.example.myfitnessbuddy.fragments.FragmentPanel"
+        android:name="com.example.myfitnessbuddy.main_fragments.FragmentPanel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         tools:layout="@layout/fragment_panel"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray"
-    tools:context=".fragments.FragmentDiary">
+    tools:context=".main_fragments.FragmentDiary">
 
     <LinearLayout
         android:id="@+id/navigation_bar"
@@ -283,7 +283,7 @@
                     app:rippleColor="@color/light_gray" />
 
                 <Button
-                    android:id="@+id/bt_editDeleteBreakfast"
+                    android:id="@+id/bt_edit_breakfast"
                     android:layout_width="@dimen/icon_size"
                     android:layout_height="@dimen/icon_size"
                     android:backgroundTint="@color/white"
@@ -363,7 +363,7 @@
                     app:rippleColor="@color/light_gray" />
 
                 <Button
-                    android:id="@+id/bt_editDeleteLunch"
+                    android:id="@+id/bt_edit_lunch"
                     android:layout_width="@dimen/icon_size"
                     android:layout_height="@dimen/icon_size"
                     android:backgroundTint="@color/white"
@@ -442,7 +442,7 @@
                     app:rippleColor="@color/light_gray" />
 
                 <Button
-                    android:id="@+id/bt_editDeleteDinner"
+                    android:id="@+id/bt_edit_dinner"
                     android:layout_width="@dimen/icon_size"
                     android:layout_height="@dimen/icon_size"
                     android:backgroundTint="@color/white"
@@ -505,7 +505,7 @@
                 >
 
                 <Button
-                    android:id="@+id/add_lanche"
+                    android:id="@+id/add_snack"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/icon_size"
                     android:backgroundTint="@color/white"
@@ -521,7 +521,7 @@
                     app:rippleColor="@color/light_gray" />
 
                 <Button
-                    android:id="@+id/bt_editDeleteLanche"
+                    android:id="@+id/bt_edit_snack"
                     android:layout_width="@dimen/icon_size"
                     android:layout_height="@dimen/icon_size"
                     android:backgroundTint="@color/white"

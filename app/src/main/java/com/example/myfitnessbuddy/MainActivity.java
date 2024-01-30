@@ -6,13 +6,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
-import android.util.Log;
-import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
 
-import com.example.myfitnessbuddy.fragments.Navigation;
+import com.example.myfitnessbuddy.main_fragments.Navigation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
