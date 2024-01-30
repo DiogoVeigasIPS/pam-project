@@ -8,16 +8,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.myfitnessbuddy.R;
-import com.example.myfitnessbuddy.activities.UpdateDetailsActivity;
-import com.example.myfitnessbuddy.activities.UpdateGoalActivity;
-import com.example.myfitnessbuddy.activities.UpdateWeightActivity;
+import com.example.myfitnessbuddy.activities.panel.UpdateDetailsActivity;
+import com.example.myfitnessbuddy.activities.panel.UpdateGoalActivity;
+import com.example.myfitnessbuddy.activities.panel.UpdateWeightActivity;
 
 /**
  * A simple {@link Fragment} subclass.

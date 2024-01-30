@@ -5,26 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray"
-    tools:context=".activities.UpdateDetailsActivity">
+    tools:context=".activities.panel.UpdateDetailsActivity">
 
     <LinearLayout
         android:id="@+id/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/top_bar"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="@dimen/header_padding"
+        android:paddingHorizontal="@dimen/header_padding"
+        android:paddingVertical="@dimen/header_vertical_padding"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/bt_back"
-            android:layout_width="@dimen/icon_size"
+            android:layout_width="0dp"
             android:layout_height="@dimen/icon_size"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="0.1"
-            android:backgroundTint="@color/white"
+            android:layout_marginEnd="@dimen/nav_arrow_margin"
+            android:layout_weight="0.2"
+            android:backgroundTint="@color/top_bar"
             android:contentDescription="@string/back_arrow"
             android:src="@drawable/back_arrow" />
 
@@ -39,10 +40,11 @@
 
         <ImageButton
             android:id="@+id/bt_submit"
-            android:layout_width="@dimen/icon_size"
+            android:layout_width="0dp"
             android:layout_height="@dimen/icon_size"
-            android:layout_weight="0.1"
-            android:backgroundTint="@color/white"
+            android:layout_weight="0.2"
+            android:layout_marginStart="@dimen/nav_arrow_margin"
+            android:backgroundTint="@color/top_bar"
             android:contentDescription="@string/check_submit"
             android:src="@drawable/confirm_check" />
     </LinearLayout>
@@ -85,10 +87,11 @@
                 android:layout_gravity="end"
                 android:layout_weight="0.7"
                 android:gravity="end"
-                android:hint="@string/birthidate_form"
+                android:hint="@string/press_to_calendar"
                 android:importantForAutofill="no"
-                android:inputType="datetime"
+                android:inputType="date"
                 android:textColorHint="@color/hint_gray"
+                android:textSize="@dimen/body_size"
                 />
         </LinearLayout>
 
@@ -122,7 +125,7 @@
                 android:autofillHints="no"
                 android:gravity="end"
                 android:hint="@string/hint_height"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
                 />
@@ -219,7 +222,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ativity_group"
+            android:id="@+id/activity_group"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="@dimen/body_spacing"
@@ -242,7 +245,7 @@
                 />
 
             <Spinner
-                android:id="@+id/spinner_ativity"
+                android:id="@+id/spinner_activity"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/spinner_size"
                 android:layout_weight="0.2"
@@ -265,4 +268,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/group_body" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     <dimen name="scale_button_bottom">1.3</dimen>
 
     <!-- Icon -->
-    <dimen name="icon_size">61dp</dimen>
+    <dimen name="icon_size">50dp</dimen>
     <!-- Add Data-->
     <dimen name="edit_text_height">50dp</dimen>
     <dimen name="spinner_size">48dp</dimen>
@@ -13,6 +13,7 @@
     <dimen name="main_padding">25dp</dimen>
     <dimen name="app_name_title_padding">35dp</dimen>
     <dimen name="header_padding">15dp</dimen>
+    <dimen name="header_vertical_padding">7dp</dimen>
     <dimen name="grouped_spacing">10dp</dimen>
     <dimen name="padding_button_selector">20dp</dimen>
     <dimen name="body_spacing">3dp</dimen>
@@ -20,7 +21,8 @@
     <dimen name="spacing_popup">1.5</dimen>
     <dimen name="main_menu_padding">30dp</dimen>
     <dimen name="foods_to_meal_bottom">60dp</dimen>
-
+    <dimen name="nav_arrow_margin">10dp</dimen>
+    <dimen name="magnifying_glass">35dp</dimen>
 
     <!-- Text Sizes -->
     <dimen name="title_size">26sp</dimen>
@@ -32,4 +34,5 @@
     <dimen name="main_labels">14sp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="card_additional_info">40dp</dimen>
+
 </resources>

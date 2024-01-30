@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">MyFitBuddy</string>
+    <string name="app_full_name">MyFitnessBuddy</string>
 
     <string name="panel">Dashboard</string>
     <string name="diary">Diary</string>
@@ -36,8 +37,8 @@
 
     <!-- Time Labels -->
     <string name="today">Today</string>
-    <string name="last_month">Last Month</string>
-    <string name="last_week">Last Week</string>
+    <string name="last_month">Last Month\nAvg.</string>
+    <string name="last_week">Last Week\nAvg.</string>
 
     <string name="minus">-</string>
     <string name="equal">=</string>
@@ -94,20 +95,29 @@
     <string name="card_icon">Card Icon</string>
     <string name="card_add">Card Add Icon</string>
     <string name="card_edit">Card Edit Icon</string>
-
-    <string-array name="activity_spinner">
-        <!-- This will be the hint.
-             Disable or make it impossible for the person to submit the info with it on-->
-        <item>Choose an option</item>
-        <item>Not Active</item>
-        <item>Active</item>
-        <item>Very Active</item>
-    </string-array>
-
-    <string-array name="objective_spinner">
-        <item>Choose an option</item>
-        <!-- Check if more options are needed or make it dynamic -->
-    </string-array>
-
+    <string name="invalid_details">Details not valid!</string>
+    <string name="invalid_height_format">Invalid height format!</string>
+    <string name="press_to_calendar">Press to calendar</string>
+    <string name="invalid_date">Invalid date format!</string>
+    <string name="dishes">Dishes</string>
+    <string name="card_action">Card action</string>
+    <string name="search_icon">Search icon</string>
+    <string name="description">Description</string>
+    <string name="portion">Portion</string>
+    <string name="calories">Calories</string>
+    <string name="unit">Unit</string>
+    <string name="_100">100</string>
+    <string name="g">g</string>
+    <string name="_165">165</string>
+    <string name="icon">Icon</string>
+    <string name="choose_an_icon">Choose an icon</string>
+    <string name="apple">Apple</string>
+    <string name="steak">Steak</string>
+    <string name="cookie">Cookie</string>
+    <string name="chicken">Chicken</string>
+    <string name="breast">Breast</string>
+    <string name="fill_all_fields">You must fill all fields!</string>
+    <string name="invalid_portion_format">Invalid portion format!</string>
+    <string name="invalid_calorie_format">Invalid calorie format!</string>
 
 </resources>

@@ -6,56 +6,36 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Myfitnessbuddy"
         tools:targetApi="31">
         <activity
             android:name=".activities.AddFoodActivity"
-            android:exported="false"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.FoodsToMealsActivity"
-            android:exported="false"
+            android:name=".activities.panel.UpdateGoalActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.MealsActivities"
-            android:exported="false"
+            android:name=".activities.panel.UpdateDetailsActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.UpdateGoalActivity"
-            android:exported="false"
+            android:name=".activities.panel.UpdateWeightActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activities.QuantityActivity"
             android:exported="false"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activities.UpdateDetailsActivity"
-            android:exported="false"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activities.UpdateWeightActivity"
-            android:exported="false"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activities.QuickAddActivity"
-            android:exported="false"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
             android:configChanges="orientation"
+            android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

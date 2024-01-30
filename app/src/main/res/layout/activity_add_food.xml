@@ -4,118 +4,351 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_gray"
     tools:context=".activities.AddFoodActivity">
 
     <LinearLayout
-        android:id="@+id/header_foods"
+        android:id="@+id/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/grouped_spacing"
-        android:background="@color/white"
+        android:background="@color/top_bar"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="@dimen/header_padding"
-        android:weightSum="1"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingHorizontal="@dimen/header_padding"
+        android:paddingVertical="@dimen/header_vertical_padding"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/bt_back"
-            android:layout_width="@dimen/icon_size"
+            android:layout_width="0dp"
             android:layout_height="@dimen/icon_size"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="0.1"
-            android:background="@color/white"
+            android:layout_marginEnd="@dimen/nav_arrow_margin"
+            android:layout_weight="0.2"
+            android:backgroundTint="@color/top_bar"
             android:contentDescription="@string/back_arrow"
             android:src="@drawable/back_arrow" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/title"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
-            android:text="@string/title_add_foods"
+            android:text="@string/add_food"
             android:textColor="@color/black"
             android:textSize="@dimen/title_size" />
 
         <ImageButton
             android:id="@+id/bt_submit"
-            android:layout_width="@dimen/icon_size"
+            android:layout_width="0dp"
             android:layout_height="@dimen/icon_size"
-            android:layout_weight="0.1"
-            android:background="@android:color/transparent"
+            android:layout_weight="0.2"
+            android:layout_marginStart="@dimen/nav_arrow_margin"
+            android:backgroundTint="@color/top_bar"
             android:contentDescription="@string/check_submit"
             android:src="@drawable/confirm_check" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/buttons_container"
-        android:layout_width="0dp"
+        android:id="@+id/group_body"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/light_gray"
-        android:paddingHorizontal="@dimen/main_padding"
-        android:paddingTop="@dimen/main_menu_padding"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/body_size"
+        android:layout_marginBottom="@dimen/body_spacing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_foods">
+        app:layout_constraintTop_toBottomOf="@id/navigation_bar">
 
-        <EditText
-            android:id="@+id/foodmeal_search"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/icon_size"
-            android:background="@drawable/container_blackborder"
-            android:hint="@string/search_foods"
-            android:imeOptions="actionSearch"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:padding="@dimen/grouped_spacing"
+        <LinearLayout
+            android:id="@+id/name_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/body_spacing"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="@string/name"
+                android:textSize="@dimen/body_size" />
+
+            <EditText
+                android:id="@+id/birthdate_input"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edit_text_height"
+                android:layout_gravity="end"
+                android:layout_weight="0.7"
+                android:gravity="end"
+                android:hint="@string/chicken"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:textColorHint="@color/hint_gray"
+                android:textSize="@dimen/body_size"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/description_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/body_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            app:layout_constraintEnd_toEndOf="@id/name_group"
+            app:layout_constraintStart_toStartOf="@id/name_group"
+            app:layout_constraintTop_toBottomOf="@id/name_group">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="@string/description"
+                android:textSize="@dimen/body_size" />
+
+            <EditText
+                android:id="@+id/description_input"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edit_text_height"
+                android:layout_weight="0.7"
+                android:autofillHints="no"
+                android:gravity="end"
+                android:hint="@string/breast"
+                android:inputType="text"
+                android:textColorHint="@color/hint_gray"
+                android:textSize="@dimen/body_size"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/portion_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/body_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            app:layout_constraintEnd_toEndOf="@id/description_group"
+            app:layout_constraintStart_toStartOf="@id/description_group"
+            app:layout_constraintTop_toBottomOf="@id/description_group">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="@string/portion"
+                android:textSize="@dimen/body_size" />
+
+            <EditText
+                android:id="@+id/portion_input"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edit_text_height"
+                android:layout_weight="0.7"
+                android:autofillHints="no"
+                android:gravity="end"
+                android:hint="@string/_100"
+                android:text="@string/_100"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/hint_gray"
+                android:textSize="@dimen/body_size"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/unit_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/body_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            app:layout_constraintEnd_toEndOf="@id/portion_group"
+            app:layout_constraintStart_toStartOf="@id/portion_group"
+            app:layout_constraintTop_toBottomOf="@id/portion_group">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="@string/unit"
+                android:textSize="@dimen/body_size" />
+
+            <EditText
+                android:id="@+id/unit_input"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edit_text_height"
+                android:layout_weight="0.7"
+                android:autofillHints="no"
+                android:gravity="end"
+                android:hint="@string/g"
+                android:text="@string/g"
+                android:inputType="text"
+                android:textColorHint="@color/hint_gray"
+                android:textSize="@dimen/body_size"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/calorie_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/body_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            app:layout_constraintEnd_toEndOf="@id/unit_group"
+            app:layout_constraintStart_toStartOf="@id/unit_group"
+            app:layout_constraintTop_toBottomOf="@id/unit_group">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="@string/calories"
+                android:textSize="@dimen/body_size" />
+
+            <EditText
+                android:id="@+id/calorie_input"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edit_text_height"
+                android:layout_weight="0.7"
+                android:autofillHints="no"
+                android:gravity="end"
+                android:hint="@string/_165"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/hint_gray"
+                android:textSize="@dimen/body_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/icon_group"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/body_spacing"
+            android:layout_marginBottom="@dimen/body_spacing"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_padding"
+            app:layout_constraintEnd_toEndOf="@id/calorie_group"
+            app:layout_constraintStart_toStartOf="@id/calorie_group"
+            app:layout_constraintTop_toBottomOf="@id/calorie_group">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="@string/icon"
+                android:textSize="@dimen/body_size" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edit_text_height"
+                android:layout_weight="0.7"
+                android:autofillHints="no"
+                android:gravity="end|center"
+                android:hint="@string/choose_an_icon"
+                android:textColorHint="@color/hint_gray"
+                android:textSize="@dimen/body_size"
+                />
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_quickadd"
-            android:layout_width="0dp"
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/input_spacing"
-            android:background="@drawable/container_blackborder"
-            android:paddingVertical="@dimen/padding_button_selector"
-            android:text="@string/quick_add"
-            android:textSize="@dimen/body_size"
-            app:layout_constraintEnd_toEndOf="@id/foodmeal_search"
-            app:layout_constraintStart_toStartOf="@id/foodmeal_search"
-            app:layout_constraintTop_toBottomOf="@id/foodmeal_search" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/icon_group"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingHorizontal="50dp"
+            android:paddingBottom="10dp">
+            <RadioGroup
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_myfoods"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/input_spacing"
-            android:background="@drawable/container_blackborder"
-            android:paddingVertical="@dimen/padding_button_selector"
-            android:text="@string/label_my_food"
-            android:textSize="@dimen/body_size"
-            app:layout_constraintEnd_toEndOf="@id/bt_quickadd"
-            app:layout_constraintStart_toStartOf="@id/bt_quickadd"
-            app:layout_constraintTop_toBottomOf="@id/bt_quickadd" />
+                <RadioButton
+                    android:id="@+id/radio_button1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:gravity="center"
+                    android:checked="true"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_mymeals"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/input_spacing"
-            android:background="@drawable/container_blackborder"
-            android:paddingVertical="@dimen/padding_button_selector"
-            android:text="@string/label_my_meals"
-            android:textSize="@dimen/body_size"
-            app:layout_constraintEnd_toEndOf="@id/bt_myfoods"
-            app:layout_constraintStart_toStartOf="@id/bt_myfoods"
-            app:layout_constraintTop_toBottomOf="@id/bt_myfoods" />
+                <RadioButton
+                    android:id="@+id/radio_button2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:gravity="center"/>
+
+                <RadioButton
+                    android:id="@+id/radio_button3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:gravity="center"/>
+            </RadioGroup>
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:src="@drawable/apple"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/apple"/>
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:layout_weight="1"
+                    android:src="@drawable/steak"
+                    android:contentDescription="@string/steak"/>
+                <ImageView
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:src="@drawable/cookie"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/cookie"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

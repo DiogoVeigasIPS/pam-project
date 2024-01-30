@@ -11,20 +11,21 @@
         android:id="@+id/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/top_bar"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="@dimen/header_padding"
+        android:paddingHorizontal="@dimen/header_padding"
+        android:paddingVertical="@dimen/header_vertical_padding"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/bt_back"
-            android:layout_width="@dimen/icon_size"
+            android:layout_width="0dp"
             android:layout_height="@dimen/icon_size"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="0.05"
-            android:backgroundTint="@color/white"
+            android:layout_marginEnd="@dimen/nav_arrow_margin"
+            android:layout_weight="0.2"
+            android:backgroundTint="@color/top_bar"
             android:contentDescription="@string/back_arrow"
             android:src="@drawable/back_arrow" />
 
@@ -32,7 +33,7 @@
             android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.95"
+            android:layout_weight="1"
             android:text="@string/diary"
             android:textColor="@color/black"
             android:textSize="@dimen/title_size" />
@@ -218,7 +219,7 @@
                 android:paddingHorizontal="@dimen/main_padding">
 
                 <TextView
-                    android:id="@+id/pequeno_text"
+                    android:id="@+id/breakfast_label"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/icon_size"
                     android:gravity="center"
@@ -295,7 +296,7 @@
                 android:paddingHorizontal="@dimen/main_padding">
 
                 <TextView
-                    android:id="@+id/lunch_text"
+                    android:id="@+id/lunch_label"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/icon_size"
                     android:gravity="center"
@@ -371,7 +372,7 @@
                 android:paddingHorizontal="@dimen/main_padding">
 
                 <TextView
-                    android:id="@+id/dinner_text"
+                    android:id="@+id/dinner_label"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/icon_size"
                     android:gravity="center"
@@ -447,7 +448,7 @@
                 android:paddingHorizontal="@dimen/main_padding">
 
                 <TextView
-                    android:id="@+id/lanche_text"
+                    android:id="@+id/snack_label"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/icon_size"
                     android:gravity="center"
