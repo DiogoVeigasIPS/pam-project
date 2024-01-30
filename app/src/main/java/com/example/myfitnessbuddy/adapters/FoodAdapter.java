@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,9 +21,15 @@ import java.util.List;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
     private List<Food> foods;
+    private ActionType actionType;
+
+    public FoodAdapter(List<Food> foods, ActionType actionType) {
+        this.foods = foods;
+        this.actionType = actionType;
+    }
 
     public FoodAdapter(List<Food> foods) {
-        this.foods = foods;
+        this(foods, ActionType.DETAILS);
     }
 
     @NonNull
@@ -36,16 +44,23 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
         Food food = foods.get(position);
         holder.setValues(food);
-        holder.itemView.findViewById(R.id.bt_action).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        ImageButton actionButton = holder.itemView.findViewById(R.id.bt_action);
+
+        if(this.actionType == ActionType.DETAILS){
+            actionButton.setOnClickListener(v -> {
                 Context context = v.getContext();
 
                 Intent intent = new Intent(context, AddFoodActivity.class);
 
                 intent.putExtra(AddFoodActivity.FOOD_ID, food.getId());
                 context.startActivity(intent);
-            }
+            });
+            return;
+        }
+
+        actionButton.setImageResource(R.drawable.add_black);
+        actionButton.setOnClickListener(v -> {
+            Toast.makeText(holder.itemView.getContext(), "I am adding", Toast.LENGTH_SHORT).show();
         });
     }
 
