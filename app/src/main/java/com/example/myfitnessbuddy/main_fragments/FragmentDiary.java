@@ -13,10 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.diary.AddToMealActivity;
+import com.example.myfitnessbuddy.database.DatabaseHelper;
+import com.example.myfitnessbuddy.models.Day;
 import com.example.myfitnessbuddy.models.Meal;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +29,9 @@ import com.example.myfitnessbuddy.models.Meal;
  * create an instance of this fragment.
  */
 public class FragmentDiary extends Fragment {
+
+    private TextView goalOutput, foodOutput, leftoverGoalOutput,
+            breakfastCalories, lunchCalories, dinnerCalories, snackCalories;
 
     public FragmentDiary() {
         // Required empty public constructor
@@ -52,7 +60,27 @@ public class FragmentDiary extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Navigation
         setNavigationalButtons();
+
+        // Dynamic values
+        setTextViews();
+        updateCalories();
+    }
+
+    private void updateCalories() {
+        // TODO Read values from db and update textviews
+    }
+
+    private void setTextViews() {
+        goalOutput = getView().findViewById(R.id.goal_output);
+        foodOutput = getView().findViewById(R.id.food_output);
+        leftoverGoalOutput = getView().findViewById(R.id.leftover_goal_output);
+
+        breakfastCalories = getView().findViewById(R.id.breakfast_calories);
+        lunchCalories = getView().findViewById(R.id.lunch_calories);
+        dinnerCalories = getView().findViewById(R.id.dinner_calories);
+        snackCalories = getView().findViewById(R.id.snack_calories);
     }
 
     private void setNavigationalButtons() {
@@ -72,8 +100,28 @@ public class FragmentDiary extends Fragment {
 
     // Send meal or something (like an id)
     private void addFoodToMeal(int title){
-        Intent intent = new Intent(getContext(), AddToMealActivity.class);
-        intent.putExtra(AddToMealActivity.TITLE, title);
-        startActivity(intent);
+        DatabaseHelper.executeInBackground(() -> {
+            Day today = DatabaseHelper.DayHelper.getToday();
+            List<Meal> meals = DatabaseHelper.DayHelper.getMealsForDay(today.getId());
+            Meal selectedMeal;
+
+            if(title == R.string.breakfast){
+                selectedMeal = meals.get(0);
+            }else if(title == R.string.lunch){
+                selectedMeal = meals.get(1);
+            }else if(title == R.string.dinner){
+                selectedMeal = meals.get(2);
+            }else{
+                selectedMeal = meals.get(3);
+            }
+
+            requireActivity().runOnUiThread(() -> {
+                Intent intent = new Intent(getContext(), AddToMealActivity.class);
+                intent.putExtra(AddToMealActivity.TITLE, title);
+                intent.putExtra(AddToMealActivity.MEAL_ID, selectedMeal.getId());
+                startActivity(intent);
+            });
+        });
+
     }
 }

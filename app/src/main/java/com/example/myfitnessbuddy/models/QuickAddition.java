@@ -5,6 +5,7 @@ import static androidx.room.ForeignKey.CASCADE;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
@@ -26,9 +27,15 @@ public class QuickAddition{
     @ColumnInfo(name = "mealId")
     private int mealId;
 
+    @Ignore
     public QuickAddition(String name, int calories) {
         setName(name);
         setCalories(calories);
+    }
+
+    public QuickAddition(String name, int calories, int mealId) {
+        this(name, calories);
+        setMealId(mealId);
     }
 
     // Getter methods
