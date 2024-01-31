@@ -24,7 +24,6 @@
     <dimen name="nav_arrow_margin">10dp</dimen>
     <dimen name="magnifying_glass">35dp</dimen>
     <dimen name="empty_list_margin">100dp</dimen>
-    <dimen name="math_padding">25dp</dimen>
 
     <!-- Text Sizes -->
     <dimen name="title_size">26sp</dimen>
@@ -37,6 +36,6 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="card_additional_info">40sp</dimen>
     <dimen name="diary_time">22sp</dimen>
-    <dimen name="diary_head_number">30sp</dimen>
+    <dimen name="diary_head_number">34sp</dimen>
 
 </resources>

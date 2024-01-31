@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context=".activities.panel.UpdateWeightActivity">
+
+    <LinearLayout
+        android:id="@+id/navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/top_bar"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/header_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/bt_back"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.05"
+            android:backgroundTint="@color/top_bar"
+            android:contentDescription="@string/back_arrow"
+            android:src="@drawable/back_arrow" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.90"
+            android:text="@string/add_weight"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_size" />
+
+        <ImageButton
+            android:id="@+id/bt_submit"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_weight="0.05"
+            android:backgroundTint="@color/top_bar"
+            android:src="@drawable/confirm_check"
+            android:contentDescription="@string/confirm_weight_changes"
+            />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/weight_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_weight"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/black"
+        android:textSize="@dimen/body_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navigation_bar"
+        app:layout_constraintVertical_bias="0.25" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

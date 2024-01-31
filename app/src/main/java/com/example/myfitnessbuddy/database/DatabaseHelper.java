@@ -78,10 +78,6 @@ public class DatabaseHelper {
             return appDatabase.dayDao().getToday(yesterday);
         }
 
-        public static List<Integer> getCaloriesList(int dayId) {
-            return appDatabase.dayDao().getCaloriesList(dayId);
-        }
-
         public static long addNewDay(Day day) {
             long insertedId = appDatabase.dayDao().insert(day);
             return insertedId;
@@ -104,10 +100,6 @@ public class DatabaseHelper {
 
         public static Meal getMealById(int mealId) {
             return appDatabase.mealDao().findById(mealId);
-        }
-
-        public static int getCalories(int mealId) {
-            return appDatabase.mealDao().getCalories(mealId);
         }
 
         public static void addNewMeal(Meal meal) {

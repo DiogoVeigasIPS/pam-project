@@ -18,8 +18,8 @@ public interface MealDao {
     @Query("SELECT * from meal WHERE id = :id LIMIT 1")
     Meal findById(int id);
 
-    @Query("SELECT SUM(calories) FROM quickAddition WHERE mealId = :mealId")
-    int getCalories(int mealId);
+    /*@Query("SELECT SUM(calories) FROM quickAddition WHERE mealId = :mealId")
+    int getCaloriesFromQuickAddition(int mealId);*/
 
     @Insert
     void insert(Meal... meals);
