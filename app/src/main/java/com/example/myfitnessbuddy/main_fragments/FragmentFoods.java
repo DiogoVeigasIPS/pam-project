@@ -109,7 +109,7 @@ public class FragmentFoods extends Fragment {
 
     private void setListAdapter() {
         DatabaseHelper.executeInBackground(() -> {
-            List<Food> foods = DatabaseHelper.FoodHelper.getAllFoods();
+            List<Food> foods = DatabaseHelper.getAllFoods();
 
             requireActivity().runOnUiThread(() -> {
                 foodAdapter = new FoodAdapter(foods);
@@ -127,7 +127,7 @@ public class FragmentFoods extends Fragment {
 
     private void updateFoodList() {
         DatabaseHelper.executeInBackground(() -> {
-            List<Food> foods = DatabaseHelper.FoodHelper.getAllFoods();
+            List<Food> foods = DatabaseHelper.getAllFoods();
 
             requireActivity().runOnUiThread(() -> {
                 if(foods.isEmpty()){
@@ -136,6 +136,7 @@ public class FragmentFoods extends Fragment {
                 }
 
                 hideEmptyListMessage();
+                Log.d("ATAOPA", "updateFoodList: ");
                 foodAdapter.setFoods(foods);
             });
         });
@@ -143,7 +144,7 @@ public class FragmentFoods extends Fragment {
 
     private void updateFoodList(String search) {
         DatabaseHelper.executeInBackground(() -> {
-            List<Food> foods = DatabaseHelper.FoodHelper.getFoodsByName(search);
+            List<Food> foods = DatabaseHelper.getFoodsByName(search);
 
             requireActivity().runOnUiThread(() -> {
                 if(foods.isEmpty()){

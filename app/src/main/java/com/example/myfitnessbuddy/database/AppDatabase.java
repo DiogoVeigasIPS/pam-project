@@ -16,7 +16,7 @@ import com.example.myfitnessbuddy.models.Food;
 import com.example.myfitnessbuddy.models.Meal;
 import com.example.myfitnessbuddy.models.QuickAddition;
 
-@Database(entities = {Food.class, Day.class, Meal.class, QuickAddition.class}, version = 7, exportSchema = false)
+@Database(entities = {Food.class, Day.class, Meal.class, QuickAddition.class}, version = 3, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase databaseInstance = null;

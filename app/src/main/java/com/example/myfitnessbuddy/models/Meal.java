@@ -29,9 +29,8 @@ public class Meal {
     @ColumnInfo(name = "dayId")
     private int dayId;
 
-    public Meal(MealType type, int dayId) {
+    public Meal(MealType type) {
         setType(type);
-        setDayId(dayId);
     }
 
     // Getter methods

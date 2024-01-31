@@ -9,7 +9,6 @@ import androidx.room.Update;
 import com.example.myfitnessbuddy.models.Day;
 import com.example.myfitnessbuddy.models.Meal;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Dao
@@ -20,14 +19,11 @@ public interface DayDao {
     @Query("SELECT * from day WHERE id = :id LIMIT 1")
     Day findById(int id);
 
-    @Query("SELECT * FROM day WHERE date = :todayDate LIMIT 1")
-    Day getToday(LocalDate todayDate);
-
     @Query("SELECT * FROM meal WHERE dayId = :dayId")
     List<Meal> getMealsForDay(int dayId);
 
     @Insert
-    long insert(Day days);
+    void insert(Day... days);
 
     @Update
     void update(Day day);
