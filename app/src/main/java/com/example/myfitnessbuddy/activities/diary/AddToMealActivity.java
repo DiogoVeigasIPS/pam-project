@@ -13,8 +13,6 @@ import com.example.myfitnessbuddy.R;
 public class AddToMealActivity extends AppCompatActivity {
 
     public static final String TITLE = "TITLE";
-    public static final String MEAL_ID = "MEAL_ID";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,17 +25,15 @@ public class AddToMealActivity extends AppCompatActivity {
 
         if(extras == null) return;
         int stringResource = extras.getInt(TITLE);
-        int mealId = extras.getInt(MEAL_ID);
 
         setActivityTitle(stringResource);
-        setQuickAddNavigation(stringResource, mealId);
+        setQuickAddNavigation(stringResource);
     }
 
-    private void setQuickAddNavigation(int stringResource, int mealId) {
+    private void setQuickAddNavigation(int stringResource) {
         ((Button)findViewById(R.id.bt_quick_addition)).setOnClickListener(v -> {
             Intent intent = new Intent(AddToMealActivity.this, QuickAddActivity.class);
             intent.putExtra(TITLE, stringResource);
-            intent.putExtra(QuickAddActivity.MEAL_ID, mealId);
             startActivity(intent);
         });
     }
