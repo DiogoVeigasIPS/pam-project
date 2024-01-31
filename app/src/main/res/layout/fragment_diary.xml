@@ -44,18 +44,21 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/grouped_spacing"
+        android:layout_marginTop="@dimen/body_spacing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/navigation_bar">
+        app:layout_constraintTop_toBottomOf="@id/navigation_bar"
+        android:elevation="@dimen/grouped_spacing">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/grouped_spacing"
+            android:layout_marginBottom="@dimen/header_vertical_padding"
             android:background="@color/white"
             android:layout_weight="5"
-            android:padding="@dimen/grouped_spacing">
+            android:padding="@dimen/grouped_spacing"
+            android:elevation="@dimen/grouped_spacing"
+            >
 
             <ImageButton
                 android:id="@+id/bt_date_back"
@@ -75,7 +78,7 @@
                 android:gravity="center"
                 android:text="@string/today"
                 android:textColor="@color/black"
-                android:textSize="24sp"
+                android:textSize="@dimen/diary_time"
                 app:layout_constraintStart_toEndOf="@id/bt_date_back"
                 app:layout_constraintEnd_toStartOf="@id/bt_date_forward"
                 app:layout_constraintTop_toTopOf="parent"
@@ -96,10 +99,11 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@color/white"
-            android:layout_marginBottom="@dimen/grouped_spacing"
+            android:layout_marginBottom="@dimen/header_vertical_padding"
             android:layout_weight="8"
             android:paddingHorizontal="@dimen/main_padding"
             android:paddingBottom="@dimen/header_padding"
+            android:elevation="@dimen/grouped_spacing"
             >
 
             <TextView
@@ -108,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/goal_value"
                 android:textColor="@color/black"
-                android:textSize="@dimen/goal_value_size"
+                android:textSize="@dimen/diary_head_number"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -119,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:text="@string/goal"
+                android:textColor="@color/hint_gray"
                 android:textSize="@dimen/body_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/goal_output"
@@ -130,7 +135,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/minus"
-                android:textSize="@dimen/goal_value_size"
+                android:textColor="@color/black"
+                android:textSize="@dimen/card_additional_info"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/food_output"
                 app:layout_constraintStart_toEndOf="@id/goal_output"
@@ -142,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/output_value"
                 android:textColor="@color/black"
-                android:textSize="@dimen/goal_value_size"
+                android:textSize="@dimen/diary_head_number"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/equal"
                 app:layout_constraintStart_toEndOf="@id/minus"
@@ -153,6 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/foods"
+                android:textColor="@color/hint_gray"
                 android:textSize="@dimen/body_size"
                 app:layout_constraintEnd_toEndOf="@id/food_output"
                 app:layout_constraintStart_toStartOf="@id/food_output"
@@ -163,7 +170,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/equal"
-                android:textSize="@dimen/goal_value_size"
+                android:textColor="@color/black"
+                android:textSize="@dimen/card_additional_info"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/leftover_goal_output"
                 app:layout_constraintStart_toEndOf="@id/food_output"
@@ -175,7 +183,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/goal_value"
                 android:textColor="@color/black"
-                android:textSize="@dimen/goal_value_size"
+                android:textSize="@dimen/diary_head_number"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -185,6 +193,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/remaining"
+                android:textColor="@color/hint_gray"
                 android:textSize="@dimen/body_size"
                 app:layout_constraintEnd_toEndOf="@id/leftover_goal_output"
                 app:layout_constraintStart_toStartOf="@id/leftover_goal_output"
@@ -208,15 +217,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:weightSum="6">
+            android:weightSum="6"
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/body_spacing"
+                android:layout_marginBottom="@dimen/spacing_popup"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding">
+                android:paddingHorizontal="@dimen/main_padding"
+                >
 
                 <TextView
                     android:id="@+id/breakfast_label"
@@ -248,10 +259,12 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/grouped_spacing"
+                android:layout_marginBottom="@dimen/header_vertical_padding"
                 android:layout_weight="0.5"
                 android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding">
+                android:paddingHorizontal="@dimen/main_padding"
+                android:elevation="@dimen/grouped_spacing"
+                >
 
                 <Button
                     android:id="@+id/add_breakfast"
@@ -290,10 +303,11 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/body_spacing"
+                android:layout_marginBottom="@dimen/spacing_popup"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding">
+                android:paddingHorizontal="@dimen/main_padding"
+                >
 
                 <TextView
                     android:id="@+id/lunch_label"
@@ -325,10 +339,12 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/grouped_spacing"
+                android:layout_marginBottom="@dimen/header_vertical_padding"
                 android:layout_weight="0.5"
                 android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding">
+                android:paddingHorizontal="@dimen/main_padding"
+                android:elevation="@dimen/grouped_spacing"
+                >
 
                 <Button
                     android:id="@+id/add_lunch"
@@ -366,10 +382,11 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/body_spacing"
+                android:layout_marginBottom="@dimen/spacing_popup"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding">
+                android:paddingHorizontal="@dimen/main_padding"
+                >
 
                 <TextView
                     android:id="@+id/dinner_label"
@@ -401,10 +418,12 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/grouped_spacing"
+                android:layout_marginBottom="@dimen/header_vertical_padding"
                 android:layout_weight="0.5"
                 android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding">
+                android:paddingHorizontal="@dimen/main_padding"
+                android:elevation="@dimen/grouped_spacing"
+                >
 
                 <Button
                     android:id="@+id/add_dinner"
@@ -442,10 +461,11 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/body_spacing"
+                android:layout_marginBottom="@dimen/spacing_popup"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding">
+                android:paddingHorizontal="@dimen/main_padding"
+                >
 
                 <TextView
                     android:id="@+id/snack_label"
@@ -477,10 +497,12 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/grouped_spacing"
+                android:layout_marginBottom="@dimen/header_vertical_padding"
                 android:layout_weight="0.5"
                 android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding">
+                android:paddingHorizontal="@dimen/main_padding"
+                android:elevation="@dimen/grouped_spacing"
+                >
 
                 <Button
                     android:id="@+id/add_snack"

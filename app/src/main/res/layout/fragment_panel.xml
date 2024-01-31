@@ -325,6 +325,14 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
+                        <!-- Guideline for baseline alignment -->
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/baseline_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent="0.65" />
+
                         <LinearLayout
                             android:id="@+id/today_layout"
                             android:layout_width="wrap_content"
@@ -332,8 +340,8 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/last_week_layout"
-                            tools:ignore="NotSibling">
+                            app:layout_constraintTop_toBottomOf="@id/baseline_guideline">
+
 
                             <TextView
                                 android:id="@+id/main_today"
