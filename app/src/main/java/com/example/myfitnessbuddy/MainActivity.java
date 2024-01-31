@@ -6,12 +6,20 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
+import android.util.Log;
 import android.widget.FrameLayout;
 
 
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.main_fragments.Navigation;
+import com.example.myfitnessbuddy.models.Day;
+import com.example.myfitnessbuddy.models.Meal;
+import com.example.myfitnessbuddy.models.enums.MealType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -21,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         // DB
         DatabaseHelper.init(getApplicationContext());
+        checkNewDay();
 
         // Fragments
         FrameLayout fragmentContainer = findViewById(R.id.fragment_container);
@@ -38,13 +47,34 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-//        User user = UserPreferences.readUserPreferences(this);
-//        if(user != null){
-//            Log.d("SHARED_PREFERENCES", user.getActivity().name());
-//            Log.d("SHARED_PREFERENCES", user.getGoal().name());
-//            Log.d("SHARED_PREFERENCES", String.valueOf(user.getAge()));
-//            Log.d("SHARED_PREFERENCES", String.valueOf(user.getHeight()));
-//        }
+    }
+
+    private void checkNewDay() {
+        DatabaseHelper.executeInBackground(() -> {
+            Day day = DatabaseHelper.DayHelper.getToday();
+            if(day != null)
+                return;
+
+            // Get last day's calorieGoal
+            Day lastDay = DatabaseHelper.DayHelper.getYesterday();
+
+            int calories = 0;
+            if(lastDay != null) calories = lastDay.getCalorieGoal();
+
+            Day newDay = new Day(calories);
+
+            // Add new day
+            int insertedDayId = (int) DatabaseHelper.DayHelper.addNewDay(newDay);
+
+            // Initialize meals
+            List<Meal> meals = new ArrayList<>();
+            meals.add(new Meal(MealType.BREAKFAST, insertedDayId));
+            meals.add(new Meal(MealType.LUNCH, insertedDayId));
+            meals.add(new Meal(MealType.DINNER, insertedDayId));
+            meals.add(new Meal(MealType.SNACKS, insertedDayId));
+            DatabaseHelper.MealHelper.addNewMeals(meals);
+
+        });
     }
 
     private void clearSharedPreferences() {

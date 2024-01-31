@@ -44,7 +44,7 @@ public class AddFoodActivity extends AppCompatActivity {
         int id = extras.getInt(FOOD_ID);
         updateTitle("Edit Food");
         DatabaseHelper.executeInBackground(() -> {
-            Food food = DatabaseHelper.getFoodById(id);
+            Food food = DatabaseHelper.FoodHelper.getFoodById(id);
             if(food == null){
                 runOnUiThread(() -> finish());
                 return;
@@ -72,7 +72,7 @@ public class AddFoodActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(Html.fromHtml(message))
                 .setPositiveButton("Yes", (dialog, which) -> {
-                    DatabaseHelper.deleteFood(food);
+                    DatabaseHelper.FoodHelper.deleteFood(food);
                     finish();
                 })
                 .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
@@ -87,7 +87,7 @@ public class AddFoodActivity extends AppCompatActivity {
 
     private void editFood(Food food) {
         updateFoodProperties(food);
-        DatabaseHelper.updateFood(food);
+        DatabaseHelper.FoodHelper.updateFood(food);
         finish();
     }
 
@@ -124,7 +124,7 @@ public class AddFoodActivity extends AppCompatActivity {
         Food food = getFoodFromInputs();
         if(food == null) return;
 
-        DatabaseHelper.addNewFood(food);
+        DatabaseHelper.FoodHelper.addNewFood(food);
         finish();
     }
 
