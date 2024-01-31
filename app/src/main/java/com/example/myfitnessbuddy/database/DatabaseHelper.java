@@ -1,7 +1,6 @@
-package com.example.myfitnessbuddy;
+package com.example.myfitnessbuddy.database;
 
 import android.content.Context;
-import android.os.AsyncTask;
 
 import com.example.myfitnessbuddy.models.Food;
 
