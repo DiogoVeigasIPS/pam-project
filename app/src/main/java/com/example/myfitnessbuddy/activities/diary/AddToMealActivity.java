@@ -9,11 +9,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.myfitnessbuddy.R;
+import com.example.myfitnessbuddy.database.DatabaseHelper;
 
 public class AddToMealActivity extends AppCompatActivity {
 
     public static final String TITLE = "TITLE";
     public static final String MEAL_ID = "MEAL_ID";
+    private int stringResource;
+    private int mealId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +29,28 @@ public class AddToMealActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         if(extras == null) return;
-        int stringResource = extras.getInt(TITLE);
-        int mealId = extras.getInt(MEAL_ID);
+        stringResource = extras.getInt(TITLE);
+        mealId = extras.getInt(MEAL_ID);
 
-        setActivityTitle(stringResource);
-        setQuickAddNavigation(stringResource, mealId);
+        updateMealData();
+        setQuickAddNavigation(stringResource);
     }
 
-    private void setQuickAddNavigation(int stringResource, int mealId) {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateMealData();
+    }
+
+    private void updateMealData() {
+        DatabaseHelper.executeInBackground(() -> {
+            int calories = DatabaseHelper.MealHelper.getCalories(mealId);
+
+            runOnUiThread(() -> setActivityTitle(calories));
+        });
+    }
+
+    private void setQuickAddNavigation(int stringResource) {
         ((Button)findViewById(R.id.bt_quick_addition)).setOnClickListener(v -> {
             Intent intent = new Intent(AddToMealActivity.this, QuickAddActivity.class);
             intent.putExtra(TITLE, stringResource);
@@ -42,8 +59,10 @@ public class AddToMealActivity extends AppCompatActivity {
         });
     }
 
-    private void setActivityTitle(int stringResource) {
+    private void setActivityTitle(int calories) {
+        String newTitle = getString(stringResource) + ": " + calories + " Kcal";
+
         TextView title = findViewById(R.id.title);
-        title.setText(stringResource);
+        title.setText(newTitle);
     }
 }

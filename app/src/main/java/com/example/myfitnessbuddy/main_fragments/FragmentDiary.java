@@ -32,6 +32,7 @@ public class FragmentDiary extends Fragment {
 
     private TextView goalOutput, foodOutput, leftoverGoalOutput,
             breakfastCalories, lunchCalories, dinnerCalories, snackCalories;
+    private int dayId;
 
     public FragmentDiary() {
         // Required empty public constructor
@@ -63,13 +64,43 @@ public class FragmentDiary extends Fragment {
         // Navigation
         setNavigationalButtons();
 
-        // Dynamic values
         setTextViews();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         updateCalories();
     }
 
     private void updateCalories() {
-        // TODO Read values from db and update textviews
+        DatabaseHelper.executeInBackground(() -> {
+            Day today = DatabaseHelper.DayHelper.getToday();
+            dayId = today.getId();
+
+            List<Integer> calories = DatabaseHelper.DayHelper.getCaloriesList(dayId);
+            Log.d("SUMMM", "Size: " + calories.size());
+
+            requireActivity().runOnUiThread(() -> {
+                if(calories.size() < 4) return;
+
+                breakfastCalories.setText(String.valueOf(calories.get(0)));
+                lunchCalories.setText(String.valueOf(calories.get(1)));
+                dinnerCalories.setText(String.valueOf(calories.get(2)));
+                snackCalories.setText(String.valueOf(calories.get(3)));
+
+                int sum = 0;
+                for(Integer calorie : calories){
+                    sum += (int) calorie;
+                }
+
+                Log.d("SUMMM", "updateCalories: " + sum);
+
+                goalOutput.setText(String.valueOf(today.getCalorieGoal()));
+                foodOutput.setText(String.valueOf(sum));
+                leftoverGoalOutput.setText(String.valueOf(today.getCalorieGoal() - sum));
+            });
+        });
     }
 
     private void setTextViews() {
@@ -98,11 +129,9 @@ public class FragmentDiary extends Fragment {
         addSnack.setOnClickListener(v -> addFoodToMeal(R.string.snack));
     }
 
-    // Send meal or something (like an id)
     private void addFoodToMeal(int title){
         DatabaseHelper.executeInBackground(() -> {
-            Day today = DatabaseHelper.DayHelper.getToday();
-            List<Meal> meals = DatabaseHelper.DayHelper.getMealsForDay(today.getId());
+            List<Meal> meals = DatabaseHelper.DayHelper.getMealsForDay(dayId);
             Meal selectedMeal;
 
             if(title == R.string.breakfast){
