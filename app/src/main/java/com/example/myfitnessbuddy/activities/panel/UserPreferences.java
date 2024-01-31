@@ -1,14 +1,11 @@
 package com.example.myfitnessbuddy.activities.panel;
 
-import static android.provider.Settings.System.getString;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
-import com.example.myfitnessbuddy.models.Activity;
-import com.example.myfitnessbuddy.models.Goal;
+import com.example.myfitnessbuddy.models.enums.Activity;
+import com.example.myfitnessbuddy.models.enums.Goal;
 import com.example.myfitnessbuddy.models.User;
 
 import java.text.ParseException;

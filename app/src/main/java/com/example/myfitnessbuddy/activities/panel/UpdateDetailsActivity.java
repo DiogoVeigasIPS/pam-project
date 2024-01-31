@@ -1,7 +1,6 @@
 package com.example.myfitnessbuddy.activities.panel;
 
 import android.app.DatePickerDialog;
-import android.nfc.FormatException;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,8 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myfitnessbuddy.R;
-import com.example.myfitnessbuddy.models.Activity;
-import com.example.myfitnessbuddy.models.Goal;
+import com.example.myfitnessbuddy.models.enums.Activity;
+import com.example.myfitnessbuddy.models.enums.Goal;
 import com.example.myfitnessbuddy.models.User;
 
 import java.text.ParseException;
@@ -28,7 +27,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
-import java.util.Locale;
 
 public class UpdateDetailsActivity extends AppCompatActivity {
     private EditText birthDateInput, heightInput, weightInput;
@@ -70,8 +68,13 @@ public class UpdateDetailsActivity extends AppCompatActivity {
         birthDateInput.setText(UserPreferences.convertLocalDateToString(user.getBirthDate()));
         heightInput.setText(String.valueOf(user.getHeight()));
 
-        objectiveSpinner.setSelection(((ArrayAdapter<Goal>) objectiveSpinner.getAdapter()).getPosition(user.getGoal()));
-        activitySpinner.setSelection(((ArrayAdapter<Activity>) activitySpinner.getAdapter()).getPosition(user.getActivity()));
+        @SuppressWarnings("unchecked")
+        ArrayAdapter<Goal> goalAdapter = (ArrayAdapter<Goal>) objectiveSpinner.getAdapter();
+        @SuppressWarnings("unchecked")
+        ArrayAdapter<Activity> activityAdapter = (ArrayAdapter<Activity>) activitySpinner.getAdapter();
+
+        objectiveSpinner.setSelection((goalAdapter).getPosition(user.getGoal()));
+        activitySpinner.setSelection((activityAdapter).getPosition(user.getActivity()));
     }
 
     private boolean dateIsValid(String date) {

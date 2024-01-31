@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.widget.FrameLayout;
 
 
+import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.main_fragments.Navigation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

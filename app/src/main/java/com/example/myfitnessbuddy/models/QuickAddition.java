@@ -1,18 +1,30 @@
 package com.example.myfitnessbuddy.models;
 
+import static androidx.room.ForeignKey.CASCADE;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "quickAddition")
+@Entity(tableName = "quickAddition",
+        foreignKeys = @ForeignKey(
+                entity = Meal.class,
+                parentColumns = "id",
+                childColumns = "mealId",
+                onDelete = CASCADE
+        ), indices = {@Index("mealId")}
+)
 public class QuickAddition{
-
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "name")
     private String name;
     @ColumnInfo(name = "calories")
     private int calories;
+    @ColumnInfo(name = "mealId")
+    private int mealId;
 
     public QuickAddition(String name, int calories) {
         setName(name);
@@ -30,6 +42,10 @@ public class QuickAddition{
 
     public int getCalories() {
         return calories;
+    }
+
+    public int getMealId() {
+        return mealId;
     }
 
     // Setter methods
@@ -57,5 +73,9 @@ public class QuickAddition{
 
     public String detailsLabel(){
         return getCaloriesLabel();
+    }
+
+    public void setMealId(int mealId) {
+        this.mealId = mealId;
     }
 }

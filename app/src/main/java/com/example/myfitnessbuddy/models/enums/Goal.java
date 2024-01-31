@@ -1,4 +1,4 @@
-package com.example.myfitnessbuddy.models;
+package com.example.myfitnessbuddy.models.enums;
 
 
 public enum Goal {
