@@ -1,8 +1,5 @@
 package com.example.myfitnessbuddy.models;
 
-import com.example.myfitnessbuddy.models.enums.Activity;
-import com.example.myfitnessbuddy.models.enums.Goal;
-
 import java.time.LocalDate;
 
 public class User {

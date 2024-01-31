@@ -20,7 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.myfitnessbuddy.database.DatabaseHelper;
+import com.example.myfitnessbuddy.DatabaseHelper;
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
 import com.example.myfitnessbuddy.adapters.FoodAdapter;
