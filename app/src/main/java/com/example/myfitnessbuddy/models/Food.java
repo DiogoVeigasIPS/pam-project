@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 
 import java.text.DecimalFormat;
 
-@Entity
+@Entity(tableName = "food")
 public class Food{
     @PrimaryKey(autoGenerate = true)
     private int id;

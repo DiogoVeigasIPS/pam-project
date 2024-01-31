@@ -4,8 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
-public class QuickAddition implements Consumable{
+@Entity(tableName = "quickAddition")
+public class QuickAddition{
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -13,13 +13,10 @@ public class QuickAddition implements Consumable{
     private String name;
     @ColumnInfo(name = "calories")
     private int calories;
-    @ColumnInfo(name = "type")
-    private String type;
 
     public QuickAddition(String name, int calories) {
         setName(name);
         setCalories(calories);
-        setType(getClass().getSimpleName());
     }
 
     // Getter methods
@@ -31,7 +28,6 @@ public class QuickAddition implements Consumable{
         return name;
     }
 
-    @Override
     public int getCalories() {
         return calories;
     }
@@ -61,18 +57,5 @@ public class QuickAddition implements Consumable{
 
     public String detailsLabel(){
         return getCaloriesLabel();
-    }
-
-    @Override
-    public void setType(String type) {
-        if (type == null || type.trim().isEmpty()) {
-            throw new IllegalArgumentException("Type cannot be null or empty");
-        }
-        this.type = type;
-    }
-
-    @Override
-    public String getType() {
-        return type;
     }
 }
