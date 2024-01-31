@@ -44,11 +44,6 @@ public class MainActivity extends AppCompatActivity {
         //clearSharedPreferences();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
     private void checkNewDay() {
         DatabaseHelper.executeInBackground(() -> {
             Day day = DatabaseHelper.DayHelper.getToday();
