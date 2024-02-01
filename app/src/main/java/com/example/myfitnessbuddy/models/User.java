@@ -76,5 +76,45 @@ public class User {
     public int getAge(){
         return LocalDate.now().getYear() - birthDate.getYear();
     }
+
+    public int calculateCalorieGoal(int weight) {
+        if (birthDate == null || height == 0 || weight == 0 || goal == Goal.NOT_DEFINED || activity == Activity.NOT_DEFINED) {
+            throw new IllegalStateException("User attributes are not fully defined");
+        }
+
+        // Calculate age
+        int age = getAge();
+
+        // Calculate BMR (Basal Metabolic Rate) using Mifflin-St Jeor Equation
+        double bmr;
+        if (goal == Goal.LOSE) {
+            bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+        } else if (goal == Goal.GAIN) {
+            bmr = 10 * weight + 6.25 * height - 5 * age + 161;
+        } else { // Goal.MAINTAIN
+            bmr = 10 * weight + 6.25 * height - 5 * age;
+        }
+
+        // Adjust BMR based on activity level
+        double calorieGoal;
+        switch (activity) {
+            case NOT_ACTIVE:
+                calorieGoal = bmr * 1.2;
+                break;
+            case SLIGHTLY_ACTIVE:
+                calorieGoal = bmr * 1.375;
+                break;
+            case ACTIVE:
+                calorieGoal = bmr * 1.55;
+                break;
+            case VERY_ACTIVE:
+                calorieGoal = bmr * 1.725;
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + activity);
+        }
+
+        return (int) calorieGoal;
+    }
 }
 

@@ -130,5 +130,9 @@
     <string name="update">Update</string>
     <string name="cancel">Cancel</string>
     <string name="weight_updated">Weight updated successfully</string>
+    <string name="update_your_calorie_goal">Update your calorie goal</string>
+    <string name="calculated_calorie_goal">Calculated calorie goal</string>
+    <string name="calorie_goal_updated">Calorie goal updated successfully</string>
+    <string name="user_preferences_or_calorie">To perform a calorie goal calculation you must add your details!</string>
 
 </resources>
