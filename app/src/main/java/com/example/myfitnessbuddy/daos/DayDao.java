@@ -33,6 +33,12 @@ public interface DayDao {
             "GROUP BY m.id")
     List<Integer> getCaloriesList(int dayId);
 
+    @Query("SELECT COALESCE(SUM(qa.calories), 0) AS totalCalories " +
+            "FROM meal m " +
+            "LEFT JOIN quickAddition qa ON qa.mealId = m.id " +
+            "WHERE m.dayId = :dayId")
+    int getTotalCalories(int dayId);
+
     @Query("SELECT weight FROM day WHERE weight <> 0 ORDER BY date DESC LIMIT 1")
     Integer getLastWeight();
 

@@ -79,7 +79,6 @@ public class FragmentDiary extends Fragment {
             dayId = today.getId();
 
             List<Integer> calories = DatabaseHelper.DayHelper.getCaloriesList(dayId);
-            Log.d("SUMMM", "Size: " + calories.size());
 
             requireActivity().runOnUiThread(() -> {
                 if(calories.size() < 4) return;

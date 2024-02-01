@@ -45,326 +45,338 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/main_calorie_container"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="7dp"
+                android:layout_marginHorizontal="5dp"
                 android:layout_marginTop="@dimen/header_padding"
-                android:background="@drawable/background_gray_shadow"
-                android:padding="@dimen/header_padding"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/main_day">
+                >
 
-                <TextView
-                    android:id="@+id/label_calorie"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/main_calorie_container"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/calorie"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/body_size"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:padding="@dimen/header_padding"
+                    app:layout_constraintTop_toBottomOf="@id/main_day">
 
-                <ImageButton
-                    android:id="@+id/mbt_calorie_add"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:backgroundTint="@color/white"
-                    android:contentDescription="@string/add_calorie_goal"
-                    android:src="@drawable/add_black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/label_calorie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/calorie"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/mbt_calorie_add"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:backgroundTint="@color/white"
+                        android:contentDescription="@string/add_calorie_goal"
+                        android:src="@drawable/add_black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
-                <com.google.android.material.progressindicator.CircularProgressIndicator
-                    android:id="@+id/calorie_progress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/header_padding"
-                    android:max="100"
-                    android:progress="0"
-                    app:indicatorColor="@color/menu_blue"
-                    app:indicatorSize="100dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/label_calorie"
-                    app:trackColor="@android:color/darker_gray" />
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/calorie_progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/header_padding"
+                        android:max="100"
+                        android:progress="0"
+                        app:indicatorColor="@color/menu_blue"
+                        app:indicatorSize="100dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/label_calorie"
+                        app:trackColor="@color/light_gray"
+                        app:trackThickness="10dp"/>
 
-                <TextView
-                    android:id="@+id/main_remaining"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:text="@string/goal_value"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/title_size"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@id/calorie_progress"
-                    app:layout_constraintStart_toStartOf="@id/calorie_progress"
-                    app:layout_constraintTop_toBottomOf="@id/calorie_progress" />
+                    <TextView
+                        android:id="@+id/main_remaining"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/minus"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/title_size"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@id/calorie_progress"
+                        app:layout_constraintStart_toStartOf="@id/calorie_progress"
+                        app:layout_constraintTop_toBottomOf="@id/calorie_progress" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/remaining"
-                    android:textSize="@dimen/body_size"
-                    app:layout_constraintEnd_toEndOf="@id/main_remaining"
-                    app:layout_constraintStart_toStartOf="@id/main_remaining"
-                    app:layout_constraintTop_toBottomOf="@id/main_remaining" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/remaining"
+                        android:textSize="@dimen/body_size"
+                        app:layout_constraintEnd_toEndOf="@id/main_remaining"
+                        app:layout_constraintStart_toStartOf="@id/main_remaining"
+                        app:layout_constraintTop_toBottomOf="@id/main_remaining" />
 
-                <TextView
-                    android:id="@+id/goal_base_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/header_padding"
-                    android:text="@string/goal_base"
-                    android:textSize="@dimen/body_size"
-                    app:layout_constraintEnd_toEndOf="@id/mbt_calorie_add"
-                    app:layout_constraintTop_toBottomOf="@id/mbt_calorie_add" />
+                    <TextView
+                        android:id="@+id/goal_base_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/header_padding"
+                        android:text="@string/goal_base"
+                        android:textSize="@dimen/body_size"
+                        app:layout_constraintEnd_toEndOf="@id/mbt_calorie_add"
+                        app:layout_constraintTop_toBottomOf="@id/mbt_calorie_add" />
 
-                <TextView
-                    android:id="@+id/main_goal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="start"
-                    android:text="@string/goal_value"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/body_size"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/goal_base_label"
-                    app:layout_constraintTop_toBottomOf="@id/goal_base_label" />
+                    <TextView
+                        android:id="@+id/main_goal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="start"
+                        android:text="@string/minus"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/goal_base_label"
+                        app:layout_constraintTop_toBottomOf="@id/goal_base_label" />
 
-                <TextView
-                    android:id="@+id/main_food_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/header_padding"
-                    android:text="@string/foods"
-                    android:textSize="@dimen/body_size"
-                    app:layout_constraintStart_toStartOf="@+id/goal_base_label"
-                    app:layout_constraintTop_toBottomOf="@id/main_goal" />
+                    <TextView
+                        android:id="@+id/main_food_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/header_padding"
+                        android:text="@string/foods"
+                        android:textSize="@dimen/body_size"
+                        app:layout_constraintStart_toStartOf="@+id/goal_base_label"
+                        app:layout_constraintTop_toBottomOf="@id/main_goal" />
 
-                <TextView
-                    android:id="@+id/main_foods"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="start"
-                    android:text="@string/foods_goal"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/body_size"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/main_food_label"
-                    app:layout_constraintTop_toBottomOf="@id/main_food_label" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/main_foods"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="start"
+                        android:text="@string/minus"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/main_food_label"
+                        app:layout_constraintTop_toBottomOf="@id/main_food_label" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/main_weight_container"
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/main_padding"
                 android:layout_marginBottom="@dimen/main_padding"
-                android:background="@drawable/background_gray_shadow"
-                android:padding="@dimen/header_padding"
-                app:layout_constraintBottom_toTopOf="@id/bt_personal_details"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/main_calorie_container">
+                app:cardCornerRadius="10dp"
+                app:cardElevation="7dp"
+                android:layout_marginHorizontal="5dp">
 
-                <TextView
-                    android:id="@+id/main_weight_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/weight"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/body_size"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/mbt_weight_add"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:backgroundTint="@color/white"
-                    android:contentDescription="@string/set_weight"
-                    android:src="@drawable/add_black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/main_weight_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/main_weight_label">
+                    android:padding="@dimen/header_padding">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:paddingVertical="@dimen/main_padding">
+                    <TextView
+                        android:id="@+id/main_weight_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/weight"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/label_month"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/main_padding"
-                            android:gravity="center"
-                            android:text="@string/last_month"
-                            android:textSize="@dimen/label_main_weight"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                    <ImageButton
+                        android:id="@+id/mbt_weight_add"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:backgroundTint="@color/white"
+                        android:contentDescription="@string/set_weight"
+                        android:src="@drawable/add_black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                        <LinearLayout
-                            android:id="@+id/last_month_layout"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/label_month">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/main_weight_label">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:paddingVertical="@dimen/main_padding">
 
                             <TextView
-                                android:id="@+id/last_month"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/label_month"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/temp_month"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/title_size"
+                                android:layout_marginTop="@dimen/main_padding"
+                                android:gravity="center"
+                                android:text="@string/last_month"
+                                android:textSize="@dimen/label_main_weight"
                                 android:textStyle="bold"
-                                android:layout_marginEnd="@dimen/nav_arrow_margin"/>
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
-                            <TextView
+                            <LinearLayout
+                                android:id="@+id/last_month_layout"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/label_kg"
-                                android:textSize="@dimen/title_size" />
-                        </LinearLayout>
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/label_month">
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                <TextView
+                                    android:id="@+id/last_month"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="@string/temp_month"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/title_size"
+                                    android:textStyle="bold"
+                                    android:layout_marginEnd="@dimen/nav_arrow_margin"/>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:paddingVertical="@dimen/main_padding">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="@string/label_kg"
+                                    android:textSize="@dimen/title_size" />
+                            </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/label_last_week"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/main_padding"
-                            android:gravity="center"
-                            android:text="@string/last_week"
-                            android:textSize="@dimen/label_main_weight"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <LinearLayout
-                            android:id="@+id/last_week_layout"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/label_last_week">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingVertical="@dimen/main_padding">
 
                             <TextView
-                                android:id="@+id/last_week"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/label_last_week"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/temp_week"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/title_size"
+                                android:layout_marginTop="@dimen/main_padding"
+                                android:gravity="center"
+                                android:text="@string/last_week"
+                                android:textSize="@dimen/label_main_weight"
                                 android:textStyle="bold"
-                                android:layout_marginEnd="@dimen/nav_arrow_margin" />
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
-                            <TextView
+                            <LinearLayout
+                                android:id="@+id/last_week_layout"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/label_kg"
-                                android:textSize="@dimen/title_size" />
-                        </LinearLayout>
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/label_last_week">
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                <TextView
+                                    android:id="@+id/last_week"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="@string/temp_week"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/title_size"
+                                    android:textStyle="bold"
+                                    android:layout_marginEnd="@dimen/nav_arrow_margin" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:paddingVertical="@dimen/main_padding">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="@string/label_kg"
+                                    android:textSize="@dimen/title_size" />
+                            </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/label_today"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/main_padding"
-                            android:gravity="center"
-                            android:text="@string/today"
-                            android:textSize="@dimen/label_main_weight"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <!-- Guideline for baseline alignment -->
-                        <androidx.constraintlayout.widget.Guideline
-                            android:id="@+id/baseline_guideline"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            app:layout_constraintGuide_percent="0.65" />
-
-                        <LinearLayout
-                            android:id="@+id/today_layout"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/baseline_guideline">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingVertical="@dimen/main_padding">
 
                             <TextView
-                                android:id="@+id/main_today"
+                                android:id="@+id/label_today"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_padding"
+                                android:gravity="center"
+                                android:text="@string/today"
+                                android:textSize="@dimen/label_main_weight"
+                                android:textStyle="bold"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <!-- Guideline for baseline alignment -->
+                            <androidx.constraintlayout.widget.Guideline
+                                android:id="@+id/baseline_guideline"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginEnd="@dimen/nav_arrow_margin"
-                                android:text="@string/temp_today"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/title_size"
-                                android:textStyle="bold" />
+                                android:orientation="horizontal"
+                                app:layout_constraintGuide_percent="0.65" />
 
-                            <TextView
+                            <LinearLayout
+                                android:id="@+id/today_layout"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/label_kg"
-                                android:textSize="@dimen/title_size" />
-                        </LinearLayout>
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/baseline_guideline">
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                <TextView
+                                    android:id="@+id/today"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginEnd="@dimen/nav_arrow_margin"
+                                    android:text="@string/temp_today"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/title_size"
+                                    android:textStyle="bold" />
 
-                </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="@string/label_kg"
+                                    android:textSize="@dimen/title_size" />
+                            </LinearLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
 

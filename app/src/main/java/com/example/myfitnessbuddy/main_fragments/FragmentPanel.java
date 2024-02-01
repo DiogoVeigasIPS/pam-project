@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,9 @@ import com.example.myfitnessbuddy.activities.panel.UserPreferences;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.models.Day;
 import com.example.myfitnessbuddy.models.User;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +36,10 @@ import com.example.myfitnessbuddy.models.User;
  * create an instance of this fragment.
  */
 public class FragmentPanel extends Fragment {
+
+    TextView mainRemaining, mainGoal, mainFoods,
+            lastMonth, lastWeek, today;
+    CircularProgressIndicator calorieProgress;
 
     public FragmentPanel() {
         // Required empty public constructor
@@ -79,10 +87,38 @@ public class FragmentPanel extends Fragment {
             startActivity(caloryIntent);
         });
 
+        setViews();
+
+        updateUI();
     }
 
-    private static void updateUI(){
+    private void setViews() {
+        calorieProgress = getView().findViewById(R.id.calorie_progress);
+        mainRemaining = getView().findViewById(R.id.main_remaining);
+        mainGoal = getView().findViewById(R.id.main_goal);
+        mainFoods = getView().findViewById(R.id.main_foods);
+        lastMonth = getView().findViewById(R.id.last_month);
+        lastWeek = getView().findViewById(R.id.last_week);
+        today = getView().findViewById(R.id.today);
+    }
 
+    private void updateUI(){
+        DatabaseHelper.executeInBackground(() -> {
+            Day today = DatabaseHelper.DayHelper.getToday();
+            int dayId = today.getId();
+
+            int totalCalories = DatabaseHelper.DayHelper.getTotalCalories(dayId);
+            int calorieGoal = today.getCalorieGoal();
+            int caloriesLeft = calorieGoal - totalCalories;
+
+            requireActivity().runOnUiThread(() -> {
+                mainGoal.setText(String.valueOf(calorieGoal));
+                mainFoods.setText(String.valueOf(totalCalories));
+                mainRemaining.setText(String.valueOf(caloriesLeft));
+                double percentage = ((double) totalCalories / calorieGoal) * 100;
+                calorieProgress.setProgress((int) percentage, true);
+            });
+        });
     }
 
     public static class WeightDialogFragment extends DialogFragment {
@@ -123,7 +159,7 @@ public class FragmentPanel extends Fragment {
                             requireActivity().runOnUiThread(() -> {
                                 if(isAdded()){
                                     Toast.makeText(getActivity(), R.string.weight_updated, Toast.LENGTH_SHORT).show();
-                                    updateUI();
+                                    ((FragmentPanel) getParentFragment()).updateUI();
                                     dialog.dismiss();
                                 }
                             });
@@ -176,7 +212,7 @@ public class FragmentPanel extends Fragment {
                                     // Check if the fragment is still attached to the activity
                                     if (isAdded()) {
                                         Toast.makeText(getActivity(), R.string.calorie_goal_updated, Toast.LENGTH_SHORT).show();
-                                        updateUI();
+                                        ((FragmentPanel) getParentFragment()).updateUI();
                                         dialog.dismiss();
                                     }
                                 });
@@ -206,7 +242,7 @@ public class FragmentPanel extends Fragment {
                                 // Check if the fragment is still attached to the activity
                                 if (isAdded()) {
                                     Toast.makeText(getActivity(), R.string.calorie_goal_updated, Toast.LENGTH_SHORT).show();
-                                    updateUI();
+                                    ((FragmentPanel) getParentFragment()).updateUI();
                                     dialog.dismiss();
                                 }
                             });

@@ -82,12 +82,15 @@ public class DatabaseHelper {
             return appDatabase.dayDao().getCaloriesList(dayId);
         }
 
+        public static int getTotalCalories(int dayId) {
+            return appDatabase.dayDao().getTotalCalories(dayId);
+        }
+
         public static int getLastWeight(){
             Integer weight = appDatabase.dayDao().getLastWeight();
 
             return weight != null ? (int) weight : 0;
         }
-
         public static long addNewDay(Day day) {
             long insertedId = appDatabase.dayDao().insert(day);
             return insertedId;
