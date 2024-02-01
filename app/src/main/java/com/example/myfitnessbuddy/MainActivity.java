@@ -1,14 +1,11 @@
 package com.example.myfitnessbuddy;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-
-import android.util.Log;
 import android.widget.FrameLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.main_fragments.Navigation;
@@ -17,11 +14,11 @@ import com.example.myfitnessbuddy.models.Meal;
 import com.example.myfitnessbuddy.models.enums.MealType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
             meals.add(new Meal(MealType.DINNER, insertedDayId));
             meals.add(new Meal(MealType.SNACKS, insertedDayId));
             DatabaseHelper.MealHelper.addNewMeals(meals);
-
         });
     }
 
@@ -80,6 +76,6 @@ public class MainActivity extends AppCompatActivity {
         editor.clear();
 
         // Apply the changes synchronously
-        editor.commit();
+        editor.apply();
     }
 }

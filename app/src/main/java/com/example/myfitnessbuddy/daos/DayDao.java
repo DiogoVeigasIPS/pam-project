@@ -33,6 +33,8 @@ public interface DayDao {
             "GROUP BY m.id")
     List<Integer> getCaloriesList(int dayId);
 
+    @Query("SELECT weight FROM day WHERE weight <> 0 ORDER BY date DESC LIMIT 1")
+    Integer getLastWeight();
 
     @Insert
     long insert(Day days);

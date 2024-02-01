@@ -124,5 +124,11 @@
     <string name="hot_chicken_wings">Hot Chicken Wings</string>
     <string name="_957">957</string>
     <string name="quick">Quick</string>
+    <string name="invalid_weight_format">Invalid weight format!</string>
+    <string name="update_your_weight">Update your weight</string>
+    <string name="weight_in_kg">Weight in kg</string>
+    <string name="update">Update</string>
+    <string name="cancel">Cancel</string>
+    <string name="weight_updated">Weight updated successfully</string>
 
 </resources>
