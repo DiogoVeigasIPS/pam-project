@@ -11,7 +11,7 @@ import com.example.myfitnessbuddy.database.Converters;
 
 import java.time.LocalDate;
 
-@Entity(tableName = "day")
+@Entity(tableName = "day", indices = {@Index("date")})
 @TypeConverters(Converters.class)
 public class Day {
     @PrimaryKey(autoGenerate = true)

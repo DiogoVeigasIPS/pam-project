@@ -39,6 +39,9 @@ public interface DayDao {
             "WHERE m.dayId = :dayId")
     int getTotalCalories(int dayId);
 
+    @Query("SELECT AVG(CASE WHEN weight <> 0 THEN weight ELSE NULL END) FROM day ORDER BY date DESC LIMIT 30")
+    int getLastMonthAverageWeight();
+
     @Query("SELECT weight FROM day WHERE weight <> 0 ORDER BY date DESC LIMIT 1")
     Integer getLastWeight();
 

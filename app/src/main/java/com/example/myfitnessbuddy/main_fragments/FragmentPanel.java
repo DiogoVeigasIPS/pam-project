@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
@@ -26,6 +27,7 @@ import com.example.myfitnessbuddy.activities.panel.UserPreferences;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.models.Day;
 import com.example.myfitnessbuddy.models.User;
+import com.example.myfitnessbuddy.models.enums.Goal;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import java.util.List;
@@ -38,7 +40,7 @@ import java.util.List;
 public class FragmentPanel extends Fragment {
 
     TextView mainRemaining, mainGoal, mainFoods,
-            lastMonth, lastWeek, today;
+            lastMonthWeight, todayWeight;
     CircularProgressIndicator calorieProgress;
 
     public FragmentPanel() {
@@ -88,7 +90,11 @@ public class FragmentPanel extends Fragment {
         });
 
         setViews();
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
         updateUI();
     }
 
@@ -97,9 +103,8 @@ public class FragmentPanel extends Fragment {
         mainRemaining = getView().findViewById(R.id.main_remaining);
         mainGoal = getView().findViewById(R.id.main_goal);
         mainFoods = getView().findViewById(R.id.main_foods);
-        lastMonth = getView().findViewById(R.id.last_month);
-        lastWeek = getView().findViewById(R.id.last_week);
-        today = getView().findViewById(R.id.today);
+        lastMonthWeight = getView().findViewById(R.id.last_month_weight);
+        todayWeight = getView().findViewById(R.id.today_weight);
     }
 
     private void updateUI(){
@@ -111,14 +116,38 @@ public class FragmentPanel extends Fragment {
             int calorieGoal = today.getCalorieGoal();
             int caloriesLeft = calorieGoal - totalCalories;
 
+            int lastMonthAverage = DatabaseHelper.DayHelper.getLastMonthAverageCalories();
+            int lastWeight = today.getWeight();
+
+            User user = UserPreferences.readUserPreferences(getActivity());
+            Goal goal = user.getGoal();
+
             requireActivity().runOnUiThread(() -> {
                 mainGoal.setText(String.valueOf(calorieGoal));
                 mainFoods.setText(String.valueOf(totalCalories));
                 mainRemaining.setText(String.valueOf(caloriesLeft));
                 double percentage = ((double) totalCalories / calorieGoal) * 100;
+
                 calorieProgress.setProgress((int) percentage, true);
+
+                lastMonthWeight.setText(String.valueOf(lastMonthAverage));
+                todayWeight.setText(String.valueOf(lastWeight));
+
+                int colorResourceId;
+
+                if ((goal == Goal.GAIN && lastMonthAverage < lastWeight) || (goal == Goal.LOSE && lastMonthAverage > lastWeight)) {
+                    colorResourceId = R.color.success;
+                } else {
+                    colorResourceId = R.color.danger;
+                }
+
+                changeWeightTextColor(colorResourceId);
             });
         });
+    }
+
+    private void changeWeightTextColor(int color){
+        todayWeight.setTextColor(ContextCompat.getColor(getActivity(), color));
     }
 
     public static class WeightDialogFragment extends DialogFragment {

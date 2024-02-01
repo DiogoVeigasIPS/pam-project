@@ -164,6 +164,7 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/body_size"
                         android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/main_goal"
                         app:layout_constraintStart_toStartOf="@id/main_food_label"
                         app:layout_constraintTop_toBottomOf="@id/main_food_label" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -245,65 +246,15 @@
                                 app:layout_constraintTop_toBottomOf="@+id/label_month">
 
                                 <TextView
-                                    android:id="@+id/last_month"
+                                    android:id="@+id/last_month_weight"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:text="@string/temp_month"
+                                    android:text="@string/minus"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/title_size"
                                     android:textStyle="bold"
                                     android:layout_marginEnd="@dimen/nav_arrow_margin"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:text="@string/label_kg"
-                                    android:textSize="@dimen/title_size" />
-                            </LinearLayout>
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:paddingVertical="@dimen/main_padding">
-
-                            <TextView
-                                android:id="@+id/label_last_week"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/main_padding"
-                                android:gravity="center"
-                                android:text="@string/last_week"
-                                android:textSize="@dimen/label_main_weight"
-                                android:textStyle="bold"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <LinearLayout
-                                android:id="@+id/last_week_layout"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/label_last_week">
-
-                                <TextView
-                                    android:id="@+id/last_week"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:text="@string/temp_week"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/title_size"
-                                    android:textStyle="bold"
-                                    android:layout_marginEnd="@dimen/nav_arrow_margin" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -353,12 +304,12 @@
                                 app:layout_constraintTop_toBottomOf="@id/baseline_guideline">
 
                                 <TextView
-                                    android:id="@+id/today"
+                                    android:id="@+id/today_weight"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_marginEnd="@dimen/nav_arrow_margin"
-                                    android:text="@string/temp_today"
+                                    android:text="@string/minus"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/title_size"
                                     android:textStyle="bold" />

@@ -1,6 +1,7 @@
 package com.example.myfitnessbuddy.database;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.myfitnessbuddy.daos.DayDao;
 import com.example.myfitnessbuddy.daos.MealDao;
@@ -84,6 +85,10 @@ public class DatabaseHelper {
 
         public static int getTotalCalories(int dayId) {
             return appDatabase.dayDao().getTotalCalories(dayId);
+        }
+
+        public static int getLastMonthAverageCalories(){
+            return appDatabase.dayDao().getLastMonthAverageWeight();
         }
 
         public static int getLastWeight(){
