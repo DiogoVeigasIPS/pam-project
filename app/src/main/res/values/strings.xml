@@ -28,7 +28,7 @@
     <!-- Buttons -->
     <string name="bt_submit">Submit</string>
     <string name="bt_details_submit">Update Personal Details</string>
-    <string name="bt_editDelete">...</string>
+    <string name="bt_editDelete">…</string>
 
     <!-- Label for button description -->
     <string name="back_arrow">back arrow</string>
@@ -134,5 +134,17 @@
     <string name="calculated_calorie_goal">Calculated calorie goal</string>
     <string name="calorie_goal_updated">Calorie goal updated successfully</string>
     <string name="user_preferences_or_calorie">To perform a calorie goal calculation you must add your details!</string>
+    <string name="name_input">Name*:</string>
+    <string name="description_input">Description:</string>
+    <string name="portion_input">Portion*:</string>
+    <string name="unit_input">Unit*:</string>
+    <string name="calories_input">Calories*:</string>
+    <string name="icon_input">Icon*:</string>
+    <string name="birthdate_input">Birthdate*:</string>
+    <string name="height_input">Height*:</string>
+    <string name="weight_input">Weight*:</string>
+    <string name="objective_input">Objective*:</string>
+    <string name="activity_input">Activity*:</string>
+    <string name="quick_breakfast">Quick Breakfast</string>
 
 </resources>

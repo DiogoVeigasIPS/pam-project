@@ -33,7 +33,7 @@ import java.util.Date;
 public class UpdateDetailsActivity extends AppCompatActivity {
     private EditText birthDateInput, heightInput, weightInput;
     private Spinner objectiveSpinner, activitySpinner;
-    private SimpleDateFormat dateFormat = UserPreferences.getDateFormat();
+    private final SimpleDateFormat dateFormat = UserPreferences.getDateFormat();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
 
         getUserDetails();
 
-        ((ImageButton) findViewById(R.id.bt_submit)).setOnClickListener(v -> updateUserPreferences());
+        findViewById(R.id.bt_submit).setOnClickListener(v -> updateUserPreferences());
     }
 
     private void getUserDetails() {
@@ -78,14 +78,12 @@ public class UpdateDetailsActivity extends AppCompatActivity {
         DatabaseHelper.executeInBackground(() -> {
             int weight = DatabaseHelper.DayHelper.getLastWeight();
 
-            runOnUiThread(() -> {
-                weightInput.setText(String.valueOf(weight));
-            });
+            runOnUiThread(() -> weightInput.setText(String.valueOf(weight)));
         });
     }
 
     private boolean dateIsValid(String date) {
-        if (date.equals("")) return false;
+        if (date.trim().equals("")) return false;
 
         try {
             Date parsedDate = dateFormat.parse(date);
@@ -104,7 +102,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
         String heightStr = heightInput.getText().toString();
         String weightStr = weightInput.getText().toString();
 
-        if (weightStr.equals("") || heightStr.equals("") || selectedGoal == Goal.NOT_DEFINED || selectedActivity == Activity.NOT_DEFINED) {
+        if (weightStr.trim().equals("") || heightStr.trim().equals("") || selectedGoal == Goal.NOT_DEFINED || selectedActivity == Activity.NOT_DEFINED) {
             Toast.makeText(UpdateDetailsActivity.this, R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
             return;
         }
@@ -175,20 +173,16 @@ public class UpdateDetailsActivity extends AppCompatActivity {
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 UpdateDetailsActivity.this,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        LocalDate selectedDate = LocalDate.of(year, month + 1, dayOfMonth);
+                (view, year1, month1, dayOfMonth) -> {
+                    LocalDate selectedDate = LocalDate.of(year1, month1 + 1, dayOfMonth);
 
-                        try {
-                            String formattedDate = UserPreferences.convertLocalDateToString(selectedDate);
-                            birthDateInput.setText(formattedDate);
-                        } catch (Exception e) {
-                            Toast.makeText(UpdateDetailsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-
+                    try {
+                        String formattedDate = UserPreferences.convertLocalDateToString(selectedDate);
+                        birthDateInput.setText(formattedDate);
+                    } catch (Exception e) {
+                        Toast.makeText(UpdateDetailsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
                     }
+
                 },
                 year, month, day
         );
@@ -205,7 +199,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 if (view instanceof TextView) {
-                    ((TextView) view).setText(((Goal) getItem(position)).getText());
+                    ((TextView) view).setText(getItem(position).getText());
                 }
                 return view;
             }
@@ -214,7 +208,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 if (view instanceof TextView) {
-                    ((TextView) view).setText(((Goal) getItem(position)).getText());
+                    ((TextView) view).setText(getItem(position).getText());
                 }
                 return view;
             }
@@ -230,7 +224,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 if (view instanceof TextView) {
-                    ((TextView) view).setText(((Activity) getItem(position)).getText());
+                    ((TextView) view).setText(getItem(position).getText());
                 }
                 return view;
             }
@@ -239,7 +233,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 if (view instanceof TextView) {
-                    ((TextView) view).setText(((Activity) getItem(position)).getText());
+                    ((TextView) view).setText(getItem(position).getText());
                 }
                 return view;
             }

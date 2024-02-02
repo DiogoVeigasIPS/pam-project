@@ -42,7 +42,7 @@ public class AddFoodActivity extends AppCompatActivity {
         }
 
         int id = extras.getInt(FOOD_ID);
-        updateTitle("Edit Food");
+        updateTitle();
         DatabaseHelper.executeInBackground(() -> {
             Food food = DatabaseHelper.FoodHelper.getFoodById(id);
             if(food == null){
@@ -61,9 +61,7 @@ public class AddFoodActivity extends AppCompatActivity {
 
     private void setDeleteButton(AppCompatButton deleteButton, Food food) {
         deleteButton.setVisibility(View.VISIBLE);
-        deleteButton.setOnClickListener(v -> {
-            showDeleteConfirmationDialog(food);
-        });
+        deleteButton.setOnClickListener(v -> showDeleteConfirmationDialog(food));
     }
 
     private void showDeleteConfirmationDialog(Food food) {
@@ -80,9 +78,9 @@ public class AddFoodActivity extends AppCompatActivity {
                 .show();
     }
 
-    private void updateTitle(String newTitle) {
+    private void updateTitle() {
         TextView title = findViewById(R.id.title);
-        title.setText(newTitle);
+        title.setText("Edit Food");
     }
 
     private void editFood(Food food) {
@@ -143,7 +141,7 @@ public class AddFoodActivity extends AppCompatActivity {
             selectedIcon = R.drawable.cookie;
         }
 
-        if(nameStr.equals("") || portionStr.equals("") ||  unitStr.equals("") || calorieStr.equals("")){
+        if(nameStr.trim().equals("") || portionStr.trim().equals("") ||  unitStr.trim().equals("") || calorieStr.trim().equals("")){
             Toast.makeText(AddFoodActivity.this, R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
             return null;
         }

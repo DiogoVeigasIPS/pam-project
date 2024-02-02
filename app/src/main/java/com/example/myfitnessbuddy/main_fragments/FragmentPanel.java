@@ -171,7 +171,7 @@ public class FragmentPanel extends Fragment {
                     EditText weightInput = dialogView.findViewById(R.id.weight_input);
                     String weightStr = weightInput.getText().toString();
 
-                    if(weightStr.equals("")){
+                    if(weightStr.trim().equals("")){
                         Toast.makeText(getActivity(), R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
                         return;
                     }

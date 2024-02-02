@@ -23,7 +23,7 @@ public class QuickAddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quick_add);
 
-        ((ImageButton)findViewById(R.id.bt_back)).setOnClickListener(v -> finish());
+        findViewById(R.id.bt_back).setOnClickListener(v -> finish());
 
         Bundle extras = getIntent().getExtras();
 
@@ -34,7 +34,7 @@ public class QuickAddActivity extends AppCompatActivity {
         setActivityTitle(stringResource);
 
         setEditTexts();
-        ((ImageButton)findViewById(R.id.bt_submit)).setOnClickListener(v -> addQuickAddition(mealId));
+        findViewById(R.id.bt_submit).setOnClickListener(v -> addQuickAddition(mealId));
 
     }
 
@@ -47,7 +47,7 @@ public class QuickAddActivity extends AppCompatActivity {
         String nameStr = nameInput.getText().toString();
         String caloriesStr = caloriesInput.getText().toString();
 
-        if(nameStr.equals("") || caloriesStr.equals("")){
+        if(nameStr.trim().equals("") || caloriesStr.trim().equals("")){
             Toast.makeText(this, R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
             return;
         }
