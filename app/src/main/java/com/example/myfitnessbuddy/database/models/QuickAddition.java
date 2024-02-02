@@ -1,4 +1,4 @@
-package com.example.myfitnessbuddy.models;
+package com.example.myfitnessbuddy.database.models;
 
 import static androidx.room.ForeignKey.CASCADE;
 

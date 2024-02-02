@@ -18,8 +18,8 @@ import android.widget.TextView;
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.diary.AddToMealActivity;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
-import com.example.myfitnessbuddy.models.Day;
-import com.example.myfitnessbuddy.models.Meal;
+import com.example.myfitnessbuddy.database.models.Day;
+import com.example.myfitnessbuddy.database.models.Meal;
 
 import java.util.List;
 

@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.example.myfitnessbuddy.models.enums.Activity;
-import com.example.myfitnessbuddy.models.enums.Goal;
-import com.example.myfitnessbuddy.models.User;
+import com.example.myfitnessbuddy.database.models.enums.Activity;
+import com.example.myfitnessbuddy.database.models.enums.Goal;
+import com.example.myfitnessbuddy.database.models.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -6,8 +6,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.myfitnessbuddy.models.Day;
-import com.example.myfitnessbuddy.models.Meal;
+import com.example.myfitnessbuddy.database.models.Day;
+import com.example.myfitnessbuddy.database.models.Meal;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -44,6 +44,9 @@ public interface DayDao {
 
     @Query("SELECT weight FROM day WHERE weight <> 0 ORDER BY date DESC LIMIT 1")
     Integer getLastWeight();
+
+    @Query("SELECT COUNT(*) FROM day")
+    int getDayCount();
 
     @Insert
     long insert(Day days);

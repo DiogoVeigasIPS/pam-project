@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.myfitnessbuddy.models.QuickAddition;
+import com.example.myfitnessbuddy.database.models.QuickAddition;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package com.example.myfitnessbuddy.database;
 
 import androidx.room.TypeConverter;
 
-import com.example.myfitnessbuddy.models.enums.MealType;
+import com.example.myfitnessbuddy.database.models.enums.MealType;
 
 import java.time.LocalDate;
 

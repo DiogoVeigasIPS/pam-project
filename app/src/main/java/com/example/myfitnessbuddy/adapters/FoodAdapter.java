@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
-import com.example.myfitnessbuddy.models.Food;
+import com.example.myfitnessbuddy.database.models.Food;
 
 import java.util.List;
 

@@ -63,7 +63,7 @@
             android:hint="@string/search_foods"
             android:imeOptions="actionSearch"
             android:importantForAutofill="no"
-            android:inputType="text"
+            android:inputType="textCapSentences"
             android:padding="@dimen/grouped_spacing"
             android:backgroundTint="@color/white"
             android:textSize="@dimen/body_size"

@@ -13,21 +13,27 @@
         android:theme="@style/Theme.Myfitnessbuddy"
         tools:targetApi="31">
         <activity
-            android:name=".activities.diary.QuickAddActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.foods.AddDishActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.diary.AddToMealActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.foods.AddFoodActivity"
+            android:name=".MainActivity"
             android:configChanges="orientation"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.panel.UpdateGoalActivity"
+            android:name=".activities.diary.QuickAddActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.foods.AddDishActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.diary.AddToMealActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.foods.AddFoodActivity"
             android:configChanges="orientation"
             android:exported="false"
             android:screenOrientation="portrait" />
@@ -37,12 +43,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.panel.UpdateWeightActivity"
-            android:configChanges="orientation"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".activities.SplashScreenActivity"
             android:configChanges="orientation"
             android:exported="true"
             android:screenOrientation="portrait">

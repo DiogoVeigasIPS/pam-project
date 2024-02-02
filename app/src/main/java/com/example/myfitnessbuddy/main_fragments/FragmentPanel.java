@@ -25,12 +25,10 @@ import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.panel.UpdateDetailsActivity;
 import com.example.myfitnessbuddy.activities.panel.UserPreferences;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
-import com.example.myfitnessbuddy.models.Day;
-import com.example.myfitnessbuddy.models.User;
-import com.example.myfitnessbuddy.models.enums.Goal;
+import com.example.myfitnessbuddy.database.models.Day;
+import com.example.myfitnessbuddy.database.models.User;
+import com.example.myfitnessbuddy.database.models.enums.Goal;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
-
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.

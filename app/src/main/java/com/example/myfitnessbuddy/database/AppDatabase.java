@@ -11,12 +11,12 @@ import com.example.myfitnessbuddy.daos.DayDao;
 import com.example.myfitnessbuddy.daos.FoodDao;
 import com.example.myfitnessbuddy.daos.MealDao;
 import com.example.myfitnessbuddy.daos.QuickAdditionDao;
-import com.example.myfitnessbuddy.models.Day;
-import com.example.myfitnessbuddy.models.Food;
-import com.example.myfitnessbuddy.models.Meal;
-import com.example.myfitnessbuddy.models.QuickAddition;
+import com.example.myfitnessbuddy.database.models.Day;
+import com.example.myfitnessbuddy.database.models.Food;
+import com.example.myfitnessbuddy.database.models.Meal;
+import com.example.myfitnessbuddy.database.models.QuickAddition;
 
-@Database(entities = {Food.class, Day.class, Meal.class, QuickAddition.class}, version = 8, exportSchema = false)
+@Database(entities = {Food.class, Day.class, Meal.class, QuickAddition.class}, version = 2, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase databaseInstance = null;

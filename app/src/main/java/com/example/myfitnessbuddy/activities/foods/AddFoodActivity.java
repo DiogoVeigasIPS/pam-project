@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.R;
-import com.example.myfitnessbuddy.models.Food;
+import com.example.myfitnessbuddy.database.models.Food;
 
 public class AddFoodActivity extends AppCompatActivity {
     public static String FOOD_ID = "FOOD_ID";

@@ -9,10 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myfitnessbuddy.R;
-import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
-import com.example.myfitnessbuddy.models.Food;
-import com.example.myfitnessbuddy.models.QuickAddition;
+import com.example.myfitnessbuddy.database.models.QuickAddition;
 
 public class QuickAddActivity extends AppCompatActivity {
 

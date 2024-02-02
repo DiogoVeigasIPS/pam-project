@@ -1,7 +1,7 @@
-package com.example.myfitnessbuddy.models;
+package com.example.myfitnessbuddy.database.models;
 
-import com.example.myfitnessbuddy.models.enums.Activity;
-import com.example.myfitnessbuddy.models.enums.Goal;
+import com.example.myfitnessbuddy.database.models.enums.Activity;
+import com.example.myfitnessbuddy.database.models.enums.Goal;
 
 import java.time.LocalDate;
 

@@ -1,15 +1,11 @@
 package com.example.myfitnessbuddy.database;
 
 import android.content.Context;
-import android.util.Log;
 
-import com.example.myfitnessbuddy.daos.DayDao;
-import com.example.myfitnessbuddy.daos.MealDao;
-import com.example.myfitnessbuddy.daos.QuickAdditionDao;
-import com.example.myfitnessbuddy.models.Day;
-import com.example.myfitnessbuddy.models.Food;
-import com.example.myfitnessbuddy.models.Meal;
-import com.example.myfitnessbuddy.models.QuickAddition;
+import com.example.myfitnessbuddy.database.models.Day;
+import com.example.myfitnessbuddy.database.models.Food;
+import com.example.myfitnessbuddy.database.models.Meal;
+import com.example.myfitnessbuddy.database.models.QuickAddition;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -37,6 +33,10 @@ public class DatabaseHelper {
 
         public static void addNewFood(Food food) {
             executorService.execute(() -> appDatabase.foodDao().insert(food));
+        }
+
+        public static void addNewFoods(Food[] foods) {
+            executorService.execute(() -> appDatabase.foodDao().insertAll(foods));
         }
 
         public static Food getFoodById(int foodId) {
@@ -96,6 +96,11 @@ public class DatabaseHelper {
 
             return weight != null ? (int) weight : 0;
         }
+
+        public static int getDayCount(){
+            return appDatabase.dayDao().getDayCount();
+        }
+
         public static long addNewDay(Day day) {
             long insertedId = appDatabase.dayDao().insert(day);
             return insertedId;
