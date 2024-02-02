@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.myfitnessbuddy.MainActivity;
-import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Day;
 import com.example.myfitnessbuddy.database.models.Meal;
@@ -21,12 +20,11 @@ import java.util.List;
 @SuppressLint("CustomSplashScreen")
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private static final long SPLASH_DELAY = 1000;
+    private static final long SPLASH_DELAY = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
 
         // Start, populate and check for a new day
         startDatabase();
@@ -43,16 +41,14 @@ public class SplashScreenActivity extends AppCompatActivity {
 
             checkNewDay();
 
-            runOnUiThread(() -> {
-                new Handler().postDelayed(() -> {
-                    // Create an Intent to start the main activity
-                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
-                    startActivity(intent);
+            runOnUiThread(() -> new Handler().postDelayed(() -> {
+                // Create an Intent to start the main activity
+                Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                startActivity(intent);
 
-                    // Close the splash screen activity
-                    finish();
-                }, SPLASH_DELAY);
-            });
+                // Close the splash screen activity
+                finish();
+            }, SPLASH_DELAY));
         });
     }
 

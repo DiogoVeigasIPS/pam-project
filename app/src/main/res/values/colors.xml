@@ -20,4 +20,8 @@
     <color name="danger">#dc3545</color>
     <color name="success">#198754</color>
     <color name="splash_background">#0464ec</color>
+
+    <color name="colorPrimary">#3263E2</color>
+    <color name="colorSecondary">#87a5ef</color>
+    <color name="colorAccent">#5381f5</color>
 </resources>
