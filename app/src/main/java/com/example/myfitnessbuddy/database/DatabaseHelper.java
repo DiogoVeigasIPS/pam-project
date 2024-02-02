@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.myfitnessbuddy.database.models.Day;
 import com.example.myfitnessbuddy.database.models.Food;
 import com.example.myfitnessbuddy.database.models.Meal;
+import com.example.myfitnessbuddy.database.models.QuantifiedFood;
 import com.example.myfitnessbuddy.database.models.QuickAddition;
 
 import java.time.LocalDate;
@@ -171,6 +172,29 @@ public class DatabaseHelper {
 
         public static void deleteQuickAddition(QuickAddition quickAddition) {
             executorService.execute(() -> appDatabase.quickAdditionDao().delete(quickAddition));
+        }
+    }
+
+    // QuantifiedFood-related methods
+    public static class QuantifiedFoodHelper {
+        public static List<QuantifiedFood> getAllQuantifiedFoods() {
+            return appDatabase.quantifiedFoodDao().getAll();
+        }
+
+        public static QuantifiedFood getQuantifiedFoodById(int quickAdditionId) {
+            return appDatabase.quantifiedFoodDao().findById(quickAdditionId);
+        }
+
+        public static void addNewQuantifiedFood(QuantifiedFood quantifiedFood) {
+            executorService.execute(() -> appDatabase.quantifiedFoodDao().insert(quantifiedFood));
+        }
+
+        public static void updateQuantifiedFood(QuantifiedFood quantifiedFood) {
+            executorService.execute(() -> appDatabase.quantifiedFoodDao().update(quantifiedFood));
+        }
+
+        public static void deleteQuantifiedFood(QuantifiedFood quantifiedFood) {
+            executorService.execute(() -> appDatabase.quantifiedFoodDao().delete(quantifiedFood));
         }
     }
 }
