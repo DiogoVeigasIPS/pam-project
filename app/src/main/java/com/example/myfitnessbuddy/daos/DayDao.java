@@ -26,16 +26,18 @@ public interface DayDao {
     @Query("SELECT * FROM meal WHERE dayId = :dayId")
     List<Meal> getMealsForDay(int dayId);
 
-    @Query("SELECT COALESCE(SUM(qa.calories), 0) AS totalCalories " +
+    @Query("SELECT COALESCE(SUM(COALESCE(qa.calories, 0) + COALESCE(qf.calculatedCalories, 0)), 0) AS totalCalories " +
             "FROM meal m " +
             "LEFT JOIN quickAddition qa ON qa.mealId = m.id " +
+            "LEFT JOIN quantifiedFood qf ON qf.mealId = m.id " +
             "WHERE m.dayId = :dayId " +
             "GROUP BY m.id")
     List<Integer> getCaloriesList(int dayId);
 
-    @Query("SELECT COALESCE(SUM(qa.calories), 0) AS totalCalories " +
+    @Query("SELECT COALESCE(SUM(COALESCE(qa.calories, 0) + COALESCE(qf.calculatedCalories, 0)), 0) AS totalCalories " +
             "FROM meal m " +
             "LEFT JOIN quickAddition qa ON qa.mealId = m.id " +
+            "LEFT JOIN quantifiedFood qf ON qf.mealId = m.id " +
             "WHERE m.dayId = :dayId")
     int getTotalCalories(int dayId);
 

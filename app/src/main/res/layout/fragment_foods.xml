@@ -42,32 +42,32 @@
         android:id="@+id/foods_search_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/navigation_bar"
         android:background="@color/white"
         android:orientation="horizontal"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navigation_bar">
+
         <ImageView
             android:layout_width="@dimen/magnifying_glass"
             android:layout_height="@dimen/magnifying_glass"
-            android:src="@drawable/magnifying_glass"
             android:layout_gravity="center"
-            android:layout_marginEnd="@dimen/nav_arrow_margin"
             android:layout_marginStart="@dimen/nav_arrow_margin"
-            android:contentDescription="@string/search_icon"/>
+            android:layout_marginEnd="@dimen/nav_arrow_margin"
+            android:contentDescription="@string/search_icon"
+            android:src="@drawable/magnifying_glass" />
+
         <EditText
             android:id="@+id/foods_search"
             android:layout_width="match_parent"
             android:layout_height="@dimen/icon_size"
+            android:backgroundTint="@color/white"
             android:hint="@string/search_foods"
             android:imeOptions="actionSearch"
             android:importantForAutofill="no"
             android:inputType="textCapSentences"
             android:padding="@dimen/grouped_spacing"
-            android:backgroundTint="@color/white"
-            android:textSize="@dimen/body_size"
-            />
+            android:textSize="@dimen/body_size" />
     </LinearLayout>
 
     <View
@@ -75,26 +75,25 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/hint_gray"
-        app:layout_constraintTop_toBottomOf="@id/foods_search_layout"/>
+        app:layout_constraintTop_toBottomOf="@id/foods_search_layout" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_selector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider">
 
         <com.google.android.material.tabs.TabItem
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="@string/foods"
-            />
+            android:layout_height="wrap_content"
+            android:text="@string/foods" />
 
         <com.google.android.material.tabs.TabItem
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="@string/dishes"/>
+            android:layout_height="wrap_content"
+            android:text="@string/dishes" />
 
     </com.google.android.material.tabs.TabLayout>
 
@@ -112,17 +111,16 @@
         android:id="@+id/empty_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/empty_list_margin"
         android:gravity="center"
         android:text="@string/this_list_seems_to_be_empty"
-        android:textStyle="italic"
-        android:textSize="20sp"
         android:textColor="@color/black"
-        android:layout_marginTop="@dimen/empty_list_margin"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tab_selector"
-        android:visibility="gone"
-        />
+        app:layout_constraintTop_toBottomOf="@id/tab_selector" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -131,9 +129,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/main_padding"
         android:layout_marginBottom="@dimen/main_padding"
-        android:backgroundTint="@color/clickable_blue"
+        android:backgroundTint="@color/colorAccent"
         android:contentDescription="@string/add_food"
-        android:src="@drawable/add"
+        android:isScrollContainer="false"
+        app:srcCompat="@drawable/add"
+        app:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="50dp" />

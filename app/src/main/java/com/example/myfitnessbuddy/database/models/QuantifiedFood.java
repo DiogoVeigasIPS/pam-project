@@ -10,6 +10,7 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import androidx.room.RoomWarnings;
 
 import java.text.DecimalFormat;
 
@@ -35,17 +36,15 @@ public class QuantifiedFood {
     @Nullable
     @ColumnInfo(name = "dishId")
     private Integer dishId;
+    @SuppressWarnings(RoomWarnings.PRIMARY_KEY_FROM_EMBEDDED_IS_DROPPED)
     @Embedded(prefix = "food_")
     private Food food;
-
-    @Ignore
-    public QuantifiedFood(double quantity) {
-        setQuantity(quantity);
-    }
+    @ColumnInfo(name = "calculatedCalories")
+    private int calculatedCalories;
 
     public QuantifiedFood(double quantity, Food food) {
-        this(quantity);
         setFood(food);
+        setQuantity(quantity);
     }
 
     // Getter methods
@@ -64,6 +63,10 @@ public class QuantifiedFood {
     @Nullable
     public Integer getMealId() {
         return mealId;
+    }
+
+    public int getCalculatedCalories() {
+        return calculatedCalories;
     }
 
     @Nullable
@@ -87,6 +90,7 @@ public class QuantifiedFood {
             throw new IllegalArgumentException("Quantity must be greater than 0");
         }
         this.quantity = quantity;
+        calculateCalories();
     }
 
     public void setMealId(@Nullable Integer mealId) {
@@ -95,6 +99,10 @@ public class QuantifiedFood {
 
     public void setDishId(@Nullable Integer dishId) {
         this.dishId = dishId;
+    }
+
+    public void setCalculatedCalories(int calculatedCalories) {
+        this.calculatedCalories = calculatedCalories;
     }
 
     // Methods
@@ -119,5 +127,12 @@ public class QuantifiedFood {
 
     public String getName(){
         return food.getName();
+    }
+
+    public void calculateCalories() {
+        if (food == null) return;
+
+        double caloriesPerUnit = food.getCaloriesPerPortionUnit();
+        calculatedCalories = (int) (caloriesPerUnit * quantity);
     }
 }

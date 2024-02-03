@@ -146,5 +146,9 @@
     <string name="objective_input">Objective*:</string>
     <string name="activity_input">Activity*:</string>
     <string name="quick_breakfast">Quick Breakfast</string>
+    <string name="choose_the_quantity">Choose the quantity</string>
+    <string name="food_quantity_in">Food quantity in</string>
+    <string name="food_added">Food added successfully!</string>
+    <string name="invalid_quantity_format">Invalid quantity format!</string>
 
 </resources>
