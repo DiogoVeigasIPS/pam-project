@@ -135,7 +135,7 @@ public class AddFoodActivity extends AppCompatActivity {
 
         int selectedIcon = R.drawable.apple;
         if (radioBtn2.isChecked()) {
-            selectedIcon = R.drawable.grilled_steak;
+            selectedIcon = R.drawable.steak;
         } else if (radioBtn3.isChecked()) {
             selectedIcon = R.drawable.cookie;
         }
