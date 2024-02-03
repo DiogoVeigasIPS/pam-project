@@ -27,7 +27,7 @@ import java.text.DecimalFormat;
 )
 public class QuantifiedFood {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int quantifiedFoodId;
     @ColumnInfo(name = "quantity")
     private double quantity;
     @Nullable
@@ -48,8 +48,8 @@ public class QuantifiedFood {
     }
 
     // Getter methods
-    public int getId(){
-        return id;
+    public int getQuantifiedFoodId(){
+        return quantifiedFoodId;
     }
 
     public Food getFood(){
@@ -75,8 +75,8 @@ public class QuantifiedFood {
     }
 
     // Setter methods with data validation
-    public void setId(int id){
-        this.id = id;
+    public void setQuantifiedFoodId(int id){
+        this.quantifiedFoodId = id;
     }
     public void setFood(Food food) {
         if (food == null) {

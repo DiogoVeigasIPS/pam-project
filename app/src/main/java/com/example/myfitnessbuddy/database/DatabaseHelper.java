@@ -3,6 +3,8 @@ package com.example.myfitnessbuddy.database;
 import android.content.Context;
 
 import com.example.myfitnessbuddy.database.models.Day;
+import com.example.myfitnessbuddy.database.models.Dish;
+import com.example.myfitnessbuddy.database.models.DishWithQuantifiedFoods;
 import com.example.myfitnessbuddy.database.models.Food;
 import com.example.myfitnessbuddy.database.models.Meal;
 import com.example.myfitnessbuddy.database.models.QuantifiedFood;
@@ -195,6 +197,33 @@ public class DatabaseHelper {
 
         public static void deleteQuantifiedFood(QuantifiedFood quantifiedFood) {
             executorService.execute(() -> appDatabase.quantifiedFoodDao().delete(quantifiedFood));
+        }
+    }
+
+    // Dish-related methods
+    public static class DishHelper {
+        public static List<DishWithQuantifiedFoods> getAllDishes() {
+            return appDatabase.dishDao().getAll();
+        }
+
+        public static DishWithQuantifiedFoods getDishWithQuantifiedFoodById(int dishId) {
+            return appDatabase.dishDao().findById(dishId);
+        }
+
+        public static void addNewDish(Dish dish) {
+            executorService.execute(() -> appDatabase.dishDao().insert(dish));
+        }
+
+        public static void updateDish(Dish dish) {
+            executorService.execute(() -> appDatabase.dishDao().update(dish));
+        }
+
+        public static void deleteDish(Dish dish) {
+            executorService.execute(() -> appDatabase.dishDao().delete(dish));
+        }
+
+        public static List<DishWithQuantifiedFoods> searchDishesByName(String searchQuery) {
+            return appDatabase.dishDao().searchByName("%" + searchQuery + "%");
         }
     }
 }

@@ -25,9 +25,11 @@ import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
 import com.example.myfitnessbuddy.adapters.FoodAdapter;
 import com.example.myfitnessbuddy.database.models.Food;
+import com.example.myfitnessbuddy.database.models.FoodPreset;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +42,9 @@ public class FragmentFoods extends Fragment {
     private RecyclerView foodsList;
     private TextView emptyList;
     private FoodAdapter foodAdapter;
+
+    private EditText foodsSearch;
+    private boolean searchingFoods = true;
 
     public FragmentFoods() {
         // Required empty public constructor
@@ -96,11 +101,15 @@ public class FragmentFoods extends Fragment {
             startActivity(intent);
         });
 
-        EditText foodsSearch = getView().findViewById(R.id.foods_search);
+        foodsSearch = getView().findViewById(R.id.foods_search);
         foodsSearch.setOnEditorActionListener((textView, actionId, keyEvent) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 String search = foodsSearch.getText().toString();
-                updateFoodList(search);
+                if(searchingFoods){
+                    updateFoodList(search);
+                }else{
+                    updateDishList(search);
+                }
                 return true;
             }
             return false;
@@ -109,7 +118,7 @@ public class FragmentFoods extends Fragment {
 
     private void setListAdapter() {
         DatabaseHelper.executeInBackground(() -> {
-            List<Food> foods = DatabaseHelper.FoodHelper.getAllFoods();
+            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
 
             requireActivity().runOnUiThread(() -> {
                 foodAdapter = new FoodAdapter(foods);
@@ -127,7 +136,7 @@ public class FragmentFoods extends Fragment {
 
     private void updateFoodList() {
         DatabaseHelper.executeInBackground(() -> {
-            List<Food> foods = DatabaseHelper.FoodHelper.getAllFoods();
+            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
 
             requireActivity().runOnUiThread(() -> {
                 if(foods.isEmpty()){
@@ -143,7 +152,41 @@ public class FragmentFoods extends Fragment {
 
     private void updateFoodList(String search) {
         DatabaseHelper.executeInBackground(() -> {
-            List<Food> foods = DatabaseHelper.FoodHelper.getFoodsByName(search);
+            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getFoodsByName(search));
+
+            requireActivity().runOnUiThread(() -> {
+                if(foods.isEmpty()){
+                    showEmptyListMessage(R.string.not_found_in_list, foodsList);
+                    return;
+                }else{
+                    hideEmptyListMessage();
+                }
+
+                foodAdapter.setFoods(foods);
+                hideKeyboard();
+            });
+        });
+    }
+
+    private void updateDishList(){
+        DatabaseHelper.executeInBackground(() -> {
+            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.DishHelper.getAllDishes());
+
+            requireActivity().runOnUiThread(() -> {
+                if(foods.isEmpty()){
+                    showEmptyListMessage(R.string.this_list_seems_to_be_empty, foodsList);
+                    return;
+                }
+
+                hideEmptyListMessage();
+                foodAdapter.setFoods(foods);
+            });
+        });
+    }
+
+    private void updateDishList(String search) {
+        DatabaseHelper.executeInBackground(() -> {
+            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.DishHelper.searchDishesByName(search));
 
             requireActivity().runOnUiThread(() -> {
                 if(foods.isEmpty()){
@@ -178,16 +221,13 @@ public class FragmentFoods extends Fragment {
         }
     }
 
-    private void updateDishList(){
-        // Do not touch
-    }
-
     private void setTabNavigation(){
         TabLayout tabSelector = getView().findViewById(R.id.tab_selector);
 
         tabSelector.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                foodsSearch.setText("");
                 int selectedTabPosition = tab.getPosition();
                 switch (selectedTabPosition){
                     case 0:

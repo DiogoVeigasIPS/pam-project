@@ -28,6 +28,7 @@ import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Day;
 import com.example.myfitnessbuddy.database.models.Food;
+import com.example.myfitnessbuddy.database.models.FoodPreset;
 import com.example.myfitnessbuddy.database.models.Meal;
 import com.example.myfitnessbuddy.database.models.QuantifiedFood;
 import com.example.myfitnessbuddy.main_fragments.FragmentPanel;
@@ -37,17 +38,17 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
-    private List<Food> foods;
+    private List<FoodPreset> foods;
     private ActionType actionType;
     private int mealId;
 
-    public FoodAdapter(List<Food> foods, ActionType actionType, int mealId) {
+    public FoodAdapter(List<FoodPreset> foods, ActionType actionType, int mealId) {
         this.foods = foods;
         this.actionType = actionType;
         this.mealId = mealId;
     }
 
-    public FoodAdapter(List<Food> foods) {
+    public FoodAdapter(List<FoodPreset> foods) {
         this(foods, ActionType.DETAILS, -1);
     }
 
@@ -61,28 +62,32 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
-        Food food = foods.get(position);
-        holder.setValues(food);
+        FoodPreset foodPreset = foods.get(position);
+        holder.setValues(foodPreset);
         ImageButton actionButton = holder.itemView.findViewById(R.id.bt_action);
 
-        if(this.actionType == ActionType.DETAILS){
+        if(foodPreset instanceof Food){
+            Food food = (Food) foodPreset;
+            if(this.actionType == ActionType.DETAILS){
+                actionButton.setOnClickListener(v -> {
+                    Context context = v.getContext();
+
+                    Intent intent = new Intent(context, AddFoodActivity.class);
+
+                    intent.putExtra(AddFoodActivity.FOOD_ID, food.getId());
+                    context.startActivity(intent);
+                });
+                return;
+            }
+
+            actionButton.setImageResource(R.drawable.add_black);
             actionButton.setOnClickListener(v -> {
-                Context context = v.getContext();
-
-                Intent intent = new Intent(context, AddFoodActivity.class);
-
-                intent.putExtra(AddFoodActivity.FOOD_ID, food.getId());
-                context.startActivity(intent);
+                QuantityDialogFragment quantityDialogFragment = new QuantityDialogFragment(mealId, food);
+                FragmentManager fragmentManager = ((AppCompatActivity) v.getContext()).getSupportFragmentManager();
+                quantityDialogFragment.show(fragmentManager, "QuantityDialogFragmentTag");
             });
-            return;
         }
 
-        actionButton.setImageResource(R.drawable.add_black);
-        actionButton.setOnClickListener(v -> {
-            QuantityDialogFragment quantityDialogFragment = new QuantityDialogFragment(mealId, food);
-            FragmentManager fragmentManager = ((AppCompatActivity) v.getContext()).getSupportFragmentManager();
-            quantityDialogFragment.show(fragmentManager, "QuantityDialogFragmentTag");
-        });
     }
 
     @Override
@@ -90,7 +95,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         return foods.size();
     }
 
-    public void setFoods(List<Food> newFoods) {
+    public void setFoods(List<FoodPreset> newFoods) {
         this.foods = newFoods;
         notifyDataSetChanged();
     }
@@ -106,7 +111,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             foodImage = itemView.findViewById(R.id.food_image);
         }
 
-        public void setValues(Food food){
+        public void setValues(FoodPreset food){
             this.foodName.setText(food.getCompoundName());
             this.foodDescription.setText(food.getDetailsLabel());
             this.foodImage.setImageResource(food.getIcon());

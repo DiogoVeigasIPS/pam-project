@@ -8,17 +8,19 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
 import com.example.myfitnessbuddy.daos.DayDao;
+import com.example.myfitnessbuddy.daos.DishDao;
 import com.example.myfitnessbuddy.daos.FoodDao;
 import com.example.myfitnessbuddy.daos.MealDao;
 import com.example.myfitnessbuddy.daos.QuantifiedFoodDao;
 import com.example.myfitnessbuddy.daos.QuickAdditionDao;
 import com.example.myfitnessbuddy.database.models.Day;
+import com.example.myfitnessbuddy.database.models.Dish;
 import com.example.myfitnessbuddy.database.models.Food;
 import com.example.myfitnessbuddy.database.models.Meal;
 import com.example.myfitnessbuddy.database.models.QuantifiedFood;
 import com.example.myfitnessbuddy.database.models.QuickAddition;
 
-@Database(entities = {Food.class, Day.class, Meal.class, QuickAddition.class, QuantifiedFood.class}, version = 2, exportSchema = false)
+@Database(entities = {Food.class, Day.class, Meal.class, QuickAddition.class, QuantifiedFood.class, Dish.class}, version = 4, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase databaseInstance = null;
@@ -28,7 +30,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract MealDao mealDao();
     public abstract QuickAdditionDao quickAdditionDao();
     public abstract QuantifiedFoodDao quantifiedFoodDao();
-
+    public abstract DishDao dishDao();
 
     public static AppDatabase getInstance(Context context) {
         if (databaseInstance == null) {

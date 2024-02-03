@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 import java.text.DecimalFormat;
 
 @Entity(tableName = "food")
-public class Food{
+public class Food implements FoodPreset{
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "name")

@@ -22,10 +22,12 @@ import com.example.myfitnessbuddy.adapters.ActionType;
 import com.example.myfitnessbuddy.adapters.FoodAdapter;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Food;
+import com.example.myfitnessbuddy.database.models.FoodPreset;
 import com.example.myfitnessbuddy.main_fragments.FragmentPanel;
 import com.example.myfitnessbuddy.main_fragments.Navigation;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddToMealActivity extends AppCompatActivity {
@@ -70,7 +72,7 @@ public class AddToMealActivity extends AppCompatActivity {
 
     private void setListAdapter() {
         DatabaseHelper.executeInBackground(() -> {
-            List<Food> foods = DatabaseHelper.FoodHelper.getAllFoods();
+            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
 
             runOnUiThread(() -> {
                 foodAdapter = new FoodAdapter(foods, ActionType.ADD, mealId);
@@ -88,7 +90,7 @@ public class AddToMealActivity extends AppCompatActivity {
 
     private void updateFoodList() {
         DatabaseHelper.executeInBackground(() -> {
-            List<Food> foods = DatabaseHelper.FoodHelper.getAllFoods();
+            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
 
             runOnUiThread(() -> {
                 if(foods.isEmpty()){
@@ -104,7 +106,7 @@ public class AddToMealActivity extends AppCompatActivity {
 
     private void updateFoodList(String search) {
         DatabaseHelper.executeInBackground(() -> {
-            List<Food> foods = DatabaseHelper.FoodHelper.getFoodsByName(search);
+            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getFoodsByName(search));
 
             runOnUiThread(() -> {
                 if(foods.isEmpty()){

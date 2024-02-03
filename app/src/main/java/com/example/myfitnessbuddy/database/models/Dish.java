@@ -1,53 +1,31 @@
-/*package com.example.myfitnessbuddy.database.models;
-
-import static androidx.room.ForeignKey.CASCADE;
+package com.example.myfitnessbuddy.database.models;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
-import androidx.room.Ignore;
-import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-import java.util.List;
-
-@Entity(tableName = "dish",
-        foreignKeys = @ForeignKey(
-                entity = Meal.class,
-                parentColumns = "id",
-                childColumns = "mealId",
-                onDelete = CASCADE),
-        indices = @Index("mealId")
-)
+@Entity(tableName = "dish")
 public class Dish {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int dishId;
     @ColumnInfo(name = "name")
     private String name;
     @ColumnInfo(name = "description")
     private String description;
     @ColumnInfo(name = "icon")
     private int icon;
-    @ColumnInfo(name = "mealId")
-    private int mealId;
-    @Ignore
-    private List<QuantifiedFood> foods;
+    @ColumnInfo(name = "calculatedCalories")
+    private int calculatedCalories;
 
-    @Ignore
     public Dish(String name, String description, int icon) {
         setName(name);
         setDescription(description);
         setIcon(icon);
     }
 
-    public Dish(String name, String description, int icon, List<QuantifiedFood> foods) {
-        this(name, description, icon);
-        this.foods = foods;
-    }
-
     // Getter methods
-    public int getId() {
-        return id;
+    public int getDishId() {
+        return dishId;
     }
 
     public String getName() {
@@ -62,11 +40,15 @@ public class Dish {
         return icon;
     }
 
-    public List<QuantifiedFood> getFoods() {
-        return foods;
+    public int getCalculatedCalories(){
+        return this.calculatedCalories;
     }
 
     // Setter methods
+    public void setDishId(int id) {
+        this.dishId = id;
+    }
+
     public void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty");
@@ -82,23 +64,7 @@ public class Dish {
         this.icon = icon;
     }
 
-    // Methods
-    public int getCalories() {
-        int calorieSum = 0;
-
-        for (QuantifiedFood food : foods) {
-            calorieSum += food.getCalories();
-        }
-
-        return calorieSum;
-    }
-
-    public String getCaloriesLabel() {
-        return getCalories() + " kcal";
-    }
-
-    public String detailsLabel() {
-        return getCaloriesLabel();
+    public void setCalculatedCalories(int calculatedCalories) {
+        this.calculatedCalories = calculatedCalories;
     }
 }
-*/
