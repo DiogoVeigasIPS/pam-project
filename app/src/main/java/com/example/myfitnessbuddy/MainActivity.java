@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        Navigation.setFragmentNavigation(bottomNavigationView);
+        Navigation.setBottomNavigationView(bottomNavigationView);
+        Navigation.setFragmentNavigation();
 
         //clearSharedPreferences();
     }

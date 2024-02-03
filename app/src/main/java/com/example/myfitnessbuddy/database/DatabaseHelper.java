@@ -206,7 +206,7 @@ public class DatabaseHelper {
             return appDatabase.dishDao().getAll();
         }
 
-        public static DishWithQuantifiedFoods getDishWithQuantifiedFoodById(int dishId) {
+        public static DishWithQuantifiedFoods getDishById(int dishId) {
             return appDatabase.dishDao().findById(dishId);
         }
 

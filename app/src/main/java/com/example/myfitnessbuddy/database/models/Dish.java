@@ -67,4 +67,8 @@ public class Dish {
     public void setCalculatedCalories(int calculatedCalories) {
         this.calculatedCalories = calculatedCalories;
     }
+
+    public String getCompoundName() {
+        return String.format("%s %s", getName(), getDescription());
+    }
 }

@@ -7,12 +7,33 @@ import java.util.List;
 
 public class DishWithQuantifiedFoods implements FoodPreset {
     @Embedded
-    public Dish dish;
+    private Dish dish;
     @Relation(
             parentColumn = "dishId",
             entityColumn = "quantifiedFoodId"
     )
-    public List<QuantifiedFood> quantifiedFoods;
+    private List<QuantifiedFood> quantifiedFoods;
+
+    public DishWithQuantifiedFoods(Dish dish, List<QuantifiedFood> quantifiedFoods) {
+        this.dish = dish;
+        this.quantifiedFoods = quantifiedFoods;
+    }
+
+    public Dish getDish() {
+        return dish;
+    }
+
+    public void setDish(Dish dish) {
+        this.dish = dish;
+    }
+
+    public List<QuantifiedFood> getQuantifiedFoods() {
+        return quantifiedFoods;
+    }
+
+    public void setQuantifiedFoods(List<QuantifiedFood> quantifiedFoods) {
+        this.quantifiedFoods = quantifiedFoods;
+    }
 
     public int getCalories() {
         int calorieSum = 0;
@@ -30,7 +51,7 @@ public class DishWithQuantifiedFoods implements FoodPreset {
 
     @Override
     public String getCompoundName() {
-        return String.format("%s %s", dish.getName(), dish.getDescription());
+        return dish.getCompoundName();
     }
 
     @Override

@@ -24,28 +24,32 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.diary.AddToMealActivity;
+import com.example.myfitnessbuddy.activities.foods.AddDishActivity;
 import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
-import com.example.myfitnessbuddy.database.models.Day;
+import com.example.myfitnessbuddy.database.models.Dish;
+import com.example.myfitnessbuddy.database.models.DishWithQuantifiedFoods;
 import com.example.myfitnessbuddy.database.models.Food;
 import com.example.myfitnessbuddy.database.models.FoodPreset;
-import com.example.myfitnessbuddy.database.models.Meal;
 import com.example.myfitnessbuddy.database.models.QuantifiedFood;
-import com.example.myfitnessbuddy.main_fragments.FragmentPanel;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
     private List<FoodPreset> foods;
     private ActionType actionType;
+    private SearchType searchType;
     private int mealId;
 
-    public FoodAdapter(List<FoodPreset> foods, ActionType actionType, int mealId) {
+    public FoodAdapter(List<FoodPreset> foods, ActionType actionType, int mealId, SearchType searchType) {
         this.foods = foods;
         this.actionType = actionType;
         this.mealId = mealId;
+        this.searchType = searchType;
+    }
+
+    public FoodAdapter(List<FoodPreset> foods, ActionType actionType, int mealId) {
+        this(foods, actionType, mealId, SearchType.FOODS);
     }
 
     public FoodAdapter(List<FoodPreset> foods) {
@@ -65,6 +69,17 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         FoodPreset foodPreset = foods.get(position);
         holder.setValues(foodPreset);
         ImageButton actionButton = holder.itemView.findViewById(R.id.bt_action);
+
+        // TODO
+        if(searchType == SearchType.ALL) return;
+
+        if(foodPreset instanceof Food){
+            Log.d("instanceof", "is food: ");
+        }
+
+        if(foodPreset instanceof Dish){
+            Log.d("instanceof", "is dish: ");
+        }
 
         if(foodPreset instanceof Food){
             Food food = (Food) foodPreset;
@@ -86,6 +101,26 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                 FragmentManager fragmentManager = ((AppCompatActivity) v.getContext()).getSupportFragmentManager();
                 quantityDialogFragment.show(fragmentManager, "QuantityDialogFragmentTag");
             });
+        }else if(foodPreset instanceof DishWithQuantifiedFoods){
+            DishWithQuantifiedFoods dish = (DishWithQuantifiedFoods) foodPreset;
+            if(this.actionType == ActionType.DETAILS){
+                actionButton.setOnClickListener(v -> {
+                    Context context = v.getContext();
+
+                    Intent intent = new Intent(context, AddDishActivity.class);
+
+                    intent.putExtra(AddDishActivity.DISH_ID, dish.getDish().getDishId());
+                    context.startActivity(intent);
+                });
+                return;
+            }
+
+            /*actionButton.setImageResource(R.drawable.add_black);
+            actionButton.setOnClickListener(v -> {
+                QuantityDialogFragment quantityDialogFragment = new QuantityDialogFragment(mealId, food);
+                FragmentManager fragmentManager = ((AppCompatActivity) v.getContext()).getSupportFragmentManager();
+                quantityDialogFragment.show(fragmentManager, "QuantityDialogFragmentTag");
+            });*/
         }
 
     }
@@ -98,6 +133,21 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     public void setFoods(List<FoodPreset> newFoods) {
         this.foods = newFoods;
         notifyDataSetChanged();
+    }
+
+    public void setFoods(List<FoodPreset> newFoods, int mealId) {
+        setFoods(newFoods);
+        this.mealId = mealId;
+    }
+
+    public void setFoods(List<FoodPreset> newFoods, ActionType actionType) {
+        setFoods(newFoods);
+        this.actionType = actionType;
+    }
+
+    public void setFoods(List<FoodPreset> newFoods, SearchType searchType) {
+        setFoods(newFoods);
+        this.searchType = searchType;
     }
 
     public class FoodViewHolder extends RecyclerView.ViewHolder {

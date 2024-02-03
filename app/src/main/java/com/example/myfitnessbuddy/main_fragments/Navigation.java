@@ -1,5 +1,7 @@
 package com.example.myfitnessbuddy.main_fragments;
 
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +15,7 @@ public class Navigation {
     private static FrameLayout fragmentContainer;
     private static FragmentManager fragmentManager;
     private static int currentTab;
+    private static BottomNavigationView bottomNavigationView;
 
     public static void setFragmentManager(FragmentManager manager) {
         Navigation.fragmentManager = manager;
@@ -26,6 +29,10 @@ public class Navigation {
         Navigation.fragmentContainer = fragmentContainer;
     }
 
+    public static void setBottomNavigationView(BottomNavigationView bottomNavigationView){
+        Navigation.bottomNavigationView = bottomNavigationView;
+    }
+
     public static void updateFragment(Fragment fragment) {
         if (fragmentManager == null) {
             throw new IllegalStateException("FragmentManager is not set. Call setFragmentManager() first.");
@@ -36,7 +43,7 @@ public class Navigation {
         ft.commit();
     }
 
-    public static void setFragmentNavigation(BottomNavigationView bottomNavigationView){
+    public static void setFragmentNavigation(){
         bottomNavigationView.setOnItemSelectedListener(item -> {
             if(item.getItemId() == R.id.bt_home && currentTab != 0) {
                 Navigation.updateFragment(FragmentPanel.newInstance());
@@ -54,5 +61,12 @@ public class Navigation {
                 return false;
             }
         });
+    }
+
+    public static void navigateToPanel() {
+        currentTab = 0;
+        MenuItem item = bottomNavigationView.getMenu().findItem(R.id.bt_home);
+        item.setChecked(true);
+        updateFragment(FragmentPanel.newInstance());
     }
 }

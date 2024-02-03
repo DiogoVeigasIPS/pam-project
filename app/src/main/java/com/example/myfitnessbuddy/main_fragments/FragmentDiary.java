@@ -115,7 +115,7 @@ public class FragmentDiary extends Fragment {
 
     private void setNavigationalButtons() {
         ImageButton btBack = getView().findViewById(R.id.bt_back);
-        btBack.setOnClickListener(v -> Navigation.updateFragment(FragmentPanel.newInstance()));
+        btBack.setOnClickListener(v -> Navigation.navigateToPanel());
 
         Button addBreakfast = getView().findViewById(R.id.add_breakfast);
         Button addLunch = getView().findViewById(R.id.add_lunch);

@@ -80,7 +80,7 @@ public class AddFoodActivity extends AppCompatActivity {
 
     private void updateTitle() {
         TextView title = findViewById(R.id.title);
-        title.setText("Edit Food");
+        title.setText(R.string.edit_food);
     }
 
     private void editFood(Food food) {
@@ -117,7 +117,6 @@ public class AddFoodActivity extends AppCompatActivity {
         }
     }
 
-
     private void addFood(){
         Food food = getFoodFromInputs();
         if(food == null) return;
@@ -136,7 +135,7 @@ public class AddFoodActivity extends AppCompatActivity {
 
         int selectedIcon = R.drawable.apple;
         if (radioBtn2.isChecked()) {
-            selectedIcon = R.drawable.steak;
+            selectedIcon = R.drawable.grilled_steak;
         } else if (radioBtn3.isChecked()) {
             selectedIcon = R.drawable.cookie;
         }

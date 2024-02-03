@@ -59,12 +59,14 @@
     <string name="title_add_foods">Add Foods</string>
     <string name="add_weight">Update Weight</string>
     <string name="add_details">Update Details</string>
-    <string name="edit_food">Edit Meal</string>
+    <string name="edit_food">Edit Food</string>
     <string name="delete_food">Delete Food</string>
     <string name="add_calorie_custom">Update Goal</string>
     <string name="details_form">Insert the Details</string>
     <string name="quantity_form">Insert the Quantity</string>
     <string name="birthidate_form">Enter your birthdate</string>
+
+    <string name="edit_meal">Edit Meal</string>
 
     <string name="meal_example">Chicken Breast</string>
     <string name="additional_details">Additional Information</string>
@@ -150,5 +152,12 @@
     <string name="food_quantity_in">Food quantity in</string>
     <string name="food_added">Food added successfully!</string>
     <string name="invalid_quantity_format">Invalid quantity format!</string>
+    <string name="add_dish">Add Dish</string>
+    <string name="salad">Salad</string>
+    <string name="cheese_cake">Cheese Cake</string>
+    <string name="grilled_chicken">Grilled Chicken</string>
+    <string name="with_rice_and_salad">With Rice And Salad</string>
+    <string name="dish_s_foods">Dish\'s Foods</string>
+    <string name="delete_dish">Delete Dish</string>
 
 </resources>
