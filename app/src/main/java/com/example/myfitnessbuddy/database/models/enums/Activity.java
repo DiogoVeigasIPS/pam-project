@@ -1,4 +1,4 @@
-package com.example.myfitnessbuddy.models;
+package com.example.myfitnessbuddy.database.models.enums;
 
 public enum Activity {
     NOT_DEFINED("Not Defined"),

@@ -28,7 +28,7 @@
     <!-- Buttons -->
     <string name="bt_submit">Submit</string>
     <string name="bt_details_submit">Update Personal Details</string>
-    <string name="bt_editDelete">...</string>
+    <string name="bt_editDelete">…</string>
 
     <!-- Label for button description -->
     <string name="back_arrow">back arrow</string>
@@ -59,12 +59,14 @@
     <string name="title_add_foods">Add Foods</string>
     <string name="add_weight">Update Weight</string>
     <string name="add_details">Update Details</string>
-    <string name="edit_food">Edit Meal</string>
+    <string name="edit_food">Edit Food</string>
     <string name="delete_food">Delete Food</string>
     <string name="add_calorie_custom">Update Goal</string>
     <string name="details_form">Insert the Details</string>
     <string name="quantity_form">Insert the Quantity</string>
     <string name="birthidate_form">Enter your birthdate</string>
+
+    <string name="edit_meal">Edit Meal</string>
 
     <string name="meal_example">Chicken Breast</string>
     <string name="additional_details">Additional Information</string>
@@ -124,5 +126,52 @@
     <string name="hot_chicken_wings">Hot Chicken Wings</string>
     <string name="_957">957</string>
     <string name="quick">Quick</string>
+    <string name="invalid_weight_format">Invalid weight format!</string>
+    <string name="update_your_weight">Update your weight</string>
+    <string name="weight_in_kg">Weight in kg</string>
+    <string name="update">Update</string>
+    <string name="cancel">Cancel</string>
+    <string name="weight_updated">Weight updated successfully</string>
+    <string name="update_your_calorie_goal">Update your calorie goal</string>
+    <string name="calculated_calorie_goal">Calculated calorie goal</string>
+    <string name="calorie_goal_updated">Calorie goal updated successfully</string>
+    <string name="user_preferences_or_calorie">To perform a calorie goal calculation you must add your details!</string>
+    <string name="name_input">Name*:</string>
+    <string name="description_input">Description:</string>
+    <string name="portion_input">Portion*:</string>
+    <string name="unit_input">Unit*:</string>
+    <string name="calories_input">Calories*:</string>
+    <string name="icon_input">Icon*:</string>
+    <string name="birthdate_input">Birthdate*:</string>
+    <string name="height_input">Height*:</string>
+    <string name="weight_input">Weight*:</string>
+    <string name="objective_input">Objective*:</string>
+    <string name="activity_input">Activity*:</string>
+    <string name="quick_breakfast">Quick Breakfast</string>
+    <string name="choose_the_quantity">Choose the quantity</string>
+    <string name="food_quantity_in">Food quantity in</string>
+    <string name="food_added">Food added successfully!</string>
+    <string name="invalid_quantity_format">Invalid quantity format!</string>
+    <string name="add_dish">Add Dish</string>
+    <string name="salad">Salad</string>
+    <string name="cheese_cake">Cheese Cake</string>
+    <string name="grilled_chicken">Grilled Chicken</string>
+    <string name="with_rice_and_salad">With Rice And Salad</string>
+    <string name="dish_s_foods">Dish\'s Foods: </string>
+    <string name="delete_dish">Delete Dish</string>
+    <string name="add">Add</string>
+    <string name="kcal">kcal</string>
+    <string name="breakfast_865_kcal">Breakfast: 865 kcal</string>
+    <string name="edit_dish">Edit Dish</string>
+    <string name="lasagna_1975">Lasagna: 1975 kcal</string>
+    <string name="chicken_breast">Chicken Breast</string>
+    <string name="grilled">Grilled</string>
+    <string name="salmon">Salmon</string>
+    <string name="baked">Baked</string>
+    <string name="brocollis">Brocollis</string>
+    <string name="steamed">Steamed</string>
+    <string name="rice">Rice</string>
+    <string name="white">White</string>
+    <string name="sweet_potato">Sweet Potato</string>
 
 </resources>

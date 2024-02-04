@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +19,17 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.myfitnessbuddy.DatabaseHelper;
+import com.example.myfitnessbuddy.activities.foods.AddDishActivity;
+import com.example.myfitnessbuddy.adapters.SearchType;
+import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
 import com.example.myfitnessbuddy.adapters.FoodAdapter;
-import com.example.myfitnessbuddy.models.Food;
+import com.example.myfitnessbuddy.database.models.ListableFood;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +42,9 @@ public class FragmentFoods extends Fragment {
     private RecyclerView foodsList;
     private TextView emptyList;
     private FoodAdapter foodAdapter;
+
+    private EditText foodsSearch;
+    private SearchType searchType = SearchType.FOODS;
 
     public FragmentFoods() {
         // Required empty public constructor
@@ -80,27 +85,45 @@ public class FragmentFoods extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if(foodAdapter != null) updateFoodList();
+        if (foodAdapter == null) return;
+
+        String search = foodsSearch.getText().toString();
+        if (searchType == SearchType.FOODS) {
+            if (!search.trim().equals("")) {
+                updateFoodList();
+            } else {
+                updateFoodList(search);
+            }
+        } else if (searchType == SearchType.DISHES) {
+            if (!search.trim().equals("")) {
+                updateDishList();
+            } else {
+                updateDishList(search);
+            }
+        }
     }
 
-    private void setNavigationalButtons(){
+    private void setNavigationalButtons() {
         ImageButton btBack = getView().findViewById(R.id.bt_back);
-        btBack.setOnClickListener(v -> {
-            Log.d(getClass().getSimpleName(), "Someone clicked me!");
-            Navigation.updateFragment(FragmentPanel.newInstance());
-        });
+        btBack.setOnClickListener(v -> Navigation.navigateToPanel());
 
         FloatingActionButton btAdd = getView().findViewById(R.id.bt_add);
         btAdd.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), AddFoodActivity.class);
-            startActivity(intent);
+            if (searchType == SearchType.FOODS)
+                startActivity(new Intent(getActivity(), AddFoodActivity.class));
+            else if (searchType == SearchType.DISHES)
+                startActivity(new Intent(getActivity(), AddDishActivity.class));
         });
 
-        EditText foodsSearch = getView().findViewById(R.id.foods_search);
+        foodsSearch = getView().findViewById(R.id.foods_search);
         foodsSearch.setOnEditorActionListener((textView, actionId, keyEvent) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 String search = foodsSearch.getText().toString();
-                updateFoodList(search);
+                if (searchType == SearchType.FOODS) {
+                    updateFoodList(search);
+                } else if (searchType == SearchType.DISHES) {
+                    updateDishList(search);
+                }
                 return true;
             }
             return false;
@@ -109,7 +132,7 @@ public class FragmentFoods extends Fragment {
 
     private void setListAdapter() {
         DatabaseHelper.executeInBackground(() -> {
-            List<Food> foods = DatabaseHelper.getAllFoods();
+            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
 
             requireActivity().runOnUiThread(() -> {
                 foodAdapter = new FoodAdapter(foods);
@@ -127,16 +150,15 @@ public class FragmentFoods extends Fragment {
 
     private void updateFoodList() {
         DatabaseHelper.executeInBackground(() -> {
-            List<Food> foods = DatabaseHelper.getAllFoods();
+            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
 
             requireActivity().runOnUiThread(() -> {
-                if(foods.isEmpty()){
+                if (foods.isEmpty()) {
                     showEmptyListMessage(R.string.this_list_seems_to_be_empty, foodsList);
                     return;
                 }
 
                 hideEmptyListMessage();
-                Log.d("ATAOPA", "updateFoodList: ");
                 foodAdapter.setFoods(foods);
             });
         });
@@ -144,13 +166,47 @@ public class FragmentFoods extends Fragment {
 
     private void updateFoodList(String search) {
         DatabaseHelper.executeInBackground(() -> {
-            List<Food> foods = DatabaseHelper.getFoodsByName(search);
+            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getFoodsByName(search));
 
             requireActivity().runOnUiThread(() -> {
-                if(foods.isEmpty()){
+                if (foods.isEmpty()) {
                     showEmptyListMessage(R.string.not_found_in_list, foodsList);
                     return;
-                }else{
+                } else {
+                    hideEmptyListMessage();
+                }
+
+                foodAdapter.setFoods(foods);
+                hideKeyboard();
+            });
+        });
+    }
+
+    private void updateDishList() {
+        DatabaseHelper.executeInBackground(() -> {
+            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.DishHelper.getAllDishes());
+
+            requireActivity().runOnUiThread(() -> {
+                if (foods.isEmpty()) {
+                    showEmptyListMessage(R.string.this_list_seems_to_be_empty, foodsList);
+                    return;
+                }
+
+                hideEmptyListMessage();
+                foodAdapter.setFoods(foods);
+            });
+        });
+    }
+
+    private void updateDishList(String search) {
+        DatabaseHelper.executeInBackground(() -> {
+            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.DishHelper.searchDishesByName(search));
+
+            requireActivity().runOnUiThread(() -> {
+                if (foods.isEmpty()) {
+                    showEmptyListMessage(R.string.not_found_in_list, foodsList);
+                    return;
+                } else {
                     hideEmptyListMessage();
                 }
 
@@ -165,7 +221,7 @@ public class FragmentFoods extends Fragment {
         foodsList.setVisibility(View.VISIBLE);
     }
 
-    private void showEmptyListMessage(int message, RecyclerView foodsList){
+    private void showEmptyListMessage(int message, RecyclerView foodsList) {
         emptyList.setText(message);
         emptyList.setVisibility(View.VISIBLE);
         foodsList.setVisibility(View.GONE);
@@ -179,22 +235,21 @@ public class FragmentFoods extends Fragment {
         }
     }
 
-    private void updateDishList(){
-        // Do not touch
-    }
-
-    private void setTabNavigation(){
+    private void setTabNavigation() {
         TabLayout tabSelector = getView().findViewById(R.id.tab_selector);
 
         tabSelector.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                foodsSearch.setText("");
                 int selectedTabPosition = tab.getPosition();
-                switch (selectedTabPosition){
+                switch (selectedTabPosition) {
                     case 0:
+                        searchType = SearchType.FOODS;
                         updateFoodList();
                         break;
                     case 1:
+                        searchType = SearchType.DISHES;
                         updateDishList();
                         break;
                 }

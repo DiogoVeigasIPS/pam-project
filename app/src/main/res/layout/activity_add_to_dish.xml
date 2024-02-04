@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.diary.AddToMealActivity">
+
+    <LinearLayout
+        android:id="@+id/navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/top_bar"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/header_padding"
+        android:paddingVertical="@dimen/header_vertical_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/bt_back"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/icon_size"
+            android:layout_marginEnd="@dimen/nav_arrow_margin"
+            android:layout_weight="0.2"
+            android:backgroundTint="@color/top_bar"
+            android:contentDescription="@string/back_arrow"
+            android:src="@drawable/back_arrow" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/lasagna_1975"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/foods_search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navigation_bar"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="@dimen/magnifying_glass"
+            android:layout_height="@dimen/magnifying_glass"
+            android:src="@drawable/magnifying_glass"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/nav_arrow_margin"
+            android:layout_marginStart="@dimen/nav_arrow_margin"
+            android:contentDescription="@string/search_icon"/>
+        <EditText
+            android:id="@+id/foods_search"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/icon_size"
+            android:hint="@string/search_foods"
+            android:imeOptions="actionSearch"
+            android:importantForAutofill="no"
+            android:inputType="textCapSentences"
+            android:padding="@dimen/grouped_spacing"
+            android:backgroundTint="@color/white"
+            android:textSize="@dimen/body_size"
+            />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/foods_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/main_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/foods_search_layout" />
+
+    <TextView
+        android:id="@+id/empty_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/this_list_seems_to_be_empty"
+        android:textStyle="italic"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/empty_list_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/foods_search_layout"
+        android:visibility="gone"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

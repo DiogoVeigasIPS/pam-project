@@ -1,25 +1,28 @@
 package com.example.myfitnessbuddy;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-
 import android.widget.FrameLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.main_fragments.Navigation;
+import com.example.myfitnessbuddy.database.models.Day;
+import com.example.myfitnessbuddy.database.models.Meal;
+import com.example.myfitnessbuddy.database.models.enums.MealType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // DB
-        DatabaseHelper.init(getApplicationContext());
 
         // Fragments
         FrameLayout fragmentContainer = findViewById(R.id.fragment_container);
@@ -29,21 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        Navigation.setFragmentNavigation(bottomNavigationView);
+        Navigation.setBottomNavigationView(bottomNavigationView);
+        Navigation.setFragmentNavigation();
 
         //clearSharedPreferences();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-//        User user = UserPreferences.readUserPreferences(this);
-//        if(user != null){
-//            Log.d("SHARED_PREFERENCES", user.getActivity().name());
-//            Log.d("SHARED_PREFERENCES", user.getGoal().name());
-//            Log.d("SHARED_PREFERENCES", String.valueOf(user.getAge()));
-//            Log.d("SHARED_PREFERENCES", String.valueOf(user.getHeight()));
-//        }
     }
 
     private void clearSharedPreferences() {
@@ -54,6 +46,6 @@ public class MainActivity extends AppCompatActivity {
         editor.clear();
 
         // Apply the changes synchronously
-        editor.commit();
+        editor.apply();
     }
 }

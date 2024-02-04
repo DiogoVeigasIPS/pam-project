@@ -44,21 +44,19 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/body_spacing"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/navigation_bar"
-        android:elevation="@dimen/grouped_spacing">
+        app:layout_constraintTop_toBottomOf="@id/navigation_bar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/header_vertical_padding"
             android:background="@color/white"
-            android:layout_weight="5"
-            android:padding="@dimen/grouped_spacing"
             android:elevation="@dimen/grouped_spacing"
-            >
+            android:padding="@dimen/grouped_spacing"
+            android:layout_marginTop="@dimen/header_vertical_padding">
 
             <ImageButton
                 android:id="@+id/bt_date_back"
@@ -67,9 +65,9 @@
                 android:backgroundTint="@color/white"
                 android:contentDescription="@string/back_arrow"
                 android:src="@drawable/backward_arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/dateText"
@@ -79,10 +77,11 @@
                 android:text="@string/today"
                 android:textColor="@color/black"
                 android:textSize="@dimen/diary_time"
-                app:layout_constraintStart_toEndOf="@id/bt_date_back"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/bt_date_forward"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintStart_toEndOf="@id/bt_date_back"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageButton
                 android:id="@+id/bt_date_forward"
                 android:layout_width="@dimen/icon_size"
@@ -90,452 +89,465 @@
                 android:backgroundTint="@color/white"
                 android:contentDescription="@string/front_arrow"
                 android:src="@drawable/forward_arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@color/white"
+            android:layout_height="125dp"
             android:layout_marginBottom="@dimen/header_vertical_padding"
-            android:layout_weight="8"
-            android:paddingHorizontal="@dimen/main_padding"
-            android:paddingBottom="@dimen/header_padding"
+            android:background="@color/white"
             android:elevation="@dimen/grouped_spacing"
-            >
+            android:gravity="center_vertical|center"
+            android:orientation="horizontal"
+            android:padding="@dimen/header_padding"
+            android:paddingHorizontal="@dimen/main_padding">
 
-            <TextView
-                android:id="@+id/goal_output"
+            <LinearLayout
+                android:id="@+id/goal_group"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/goal_value"
-                android:textColor="@color/black"
-                android:textSize="@dimen/diary_head_number"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/goal_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:text="@string/goal"
-                android:textColor="@color/hint_gray"
-                android:textSize="@dimen/body_size"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/goal_output"
-                app:layout_constraintStart_toStartOf="@id/goal_output"
-                app:layout_constraintTop_toBottomOf="@+id/goal_output" />
+                <TextView
+                    android:id="@+id/goal_output"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/minus"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/diary_head_number"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/goal_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="@string/goal"
+                    android:textColor="@color/hint_gray"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/goal_output"
+                    app:layout_constraintStart_toStartOf="@id/goal_output"
+                    app:layout_constraintTop_toBottomOf="@+id/goal_output" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/math_padding"
                 android:text="@string/minus"
                 android:textColor="@color/black"
-                android:textSize="@dimen/card_additional_info"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/food_output"
-                app:layout_constraintStart_toEndOf="@id/goal_output"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="@dimen/card_additional_info" />
 
-            <TextView
-                android:id="@+id/food_output"
+            <LinearLayout
+                android:id="@+id/food_group"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/output_value"
-                android:textColor="@color/black"
-                android:textSize="@dimen/diary_head_number"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/equal"
                 app:layout_constraintStart_toEndOf="@id/minus"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/food_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/foods"
-                android:textColor="@color/hint_gray"
-                android:textSize="@dimen/body_size"
-                app:layout_constraintEnd_toEndOf="@id/food_output"
-                app:layout_constraintStart_toStartOf="@id/food_output"
-                app:layout_constraintTop_toBottomOf="@id/food_output" />
+                <TextView
+                    android:id="@+id/food_output"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/minus"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/diary_head_number"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/equal"
+                    app:layout_constraintStart_toEndOf="@id/minus"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/food_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/foods"
+                    android:textColor="@color/hint_gray"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintEnd_toEndOf="@id/food_output"
+                    app:layout_constraintStart_toStartOf="@id/food_output"
+                    app:layout_constraintTop_toBottomOf="@id/food_output" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/equal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/math_padding"
                 android:text="@string/equal"
                 android:textColor="@color/black"
-                android:textSize="@dimen/card_additional_info"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/leftover_goal_output"
-                app:layout_constraintStart_toEndOf="@id/food_output"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="@dimen/card_additional_info" />
 
-            <TextView
-                android:id="@+id/leftover_goal_output"
+            <LinearLayout
+                android:id="@+id/leftover_goal_group"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/goal_value"
-                android:textColor="@color/black"
-                android:textSize="@dimen/diary_head_number"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/leftover_goal_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/remaining"
-                android:textColor="@color/hint_gray"
-                android:textSize="@dimen/body_size"
-                app:layout_constraintEnd_toEndOf="@id/leftover_goal_output"
-                app:layout_constraintStart_toStartOf="@id/leftover_goal_output"
-                app:layout_constraintTop_toBottomOf="@id/leftover_goal_output" />
+                <TextView
+                    android:id="@+id/leftover_goal_output"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/minus"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/diary_head_number"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/leftover_goal_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/remaining"
+                    android:textColor="@color/hint_gray"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintEnd_toEndOf="@id/leftover_goal_output"
+                    app:layout_constraintStart_toStartOf="@id/leftover_goal_output"
+                    app:layout_constraintTop_toBottomOf="@id/leftover_goal_output" />
+            </LinearLayout>
+        </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/first_group">
-
-        <LinearLayout
-            android:id="@+id/second_group"
+        <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="6"
-            >
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/first_group">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:id="@+id/second_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_popup"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding"
-                >
+                android:orientation="vertical"
+                android:weightSum="6">
 
-                <TextView
-                    android:id="@+id/breakfast_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/icon_size"
-                    android:gravity="center"
-                    android:text="@string/breakfast"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/body_size"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/breakfast_calorie"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:text="@string/output_value"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/body_size"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginBottom="@dimen/spacing_popup"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/main_padding">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/breakfast_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/icon_size"
+                        android:gravity="center"
+                        android:text="@string/breakfast"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/header_vertical_padding"
-                android:layout_weight="0.5"
-                android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding"
-                android:elevation="@dimen/grouped_spacing"
-                >
+                    <TextView
+                        android:id="@+id/breakfast_calories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:text="@string/output_value"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/body_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/add_breakfast"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/icon_size"
-                    android:backgroundTint="@color/white"
-                    android:gravity="center"
-                    android:paddingHorizontal="0dp"
-                    android:text="@string/add_food"
-                    android:textColor="@color/clickable_blue"
-                    android:textSize="@dimen/add_spacing"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:rippleColor="@color/light_gray" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <Button
-                    android:id="@+id/bt_edit_breakfast"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:backgroundTint="@color/white"
-                    android:gravity="center_vertical|end"
-                    android:paddingHorizontal="0dp"
-                    android:text="@string/bt_editDelete"
-                    android:textColor="@color/clickable_blue"
-                    android:textSize="@dimen/body_size"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:rippleColor="@color/light_gray" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_popup"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding"
-                >
-
-                <TextView
-                    android:id="@+id/lunch_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/icon_size"
-                    android:gravity="center"
-                    android:text="@string/lunch"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/body_size"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/lunch_calorie"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:text="@string/output_value"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/body_size"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginBottom="@dimen/header_vertical_padding"
+                    android:layout_weight="0.5"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/main_padding">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <Button
+                        android:id="@+id/add_breakfast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/icon_size"
+                        android:backgroundTint="@color/white"
+                        android:gravity="center"
+                        android:paddingHorizontal="0dp"
+                        android:text="@string/add_food"
+                        android:textColor="@color/clickable_blue"
+                        android:textSize="@dimen/add_spacing"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:rippleColor="@color/light_gray" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/header_vertical_padding"
-                android:layout_weight="0.5"
-                android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding"
-                android:elevation="@dimen/grouped_spacing"
-                >
+                    <Button
+                        android:id="@+id/bt_edit_breakfast"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:backgroundTint="@color/white"
+                        android:gravity="center_vertical|end"
+                        android:paddingHorizontal="0dp"
+                        android:text="@string/bt_editDelete"
+                        android:textColor="@color/clickable_blue"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:rippleColor="@color/light_gray" />
 
-                <Button
-                    android:id="@+id/add_lunch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/icon_size"
-                    android:backgroundTint="@color/white"
-                    android:gravity="center"
-                    android:paddingHorizontal="0dp"
-                    android:text="@string/add_food"
-                    android:textColor="@color/clickable_blue"
-                    android:textSize="@dimen/add_spacing"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:rippleColor="@color/light_gray" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <Button
-                    android:id="@+id/bt_edit_lunch"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:backgroundTint="@color/white"
-                    android:gravity="center_vertical|end"
-                    android:paddingHorizontal="0dp"
-                    android:text="@string/bt_editDelete"
-                    android:textColor="@color/clickable_blue"
-                    android:textSize="@dimen/body_size"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:rippleColor="@color/light_gray" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_popup"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding"
-                >
-
-                <TextView
-                    android:id="@+id/dinner_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/icon_size"
-                    android:gravity="center"
-                    android:text="@string/dinner"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/body_size"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/dinner_calorie"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:text="@string/output_value"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/body_size"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginBottom="@dimen/spacing_popup"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/main_padding">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/lunch_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/icon_size"
+                        android:gravity="center"
+                        android:text="@string/lunch"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/header_vertical_padding"
-                android:layout_weight="0.5"
-                android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding"
-                android:elevation="@dimen/grouped_spacing"
-                >
+                    <TextView
+                        android:id="@+id/lunch_calories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:text="@string/output_value"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/body_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/add_dinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/icon_size"
-                    android:backgroundTint="@color/white"
-                    android:gravity="center"
-                    android:paddingHorizontal="0dp"
-                    android:text="@string/add_food"
-                    android:textColor="@color/clickable_blue"
-                    android:textSize="@dimen/add_spacing"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:rippleColor="@color/light_gray" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <Button
-                    android:id="@+id/bt_edit_dinner"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:backgroundTint="@color/white"
-                    android:gravity="center_vertical|end"
-                    android:paddingHorizontal="0dp"
-                    android:text="@string/bt_editDelete"
-                    android:textColor="@color/clickable_blue"
-                    android:textSize="@dimen/body_size"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:rippleColor="@color/light_gray" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_popup"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding"
-                >
-
-                <TextView
-                    android:id="@+id/snack_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/icon_size"
-                    android:gravity="center"
-                    android:text="@string/snack"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/body_size"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/snack_calorie"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:text="@string/output_value"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/body_size"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginBottom="@dimen/header_vertical_padding"
+                    android:layout_weight="0.5"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/main_padding">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <Button
+                        android:id="@+id/add_lunch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/icon_size"
+                        android:backgroundTint="@color/white"
+                        android:gravity="center"
+                        android:paddingHorizontal="0dp"
+                        android:text="@string/add_food"
+                        android:textColor="@color/clickable_blue"
+                        android:textSize="@dimen/add_spacing"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:rippleColor="@color/light_gray" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/header_vertical_padding"
-                android:layout_weight="0.5"
-                android:background="@color/white"
-                android:paddingHorizontal="@dimen/main_padding"
-                android:elevation="@dimen/grouped_spacing"
-                >
+                    <Button
+                        android:id="@+id/bt_edit_lunch"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:backgroundTint="@color/white"
+                        android:gravity="center_vertical|end"
+                        android:paddingHorizontal="0dp"
+                        android:text="@string/bt_editDelete"
+                        android:textColor="@color/clickable_blue"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:rippleColor="@color/light_gray" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <Button
-                    android:id="@+id/add_snack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/icon_size"
-                    android:backgroundTint="@color/white"
-                    android:gravity="center"
-                    android:paddingHorizontal="0dp"
-                    android:text="@string/add_food"
-                    android:textColor="@color/clickable_blue"
-                    android:textSize="@dimen/add_spacing"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:rippleColor="@color/light_gray" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_popup"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/main_padding">
 
-                <Button
-                    android:id="@+id/bt_edit_snack"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:backgroundTint="@color/white"
-                    android:gravity="center_vertical|end"
-                    android:paddingHorizontal="0dp"
-                    android:text="@string/bt_editDelete"
-                    android:textColor="@color/clickable_blue"
-                    android:textSize="@dimen/body_size"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:rippleColor="@color/light_gray" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
-    </ScrollView>
+                    <TextView
+                        android:id="@+id/dinner_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/icon_size"
+                        android:gravity="center"
+                        android:text="@string/dinner"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/dinner_calories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:text="@string/output_value"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/body_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/header_vertical_padding"
+                    android:layout_weight="0.5"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/main_padding">
+
+                    <Button
+                        android:id="@+id/add_dinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/icon_size"
+                        android:backgroundTint="@color/white"
+                        android:gravity="center"
+                        android:paddingHorizontal="0dp"
+                        android:text="@string/add_food"
+                        android:textColor="@color/clickable_blue"
+                        android:textSize="@dimen/add_spacing"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:rippleColor="@color/light_gray" />
+
+                    <Button
+                        android:id="@+id/bt_edit_dinner"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:backgroundTint="@color/white"
+                        android:gravity="center_vertical|end"
+                        android:paddingHorizontal="0dp"
+                        android:text="@string/bt_editDelete"
+                        android:textColor="@color/clickable_blue"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:rippleColor="@color/light_gray" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_popup"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/main_padding">
+
+                    <TextView
+                        android:id="@+id/snack_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/icon_size"
+                        android:gravity="center"
+                        android:text="@string/snack"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/snack_calories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:text="@string/output_value"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/body_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/header_vertical_padding"
+                    android:layout_weight="0.5"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/main_padding">
+
+                    <Button
+                        android:id="@+id/add_snack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/icon_size"
+                        android:backgroundTint="@color/white"
+                        android:gravity="center"
+                        android:paddingHorizontal="0dp"
+                        android:text="@string/add_food"
+                        android:textColor="@color/clickable_blue"
+                        android:textSize="@dimen/add_spacing"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:rippleColor="@color/light_gray" />
+
+                    <Button
+                        android:id="@+id/bt_edit_snack"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:backgroundTint="@color/white"
+                        android:gravity="center_vertical|end"
+                        android:paddingHorizontal="0dp"
+                        android:text="@string/bt_editDelete"
+                        android:textColor="@color/clickable_blue"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:rippleColor="@color/light_gray" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

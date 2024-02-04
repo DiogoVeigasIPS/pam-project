@@ -1,15 +1,13 @@
 package com.example.myfitnessbuddy.activities.panel;
 
-import static android.provider.Settings.System.getString;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
-import com.example.myfitnessbuddy.models.Activity;
-import com.example.myfitnessbuddy.models.Goal;
-import com.example.myfitnessbuddy.models.User;
+import com.example.myfitnessbuddy.database.models.enums.Activity;
+import com.example.myfitnessbuddy.database.models.enums.Goal;
+import com.example.myfitnessbuddy.database.models.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,7 +20,7 @@ public class UserPreferences {
     private static final String GOAL = "GOAL";
     private static final String ACTIVITY = "ACTIVITY";
     private static final String BIRTH_DATE = "BIRTH_DATE";
-    private static final String CALORIE_GOAL = "BIRTH_DATE";
+    @SuppressLint("ConstantLocale")
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
     public static SimpleDateFormat getDateFormat() {
@@ -51,7 +49,7 @@ public class UserPreferences {
         String activityString = sharedPref.getString(ACTIVITY, "");
         String birthDateString = sharedPref.getString(BIRTH_DATE, "");
 
-        if(height == 0 || goalString.equals("") || activityString.equals("") || birthDateString.equals("")){
+        if(height == 0 || goalString.trim().equals("") || activityString.trim().equals("") || birthDateString.trim().equals("")){
             return null;
         }
 
@@ -73,13 +71,5 @@ public class UserPreferences {
             e.printStackTrace();
             return null;
         }
-    }
-
-    public void addWeight(){
-        // Todo
-    }
-
-    public void getWeight(){
-        // Todo
     }
 }

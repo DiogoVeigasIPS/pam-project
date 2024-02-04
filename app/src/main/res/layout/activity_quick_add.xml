@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
-            android:text="Quick Breakfast"
+            android:text="@string/quick_breakfast"
             android:textColor="@color/black"
             android:textSize="@dimen/title_size" />
 
@@ -76,11 +76,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:text="@string/name"
+                android:text="@string/name_input"
                 android:textSize="@dimen/body_size" />
 
             <EditText
-                android:id="@+id/birthdate_input"
+                android:id="@+id/name_input"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/edit_text_height"
                 android:layout_gravity="end"
@@ -90,7 +90,7 @@
                 android:inputType="textCapSentences"
                 android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
-                />
+                android:autofillHints="" />
         </LinearLayout>
 
         <LinearLayout
@@ -111,11 +111,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:text="@string/calories"
+                android:text="@string/calories_input"
                 android:textSize="@dimen/body_size" />
 
             <EditText
-                android:id="@+id/description_input"
+                android:id="@+id/calories_input"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/edit_text_height"
                 android:layout_weight="0.7"
