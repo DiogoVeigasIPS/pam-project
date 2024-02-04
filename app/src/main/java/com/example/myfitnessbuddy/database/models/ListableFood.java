@@ -4,4 +4,5 @@ public interface ListableFood {
     String getCompoundName();
     String getDetailsLabel();
     int getIcon();
+    int getId();
 }

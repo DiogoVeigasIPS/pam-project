@@ -1,5 +1,6 @@
 package com.example.myfitnessbuddy.activities.foods;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -16,14 +17,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfitnessbuddy.R;
-import com.example.myfitnessbuddy.adapters.ActionType;
 import com.example.myfitnessbuddy.adapters.FoodAdapter;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Dish;
 import com.example.myfitnessbuddy.database.models.DishWithQuantifiedFoods;
-import com.example.myfitnessbuddy.database.models.Food;
 import com.example.myfitnessbuddy.database.models.ListableFood;
-import com.example.myfitnessbuddy.database.models.QuantifiedFood;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +61,15 @@ public class AddDishActivity extends AppCompatActivity {
         setEditDishActions();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(foodAdapter == null) return;
+
+        updateFoodList();
+    }
+
     private void setListAdapter() {
         DatabaseHelper.executeInBackground(() -> {
             DishWithQuantifiedFoods dishWithQuantifiedFoods = DatabaseHelper.DishHelper.getDishById(dishId);
@@ -84,11 +91,12 @@ public class AddDishActivity extends AppCompatActivity {
     }
 
     private void updateFoodList() {
-        // todo use later
         DatabaseHelper.executeInBackground(() -> {
-            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
+            DishWithQuantifiedFoods dishWithQuantifiedFoods = DatabaseHelper.DishHelper.getDishById(dishId);
+            List<ListableFood> foods = new ArrayList<>(dishWithQuantifiedFoods.getQuantifiedFoods());
 
             runOnUiThread(() -> {
+                updateDishCalories(dishWithQuantifiedFoods);
                 if(foods.isEmpty()){
                     showEmptyListMessage(R.string.this_list_seems_to_be_empty, foodsList);
                     return;
@@ -130,6 +138,15 @@ public class AddDishActivity extends AppCompatActivity {
                 // Show card with list and stuff
                 findViewById(R.id.foods_card_view).setVisibility(View.VISIBLE);
 
+                // Add button adds
+                findViewById(R.id.bt_add_food).setOnClickListener(v -> {
+                    Intent intent = new Intent(AddDishActivity.this, AddToDishActivity.class);
+                    intent.putExtra(AddToDishActivity.TITLE, dish.getName());
+                    intent.putExtra(AddToDishActivity.DISH_ID, dish.getId());
+                    startActivity(intent);
+                });
+
+                // Delete
                 AppCompatButton deleteButton = findViewById(R.id.bt_delete);
                 setDeleteButton(deleteButton, dish);
                 fillInputs(dish);

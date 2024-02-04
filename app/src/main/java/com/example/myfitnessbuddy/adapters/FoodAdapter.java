@@ -26,6 +26,7 @@ import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.diary.AddToMealActivity;
 import com.example.myfitnessbuddy.activities.foods.AddDishActivity;
 import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
+import com.example.myfitnessbuddy.activities.foods.AddToDishActivity;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.DishWithQuantifiedFoods;
 import com.example.myfitnessbuddy.database.models.Food;
@@ -47,8 +48,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         this.searchType = searchType;
     }
 
-    public FoodAdapter(List<ListableFood> foods, ActionType actionType, int mealId) {
-        this(foods, actionType, mealId, SearchType.FOODS);
+    public FoodAdapter(List<ListableFood> foods, ActionType actionType, int givenId) {
+        this(foods, actionType, givenId, SearchType.FOODS);
     }
 
     public FoodAdapter(List<ListableFood> foods) {
@@ -106,15 +107,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                 });
                 return;
             }
-
-            /*actionButton.setImageResource(R.drawable.add_black);
-            actionButton.setOnClickListener(v -> {
-                QuantityDialogFragment quantityDialogFragment = new QuantityDialogFragment(mealId, food);
-                FragmentManager fragmentManager = ((AppCompatActivity) v.getContext()).getSupportFragmentManager();
-                quantityDialogFragment.show(fragmentManager, "QuantityDialogFragmentTag");
-            });*/
         }
-
     }
 
     @Override
@@ -216,7 +209,12 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                             requireActivity().runOnUiThread(() -> {
                                 if(isAdded()){
                                     Toast.makeText(getActivity(), R.string.food_added, Toast.LENGTH_SHORT).show();
-                                    ((AddToMealActivity) getActivity()).updateMealData();
+
+                                    if(actionType == ActionType.ADD_TO_MEAL)
+                                        ((AddToMealActivity) getActivity()).updateMealData();
+                                    else if(actionType == ActionType.ADD_TO_DISH)
+                                        ((AddToDishActivity) getActivity()).updateDishData();
+
                                     dialog.dismiss();
                                 }
                             });

@@ -1,35 +1,33 @@
-package com.example.myfitnessbuddy.activities.diary;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+package com.example.myfitnessbuddy.activities.foods;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.adapters.ActionType;
 import com.example.myfitnessbuddy.adapters.FoodAdapter;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.ListableFood;
+import com.example.myfitnessbuddy.database.models.QuantifiedFood;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddToMealActivity extends AppCompatActivity {
-
+public class AddToDishActivity extends AppCompatActivity {
     public static final String TITLE = "TITLE";
-    public static final String MEAL_ID = "MEAL_ID";
-    private int stringResource;
-    private int mealId;
+    public static final String DISH_ID = "DISH_ID";
+    private String dishName;
+    private int dishId;
 
     private RecyclerView foodsList;
     private TextView emptyList;
@@ -38,29 +36,32 @@ public class AddToMealActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_to_meal);
+        setContentView(R.layout.activity_add_to_dish);
 
         setNavigationalButtons();
 
         Bundle extras = getIntent().getExtras();
 
         if(extras == null) return;
-        stringResource = extras.getInt(TITLE);
-        mealId = extras.getInt(MEAL_ID);
 
-        setQuickAddNavigation(stringResource);
+        dishName = extras.getString(TITLE);
+        dishId = extras.getInt(DISH_ID);
 
         foodsList = findViewById(R.id.foods_list);
         emptyList = findViewById(R.id.empty_list);
+
         setListAdapter();
+        updateDishData();
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
-        updateMealData();
-        if(foodAdapter != null) updateFoodList();
+        if(foodAdapter == null) return;
+
+        updateDishData();
+        updateFoodList();
     }
 
     private void setListAdapter() {
@@ -68,7 +69,7 @@ public class AddToMealActivity extends AppCompatActivity {
             List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
 
             runOnUiThread(() -> {
-                foodAdapter = new FoodAdapter(foods, ActionType.ADD_TO_MEAL, mealId);
+                foodAdapter = new FoodAdapter(foods, ActionType.ADD_TO_DISH, dishId);
                 foodsList.setAdapter(foodAdapter);
                 foodsList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -134,25 +135,16 @@ public class AddToMealActivity extends AppCompatActivity {
         }
     }
 
-    public void updateMealData() {
+    public void updateDishData() {
         DatabaseHelper.executeInBackground(() -> {
-            int calories = DatabaseHelper.MealHelper.getCalories(mealId);
+            int calories = DatabaseHelper.DishHelper.getDishById(dishId).getCalories();
 
             runOnUiThread(() -> setActivityTitle(calories));
         });
     }
 
-    private void setQuickAddNavigation(int stringResource) {
-        ((Button)findViewById(R.id.bt_quick_addition)).setOnClickListener(v -> {
-            Intent intent = new Intent(AddToMealActivity.this, QuickAddActivity.class);
-            intent.putExtra(TITLE, stringResource);
-            intent.putExtra(QuickAddActivity.MEAL_ID, mealId);
-            startActivity(intent);
-        });
-    }
-
     private void setActivityTitle(int calories) {
-        String newTitle = getString(stringResource) + ": " + calories + " Kcal";
+        String newTitle = dishName + ": " + calories + " Kcal";
 
         TextView title = findViewById(R.id.title);
         title.setText(newTitle);
