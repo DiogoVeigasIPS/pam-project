@@ -36,7 +36,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         DatabaseHelper.executeInBackground(() -> {
             // Check for need for population
             if (DatabaseHelper.DayHelper.getDayCount() == 0) {
-                DatabaseHelper.FoodHelper.addNewFoods(FoodsData.populateFoodsData());
+                DatabaseHelper.FoodHelper.addNewFoods(FoodsData.populateFoodsData(this));
             }
 
             checkNewDay();

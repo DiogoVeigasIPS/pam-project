@@ -164,5 +164,14 @@
     <string name="breakfast_865_kcal">Breakfast: 865 kcal</string>
     <string name="edit_dish">Edit Dish</string>
     <string name="lasagna_1975">Lasagna: 1975 kcal</string>
+    <string name="chicken_breast">Chicken Breast</string>
+    <string name="grilled">Grilled</string>
+    <string name="salmon">Salmon</string>
+    <string name="baked">Baked</string>
+    <string name="brocollis">Brocollis</string>
+    <string name="steamed">Steamed</string>
+    <string name="rice">Rice</string>
+    <string name="white">White</string>
+    <string name="sweet_potato">Sweet Potato</string>
 
 </resources>

@@ -18,10 +18,12 @@ public interface MealDao {
     @Query("SELECT * from meal WHERE id = :id LIMIT 1")
     Meal findById(int id);
 
-    @Query("SELECT COALESCE(SUM(qa.calories), 0) + COALESCE(SUM(qf.calculatedCalories), 0) " +
-            "FROM quickAddition qa " +
-            "LEFT JOIN quantifiedFood qf ON qa.mealId = qf.mealId " +
-            "WHERE qa.mealId = :mealId")
+    @Query("SELECT COALESCE(SUM(COALESCE(qa.calories, 0) + COALESCE(qf.calculatedCalories, 0)), 0) AS totalCalories " +
+            "FROM meal m " +
+            "LEFT JOIN quickAddition qa ON qa.mealId = m.id " +
+            "LEFT JOIN quantifiedFood qf ON qf.mealId = m.id " +
+            "WHERE m.id = :mealId " +
+            "GROUP BY m.id")
     int getCalories(int mealId);
 
     @Insert
