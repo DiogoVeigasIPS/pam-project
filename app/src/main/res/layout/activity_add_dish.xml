@@ -156,8 +156,6 @@
                 android:hint="@string/choose_an_icon"
                 android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size" />
-
-
         </LinearLayout>
 
         <LinearLayout

@@ -173,5 +173,9 @@
     <string name="rice">Rice</string>
     <string name="white">White</string>
     <string name="sweet_potato">Sweet Potato</string>
+    <string name="breakfast_details">Breakfast Details</string>
+    <string name="lunch_details">Lunch Details</string>
+    <string name="dinner_details">Dinner Details</string>
+    <string name="snack_details">Snack Details</string>
 
 </resources>
