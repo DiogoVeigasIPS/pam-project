@@ -20,7 +20,7 @@ public interface DishDao {
     public List<DishWithQuantifiedFoods> getAll();
 
     @Transaction
-    @Query("SELECT * FROM dish WHERE dishId = :id")
+    @Query("SELECT * FROM dish WHERE id = :id")
     public DishWithQuantifiedFoods findById(int id);
 
     @Insert
@@ -32,6 +32,7 @@ public interface DishDao {
     @Delete
     void delete(Dish dish);
 
+    @Transaction
     @Query("SELECT * FROM dish WHERE name LIKE :searchQuery")
     List<DishWithQuantifiedFoods> searchByName(String searchQuery);
 

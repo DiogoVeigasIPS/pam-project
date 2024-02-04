@@ -16,7 +16,7 @@ public interface QuantifiedFoodDao {
     @Query("SELECT * FROM quantifiedFood")
     List<QuantifiedFood> getAll();
 
-    @Query("SELECT * FROM quantifiedFood WHERE quantifiedFoodId = :id")
+    @Query("SELECT * FROM quantifiedFood WHERE id = :id")
     QuantifiedFood findById(int id);
 
     @Insert

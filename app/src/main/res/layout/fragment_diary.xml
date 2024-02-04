@@ -280,7 +280,6 @@
                     android:layout_marginBottom="@dimen/header_vertical_padding"
                     android:layout_weight="0.5"
                     android:background="@color/white"
-                    android:elevation="@dimen/grouped_spacing"
                     android:paddingHorizontal="@dimen/main_padding">
 
                     <Button
@@ -358,7 +357,6 @@
                     android:layout_marginBottom="@dimen/header_vertical_padding"
                     android:layout_weight="0.5"
                     android:background="@color/white"
-                    android:elevation="@dimen/grouped_spacing"
                     android:paddingHorizontal="@dimen/main_padding">
 
                     <Button
@@ -435,7 +433,6 @@
                     android:layout_marginBottom="@dimen/header_vertical_padding"
                     android:layout_weight="0.5"
                     android:background="@color/white"
-                    android:elevation="@dimen/grouped_spacing"
                     android:paddingHorizontal="@dimen/main_padding">
 
                     <Button
@@ -512,7 +509,6 @@
                     android:layout_marginBottom="@dimen/header_vertical_padding"
                     android:layout_weight="0.5"
                     android:background="@color/white"
-                    android:elevation="@dimen/grouped_spacing"
                     android:paddingHorizontal="@dimen/main_padding">
 
                     <Button

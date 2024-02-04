@@ -74,14 +74,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         if(searchType == SearchType.ALL) return;
 
         if(foodPreset instanceof Food){
-            Log.d("instanceof", "is food: ");
-        }
-
-        if(foodPreset instanceof Dish){
-            Log.d("instanceof", "is dish: ");
-        }
-
-        if(foodPreset instanceof Food){
             Food food = (Food) foodPreset;
             if(this.actionType == ActionType.DETAILS){
                 actionButton.setOnClickListener(v -> {
@@ -109,7 +101,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
                     Intent intent = new Intent(context, AddDishActivity.class);
 
-                    intent.putExtra(AddDishActivity.DISH_ID, dish.getDish().getDishId());
+                    intent.putExtra(AddDishActivity.DISH_ID, dish.getDish().getId());
                     context.startActivity(intent);
                 });
                 return;
@@ -189,7 +181,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             unitTextView.setText(food.getUnits());
 
             builder.setView(dialogView)
-                    .setPositiveButton(R.string.update, null) // Set a null click listener initially
+                    .setPositiveButton(R.string.add, null) // Set a null click listener initially
                     .setNegativeButton(R.string.cancel, (dialog, id) -> FoodAdapter.QuantityDialogFragment.this.getDialog().cancel());
 
             AlertDialog dialog = builder.create();

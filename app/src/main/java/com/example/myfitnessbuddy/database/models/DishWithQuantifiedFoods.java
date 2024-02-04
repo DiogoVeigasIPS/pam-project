@@ -9,8 +9,8 @@ public class DishWithQuantifiedFoods implements FoodPreset {
     @Embedded
     private Dish dish;
     @Relation(
-            parentColumn = "dishId",
-            entityColumn = "quantifiedFoodId"
+            parentColumn = "id",
+            entityColumn = "dishId"
     )
     private List<QuantifiedFood> quantifiedFoods;
 
