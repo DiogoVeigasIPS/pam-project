@@ -66,15 +66,15 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
-        ListableFood foodPreset = foods.get(position);
-        holder.setValues(foodPreset);
+        ListableFood listableFood = foods.get(position);
+        holder.setValues(listableFood);
         ImageButton actionButton = holder.itemView.findViewById(R.id.bt_action);
 
         // TODO
         if(searchType == SearchType.ALL) return;
 
-        if(foodPreset instanceof Food){
-            Food food = (Food) foodPreset;
+        if(listableFood instanceof Food){
+            Food food = (Food) listableFood;
             if(this.actionType == ActionType.DETAILS){
                 actionButton.setOnClickListener(v -> {
                     Context context = v.getContext();
@@ -94,8 +94,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                 quantityDialogFragment.show(fragmentManager, "QuantityDialogFragmentTag");
             });
 
-        }else if(foodPreset instanceof DishWithQuantifiedFoods){
-            DishWithQuantifiedFoods dish = (DishWithQuantifiedFoods) foodPreset;
+        }else if(listableFood instanceof DishWithQuantifiedFoods){
+            DishWithQuantifiedFoods dish = (DishWithQuantifiedFoods) listableFood;
             if(this.actionType == ActionType.DETAILS){
                 actionButton.setOnClickListener(v -> {
                     Context context = v.getContext();
@@ -105,8 +105,19 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                     intent.putExtra(AddDishActivity.DISH_ID, dish.getDish().getId());
                     context.startActivity(intent);
                 });
-                return;
             }
+        }else if(listableFood instanceof QuantifiedFood){
+            QuantifiedFood quantifiedFood = (QuantifiedFood) listableFood;
+
+            // To help the user click the food
+            holder.itemView.setOnClickListener(v -> actionButton.performClick());
+
+            actionButton.setImageResource(R.drawable.edit);
+            actionButton.setOnClickListener(v -> {
+                QuantityDialogFragment quantityDialogFragment = new QuantityDialogFragment(givenId, actionType, quantifiedFood);
+                FragmentManager fragmentManager = ((AppCompatActivity) v.getContext()).getSupportFragmentManager();
+                quantityDialogFragment.show(fragmentManager, "QuantityDialogFragmentTag");
+            });
         }
     }
 
@@ -156,13 +167,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     public static class QuantityDialogFragment extends DialogFragment {
         private final int givenId;
-        private final Food food;
+        private final ListableFood food;
         private final ActionType actionType;
 
-        public QuantityDialogFragment(int givenId, ActionType actionType, Food food){
+        public QuantityDialogFragment(int givenId, ActionType actionType, ListableFood food){
             this.givenId = givenId;
-            this.food = food;
             this.actionType = actionType;
+            this.food = food;
         }
 
         @NonNull
@@ -176,9 +187,20 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             TextView unitTextView = dialogView.findViewById(R.id.unit_label);
             unitTextView.setText(food.getUnits());
 
+            int positiveButtonResource = R.string.add;
+
+            if(food instanceof QuantifiedFood){
+                EditText quantityInput = dialogView.findViewById(R.id.quantity_input);
+                quantityInput.setText(String.valueOf((int)((QuantifiedFood) food).getQuantity()));
+                positiveButtonResource = R.string.update;
+            }
+
             builder.setView(dialogView)
-                    .setPositiveButton(R.string.add, null) // Set a null click listener initially
+                    .setPositiveButton(positiveButtonResource, null) // Set a null click listener initially
                     .setNegativeButton(R.string.cancel, (dialog, id) -> FoodAdapter.QuantityDialogFragment.this.getDialog().cancel());
+
+            if(food instanceof QuantifiedFood)
+                builder.setNeutralButton(R.string.remove, null);
 
             AlertDialog dialog = builder.create();
 
@@ -194,40 +216,93 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                         return;
                     }
 
-                    try {
-                        double quantity = Double.parseDouble(quantityStr);
-                        DatabaseHelper.executeInBackground(() -> {
-                            QuantifiedFood quantifiedFood = new QuantifiedFood(quantity, food);
-
-                            if(actionType == ActionType.ADD_TO_MEAL)
-                                quantifiedFood.setMealId(givenId);
-                            else if(actionType == ActionType.ADD_TO_DISH)
-                                quantifiedFood.setDishId(givenId);
-
-                            DatabaseHelper.QuantifiedFoodHelper.addNewQuantifiedFood(quantifiedFood);
-
-                            requireActivity().runOnUiThread(() -> {
-                                if(isAdded()){
-                                    Toast.makeText(getActivity(), R.string.food_added, Toast.LENGTH_SHORT).show();
-
-                                    if(actionType == ActionType.ADD_TO_MEAL)
-                                        ((AddToMealActivity) getActivity()).updateMealData();
-                                    else if(actionType == ActionType.ADD_TO_DISH)
-                                        ((AddToDishActivity) getActivity()).updateDishData();
-
-                                    dialog.dismiss();
-                                }
-                            });
-                        });
-
-                    } catch (NumberFormatException numberFormatException){
-                        Log.e("QuantityDialogFragment", "Error parsing quantity", numberFormatException);
-                        Toast.makeText(getActivity(), R.string.invalid_quantity_format, Toast.LENGTH_SHORT).show();
+                    if(food instanceof Food){
+                        addQuantityWithFood(quantityStr, (Food) food, dialog);
+                    } else if (food instanceof QuantifiedFood) {
+                        updateQuantityInFood(quantityStr, (QuantifiedFood) food, dialog);
                     }
+                });
+
+                Button neutralButton = dialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+                neutralButton.setTextColor(getResources().getColor(R.color.danger));
+                neutralButton.setOnClickListener(v -> {
+                    DatabaseHelper.executeInBackground(() -> {
+                        DatabaseHelper.QuantifiedFoodHelper.deleteQuantifiedFood((QuantifiedFood) food);
+
+                        requireActivity().runOnUiThread(() -> {
+                            if(isAdded()){
+                                Toast.makeText(getActivity(), R.string.food_removed, Toast.LENGTH_SHORT).show();
+
+                                if(actionType == ActionType.EDIT_IN_DISH)
+                                    ((AddDishActivity) getActivity()).updateFoodList();
+
+                                dialog.dismiss();
+                            }
+                        });
+                    });
                 });
             });
 
             return dialog;
+        }
+
+        private void updateQuantityInFood(String quantityStr, QuantifiedFood food, AlertDialog dialog) {
+            try {
+                double quantity = Double.parseDouble(quantityStr);
+                DatabaseHelper.executeInBackground(() -> {
+                    food.setQuantity(quantity);
+
+                    DatabaseHelper.QuantifiedFoodHelper.updateQuantifiedFood(food);
+
+                    requireActivity().runOnUiThread(() -> {
+                        if(isAdded()){
+                            Toast.makeText(getActivity(), R.string.food_updated, Toast.LENGTH_SHORT).show();
+
+                            if(actionType == ActionType.EDIT_IN_DISH)
+                                ((AddDishActivity) getActivity()).updateFoodList();
+
+                            dialog.dismiss();
+                        }
+                    });
+                });
+
+            } catch (NumberFormatException numberFormatException){
+                Log.e("QuantityDialogFragment", "Error parsing quantity", numberFormatException);
+                Toast.makeText(getActivity(), R.string.invalid_quantity_format, Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        private void addQuantityWithFood(String quantityStr, Food food, AlertDialog dialog) {
+            try {
+                double quantity = Double.parseDouble(quantityStr);
+                DatabaseHelper.executeInBackground(() -> {
+                    QuantifiedFood quantifiedFood = new QuantifiedFood(quantity, food);
+
+                    if(actionType == ActionType.ADD_TO_MEAL)
+                        quantifiedFood.setMealId(givenId);
+                    else if(actionType == ActionType.ADD_TO_DISH)
+                        quantifiedFood.setDishId(givenId);
+
+                    DatabaseHelper.QuantifiedFoodHelper.addNewQuantifiedFood(quantifiedFood);
+
+                    requireActivity().runOnUiThread(() -> {
+                        if(isAdded()){
+                            Toast.makeText(getActivity(), R.string.food_added, Toast.LENGTH_SHORT).show();
+
+                            if(actionType == ActionType.ADD_TO_MEAL)
+                                ((AddToMealActivity) getActivity()).updateMealData();
+                            else if(actionType == ActionType.ADD_TO_DISH)
+                                ((AddToDishActivity) getActivity()).updateDishData();
+
+                            dialog.dismiss();
+                        }
+                    });
+                });
+
+            } catch (NumberFormatException numberFormatException){
+                Log.e("QuantityDialogFragment", "Error parsing quantity", numberFormatException);
+                Toast.makeText(getActivity(), R.string.invalid_quantity_format, Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

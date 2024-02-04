@@ -54,6 +54,10 @@ public class QuantifiedFood implements ListableFood{
         return id;
     }
 
+    @Override
+    public String getUnits() {
+        return food.getUnits();
+    }
     public Food getFood(){
         return this.food;
     }

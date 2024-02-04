@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfitnessbuddy.R;
+import com.example.myfitnessbuddy.adapters.ActionType;
 import com.example.myfitnessbuddy.adapters.FoodAdapter;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Dish;
@@ -76,7 +77,7 @@ public class AddDishActivity extends AppCompatActivity {
             List<ListableFood> foods = new ArrayList<>(dishWithQuantifiedFoods.getQuantifiedFoods());
 
             runOnUiThread(() -> {
-                foodAdapter = new FoodAdapter(foods);
+                foodAdapter = new FoodAdapter(foods, ActionType.EDIT_IN_DISH, dishId);
                 foodsList.setAdapter(foodAdapter);
                 foodsList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -90,7 +91,7 @@ public class AddDishActivity extends AppCompatActivity {
         });
     }
 
-    private void updateFoodList() {
+    public void updateFoodList() {
         DatabaseHelper.executeInBackground(() -> {
             DishWithQuantifiedFoods dishWithQuantifiedFoods = DatabaseHelper.DishHelper.getDishById(dishId);
             List<ListableFood> foods = new ArrayList<>(dishWithQuantifiedFoods.getQuantifiedFoods());

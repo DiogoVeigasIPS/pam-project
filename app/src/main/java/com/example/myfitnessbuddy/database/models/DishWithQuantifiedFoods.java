@@ -69,4 +69,9 @@ public class DishWithQuantifiedFoods implements ListableFood {
     public int getId() {
         return dish.getId();
     }
+
+    @Override
+    public String getUnits() {
+        return null;
+    }
 }

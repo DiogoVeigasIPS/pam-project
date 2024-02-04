@@ -5,4 +5,5 @@ public interface ListableFood {
     String getDetailsLabel();
     int getIcon();
     int getId();
+    String getUnits();
 }

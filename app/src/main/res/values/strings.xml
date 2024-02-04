@@ -177,5 +177,8 @@
     <string name="lunch_details">Lunch Details</string>
     <string name="dinner_details">Dinner Details</string>
     <string name="snack_details">Snack Details</string>
+    <string name="food_updated">Food updated successfully!</string>
+    <string name="remove">Remove</string>
+    <string name="food_removed">Food removed successfully!</string>
 
 </resources>
