@@ -262,7 +262,19 @@ public class FragmentPanel extends Fragment {
                             }
 
                             Day today = DatabaseHelper.DayHelper.getToday();
-                            today.setCalorieGoal(user.calculateCalorieGoal(today.getWeight()));
+
+                            int weight = today.getWeight();
+                            if(weight == 0) {
+                                requireActivity().runOnUiThread(() -> {
+                                    if (isAdded()) {
+                                        Toast.makeText(getActivity(), R.string.user_preferences_or_calorie, Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                return;
+                            }
+
+                            today.setCalorieGoal(user.calculateCalorieGoal(weight));
+
                             DatabaseHelper.DayHelper.updateDay(today);
 
                             requireActivity().runOnUiThread(() -> {
