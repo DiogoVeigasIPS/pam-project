@@ -1,9 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Myfitnessbuddy" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">#3263E2</item>
-        <item name="colorSecondary">#87a5ef</item>
-        <item name="colorAccent">#5381f5</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/colorAccent</item>
     </style>
 
     <style name="Theme.Myfitnessbuddy" parent="Base.Theme.Myfitnessbuddy" />

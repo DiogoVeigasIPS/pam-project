@@ -1,4 +1,4 @@
-package com.example.myfitnessbuddy.models;
+package com.example.myfitnessbuddy.database.models;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey;
 
 import java.text.DecimalFormat;
 
-@Entity
-public class Food{
+@Entity(tableName = "food")
+public class Food implements ListableFood {
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "name")

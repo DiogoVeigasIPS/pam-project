@@ -1,25 +1,41 @@
-package com.example.myfitnessbuddy.models;
+package com.example.myfitnessbuddy.database.models;
+
+import static androidx.room.ForeignKey.CASCADE;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity
-public class QuickAddition implements Consumable{
-
+@Entity(tableName = "quickAddition",
+        foreignKeys = @ForeignKey(
+                entity = Meal.class,
+                parentColumns = "id",
+                childColumns = "mealId",
+                onDelete = CASCADE
+        ), indices = {@Index("mealId")}
+)
+public class QuickAddition{
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "name")
     private String name;
     @ColumnInfo(name = "calories")
     private int calories;
-    @ColumnInfo(name = "type")
-    private String type;
+    @ColumnInfo(name = "mealId")
+    private int mealId;
 
+    @Ignore
     public QuickAddition(String name, int calories) {
         setName(name);
         setCalories(calories);
-        setType(getClass().getSimpleName());
+    }
+
+    public QuickAddition(String name, int calories, int mealId) {
+        this(name, calories);
+        setMealId(mealId);
     }
 
     // Getter methods
@@ -31,9 +47,12 @@ public class QuickAddition implements Consumable{
         return name;
     }
 
-    @Override
     public int getCalories() {
         return calories;
+    }
+
+    public int getMealId() {
+        return mealId;
     }
 
     // Setter methods
@@ -63,16 +82,7 @@ public class QuickAddition implements Consumable{
         return getCaloriesLabel();
     }
 
-    @Override
-    public void setType(String type) {
-        if (type == null || type.trim().isEmpty()) {
-            throw new IllegalArgumentException("Type cannot be null or empty");
-        }
-        this.type = type;
-    }
-
-    @Override
-    public String getType() {
-        return type;
+    public void setMealId(int mealId) {
+        this.mealId = mealId;
     }
 }

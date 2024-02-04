@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.myfitnessbuddy.models.Food;
+import com.example.myfitnessbuddy.database.models.Food;
 
 import java.util.List;
 
@@ -19,7 +19,10 @@ public interface FoodDao {
     Food findById(int id);
 
     @Insert
-    void insert(Food... foods);
+    void insert(Food food);
+
+    @Insert
+    void insertAll(Food[] foods);
 
     @Update
     void update(Food food);

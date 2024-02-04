@@ -76,7 +76,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:text="@string/name"
+                android:text="@string/name_input"
                 android:textSize="@dimen/body_size" />
 
             <EditText
@@ -112,7 +112,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:text="@string/description"
+                android:text="@string/description_input"
                 android:textSize="@dimen/body_size" />
 
             <EditText
@@ -148,7 +148,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:text="@string/portion"
+                android:text="@string/portion_input"
                 android:textSize="@dimen/body_size" />
 
             <EditText
@@ -185,7 +185,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:text="@string/unit"
+                android:text="@string/unit_input"
                 android:textSize="@dimen/body_size" />
 
             <EditText
@@ -222,7 +222,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:text="@string/calories"
+                android:text="@string/calories_input"
                 android:textSize="@dimen/body_size" />
 
             <EditText
@@ -257,7 +257,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:text="@string/icon"
+                android:text="@string/icon_input"
                 android:textSize="@dimen/body_size" />
 
             <TextView
