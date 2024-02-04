@@ -12,17 +12,32 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfitnessbuddy.R;
+import com.example.myfitnessbuddy.adapters.ActionType;
+import com.example.myfitnessbuddy.adapters.FoodAdapter;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Dish;
 import com.example.myfitnessbuddy.database.models.DishWithQuantifiedFoods;
+import com.example.myfitnessbuddy.database.models.Food;
+import com.example.myfitnessbuddy.database.models.ListableFood;
+import com.example.myfitnessbuddy.database.models.QuantifiedFood;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddDishActivity extends AppCompatActivity {
 
     public static String DISH_ID = "DISH_ID";
     private EditText nameInput, descriptionInput;
     private RadioButton radioBtn1, radioBtn2, radioBtn3;
+    private int dishId = -1;
+
+    private RecyclerView foodsList;
+    private TextView emptyList;
+    private FoodAdapter foodAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +48,77 @@ public class AddDishActivity extends AppCompatActivity {
 
         initializeInputs();
 
+        foodsList = findViewById(R.id.foods_list);
+        emptyList = findViewById(R.id.empty_list);
+
         Bundle extras = getIntent().getExtras();
         if(extras == null){
             findViewById(R.id.bt_submit).setOnClickListener(v -> addDish());
             return;
         }
 
-        int id = extras.getInt(DISH_ID);
+        dishId = extras.getInt(DISH_ID);
+        setListAdapter();
         updateTitle();
+        setEditDishActions();
+    }
+
+    private void setListAdapter() {
         DatabaseHelper.executeInBackground(() -> {
-            DishWithQuantifiedFoods dishWithQuantifiedFoods = DatabaseHelper.DishHelper.getDishById(id);
+            DishWithQuantifiedFoods dishWithQuantifiedFoods = DatabaseHelper.DishHelper.getDishById(dishId);
+            List<ListableFood> foods = new ArrayList<>(dishWithQuantifiedFoods.getQuantifiedFoods());
+
+            runOnUiThread(() -> {
+                foodAdapter = new FoodAdapter(foods);
+                foodsList.setAdapter(foodAdapter);
+                foodsList.setLayoutManager(new LinearLayoutManager(this));
+
+                updateDishCalories(dishWithQuantifiedFoods);
+                if (foods.isEmpty()) {
+                    showEmptyListMessage(R.string.this_list_seems_to_be_empty, foodsList);
+                    return;
+                }
+                hideEmptyListMessage();
+            });
+        });
+    }
+
+    private void updateFoodList() {
+        // todo use later
+        DatabaseHelper.executeInBackground(() -> {
+            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
+
+            runOnUiThread(() -> {
+                if(foods.isEmpty()){
+                    showEmptyListMessage(R.string.this_list_seems_to_be_empty, foodsList);
+                    return;
+                }
+
+                hideEmptyListMessage();
+                foodAdapter.setFoods(foods);
+            });
+        });
+    }
+
+    private void hideEmptyListMessage() {
+        emptyList.setVisibility(View.GONE);
+        foodsList.setVisibility(View.VISIBLE);
+    }
+
+    private void showEmptyListMessage(int message, RecyclerView foodsList){
+        emptyList.setText(message);
+        emptyList.setVisibility(View.VISIBLE);
+        foodsList.setVisibility(View.GONE);
+    }
+
+    public void updateDishCalories(DishWithQuantifiedFoods dishWithQuantifiedFoods) {
+        int calories = dishWithQuantifiedFoods.getCalories();
+        ((TextView)findViewById(R.id.dishes_kcals)).setText(String.valueOf(calories));
+    }
+
+    private void setEditDishActions() {
+        DatabaseHelper.executeInBackground(() -> {
+            DishWithQuantifiedFoods dishWithQuantifiedFoods = DatabaseHelper.DishHelper.getDishById(dishId);
             if(dishWithQuantifiedFoods == null){
                 runOnUiThread(() -> finish());
                 return;
@@ -51,6 +127,9 @@ public class AddDishActivity extends AppCompatActivity {
             Dish dish = dishWithQuantifiedFoods.getDish();
 
             runOnUiThread(() -> {
+                // Show card with list and stuff
+                findViewById(R.id.foods_card_view).setVisibility(View.VISIBLE);
+
                 AppCompatButton deleteButton = findViewById(R.id.bt_delete);
                 setDeleteButton(deleteButton, dish);
                 fillInputs(dish);
@@ -116,7 +195,7 @@ public class AddDishActivity extends AppCompatActivity {
 
     private void updateTitle() {
         TextView title = findViewById(R.id.title);
-        title.setText(R.string.edit_food);
+        title.setText(R.string.edit_dish);
     }
 
     private Dish getDishFromInputs(){

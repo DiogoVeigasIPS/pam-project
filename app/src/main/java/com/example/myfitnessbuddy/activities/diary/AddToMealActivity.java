@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -17,15 +16,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.myfitnessbuddy.R;
-import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
 import com.example.myfitnessbuddy.adapters.ActionType;
 import com.example.myfitnessbuddy.adapters.FoodAdapter;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
-import com.example.myfitnessbuddy.database.models.Food;
-import com.example.myfitnessbuddy.database.models.FoodPreset;
-import com.example.myfitnessbuddy.main_fragments.FragmentPanel;
-import com.example.myfitnessbuddy.main_fragments.Navigation;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.myfitnessbuddy.database.models.ListableFood;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,10 +66,10 @@ public class AddToMealActivity extends AppCompatActivity {
 
     private void setListAdapter() {
         DatabaseHelper.executeInBackground(() -> {
-            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
+            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
 
             runOnUiThread(() -> {
-                foodAdapter = new FoodAdapter(foods, ActionType.ADD, mealId);
+                foodAdapter = new FoodAdapter(foods, ActionType.ADD_TO_MEAL, mealId);
                 foodsList.setAdapter(foodAdapter);
                 foodsList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -90,7 +84,7 @@ public class AddToMealActivity extends AppCompatActivity {
 
     private void updateFoodList() {
         DatabaseHelper.executeInBackground(() -> {
-            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
+            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
 
             runOnUiThread(() -> {
                 if(foods.isEmpty()){
@@ -106,7 +100,7 @@ public class AddToMealActivity extends AppCompatActivity {
 
     private void updateFoodList(String search) {
         DatabaseHelper.executeInBackground(() -> {
-            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getFoodsByName(search));
+            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getFoodsByName(search));
 
             runOnUiThread(() -> {
                 if(foods.isEmpty()){

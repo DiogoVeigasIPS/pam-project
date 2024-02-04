@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +25,7 @@ import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
 import com.example.myfitnessbuddy.adapters.FoodAdapter;
-import com.example.myfitnessbuddy.database.models.FoodPreset;
+import com.example.myfitnessbuddy.database.models.ListableFood;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
@@ -45,7 +44,7 @@ public class FragmentFoods extends Fragment {
     private FoodAdapter foodAdapter;
 
     private EditText foodsSearch;
-    private SearchType searchType;
+    private SearchType searchType = SearchType.FOODS;
 
     public FragmentFoods() {
         // Required empty public constructor
@@ -133,7 +132,7 @@ public class FragmentFoods extends Fragment {
 
     private void setListAdapter() {
         DatabaseHelper.executeInBackground(() -> {
-            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
+            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
 
             requireActivity().runOnUiThread(() -> {
                 foodAdapter = new FoodAdapter(foods);
@@ -151,7 +150,7 @@ public class FragmentFoods extends Fragment {
 
     private void updateFoodList() {
         DatabaseHelper.executeInBackground(() -> {
-            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
+            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
 
             requireActivity().runOnUiThread(() -> {
                 if (foods.isEmpty()) {
@@ -167,7 +166,7 @@ public class FragmentFoods extends Fragment {
 
     private void updateFoodList(String search) {
         DatabaseHelper.executeInBackground(() -> {
-            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getFoodsByName(search));
+            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getFoodsByName(search));
 
             requireActivity().runOnUiThread(() -> {
                 if (foods.isEmpty()) {
@@ -185,7 +184,7 @@ public class FragmentFoods extends Fragment {
 
     private void updateDishList() {
         DatabaseHelper.executeInBackground(() -> {
-            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.DishHelper.getAllDishes());
+            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.DishHelper.getAllDishes());
 
             requireActivity().runOnUiThread(() -> {
                 if (foods.isEmpty()) {
@@ -201,7 +200,7 @@ public class FragmentFoods extends Fragment {
 
     private void updateDishList(String search) {
         DatabaseHelper.executeInBackground(() -> {
-            List<FoodPreset> foods = new ArrayList<>(DatabaseHelper.DishHelper.searchDishesByName(search));
+            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.DishHelper.searchDishesByName(search));
 
             requireActivity().runOnUiThread(() -> {
                 if (foods.isEmpty()) {

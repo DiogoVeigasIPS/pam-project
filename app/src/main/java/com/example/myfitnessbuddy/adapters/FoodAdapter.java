@@ -27,32 +27,31 @@ import com.example.myfitnessbuddy.activities.diary.AddToMealActivity;
 import com.example.myfitnessbuddy.activities.foods.AddDishActivity;
 import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
-import com.example.myfitnessbuddy.database.models.Dish;
 import com.example.myfitnessbuddy.database.models.DishWithQuantifiedFoods;
 import com.example.myfitnessbuddy.database.models.Food;
-import com.example.myfitnessbuddy.database.models.FoodPreset;
+import com.example.myfitnessbuddy.database.models.ListableFood;
 import com.example.myfitnessbuddy.database.models.QuantifiedFood;
 
 import java.util.List;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
-    private List<FoodPreset> foods;
+    private List<ListableFood> foods;
     private ActionType actionType;
     private SearchType searchType;
-    private int mealId;
+    private int givenId;
 
-    public FoodAdapter(List<FoodPreset> foods, ActionType actionType, int mealId, SearchType searchType) {
+    public FoodAdapter(List<ListableFood> foods, ActionType actionType, int givenId, SearchType searchType) {
         this.foods = foods;
         this.actionType = actionType;
-        this.mealId = mealId;
+        this.givenId = givenId;
         this.searchType = searchType;
     }
 
-    public FoodAdapter(List<FoodPreset> foods, ActionType actionType, int mealId) {
+    public FoodAdapter(List<ListableFood> foods, ActionType actionType, int mealId) {
         this(foods, actionType, mealId, SearchType.FOODS);
     }
 
-    public FoodAdapter(List<FoodPreset> foods) {
+    public FoodAdapter(List<ListableFood> foods) {
         this(foods, ActionType.DETAILS, -1);
     }
 
@@ -66,7 +65,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
-        FoodPreset foodPreset = foods.get(position);
+        ListableFood foodPreset = foods.get(position);
         holder.setValues(foodPreset);
         ImageButton actionButton = holder.itemView.findViewById(R.id.bt_action);
 
@@ -89,10 +88,11 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
             actionButton.setImageResource(R.drawable.add_black);
             actionButton.setOnClickListener(v -> {
-                QuantityDialogFragment quantityDialogFragment = new QuantityDialogFragment(mealId, food);
+                QuantityDialogFragment quantityDialogFragment = new QuantityDialogFragment(givenId, actionType, food);
                 FragmentManager fragmentManager = ((AppCompatActivity) v.getContext()).getSupportFragmentManager();
                 quantityDialogFragment.show(fragmentManager, "QuantityDialogFragmentTag");
             });
+
         }else if(foodPreset instanceof DishWithQuantifiedFoods){
             DishWithQuantifiedFoods dish = (DishWithQuantifiedFoods) foodPreset;
             if(this.actionType == ActionType.DETAILS){
@@ -122,29 +122,30 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         return foods.size();
     }
 
-    public void setFoods(List<FoodPreset> newFoods) {
+    public void setFoods(List<ListableFood> newFoods) {
         this.foods = newFoods;
         notifyDataSetChanged();
     }
 
-    public void setFoods(List<FoodPreset> newFoods, int mealId) {
+    public void setFoods(List<ListableFood> newFoods, int givenId) {
         setFoods(newFoods);
-        this.mealId = mealId;
+        this.givenId = givenId;
     }
 
-    public void setFoods(List<FoodPreset> newFoods, ActionType actionType) {
+    public void setFoods(List<ListableFood> newFoods, ActionType actionType) {
         setFoods(newFoods);
         this.actionType = actionType;
     }
 
-    public void setFoods(List<FoodPreset> newFoods, SearchType searchType) {
+    public void setFoods(List<ListableFood> newFoods, SearchType searchType) {
         setFoods(newFoods);
         this.searchType = searchType;
     }
 
-    public class FoodViewHolder extends RecyclerView.ViewHolder {
-        private TextView foodName, foodDescription;
-        private ImageView foodImage;
+    public static class FoodViewHolder extends RecyclerView.ViewHolder {
+        private final TextView foodName;
+        private final TextView foodDescription;
+        private final ImageView foodImage;
 
         public FoodViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -153,7 +154,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             foodImage = itemView.findViewById(R.id.food_image);
         }
 
-        public void setValues(FoodPreset food){
+        public void setValues(ListableFood food){
             this.foodName.setText(food.getCompoundName());
             this.foodDescription.setText(food.getDetailsLabel());
             this.foodImage.setImageResource(food.getIcon());
@@ -161,12 +162,14 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     }
 
     public static class QuantityDialogFragment extends DialogFragment {
-        private final int mealId;
+        private final int givenId;
         private final Food food;
+        private final ActionType actionType;
 
-        public QuantityDialogFragment(int mealId, Food food){
-            this.mealId = mealId;
+        public QuantityDialogFragment(int givenId, ActionType actionType, Food food){
+            this.givenId = givenId;
             this.food = food;
+            this.actionType = actionType;
         }
 
         @NonNull
@@ -190,7 +193,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             dialog.setOnShowListener(dialogInterface -> {
                 Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
                 positiveButton.setOnClickListener(view -> {
-                    // Your custom logic here
                     EditText quantityInput = dialogView.findViewById(R.id.quantity_input);
                     String quantityStr = quantityInput.getText().toString();
 
@@ -203,7 +205,11 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                         double quantity = Double.parseDouble(quantityStr);
                         DatabaseHelper.executeInBackground(() -> {
                             QuantifiedFood quantifiedFood = new QuantifiedFood(quantity, food);
-                            quantifiedFood.setMealId(mealId);
+
+                            if(actionType == ActionType.ADD_TO_MEAL)
+                                quantifiedFood.setMealId(givenId);
+                            else if(actionType == ActionType.ADD_TO_DISH)
+                                quantifiedFood.setDishId(givenId);
 
                             DatabaseHelper.QuantifiedFoodHelper.addNewQuantifiedFood(quantifiedFood);
 

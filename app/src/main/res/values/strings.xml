@@ -157,8 +157,11 @@
     <string name="cheese_cake">Cheese Cake</string>
     <string name="grilled_chicken">Grilled Chicken</string>
     <string name="with_rice_and_salad">With Rice And Salad</string>
-    <string name="dish_s_foods">Dish\'s Foods</string>
+    <string name="dish_s_foods">Dish\'s Foods: </string>
     <string name="delete_dish">Delete Dish</string>
     <string name="add">Add</string>
+    <string name="kcal">kcal</string>
+    <string name="breakfast_865_kcal">Breakfast: 865 kcal</string>
+    <string name="edit_dish">Edit Dish</string>
 
 </resources>

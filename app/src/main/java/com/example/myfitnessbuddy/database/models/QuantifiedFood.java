@@ -12,6 +12,8 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.RoomWarnings;
 
+import com.example.myfitnessbuddy.R;
+
 import java.text.DecimalFormat;
 
 @Entity(tableName = "quantifiedFood",
@@ -25,7 +27,7 @@ import java.text.DecimalFormat;
         },
         indices = {@Index("mealId"), @Index("dishId")}
 )
-public class QuantifiedFood {
+public class QuantifiedFood implements ListableFood{
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "quantity")
@@ -134,5 +136,20 @@ public class QuantifiedFood {
 
         double caloriesPerUnit = food.getCaloriesPerPortionUnit();
         calculatedCalories = (int) (caloriesPerUnit * quantity);
+    }
+
+    @Override
+    public String getCompoundName() {
+        return food.getCompoundName();
+    }
+
+    @Override
+    public String getDetailsLabel() {
+        return getCalories() + " kcals";
+    }
+
+    @Override
+    public int getIcon() {
+        return food.getIcon();
     }
 }

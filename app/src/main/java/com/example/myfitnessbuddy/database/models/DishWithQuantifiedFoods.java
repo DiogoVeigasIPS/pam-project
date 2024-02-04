@@ -3,9 +3,10 @@ package com.example.myfitnessbuddy.database.models;
 import androidx.room.Embedded;
 import androidx.room.Relation;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class DishWithQuantifiedFoods implements FoodPreset {
+public class DishWithQuantifiedFoods implements ListableFood {
     @Embedded
     private Dish dish;
     @Relation(

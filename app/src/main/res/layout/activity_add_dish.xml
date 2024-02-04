@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_gray"
     tools:context=".activities.foods.AddDishActivity">
 
     <LinearLayout
@@ -62,7 +63,6 @@
             android:id="@+id/name_group"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/body_spacing"
             android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
@@ -98,7 +98,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/body_spacing"
-            android:layout_marginBottom="@dimen/body_spacing"
             android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
@@ -133,6 +132,7 @@
             android:id="@+id/icon_group"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="@dimen/body_spacing"
             android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
@@ -243,7 +243,8 @@
         app:layout_constraintBottom_toTopOf="@id/bt_delete"
         android:layout_marginTop="20dp"
         app:cardCornerRadius="15dp"
-        android:layout_marginBottom="@dimen/main_padding">
+        android:layout_marginBottom="@dimen/main_padding"
+        android:visibility="gone">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
@@ -258,31 +259,58 @@
                 android:padding="10dp"
                 android:text="@string/dish_s_foods"
                 android:textSize="@dimen/body_size"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            <TextView
+                android:id="@+id/dishes_kcals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:text="@string/goal_value"
+                android:textSize="@dimen/body_size"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/dishes_title"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/dishes_kcals_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/kcal"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintStart_toEndOf="@id/dishes_kcals"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/bt_add_food"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/menu_blue"
-                android:text="@string/add_food"
-                android:textColor="@color/white"
-                android:textSize="17sp"
-                app:icon="@drawable/add"
-                app:iconSize="25dp"
-                app:iconTint="@color/white"
+                android:backgroundTint="@color/colorAccent"
+                android:contentDescription="@string/add_food"
+                android:isScrollContainer="false"
+                app:srcCompat="@drawable/add"
+                app:tint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:maxImageSize="50dp" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/card_gray"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@id/dishes_kcals_label"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/foods_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/main_padding"
-                app:layout_constraintTop_toBottomOf="@id/dishes_title"
+                app:layout_constraintTop_toBottomOf="@id/line"
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
 
@@ -296,9 +324,10 @@
                 android:textSize="20sp"
                 android:textStyle="italic"
                 android:visibility="gone"
+                android:layout_marginTop="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dishes_title" />
+                app:layout_constraintTop_toBottomOf="@id/line" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -37,6 +37,6 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="card_additional_info">40sp</dimen>
     <dimen name="diary_time">22sp</dimen>
-    <dimen name="diary_head_number">30sp</dimen>
+    <dimen name="diary_head_number">26sp</dimen>
 
 </resources>

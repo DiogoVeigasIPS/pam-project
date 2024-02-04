@@ -1,6 +1,7 @@
 package com.example.myfitnessbuddy.database;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.myfitnessbuddy.database.models.Day;
 import com.example.myfitnessbuddy.database.models.Dish;
