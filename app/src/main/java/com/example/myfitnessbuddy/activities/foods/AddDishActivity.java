@@ -98,13 +98,14 @@ public class AddDishActivity extends AppCompatActivity {
 
             runOnUiThread(() -> {
                 updateDishCalories(dishWithQuantifiedFoods);
+                foodAdapter.setFoods(foods);
+
                 if(foods.isEmpty()){
                     showEmptyListMessage(R.string.this_list_seems_to_be_empty, foodsList);
                     return;
                 }
 
                 hideEmptyListMessage();
-                foodAdapter.setFoods(foods);
             });
         });
     }
@@ -178,7 +179,7 @@ public class AddDishActivity extends AppCompatActivity {
     private void editDish(Dish dish) {
         updateFoodProperties(dish);
         DatabaseHelper.DishHelper.updateDish(dish);
-        finish();
+        //finish();
     }
 
     private void updateFoodProperties(Dish existingDish) {
@@ -207,8 +208,19 @@ public class AddDishActivity extends AppCompatActivity {
         Dish dish = getDishFromInputs();
         if(dish == null) return;
 
-        DatabaseHelper.DishHelper.addNewDish(dish);
-        finish();
+        DatabaseHelper.executeInBackground(() -> {
+            dishId = (int) DatabaseHelper.DishHelper.addNewDish(dish);
+            DishWithQuantifiedFoods addedDish = DatabaseHelper.DishHelper.getDishById(dishId);
+
+            runOnUiThread(() -> {
+                setListAdapter();
+                updateTitle();
+                setEditDishActions();
+                updateDishCalories(addedDish);
+            });
+        });
+
+        //finish();
     }
 
     private void updateTitle() {

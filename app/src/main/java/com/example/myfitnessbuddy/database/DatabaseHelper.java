@@ -277,8 +277,8 @@ public class DatabaseHelper {
             return appDatabase.dishDao().findById(dishId);
         }
 
-        public static void addNewDish(Dish dish) {
-            executorService.execute(() -> appDatabase.dishDao().insert(dish));
+        public static long addNewDish(Dish dish) {
+            return appDatabase.dishDao().insert(dish);
         }
 
         public static void updateDish(Dish dish) {

@@ -24,7 +24,7 @@ public interface DishDao {
     DishWithQuantifiedFoods findById(int dishId);
 
     @Insert
-    void insert(Dish dish);
+    long insert(Dish dish);
 
     @Update
     void update(Dish dish);

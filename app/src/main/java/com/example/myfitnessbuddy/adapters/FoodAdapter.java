@@ -69,7 +69,11 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
         ListableFood listableFood = foods.get(position);
         holder.setValues(listableFood);
+        // The button
         ImageButton actionButton = holder.itemView.findViewById(R.id.bt_action);
+
+        // To help the user click in the button (he might have not good aim)
+        holder.itemView.setOnClickListener(v -> actionButton.performClick());
 
         // TODO
         if(searchType == SearchType.ALL) return;
@@ -131,9 +135,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         }else if(listableFood instanceof QuantifiedFood){
             QuantifiedFood quantifiedFood = (QuantifiedFood) listableFood;
 
-            // To help the user click the food
-            holder.itemView.setOnClickListener(v -> actionButton.performClick());
-
             actionButton.setImageResource(R.drawable.edit);
             actionButton.setOnClickListener(v -> {
                 QuantityDialogFragment quantityDialogFragment = new QuantityDialogFragment(givenId, actionType, quantifiedFood);
@@ -150,7 +151,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     public void setFoods(List<ListableFood> newFoods) {
         this.foods = newFoods;
-        this.actionType = ActionType.DETAILS;
         notifyDataSetChanged();
     }
 
@@ -229,6 +229,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
             // Override the onShow method to customize the positive button's behavior
             dialog.setOnShowListener(dialogInterface -> {
+                // Positive button (update or add)
                 Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
                 positiveButton.setOnClickListener(view -> {
                     EditText quantityInput = dialogView.findViewById(R.id.quantity_input);
@@ -246,6 +247,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                     }
                 });
 
+                // Neutral button (delete)
                 Button neutralButton = dialog.getButton(AlertDialog.BUTTON_NEUTRAL);
                 neutralButton.setTextColor(getResources().getColor(R.color.danger));
                 neutralButton.setOnClickListener(v -> {
@@ -256,6 +258,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                             if(isAdded()){
                                 Toast.makeText(getActivity(), R.string.food_removed, Toast.LENGTH_SHORT).show();
 
+                                Log.d("TIPO DE ACAO", "onCreateDialog: " + actionType.name());
                                 if(actionType == ActionType.EDIT_IN_DISH)
                                     ((AddDishActivity) getActivity()).updateFoodList();
 
