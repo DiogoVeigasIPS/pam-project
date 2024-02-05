@@ -17,11 +17,11 @@ public interface DishDao {
 
     @Transaction
     @Query("SELECT * FROM dish")
-    public List<DishWithQuantifiedFoods> getAll();
+    List<DishWithQuantifiedFoods> getAll();
 
     @Transaction
     @Query("SELECT * FROM dish WHERE dishId = :dishId")
-    public DishWithQuantifiedFoods findById(int dishId);
+    DishWithQuantifiedFoods findById(int dishId);
 
     @Insert
     void insert(Dish dish);

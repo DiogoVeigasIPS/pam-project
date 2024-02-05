@@ -7,7 +7,10 @@ import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
 
+import com.example.myfitnessbuddy.database.models.QuantifiedFood;
+import com.example.myfitnessbuddy.database.models.QuickAddition;
 import com.example.myfitnessbuddy.database.models.associatios.DishMealCrossRef;
+import com.example.myfitnessbuddy.database.models.associatios.DishWithQuantifiedFoods;
 import com.example.myfitnessbuddy.database.models.associatios.DishesInMeal;
 import com.example.myfitnessbuddy.database.models.Meal;
 
@@ -29,13 +32,23 @@ public interface MealDao {
             "GROUP BY m.mealId")
     int getCalories(int mealId);
 
+    @Query("SELECT * from quickAddition WHERE mealId = :mealId")
+    List<QuickAddition> getQuickAdditionsInMeal(int mealId);
+
+    @Query("SELECT * from quantifiedFood WHERE mealId = :mealId")
+    List<QuantifiedFood> getQuantifiedFoodsInMeal(int mealId);
+
     @Transaction
-    @Query("SELECT * from meal")
-    List<DishesInMeal> getDishesInMeals();
+    @Query("SELECT * FROM dish WHERE dishId IN (:dishIds)")
+    List<DishWithQuantifiedFoods> getDishesWithQuantifiedFoods(List<Integer> dishIds);
 
     @Transaction
     @Query("SELECT * from meal WHERE mealId = :mealId")
     DishesInMeal getDishesInMeal(int mealId);
+
+    @Transaction
+    @Query("SELECT * from meal")
+    List<DishesInMeal> getDishesInMeals();
 
     @Query("SELECT COUNT(*) FROM dishMealCrossRef WHERE mealId = :mealId AND dishId = :dishId")
     int dishIsDuplicateInMeal(int mealId, int dishId);

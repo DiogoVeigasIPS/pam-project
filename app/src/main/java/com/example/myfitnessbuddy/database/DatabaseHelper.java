@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.myfitnessbuddy.database.models.Day;
 import com.example.myfitnessbuddy.database.models.Dish;
+import com.example.myfitnessbuddy.database.models.associatios.AllFoodsInMeal;
 import com.example.myfitnessbuddy.database.models.associatios.DishMealCrossRef;
 import com.example.myfitnessbuddy.database.models.associatios.DishWithQuantifiedFoods;
 import com.example.myfitnessbuddy.database.models.associatios.DishesInMeal;
@@ -13,6 +14,7 @@ import com.example.myfitnessbuddy.database.models.QuantifiedFood;
 import com.example.myfitnessbuddy.database.models.QuickAddition;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -85,11 +87,22 @@ public class DatabaseHelper {
         }
 
         public static List<Integer> getCaloriesList(int dayId) {
-            return appDatabase.dayDao().getCaloriesList(dayId);
+            List<Integer> mealIds = appDatabase.dayDao().getIdMealsByDay(dayId);
+
+            List<Integer> caloriesList = new ArrayList<>();
+
+            for(Integer mealId : mealIds){
+                caloriesList.add(MealHelper.getCalories(mealId));
+            }
+
+            return caloriesList;
+
+            //return appDatabase.dayDao().getCaloriesList(dayId);
         }
 
         public static int getTotalCalories(int dayId) {
-            return appDatabase.dayDao().getTotalCalories(dayId);
+            return getCaloriesList(dayId).stream().mapToInt(Integer::intValue).sum();
+            //return appDatabase.dayDao().getTotalCalories(dayId);
         }
 
         public static int getLastMonthAverageCalories(){
@@ -130,7 +143,40 @@ public class DatabaseHelper {
         }
 
         public static int getCalories(int mealId) {
-            return appDatabase.mealDao().getCalories(mealId);
+            AllFoodsInMeal allFoodsInMeal = getAllFoodsInMeal(mealId);
+
+            int calorieSum = 0;
+
+            for(DishWithQuantifiedFoods dishWithQuantifiedFoods : allFoodsInMeal.getDishWithQuantifiedFoods()){
+                calorieSum += dishWithQuantifiedFoods.getCalories();
+            }
+
+            for(QuantifiedFood quantifiedFood : allFoodsInMeal.getQuantifiedFoodList()){
+                calorieSum += quantifiedFood.getCalories();
+            }
+
+            for(QuickAddition quickAddition : allFoodsInMeal.getQuickAdditions()){
+                calorieSum += quickAddition.getCalories();
+            }
+
+            return calorieSum;
+            //return appDatabase.mealDao().getCalories(mealId);
+        }
+
+        public static AllFoodsInMeal getAllFoodsInMeal(int mealId){
+            List<QuantifiedFood> quantifiedFoodList = appDatabase.mealDao().getQuantifiedFoodsInMeal(mealId);
+            List<QuickAddition> quickAdditions = appDatabase.mealDao().getQuickAdditionsInMeal(mealId);
+            DishesInMeal dishesInMeal = appDatabase.mealDao().getDishesInMeal(mealId);
+
+            List<Integer> dishIds = new ArrayList<>();
+
+            for(Dish dish : dishesInMeal.getDishes()){
+                dishIds.add(dish.getDishId());
+            }
+
+            List<DishWithQuantifiedFoods> dishWithQuantifiedFoods = appDatabase.mealDao().getDishesWithQuantifiedFoods(dishIds);
+
+            return new AllFoodsInMeal(dishesInMeal.getMeal(), quantifiedFoodList, quickAdditions, dishWithQuantifiedFoods);
         }
 
         public static List<DishesInMeal> getDishesInMeals(){

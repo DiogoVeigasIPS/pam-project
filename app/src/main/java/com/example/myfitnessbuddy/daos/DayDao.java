@@ -26,7 +26,7 @@ public interface DayDao {
     @Query("SELECT * FROM meal WHERE dayId = :dayId")
     List<Meal> getMealsForDay(int dayId);
 
-    @Query("SELECT COALESCE(SUM(COALESCE(qa.calories, 0) + COALESCE(qf.calculatedCalories, 0)), 0) AS totalCalories " +
+    /*@Query("SELECT COALESCE(SUM(COALESCE(qa.calories, 0) + COALESCE(qf.calculatedCalories, 0)), 0) AS totalCalories " +
             "FROM meal m " +
             "LEFT JOIN quickAddition qa ON qa.mealId = m.mealId " +
             "LEFT JOIN quantifiedFood qf ON qf.mealId = m.mealId " +
@@ -39,7 +39,10 @@ public interface DayDao {
             "LEFT JOIN quickAddition qa ON qa.mealId = m.mealId " +
             "LEFT JOIN quantifiedFood qf ON qf.mealId = m.mealId " +
             "WHERE m.dayId = :dayId")
-    int getTotalCalories(int dayId);
+    int getTotalCalories(int dayId);*/
+
+    @Query("SELECT mealId FROM meal WHERE dayId = :dayId")
+    List<Integer> getIdMealsByDay(int dayId);
 
     @Query("SELECT AVG(CASE WHEN weight <> 0 THEN weight ELSE NULL END) FROM day ORDER BY date DESC LIMIT 30")
     int getLastMonthAverageWeight();

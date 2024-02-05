@@ -198,7 +198,7 @@ public class AddToMealActivity extends AppCompatActivity {
     }
 
     private void setQuickAddNavigation(int stringResource) {
-        ((Button)findViewById(R.id.bt_quick_addition)).setOnClickListener(v -> {
+        findViewById(R.id.bt_quick_addition).setOnClickListener(v -> {
             Intent intent = new Intent(AddToMealActivity.this, QuickAddActivity.class);
             intent.putExtra(TITLE, stringResource);
             intent.putExtra(QuickAddActivity.MEAL_ID, mealId);
