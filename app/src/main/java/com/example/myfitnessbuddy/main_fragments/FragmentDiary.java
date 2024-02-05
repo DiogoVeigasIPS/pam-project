@@ -76,7 +76,7 @@ public class FragmentDiary extends Fragment {
     private void updateCalories() {
         DatabaseHelper.executeInBackground(() -> {
             Day today = DatabaseHelper.DayHelper.getToday();
-            dayId = today.getId();
+            dayId = today.getDayId();
 
             List<Integer> calories = DatabaseHelper.DayHelper.getCaloriesList(dayId);
 
@@ -146,7 +146,7 @@ public class FragmentDiary extends Fragment {
             requireActivity().runOnUiThread(() -> {
                 Intent intent = new Intent(getContext(), AddToMealActivity.class);
                 intent.putExtra(AddToMealActivity.TITLE, title);
-                intent.putExtra(AddToMealActivity.MEAL_ID, selectedMeal.getId());
+                intent.putExtra(AddToMealActivity.MEAL_ID, selectedMeal.getMealId());
                 startActivity(intent);
             });
         });

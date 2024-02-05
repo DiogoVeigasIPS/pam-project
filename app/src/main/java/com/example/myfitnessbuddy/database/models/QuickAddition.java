@@ -12,14 +12,14 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "quickAddition",
         foreignKeys = @ForeignKey(
                 entity = Meal.class,
-                parentColumns = "id",
+                parentColumns = "mealId",
                 childColumns = "mealId",
                 onDelete = CASCADE
         ), indices = {@Index("mealId")}
 )
 public class QuickAddition{
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int quickAdditionId;
     @ColumnInfo(name = "name")
     private String name;
     @ColumnInfo(name = "calories")
@@ -39,8 +39,8 @@ public class QuickAddition{
     }
 
     // Getter methods
-    public int getId() {
-        return id;
+    public int getQuickAdditionId() {
+        return quickAdditionId;
     }
 
     public String getName() {
@@ -56,8 +56,8 @@ public class QuickAddition{
     }
 
     // Setter methods
-    public void setId(int id){
-        this.id = id;
+    public void setQuickAdditionId(int quickAdditionId){
+        this.quickAdditionId = quickAdditionId;
     }
 
     public void setName(String name) {

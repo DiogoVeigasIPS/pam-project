@@ -108,7 +108,7 @@ public class FragmentPanel extends Fragment {
     private void updateUI(){
         DatabaseHelper.executeInBackground(() -> {
             Day today = DatabaseHelper.DayHelper.getToday();
-            int dayId = today.getId();
+            int dayId = today.getDayId();
 
             int totalCalories = DatabaseHelper.DayHelper.getTotalCalories(dayId);
             int calorieGoal = today.getCalorieGoal();

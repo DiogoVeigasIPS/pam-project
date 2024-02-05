@@ -15,7 +15,7 @@ import com.example.myfitnessbuddy.database.models.enums.MealType;
 @Entity(tableName = "meal",
         foreignKeys = @ForeignKey(
                 entity = Day.class,
-                parentColumns = "id",
+                parentColumns = "dayId",
                 childColumns = "dayId",
                 onDelete = CASCADE
         ), indices = {@Index("dayId")}
@@ -23,7 +23,7 @@ import com.example.myfitnessbuddy.database.models.enums.MealType;
 @TypeConverters({Converters.class})
 public class Meal {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int mealId;
     @ColumnInfo(name = "type")
     private MealType type;
     @ColumnInfo(name = "dayId")
@@ -35,8 +35,8 @@ public class Meal {
     }
 
     // Getter methods
-    public int getId() {
-        return id;
+    public int getMealId() {
+        return mealId;
     }
 
     public MealType getType() {
@@ -48,8 +48,8 @@ public class Meal {
     }
 
     // Setter methods
-    public void setId(int id) {
-        this.id = id;
+    public void setMealId(int mealId) {
+        this.mealId = mealId;
     }
 
     public void setType(MealType type) {

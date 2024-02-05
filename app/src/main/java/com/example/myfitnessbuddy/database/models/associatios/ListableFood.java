@@ -1,4 +1,4 @@
-package com.example.myfitnessbuddy.database.models;
+package com.example.myfitnessbuddy.database.models.associatios;
 
 public interface ListableFood {
     String getCompoundName();

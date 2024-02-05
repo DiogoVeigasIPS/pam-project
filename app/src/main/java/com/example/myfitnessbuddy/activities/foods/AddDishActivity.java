@@ -21,8 +21,8 @@ import com.example.myfitnessbuddy.adapters.ActionType;
 import com.example.myfitnessbuddy.adapters.FoodAdapter;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Dish;
-import com.example.myfitnessbuddy.database.models.DishWithQuantifiedFoods;
-import com.example.myfitnessbuddy.database.models.ListableFood;
+import com.example.myfitnessbuddy.database.models.associatios.DishWithQuantifiedFoods;
+import com.example.myfitnessbuddy.database.models.associatios.ListableFood;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -143,7 +143,7 @@ public class AddDishActivity extends AppCompatActivity {
                 findViewById(R.id.bt_add_food).setOnClickListener(v -> {
                     Intent intent = new Intent(AddDishActivity.this, AddToDishActivity.class);
                     intent.putExtra(AddToDishActivity.TITLE, dish.getName());
-                    intent.putExtra(AddToDishActivity.DISH_ID, dish.getId());
+                    intent.putExtra(AddToDishActivity.DISH_ID, dish.getDishId());
                     startActivity(intent);
                 });
 

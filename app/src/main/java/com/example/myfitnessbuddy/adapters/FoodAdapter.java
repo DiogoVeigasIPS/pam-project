@@ -28,9 +28,10 @@ import com.example.myfitnessbuddy.activities.foods.AddDishActivity;
 import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
 import com.example.myfitnessbuddy.activities.foods.AddToDishActivity;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
-import com.example.myfitnessbuddy.database.models.DishWithQuantifiedFoods;
+import com.example.myfitnessbuddy.database.models.associatios.DishMealCrossRef;
+import com.example.myfitnessbuddy.database.models.associatios.DishWithQuantifiedFoods;
 import com.example.myfitnessbuddy.database.models.Food;
-import com.example.myfitnessbuddy.database.models.ListableFood;
+import com.example.myfitnessbuddy.database.models.associatios.ListableFood;
 import com.example.myfitnessbuddy.database.models.QuantifiedFood;
 
 import java.util.List;
@@ -96,14 +97,35 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
         }else if(listableFood instanceof DishWithQuantifiedFoods){
             DishWithQuantifiedFoods dish = (DishWithQuantifiedFoods) listableFood;
+
             if(this.actionType == ActionType.DETAILS){
                 actionButton.setOnClickListener(v -> {
                     Context context = v.getContext();
 
                     Intent intent = new Intent(context, AddDishActivity.class);
 
-                    intent.putExtra(AddDishActivity.DISH_ID, dish.getDish().getId());
+                    intent.putExtra(AddDishActivity.DISH_ID, dish.getDish().getDishId());
                     context.startActivity(intent);
+                });
+            }else if (this.actionType == ActionType.ADD_TO_MEAL){
+                actionButton.setOnClickListener(v -> {
+                    DatabaseHelper.executeInBackground(() -> {
+                        boolean isDuplicate =  DatabaseHelper.MealHelper.dishIsDuplicateInMeal(givenId, dish.getId());
+
+                        if(isDuplicate){
+                            v.post(() -> {
+                                Toast.makeText(v.getContext(), R.string.dish_duplicated, Toast.LENGTH_LONG).show();
+                            });
+                            return;
+                        }
+
+                        DatabaseHelper.MealHelper.insertDishInMeal(new DishMealCrossRef(dish.getId(), givenId));
+                        v.post(() -> {
+                            // todo   test it after making query count properly
+                            ((AddToMealActivity) v.getContext()).updateMealData();
+                            Toast.makeText(v.getContext(), R.string.dish_added_meal, Toast.LENGTH_SHORT).show();
+                        });
+                    });
                 });
             }
         }else if(listableFood instanceof QuantifiedFood){
@@ -128,6 +150,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     public void setFoods(List<ListableFood> newFoods) {
         this.foods = newFoods;
+        this.actionType = ActionType.DETAILS;
         notifyDataSetChanged();
     }
 

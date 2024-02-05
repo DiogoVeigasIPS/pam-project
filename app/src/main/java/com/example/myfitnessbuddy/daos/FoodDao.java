@@ -15,8 +15,8 @@ public interface FoodDao {
     @Query("SELECT * FROM food")
     List<Food> getAll();
 
-    @Query("SELECT * from food WHERE id = :id LIMIT 1")
-    Food findById(int id);
+    @Query("SELECT * from food WHERE foodId = :foodId LIMIT 1")
+    Food findById(int foodId);
 
     @Insert
     void insert(Food food);

@@ -15,8 +15,8 @@ public interface QuickAdditionDao {
     @Query("SELECT * FROM quickAddition")
     List<QuickAddition> getAll();
 
-    @Query("SELECT * from quickAddition WHERE id = :id LIMIT 1")
-    QuickAddition findById(int id);
+    @Query("SELECT * from quickAddition WHERE quickAdditionId = :quickAdditionId LIMIT 1")
+    QuickAddition findById(int quickAdditionId);
 
     @Insert
     void insert(QuickAddition... quickAdditions);

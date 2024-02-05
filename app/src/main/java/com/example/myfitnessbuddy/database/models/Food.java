@@ -4,12 +4,14 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.myfitnessbuddy.database.models.associatios.ListableFood;
+
 import java.text.DecimalFormat;
 
 @Entity(tableName = "food")
 public class Food implements ListableFood {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int foodId;
     @ColumnInfo(name = "name")
     private String name;
     @ColumnInfo(name = "description")
@@ -33,8 +35,8 @@ public class Food implements ListableFood {
     }
 
     // Getter methods
-    public int getId() {
-        return id;
+    public int getFoodId() {
+        return foodId;
     }
 
     public String getName() {
@@ -47,6 +49,11 @@ public class Food implements ListableFood {
 
     public int getIcon() {
         return icon;
+    }
+
+    @Override
+    public int getId() {
+        return foodId;
     }
 
     public double getPortionSize() {
@@ -62,8 +69,8 @@ public class Food implements ListableFood {
     }
 
     // Setter methods
-    public void setId(int id){
-        this.id = id;
+    public void setFoodId(int foodId){
+        this.foodId = foodId;
     }
 
     public void setName(String name) {

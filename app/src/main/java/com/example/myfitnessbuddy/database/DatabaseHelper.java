@@ -1,11 +1,12 @@
 package com.example.myfitnessbuddy.database;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.example.myfitnessbuddy.database.models.Day;
 import com.example.myfitnessbuddy.database.models.Dish;
-import com.example.myfitnessbuddy.database.models.DishWithQuantifiedFoods;
+import com.example.myfitnessbuddy.database.models.associatios.DishMealCrossRef;
+import com.example.myfitnessbuddy.database.models.associatios.DishWithQuantifiedFoods;
+import com.example.myfitnessbuddy.database.models.associatios.DishesInMeal;
 import com.example.myfitnessbuddy.database.models.Food;
 import com.example.myfitnessbuddy.database.models.Meal;
 import com.example.myfitnessbuddy.database.models.QuantifiedFood;
@@ -106,8 +107,7 @@ public class DatabaseHelper {
         }
 
         public static long addNewDay(Day day) {
-            long insertedId = appDatabase.dayDao().insert(day);
-            return insertedId;
+            return appDatabase.dayDao().insert(day);
         }
 
         public static void updateDay(Day day) {
@@ -131,6 +131,26 @@ public class DatabaseHelper {
 
         public static int getCalories(int mealId) {
             return appDatabase.mealDao().getCalories(mealId);
+        }
+
+        public static List<DishesInMeal> getDishesInMeals(){
+            return appDatabase.mealDao().getDishesInMeals();
+        }
+
+        public static DishesInMeal getDishesInMeal(int mealId){
+            return appDatabase.mealDao().getDishesInMeal(mealId);
+        }
+
+        public static void insertDishInMeal(DishMealCrossRef dishMealCrossRef){
+            executorService.execute(() -> appDatabase.mealDao().insertDishInMeal(dishMealCrossRef));
+        }
+
+        public static void removeDishFromMeal(DishMealCrossRef dishMealCrossRef){
+            executorService.execute(() -> appDatabase.mealDao().removeDishFromMeal(dishMealCrossRef));
+        }
+
+        public static boolean dishIsDuplicateInMeal(int mealId, int dishId){
+            return appDatabase.mealDao().dishIsDuplicateInMeal(mealId, dishId) > 0;
         }
 
         public static void addNewMeal(Meal meal) {
