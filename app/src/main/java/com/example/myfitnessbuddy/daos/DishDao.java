@@ -8,7 +8,7 @@ import androidx.room.Transaction;
 import androidx.room.Update;
 
 import com.example.myfitnessbuddy.database.models.Dish;
-import com.example.myfitnessbuddy.database.models.DishWithQuantifiedFoods;
+import com.example.myfitnessbuddy.database.models.associatios.DishWithQuantifiedFoods;
 
 import java.util.List;
 
@@ -17,14 +17,14 @@ public interface DishDao {
 
     @Transaction
     @Query("SELECT * FROM dish")
-    public List<DishWithQuantifiedFoods> getAll();
+    List<DishWithQuantifiedFoods> getAll();
 
     @Transaction
-    @Query("SELECT * FROM dish WHERE id = :id")
-    public DishWithQuantifiedFoods findById(int id);
+    @Query("SELECT * FROM dish WHERE dishId = :dishId")
+    DishWithQuantifiedFoods findById(int dishId);
 
     @Insert
-    void insert(Dish dish);
+    long insert(Dish dish);
 
     @Update
     void update(Dish dish);

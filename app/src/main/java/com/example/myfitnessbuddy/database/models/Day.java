@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @TypeConverters(Converters.class)
 public class Day {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int dayId;
     @ColumnInfo(name = "date")
 
     private LocalDate date;
@@ -48,8 +48,8 @@ public class Day {
     }
 
     // Getter methods
-    public int getId() {
-        return id;
+    public int getDayId() {
+        return dayId;
     }
 
     public LocalDate getDate() {
@@ -65,8 +65,8 @@ public class Day {
     }
 
     // Setter methods
-    public void setId(int id){
-        this.id = id;
+    public void setDayId(int dayId){
+        this.dayId = dayId;
     }
 
     public void setWeight(int weight) {

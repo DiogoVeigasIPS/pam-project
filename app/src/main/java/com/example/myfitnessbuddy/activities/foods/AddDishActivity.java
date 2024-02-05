@@ -17,11 +17,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfitnessbuddy.R;
+import com.example.myfitnessbuddy.adapters.ActionType;
 import com.example.myfitnessbuddy.adapters.FoodAdapter;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Dish;
-import com.example.myfitnessbuddy.database.models.DishWithQuantifiedFoods;
-import com.example.myfitnessbuddy.database.models.ListableFood;
+import com.example.myfitnessbuddy.database.models.associatios.DishWithQuantifiedFoods;
+import com.example.myfitnessbuddy.database.models.associatios.ListableFood;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +77,7 @@ public class AddDishActivity extends AppCompatActivity {
             List<ListableFood> foods = new ArrayList<>(dishWithQuantifiedFoods.getQuantifiedFoods());
 
             runOnUiThread(() -> {
-                foodAdapter = new FoodAdapter(foods);
+                foodAdapter = new FoodAdapter(foods, ActionType.EDIT_IN_DISH, dishId);
                 foodsList.setAdapter(foodAdapter);
                 foodsList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -90,20 +91,21 @@ public class AddDishActivity extends AppCompatActivity {
         });
     }
 
-    private void updateFoodList() {
+    public void updateFoodList() {
         DatabaseHelper.executeInBackground(() -> {
             DishWithQuantifiedFoods dishWithQuantifiedFoods = DatabaseHelper.DishHelper.getDishById(dishId);
             List<ListableFood> foods = new ArrayList<>(dishWithQuantifiedFoods.getQuantifiedFoods());
 
             runOnUiThread(() -> {
                 updateDishCalories(dishWithQuantifiedFoods);
+                foodAdapter.setFoods(foods);
+
                 if(foods.isEmpty()){
                     showEmptyListMessage(R.string.this_list_seems_to_be_empty, foodsList);
                     return;
                 }
 
                 hideEmptyListMessage();
-                foodAdapter.setFoods(foods);
             });
         });
     }
@@ -142,7 +144,7 @@ public class AddDishActivity extends AppCompatActivity {
                 findViewById(R.id.bt_add_food).setOnClickListener(v -> {
                     Intent intent = new Intent(AddDishActivity.this, AddToDishActivity.class);
                     intent.putExtra(AddToDishActivity.TITLE, dish.getName());
-                    intent.putExtra(AddToDishActivity.DISH_ID, dish.getId());
+                    intent.putExtra(AddToDishActivity.DISH_ID, dish.getDishId());
                     startActivity(intent);
                 });
 
@@ -177,7 +179,7 @@ public class AddDishActivity extends AppCompatActivity {
     private void editDish(Dish dish) {
         updateFoodProperties(dish);
         DatabaseHelper.DishHelper.updateDish(dish);
-        finish();
+        //finish();
     }
 
     private void updateFoodProperties(Dish existingDish) {
@@ -206,8 +208,19 @@ public class AddDishActivity extends AppCompatActivity {
         Dish dish = getDishFromInputs();
         if(dish == null) return;
 
-        DatabaseHelper.DishHelper.addNewDish(dish);
-        finish();
+        DatabaseHelper.executeInBackground(() -> {
+            dishId = (int) DatabaseHelper.DishHelper.addNewDish(dish);
+            DishWithQuantifiedFoods addedDish = DatabaseHelper.DishHelper.getDishById(dishId);
+
+            runOnUiThread(() -> {
+                setListAdapter();
+                updateTitle();
+                setEditDishActions();
+                updateDishCalories(addedDish);
+            });
+        });
+
+        //finish();
     }
 
     private void updateTitle() {

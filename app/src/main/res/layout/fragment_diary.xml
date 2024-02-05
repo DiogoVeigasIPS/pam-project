@@ -301,17 +301,14 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:rippleColor="@color/light_gray" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/bt_edit_breakfast"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
                         android:backgroundTint="@color/white"
-                        android:gravity="center_vertical|end"
-                        android:paddingHorizontal="0dp"
-                        android:text="@string/bt_editDelete"
-                        android:textColor="@color/clickable_blue"
-                        android:textSize="@dimen/body_size"
-                        android:textStyle="bold"
+                        app:tint="@color/clickable_blue"
+                        android:src="@drawable/baseline_visibility_24"
+                        android:contentDescription="@string/breakfast_details"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -378,17 +375,14 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:rippleColor="@color/light_gray" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/bt_edit_lunch"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
                         android:backgroundTint="@color/white"
-                        android:gravity="center_vertical|end"
-                        android:paddingHorizontal="0dp"
-                        android:text="@string/bt_editDelete"
-                        android:textColor="@color/clickable_blue"
-                        android:textSize="@dimen/body_size"
-                        android:textStyle="bold"
+                        app:tint="@color/clickable_blue"
+                        android:src="@drawable/baseline_visibility_24"
+                        android:contentDescription="@string/lunch_details"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -454,17 +448,14 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:rippleColor="@color/light_gray" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/bt_edit_dinner"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
                         android:backgroundTint="@color/white"
-                        android:gravity="center_vertical|end"
-                        android:paddingHorizontal="0dp"
-                        android:text="@string/bt_editDelete"
-                        android:textColor="@color/clickable_blue"
-                        android:textSize="@dimen/body_size"
-                        android:textStyle="bold"
+                        app:tint="@color/clickable_blue"
+                        android:src="@drawable/baseline_visibility_24"
+                        android:contentDescription="@string/dinner_details"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -530,17 +521,14 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:rippleColor="@color/light_gray" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/bt_edit_snack"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
                         android:backgroundTint="@color/white"
-                        android:gravity="center_vertical|end"
-                        android:paddingHorizontal="0dp"
-                        android:text="@string/bt_editDelete"
-                        android:textColor="@color/clickable_blue"
-                        android:textSize="@dimen/body_size"
-                        android:textStyle="bold"
+                        app:tint="@color/clickable_blue"
+                        android:src="@drawable/baseline_visibility_24"
+                        android:contentDescription="@string/snack_details"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"

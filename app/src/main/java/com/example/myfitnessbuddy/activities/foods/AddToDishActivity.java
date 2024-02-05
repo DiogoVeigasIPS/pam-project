@@ -17,8 +17,7 @@ import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.adapters.ActionType;
 import com.example.myfitnessbuddy.adapters.FoodAdapter;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
-import com.example.myfitnessbuddy.database.models.ListableFood;
-import com.example.myfitnessbuddy.database.models.QuantifiedFood;
+import com.example.myfitnessbuddy.database.models.associatios.ListableFood;
 
 import java.util.ArrayList;
 import java.util.List;

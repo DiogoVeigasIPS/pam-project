@@ -173,5 +173,16 @@
     <string name="rice">Rice</string>
     <string name="white">White</string>
     <string name="sweet_potato">Sweet Potato</string>
+    <string name="breakfast_details">Breakfast Details</string>
+    <string name="lunch_details">Lunch Details</string>
+    <string name="dinner_details">Dinner Details</string>
+    <string name="snack_details">Snack Details</string>
+    <string name="food_updated">Food updated successfully!</string>
+    <string name="remove">Remove</string>
+    <string name="food_removed">Food removed successfully!</string>
+    <string name="dish_added_meal">Dish added to meal successfully!</string>
+    <string name="dish_duplicated">That dish is in that meal already!</string>
+    <string name="delete_quick_addition">Delete Quick Addition</string>
+    <string name="dish_deleted">Dish deleted successfully!</string>
 
 </resources>

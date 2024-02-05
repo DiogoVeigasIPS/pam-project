@@ -2,18 +2,16 @@ package com.example.myfitnessbuddy.main_fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.diary.AddToMealActivity;
@@ -76,7 +74,7 @@ public class FragmentDiary extends Fragment {
     private void updateCalories() {
         DatabaseHelper.executeInBackground(() -> {
             Day today = DatabaseHelper.DayHelper.getToday();
-            dayId = today.getId();
+            dayId = today.getDayId();
 
             List<Integer> calories = DatabaseHelper.DayHelper.getCaloriesList(dayId);
 
@@ -90,10 +88,8 @@ public class FragmentDiary extends Fragment {
 
                 int sum = 0;
                 for(Integer calorie : calories){
-                    sum += (int) calorie;
+                    sum += calorie;
                 }
-
-                Log.d("SUMMM", "updateCalories: " + sum);
 
                 goalOutput.setText(String.valueOf(today.getCalorieGoal()));
                 foodOutput.setText(String.valueOf(sum));
@@ -122,10 +118,45 @@ public class FragmentDiary extends Fragment {
         Button addDinner = getView().findViewById(R.id.add_dinner);
         Button addSnack = getView().findViewById(R.id.add_snack);
 
+        ImageButton editBreakfast = getView().findViewById(R.id.bt_edit_breakfast);
+        ImageButton editLunch = getView().findViewById(R.id.bt_edit_lunch);
+        ImageButton editDinner = getView().findViewById(R.id.bt_edit_dinner);
+        ImageButton editSnack = getView().findViewById(R.id.bt_edit_snack);
+
         addBreakfast.setOnClickListener(v -> addFoodToMeal(R.string.breakfast));
         addLunch.setOnClickListener(v -> addFoodToMeal(R.string.lunch));
         addDinner.setOnClickListener(v -> addFoodToMeal(R.string.dinner));
         addSnack.setOnClickListener(v -> addFoodToMeal(R.string.snack));
+
+        editBreakfast.setOnClickListener(v -> editMeal(R.string.breakfast));
+        editLunch.setOnClickListener(v -> editMeal(R.string.lunch));
+        editDinner.setOnClickListener(v -> editMeal(R.string.dinner));
+        editSnack.setOnClickListener(v -> editMeal(R.string.snack));
+    }
+
+    private void editMeal(int title) {
+        DatabaseHelper.executeInBackground(() -> {
+            List<Meal> meals = DatabaseHelper.DayHelper.getMealsForDay(dayId);
+            Meal selectedMeal;
+
+            if(title == R.string.breakfast){
+                selectedMeal = meals.get(0);
+            }else if(title == R.string.lunch){
+                selectedMeal = meals.get(1);
+            }else if(title == R.string.dinner){
+                selectedMeal = meals.get(2);
+            }else{
+                selectedMeal = meals.get(3);
+            }
+
+            requireActivity().runOnUiThread(() -> {
+                Intent intent = new Intent(getContext(), AddToMealActivity.class);
+                intent.putExtra(AddToMealActivity.TITLE, title);
+                intent.putExtra(AddToMealActivity.IS_EDIT, true);
+                intent.putExtra(AddToMealActivity.MEAL_ID, selectedMeal.getMealId());
+                startActivity(intent);
+            });
+        });
     }
 
     private void addFoodToMeal(int title){
@@ -146,10 +177,9 @@ public class FragmentDiary extends Fragment {
             requireActivity().runOnUiThread(() -> {
                 Intent intent = new Intent(getContext(), AddToMealActivity.class);
                 intent.putExtra(AddToMealActivity.TITLE, title);
-                intent.putExtra(AddToMealActivity.MEAL_ID, selectedMeal.getId());
+                intent.putExtra(AddToMealActivity.MEAL_ID, selectedMeal.getMealId());
                 startActivity(intent);
             });
         });
-
     }
 }

@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "dish")
 public class Dish {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int dishId;
     @ColumnInfo(name = "name")
     private String name;
     @ColumnInfo(name = "description")
@@ -24,8 +24,8 @@ public class Dish {
     }
 
     // Getter methods
-    public int getId() {
-        return id;
+    public int getDishId() {
+        return dishId;
     }
 
     public String getName() {
@@ -45,8 +45,8 @@ public class Dish {
     }
 
     // Setter methods
-    public void setId(int id) {
-        this.id = id;
+    public void setDishId(int dishId) {
+        this.dishId = dishId;
     }
 
     public void setName(String name) {
