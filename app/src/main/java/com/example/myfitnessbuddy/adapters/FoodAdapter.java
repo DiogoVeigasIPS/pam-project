@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,10 +25,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.diary.AddToMealActivity;
+import com.example.myfitnessbuddy.activities.diary.QuickAddActivity;
 import com.example.myfitnessbuddy.activities.foods.AddDishActivity;
 import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
 import com.example.myfitnessbuddy.activities.foods.AddToDishActivity;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
+import com.example.myfitnessbuddy.database.models.QuickAddition;
 import com.example.myfitnessbuddy.database.models.associatios.DishMealCrossRef;
 import com.example.myfitnessbuddy.database.models.associatios.DishWithQuantifiedFoods;
 import com.example.myfitnessbuddy.database.models.Food;
@@ -41,6 +44,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     private ActionType actionType;
     private SearchType searchType;
     private int givenId;
+    private int stringResource;
 
     public FoodAdapter(List<ListableFood> foods, ActionType actionType, int givenId, SearchType searchType) {
         this.foods = foods;
@@ -51,6 +55,11 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     public FoodAdapter(List<ListableFood> foods, ActionType actionType, int givenId) {
         this(foods, actionType, givenId, SearchType.FOODS);
+    }
+
+    public FoodAdapter(List<ListableFood> foods, ActionType actionType, int givenId, int stringResource) {
+        this(foods, actionType, givenId, SearchType.FOODS);
+        this.stringResource = stringResource;
     }
 
     public FoodAdapter(List<ListableFood> foods) {
@@ -75,8 +84,48 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         // To help the user click in the button (he might have not good aim)
         holder.itemView.setOnClickListener(v -> actionButton.performClick());
 
-        // TODO
-        if(searchType == SearchType.ALL) return;
+        if(actionType == ActionType.EDIT_IN_MEAL){
+            actionButton.setImageResource(R.drawable.edit);
+
+            if(listableFood instanceof QuickAddition){
+                QuickAddition quickAddition = (QuickAddition) listableFood;
+
+                actionButton.setOnClickListener(v -> {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, QuickAddActivity.class);
+
+                    intent.putExtra(QuickAddActivity.QUICK_ADDITION_ID, quickAddition.getId());
+                    intent.putExtra(QuickAddActivity.TITLE, stringResource);
+                    intent.putExtra(QuickAddActivity.MEAL_ID, givenId);
+
+                    context.startActivity(intent);
+                });
+            }else if(listableFood instanceof QuantifiedFood){
+                QuantifiedFood quantifiedFood = (QuantifiedFood) listableFood;
+
+                actionButton.setOnClickListener(v -> {
+                    QuantityDialogFragment quantityDialogFragment = new QuantityDialogFragment(givenId, actionType, quantifiedFood);
+                    FragmentManager fragmentManager = ((AppCompatActivity) v.getContext()).getSupportFragmentManager();
+                    quantityDialogFragment.show(fragmentManager, "QuantityDialogFragmentTag");
+                });
+            }else if(listableFood instanceof DishWithQuantifiedFoods){
+                DishWithQuantifiedFoods dishWithQuantifiedFoods = (DishWithQuantifiedFoods) listableFood;
+
+                actionButton.setImageResource(R.drawable.delete);
+                actionButton.setOnClickListener(v -> {
+                    DatabaseHelper.executeInBackground(() -> {
+                        DishMealCrossRef dishMealCrossRef = new DishMealCrossRef(dishWithQuantifiedFoods.getDish().getDishId(), givenId);
+                        DatabaseHelper.MealHelper.removeDishFromMeal(dishMealCrossRef);
+
+                        v.post(() -> {
+                            Toast.makeText(v.getContext(), R.string.dish_deleted, Toast.LENGTH_SHORT).show();
+                            ((AddToMealActivity) v.getContext()).updateFoodList();
+                        });
+                    });
+                });
+            }
+            return;
+        }
 
         if(listableFood instanceof Food){
             Food food = (Food) listableFood;
@@ -125,7 +174,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
                         DatabaseHelper.MealHelper.insertDishInMeal(new DishMealCrossRef(dish.getId(), givenId));
                         v.post(() -> {
-                            // todo   test it after making query count properly
                             ((AddToMealActivity) v.getContext()).updateMealData();
                             Toast.makeText(v.getContext(), R.string.dish_added_meal, Toast.LENGTH_SHORT).show();
                         });
@@ -258,9 +306,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                             if(isAdded()){
                                 Toast.makeText(getActivity(), R.string.food_removed, Toast.LENGTH_SHORT).show();
 
-                                Log.d("TIPO DE ACAO", "onCreateDialog: " + actionType.name());
                                 if(actionType == ActionType.EDIT_IN_DISH)
                                     ((AddDishActivity) getActivity()).updateFoodList();
+                                else if(actionType == ActionType.ADD_TO_DISH)
+                                    ((AddToDishActivity) getActivity()).updateDishData();
 
                                 dialog.dismiss();
                             }
@@ -286,6 +335,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
                             if(actionType == ActionType.EDIT_IN_DISH)
                                 ((AddDishActivity) getActivity()).updateFoodList();
+                            if(actionType == ActionType.EDIT_IN_MEAL)
+                                ((AddToMealActivity) getActivity()).updateFoodList();
 
                             dialog.dismiss();
                         }

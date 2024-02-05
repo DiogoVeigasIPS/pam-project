@@ -30,8 +30,10 @@ public class AddToMealActivity extends AppCompatActivity {
 
     public static final String TITLE = "TITLE";
     public static final String MEAL_ID = "MEAL_ID";
+    public static final String IS_EDIT = "IS_EDIT";
     private int stringResource;
     private int mealId;
+    private boolean isEdit;
 
     private RecyclerView foodsList;
     private TextView emptyList;
@@ -53,11 +55,12 @@ public class AddToMealActivity extends AppCompatActivity {
         if(extras == null) return;
         stringResource = extras.getInt(TITLE);
         mealId = extras.getInt(MEAL_ID);
-
-        setQuickAddNavigation(stringResource);
+        isEdit = extras.getBoolean(IS_EDIT, false);
 
         foodsList = findViewById(R.id.foods_list);
         emptyList = findViewById(R.id.empty_list);
+
+        updateLayoutAccordingToMode(isEdit);
         setListAdapter();
     }
 
@@ -84,12 +87,31 @@ public class AddToMealActivity extends AppCompatActivity {
         }
     }
 
+    private void updateLayoutAccordingToMode(boolean isEdit) {
+        if(!isEdit){
+            setQuickAddNavigation(stringResource);
+            return;
+        }
+
+        findViewById(R.id.tab_selector).setVisibility(View.GONE);
+        findViewById(R.id.bt_quick_addition).setVisibility(View.GONE);
+    }
+
     private void setListAdapter() {
         DatabaseHelper.executeInBackground(() -> {
-            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
+            List<ListableFood> foods;
+
+            if(!isEdit)
+                foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
+            else
+                foods = new ArrayList<>(DatabaseHelper.MealHelper.getAllFoodsInMeal(mealId).getListableFoods());
 
             runOnUiThread(() -> {
-                foodAdapter = new FoodAdapter(foods, ActionType.ADD_TO_MEAL, mealId);
+                if(!isEdit)
+                    foodAdapter = new FoodAdapter(foods, ActionType.ADD_TO_MEAL, mealId);
+                else
+                    foodAdapter = new FoodAdapter(foods, ActionType.EDIT_IN_MEAL, mealId, stringResource);
+
                 foodsList.setAdapter(foodAdapter);
                 foodsList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -102,9 +124,14 @@ public class AddToMealActivity extends AppCompatActivity {
         });
     }
 
-    private void updateFoodList() {
+    public void updateFoodList() {
         DatabaseHelper.executeInBackground(() -> {
-            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
+            List<ListableFood> foods;
+
+            if(!isEdit)
+                foods = new ArrayList<>(DatabaseHelper.FoodHelper.getAllFoods());
+            else
+                foods = new ArrayList<>(DatabaseHelper.MealHelper.getAllFoodsInMeal(mealId).getListableFoods());
 
             runOnUiThread(() -> {
                 if(foods.isEmpty()){
@@ -120,7 +147,12 @@ public class AddToMealActivity extends AppCompatActivity {
 
     private void updateFoodList(String search) {
         DatabaseHelper.executeInBackground(() -> {
-            List<ListableFood> foods = new ArrayList<>(DatabaseHelper.FoodHelper.getFoodsByName(search));
+            List<ListableFood> foods;
+
+            if(!isEdit)
+                foods = new ArrayList<>(DatabaseHelper.FoodHelper.getFoodsByName(search));
+            else
+                foods = new ArrayList<>(DatabaseHelper.MealHelper.getAllFoodsInMeal(mealId).getListableFoods(search));
 
             runOnUiThread(() -> {
                 if(foods.isEmpty()){

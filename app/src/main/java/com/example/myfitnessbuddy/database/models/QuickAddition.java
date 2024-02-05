@@ -9,6 +9,9 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import com.example.myfitnessbuddy.R;
+import com.example.myfitnessbuddy.database.models.associatios.ListableFood;
+
 @Entity(tableName = "quickAddition",
         foreignKeys = @ForeignKey(
                 entity = Meal.class,
@@ -17,7 +20,7 @@ import androidx.room.PrimaryKey;
                 onDelete = CASCADE
         ), indices = {@Index("mealId")}
 )
-public class QuickAddition{
+public class QuickAddition implements ListableFood {
     @PrimaryKey(autoGenerate = true)
     private int quickAdditionId;
     @ColumnInfo(name = "name")
@@ -84,5 +87,30 @@ public class QuickAddition{
 
     public void setMealId(int mealId) {
         this.mealId = mealId;
+    }
+
+    @Override
+    public String getCompoundName() {
+        return name;
+    }
+
+    @Override
+    public String getDetailsLabel() {
+        return detailsLabel();
+    }
+
+    @Override
+    public int getIcon() {
+        return R.drawable.flatware;
+    }
+
+    @Override
+    public int getId() {
+        return quickAdditionId;
+    }
+
+    @Override
+    public String getUnits() {
+        return null;
     }
 }

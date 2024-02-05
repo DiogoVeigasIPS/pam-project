@@ -70,6 +70,13 @@
             />
     </LinearLayout>
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hint_gray"
+        app:layout_constraintTop_toBottomOf="@id/foods_search_layout"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/foods_list"
         android:layout_width="0dp"
@@ -78,7 +85,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/foods_search_layout" />
+        app:layout_constraintTop_toBottomOf="@id/divider" />
 
     <TextView
         android:id="@+id/empty_list"

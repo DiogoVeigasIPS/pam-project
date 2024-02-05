@@ -145,21 +145,7 @@ public class DatabaseHelper {
         public static int getCalories(int mealId) {
             AllFoodsInMeal allFoodsInMeal = getAllFoodsInMeal(mealId);
 
-            int calorieSum = 0;
-
-            for(DishWithQuantifiedFoods dishWithQuantifiedFoods : allFoodsInMeal.getDishWithQuantifiedFoods()){
-                calorieSum += dishWithQuantifiedFoods.getCalories();
-            }
-
-            for(QuantifiedFood quantifiedFood : allFoodsInMeal.getQuantifiedFoodList()){
-                calorieSum += quantifiedFood.getCalories();
-            }
-
-            for(QuickAddition quickAddition : allFoodsInMeal.getQuickAdditions()){
-                calorieSum += quickAddition.getCalories();
-            }
-
-            return calorieSum;
+            return allFoodsInMeal.getCalorieSum();
             //return appDatabase.mealDao().getCalories(mealId);
         }
 
