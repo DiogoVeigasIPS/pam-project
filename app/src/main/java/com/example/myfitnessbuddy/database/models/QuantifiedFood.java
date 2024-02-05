@@ -23,6 +23,12 @@ import java.text.DecimalFormat;
                     parentColumns = "id",
                     childColumns = "mealId",
                     onDelete = CASCADE
+            ),
+            @ForeignKey(
+                    entity = Dish.class,
+                    parentColumns = "id",
+                    childColumns = "dishId",
+                    onDelete = CASCADE
             )
         },
         indices = {@Index("mealId"), @Index("dishId")}
