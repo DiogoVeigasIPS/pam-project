@@ -117,9 +117,6 @@ public class FragmentPanel extends Fragment {
             int lastMonthAverage = DatabaseHelper.DayHelper.getLastMonthAverageCalories();
             int lastWeight = today.getWeight();
 
-            User user = UserPreferences.readUserPreferences(getActivity());
-            Goal goal = user.getGoal();
-
             requireActivity().runOnUiThread(() -> {
                 mainGoal.setText(String.valueOf(calorieGoal));
                 mainFoods.setText(String.valueOf(totalCalories));
@@ -131,7 +128,12 @@ public class FragmentPanel extends Fragment {
                 lastMonthWeight.setText(String.valueOf(lastMonthAverage));
                 todayWeight.setText(String.valueOf(lastWeight));
 
+                // Colors
+                User user = UserPreferences.readUserPreferences(getActivity());
+                if(user == null) return;
+
                 int colorResourceId;
+                Goal goal = user.getGoal();
 
                 if ((goal == Goal.GAIN && lastMonthAverage < lastWeight) || (goal == Goal.LOSE && lastMonthAverage > lastWeight)) {
                     colorResourceId = R.color.success;
