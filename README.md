@@ -6,7 +6,7 @@ Esta é uma aplicação desenvolvida como projeto da unidade curricular de Progr
 
 ## Versão SDK Utilizado
 
-Esta aplicação, como uma esmagadoa maioria, suporta várias versões SDK, mas tendo o foco nas seguintes:
+Esta aplicação, como uma esmagadora maioria, suporta várias versões SDK, mas tendo o foco nas seguintes:
 - Versão SDK mínima: *27*
 - Versão SDK recomendada: *34*
 
@@ -19,11 +19,11 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-8.2-bin.zip
 
 ## Discriminação das Bibliotecas Utilizadas
 
-Neste projeto, os alunos não utilizaram qualquer tipo de biblioteca externa, ainda assim, serão descritas as bibliotecas utilizadas e o motivo pelo qual foram importadas.
+Neste projeto, os alunos não utilizaram qualquer tipo de biblioteca externa, ainda assim, abaixo estarão designadas as bibliotecas utilizadas e o motivo pelo qual foram importadas.
 
 ### Bibliotecas de UI e Compatibilidade:
 
-As bibliotecas abaixo servem para, basicamente, tornar o aspeto visual da apliação mais fluído e morderno.
+As bibliotecas abaixo servem para, basicamente, tornar o aspeto visual da aplicação mais fluído e moderno.
 
 - *AppCompat* (androidx.appcompat:appcompat:1.6.1):
     - Fornece recursos e funcionalidades compatíveis com versões mais antigas do Android, garantindo uma aparência e comportamento consistentes em diferentes versões do sistema operativo.
@@ -32,7 +32,7 @@ As bibliotecas abaixo servem para, basicamente, tornar o aspeto visual da aplia�
   - Implementa os princípios do Material Design, oferecendo componentes de interface atraentes e modernos, como botões, barras, e outras componentes visuais que seguem as diretrizes de design do Google.
 
 - *ConstraintLayout* (androidx.constraintlayout:constraintlayout:2.1.4):
-  - Permite o uso do Constraint Layout, um layout bastante poderoso, flexível e moderno.
+  - Permite o uso do *ConstraintLayout*, um layout bastante poderoso, flexível e moderno.
 
 ### Bibliotecas de Testes
 
