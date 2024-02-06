@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_gray"
     tools:context=".activities.foods.AddDishActivity">
 
     <LinearLayout
         android:id="@+id/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/top_bar"
+        android:background="?attr/topNavigation"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/header_padding"
@@ -25,9 +24,10 @@
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="@dimen/nav_arrow_margin"
             android:layout_weight="0.2"
-            android:backgroundTint="@color/top_bar"
+            android:backgroundTint="?attr/topNavigation"
             android:contentDescription="@string/back_arrow"
-            android:src="@drawable/back_arrow" />
+            android:src="@drawable/back_arrow"
+            app:tint="?attr/textColor"/>
 
         <TextView
             android:id="@+id/title"
@@ -35,8 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
             android:text="@string/add_dish"
-            android:textColor="@color/black"
-            android:textSize="@dimen/title_size" />
+            android:textSize="@dimen/navigation_title_size" />
 
         <ImageButton
             android:id="@+id/bt_submit"
@@ -44,9 +43,10 @@
             android:layout_height="@dimen/icon_size"
             android:layout_weight="0.2"
             android:layout_marginStart="@dimen/nav_arrow_margin"
-            android:backgroundTint="@color/top_bar"
+            android:backgroundTint="?attr/topNavigation"
             android:contentDescription="@string/check_submit"
-            android:src="@drawable/confirm_check" />
+            android:src="@drawable/confirm_check"
+            app:tint="?attr/textColor"/>
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,7 +63,7 @@
             android:id="@+id/name_group"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/white"
+            android:background="?attr/colorCardBackground"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/header_padding"
@@ -88,7 +88,6 @@
                 android:hint="@string/grilled_chicken"
                 android:importantForAutofill="no"
                 android:inputType="textCapSentences"
-                android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
                 />
         </LinearLayout>
@@ -98,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/body_spacing"
-            android:background="@color/white"
+            android:background="?attr/colorCardBackground"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/header_padding"
@@ -122,7 +121,6 @@
                 android:gravity="end"
                 android:hint="@string/with_rice_and_salad"
                 android:inputType="textCapSentences"
-                android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
                 />
 
@@ -133,7 +131,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/body_spacing"
-            android:background="@color/white"
+            android:background="?attr/colorCardBackground"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/header_padding"
@@ -154,7 +152,6 @@
                 android:autofillHints="no"
                 android:gravity="end|center"
                 android:hint="@string/choose_an_icon"
-                android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size" />
         </LinearLayout>
 
@@ -165,7 +162,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/icon_group"
             android:orientation="vertical"
-            android:background="@color/white"
+            android:background="?attr/colorCardBackground"
             android:gravity="center"
             android:paddingHorizontal="50dp"
             android:paddingBottom="10dp">
@@ -241,10 +238,12 @@
         android:layout_height="0dp"
         android:layout_marginTop="15dp"
         app:cardCornerRadius="15dp"
-        app:cardElevation="0dp"
+        app:cardElevation="10dp"
+        android:backgroundTint="?attr/colorCardBackground"
         app:layout_constraintTop_toBottomOf="@id/bt_delete"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="gone">
+        android:visibility="gone"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -287,21 +286,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:backgroundTint="@color/colorAccent"
+                android:backgroundTint="?attr/colorPrimary"
                 android:contentDescription="@string/add_food"
                 android:isScrollContainer="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:maxImageSize="50dp"
                 app:srcCompat="@drawable/add"
-                app:tint="@color/white" />
+                app:tint="?attr/colorBackground" />
 
             <View
                 android:id="@+id/line"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:background="?attr/textColor"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/card_gray"
                 app:layout_constraintTop_toBottomOf="@id/dishes_kcals_label" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -330,13 +329,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_delete"
         android:layout_width="match_parent"
@@ -349,6 +341,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/group_body"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

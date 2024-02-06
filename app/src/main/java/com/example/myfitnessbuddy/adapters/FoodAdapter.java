@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,12 +29,12 @@ import com.example.myfitnessbuddy.activities.foods.AddDishActivity;
 import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
 import com.example.myfitnessbuddy.activities.foods.AddToDishActivity;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
+import com.example.myfitnessbuddy.database.models.Food;
+import com.example.myfitnessbuddy.database.models.QuantifiedFood;
 import com.example.myfitnessbuddy.database.models.QuickAddition;
 import com.example.myfitnessbuddy.database.models.associatios.DishMealCrossRef;
 import com.example.myfitnessbuddy.database.models.associatios.DishWithQuantifiedFoods;
-import com.example.myfitnessbuddy.database.models.Food;
 import com.example.myfitnessbuddy.database.models.associatios.ListableFood;
-import com.example.myfitnessbuddy.database.models.QuantifiedFood;
 
 import java.util.List;
 

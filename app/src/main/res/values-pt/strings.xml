@@ -88,7 +88,7 @@
     <string name="activity_input">Atividade*:</string>
     <string name="quick_breakfast">Pequeno-Almoço Rápido</string>
     <string name="choose_the_quantity">Escolha a quantidade</string>
-    <string name="food_quantity_in">Quantidade de alimento em</string>
+    <string name="food_quantity_in">Quantidade em</string>
     <string name="food_added">Alimento adicionado com sucesso!</string>
     <string name="invalid_quantity_format">Formato de quantidade inválido!</string>
     <string name="add_dish">Adicionar Prato</string>

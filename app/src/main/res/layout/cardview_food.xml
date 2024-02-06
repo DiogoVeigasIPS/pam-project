@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/grouped_spacing"
-    android:backgroundTint="@color/white"
+    android:backgroundTint="?colorSmallCardBackground"
     app:cardCornerRadius="15dp"
     app:cardElevation="2dp">
 
@@ -17,14 +17,14 @@
             android:id="@+id/bt_action"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="?colorSmallCardBackground"
             android:contentDescription="@string/card_action"
             android:scaleType="center"
             android:src="@drawable/chevron"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/black" />
+            app:tint="?textColor" />
 
         <ImageView
             android:id="@+id/food_image"
@@ -36,6 +36,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:padding="5dp"
             />
 
         <TextView
@@ -44,9 +45,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/no_underline_hint"
             android:gravity="top"
-            android:hint="@string/food_name"
+            android:text="@string/food_name"
             android:maxLines="1"
-            android:textColorHint="@color/black"
             android:textSize="@dimen/label_main_weight"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/food_image"
@@ -62,7 +62,6 @@
             android:background="@drawable/no_underline_hint"
             android:gravity="top"
             android:hint="@string/additional_details"
-            android:textColorHint="@color/black"
             android:textSize="@dimen/main_labels"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/food_name"

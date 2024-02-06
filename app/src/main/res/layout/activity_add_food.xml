@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_gray"
     tools:context=".activities.foods.AddFoodActivity">
 
     <LinearLayout
         android:id="@+id/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/top_bar"
+        android:background="?attr/topNavigation"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/header_padding"
@@ -25,9 +24,10 @@
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="@dimen/nav_arrow_margin"
             android:layout_weight="0.2"
-            android:backgroundTint="@color/top_bar"
+            android:backgroundTint="?attr/topNavigation"
             android:contentDescription="@string/back_arrow"
-            android:src="@drawable/back_arrow" />
+            android:src="@drawable/back_arrow"
+            app:tint="?attr/textColor"/>
 
         <TextView
             android:id="@+id/title"
@@ -35,8 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
             android:text="@string/add_food"
-            android:textColor="@color/black"
-            android:textSize="@dimen/title_size" />
+            android:textSize="@dimen/navigation_title_size" />
 
         <ImageButton
             android:id="@+id/bt_submit"
@@ -44,9 +43,10 @@
             android:layout_height="@dimen/icon_size"
             android:layout_weight="0.2"
             android:layout_marginStart="@dimen/nav_arrow_margin"
-            android:backgroundTint="@color/top_bar"
+            android:backgroundTint="?attr/topNavigation"
             android:contentDescription="@string/check_submit"
-            android:src="@drawable/confirm_check" />
+            android:src="@drawable/confirm_check"
+            app:tint="?attr/textColor"/>
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/body_spacing"
-            android:background="@color/white"
+            android:background="?attr/colorCardBackground"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/header_padding"
@@ -89,7 +89,6 @@
                 android:hint="@string/chicken"
                 android:importantForAutofill="no"
                 android:inputType="textCapSentences"
-                android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
                 />
         </LinearLayout>
@@ -100,7 +99,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/body_spacing"
             android:layout_marginBottom="@dimen/body_spacing"
-            android:background="@color/white"
+            android:background="?attr/colorCardBackground"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/header_padding"
@@ -124,7 +123,6 @@
                 android:gravity="end"
                 android:hint="@string/breast"
                 android:inputType="textCapSentences"
-                android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
                 />
 
@@ -136,7 +134,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/body_spacing"
             android:layout_marginBottom="@dimen/body_spacing"
-            android:background="@color/white"
+            android:background="?attr/colorCardBackground"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/header_padding"
@@ -161,7 +159,6 @@
                 android:hint="@string/_100"
                 android:text="@string/_100"
                 android:inputType="numberDecimal"
-                android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
                 />
 
@@ -173,7 +170,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/body_spacing"
             android:layout_marginBottom="@dimen/body_spacing"
-            android:background="@color/white"
+            android:background="?attr/colorCardBackground"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/header_padding"
@@ -198,7 +195,6 @@
                 android:hint="@string/g"
                 android:text="@string/g"
                 android:inputType="text"
-                android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
                 />
 
@@ -210,7 +206,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/body_spacing"
             android:layout_marginBottom="@dimen/body_spacing"
-            android:background="@color/white"
+            android:background="?attr/colorCardBackground"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/header_padding"
@@ -234,7 +230,6 @@
                 android:gravity="end"
                 android:hint="@string/_165"
                 android:inputType="numberDecimal"
-                android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size" />
 
         </LinearLayout>
@@ -245,7 +240,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/body_spacing"
             android:layout_marginBottom="@dimen/body_spacing"
-            android:background="@color/white"
+            android:background="?attr/colorCardBackground"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/header_padding"
@@ -267,7 +262,6 @@
                 android:autofillHints="no"
                 android:gravity="end|center"
                 android:hint="@string/choose_an_icon"
-                android:textColorHint="@color/hint_gray"
                 android:textSize="@dimen/body_size"
                 />
 
@@ -281,7 +275,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/icon_group"
             android:orientation="vertical"
-            android:background="@color/white"
+            android:background="?attr/colorCardBackground"
             android:gravity="center"
             android:paddingHorizontal="50dp"
             android:paddingBottom="10dp">

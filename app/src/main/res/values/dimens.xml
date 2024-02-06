@@ -32,5 +32,6 @@
     <dimen name="card_additional_info">40sp</dimen>
     <dimen name="diary_time">22sp</dimen>
     <dimen name="diary_head_number">24sp</dimen>
+    <dimen name="navigation_title_size">20sp</dimen>
 
 </resources>
