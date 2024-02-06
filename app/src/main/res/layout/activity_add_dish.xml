@@ -159,7 +159,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/radio_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +183,8 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="15dp"
                     android:gravity="center"
-                    android:checked="true"/>
+                    android:checked="true"
+                    android:contentDescription="@string/choose_salad_image"/>
 
                 <RadioButton
                     android:id="@+id/radio_button2"
@@ -193,7 +193,8 @@
                     android:layout_weight="1"
                     android:layout_gravity="center"
                     android:layout_marginStart="15dp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:contentDescription="@string/choose_steak_image"/>
 
                 <RadioButton
                     android:id="@+id/radio_button3"
@@ -202,7 +203,8 @@
                     android:layout_weight="1"
                     android:layout_gravity="center"
                     android:layout_marginStart="15dp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:contentDescription="@string/choose_cake_image"/>
             </RadioGroup>
             <LinearLayout
                 android:layout_width="200dp"
@@ -245,7 +247,6 @@
         android:visibility="gone">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -330,7 +331,6 @@
     </androidx.cardview.widget.CardView>
 
     <View
-        android:id="@+id/corner_hider"
         android:layout_width="match_parent"
         android:layout_height="15dp"
         android:background="@color/white"

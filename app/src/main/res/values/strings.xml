@@ -1,12 +1,9 @@
 <resources>
     <string name="app_name">MyFitBuddy</string>
     <string name="app_full_name">MyFitnessBuddy</string>
-
-    <string name="panel">Dashboard</string>
     <string name="diary">Diary</string>
     <string name="foods">Foods</string>
     <string name="goal">Goal</string>
-    <string name="quantity">Quantity</string>
     <string name="breakfast">Breakfast</string>
     <string name="lunch">Lunch</string>
     <string name="dinner">Dinner</string>
@@ -15,88 +12,34 @@
     <string name="goal_base">Base Goal</string>
     <string name="remaining">Left</string>
     <string name="weight">Weight</string>
-    <string name="height">Height</string>
-    <string name="birthdate">Birthdate</string>
-    <string name="objective">Objective</string>
-    <string name="activity">Activity</string>
-    <string name="meal">Meal</string>
-    <string name="name">Name</string>
     <string name="food_name">Food Name</string>
-    <string name="calculated">Calculated</string>
-    <string name="customised">Customized</string>
-
-    <!-- Buttons -->
-    <string name="bt_submit">Submit</string>
     <string name="bt_details_submit">Update Personal Details</string>
-    <string name="bt_editDelete">…</string>
-
-    <!-- Label for button description -->
     <string name="back_arrow">back arrow</string>
-    <string name="front_arrow">forward arrow</string>
     <string name="check_submit">check submit</string>
-
-    <!-- Time Labels -->
     <string name="today">Today</string>
     <string name="last_month">Last Month\nAvg.</string>
-    <string name="last_week">Last Week\nAvg.</string>
-
     <string name="minus">-</string>
     <string name="equal">=</string>
     <string name="goal_value">2800</string>
     <string name="output_value">0</string>
-    <string name="foods_goal">500</string>
-    <string name="temp_value">000</string>
-    <string name="temp_month">80</string>
-    <string name="temp_week">75</string>
-    <string name="temp_today">70</string>
-    <string name="goal_base_value">00000</string>
-    <string name="calorie_goal_value">2200</string>
     <string name="label_kg">kg</string>
     <string name="label_cm">cm</string>
-
     <string name="quick_add">Quick Add</string>
     <string name="add_food">Add Food</string>
-    <string name="title_add_foods">Add Foods</string>
-    <string name="add_weight">Update Weight</string>
     <string name="add_details">Update Details</string>
     <string name="edit_food">Edit Food</string>
     <string name="delete_food">Delete Food</string>
-    <string name="add_calorie_custom">Update Goal</string>
-    <string name="details_form">Insert the Details</string>
-    <string name="quantity_form">Insert the Quantity</string>
-    <string name="birthidate_form">Enter your birthdate</string>
-
-    <string name="edit_meal">Edit Meal</string>
-
-    <string name="meal_example">Chicken Breast</string>
     <string name="additional_details">Additional Information</string>
-
-    <string name="hint_name_label">Enter the name of what you will eat</string>
-    <string name="hint_calorie_qty">Enter the caloric quantity</string>
     <string name="hint_height">Enter your height in</string>
     <string name="hint_weight">Enter your weight in</string>
-    <string name="hint_calorie_goal">Enter your caloric goal</string>
-
-
     <string name="label_tip">
         "Tip:\nInactive spends most of the day sitting\nVery Active spends most of the day exercising"
     </string>
-    <string name="label_detail">Details</string>
-    <string name="label_meals">Meals</string>
     <string name="search_foods">Search for some food</string>
-    <string name="placeholder_meal_name">Meal Type: Breakfast</string>
-    <string name="label_my_food">My Foods</string>
-    <string name="label_my_meals">My Meals</string>
-    <string name="popup_edit">Edit</string>
-    <string name="popup_delete">Delete</string>
     <string name="add_calorie_goal">Add calorie goal</string>
     <string name="set_weight">Set weight</string>
     <string name="home">Home</string>
-    <string name="confirm_weight_changes">Confirm weight changes</string>
-    <string name="confirm_calorie_goal">Confirm calorie goal</string>
     <string name="card_icon">Card Icon</string>
-    <string name="card_add">Card Add Icon</string>
-    <string name="card_edit">Card Edit Icon</string>
     <string name="invalid_details">Details not valid!</string>
     <string name="invalid_height_format">Invalid height format!</string>
     <string name="press_to_calendar">Press to calendar</string>
@@ -104,14 +47,9 @@
     <string name="dishes">Dishes</string>
     <string name="card_action">Card action</string>
     <string name="search_icon">Search icon</string>
-    <string name="description">Description</string>
-    <string name="portion">Portion</string>
-    <string name="calories">Calories</string>
-    <string name="unit">Unit</string>
     <string name="_100">100</string>
     <string name="g">g</string>
     <string name="_165">165</string>
-    <string name="icon">Icon</string>
     <string name="choose_an_icon">Choose an icon</string>
     <string name="apple">Apple</string>
     <string name="steak">Steak</string>
@@ -188,5 +126,14 @@
     <string name="visit_next_day">Visit next day</string>
     <string name="no_more_day">There are not more days to that direction!</string>
     <string name="yesterday">Yesterday</string>
+    <string name="choose_salad_image">Choose salad image</string>
+    <string name="choose_steak_image">Choose steak image</string>
+    <string name="choose_cake_image">Choose cake image</string>
+    <string name="choose_apple_image">Choose apple image</string>
+    <string name="choose_cookie_image">Choose cookie image</string>
+    <string name="add_food_to_breakfast">Add food to breakfast</string>
+    <string name="add_food_to_lunch">Add food to lunch</string>
+    <string name="add_food_to_dinner">Add food to dinner</string>
+    <string name="add_food_to_snack">Add food to snack</string>
 
 </resources>

@@ -222,7 +222,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/activity_group"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="@dimen/body_spacing"

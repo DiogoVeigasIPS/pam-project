@@ -55,7 +55,6 @@
                 >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/main_calorie_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/header_padding"
@@ -181,7 +180,6 @@
                 android:layout_marginHorizontal="5dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/main_weight_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/header_padding">
@@ -237,7 +235,6 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <LinearLayout
-                                android:id="@+id/last_month_layout"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -274,7 +271,6 @@
                             android:paddingVertical="@dimen/main_padding">
 
                             <TextView
-                                android:id="@+id/label_today"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/main_padding"
@@ -295,7 +291,6 @@
                                 app:layout_constraintGuide_percent="0.65" />
 
                             <LinearLayout
-                                android:id="@+id/today_layout"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintBottom_toBottomOf="parent"

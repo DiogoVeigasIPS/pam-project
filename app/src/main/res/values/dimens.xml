@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Bottom Menu -->
-    <dimen name="scale_button_bottom">1.3</dimen>
 
     <!-- Icon -->
     <dimen name="icon_size">50dp</dimen>
@@ -17,26 +16,21 @@
     <dimen name="grouped_spacing">10dp</dimen>
     <dimen name="padding_button_selector">20dp</dimen>
     <dimen name="body_spacing">3dp</dimen>
-    <dimen name="input_spacing">40dp</dimen>
     <dimen name="spacing_popup">1.5dp</dimen>
-    <dimen name="main_menu_padding">30dp</dimen>
-    <dimen name="foods_to_meal_bottom">60dp</dimen>
     <dimen name="nav_arrow_margin">10dp</dimen>
     <dimen name="magnifying_glass">35dp</dimen>
     <dimen name="empty_list_margin">100dp</dimen>
-    <dimen name="math_padding">25dp</dimen>
+    <dimen name="math_padding">15dp</dimen>
+    <dimen name="top_dialog_margin">15dp</dimen>
 
     <!-- Text Sizes -->
-    <dimen name="title_size">26sp</dimen>
-    <dimen name="goal_value_size">30sp</dimen>
-    <dimen name="body_size">20sp</dimen>
+    <dimen name="title_size">25sp</dimen>
+    <dimen name="body_size">18sp</dimen>
     <dimen name="label_main_weight">16sp</dimen>
     <dimen name="add_spacing">18sp</dimen>
-    <dimen name="form_input_size">42sp</dimen>
     <dimen name="main_labels">14sp</dimen>
-    <dimen name="text_margin">16dp</dimen>
     <dimen name="card_additional_info">40sp</dimen>
     <dimen name="diary_time">22sp</dimen>
-    <dimen name="diary_head_number">26sp</dimen>
+    <dimen name="diary_head_number">24sp</dimen>
 
 </resources>

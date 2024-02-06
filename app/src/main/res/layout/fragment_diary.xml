@@ -106,7 +106,6 @@
             android:paddingHorizontal="@dimen/main_padding">
 
             <LinearLayout
-                android:id="@+id/goal_group"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -125,7 +124,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/goal_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
@@ -148,7 +146,6 @@
                 android:textSize="@dimen/card_additional_info" />
 
             <LinearLayout
-                android:id="@+id/food_group"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -171,7 +168,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/food_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/foods"
@@ -192,7 +188,6 @@
                 android:textSize="@dimen/card_additional_info" />
 
             <LinearLayout
-                android:id="@+id/leftover_goal_group"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -214,7 +209,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/leftover_goal_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/remaining"
@@ -236,7 +230,6 @@
             app:layout_constraintTop_toBottomOf="@id/first_group">
 
             <LinearLayout
-                android:id="@+id/second_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -251,7 +244,6 @@
                     android:paddingHorizontal="@dimen/main_padding">
 
                     <TextView
-                        android:id="@+id/breakfast_label"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/icon_size"
                         android:gravity="center"
@@ -299,7 +291,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:rippleColor="@color/light_gray" />
+                        app:rippleColor="@color/light_gray"
+                        android:contentDescription="@string/add_food_to_breakfast"/>
 
                     <ImageButton
                         android:id="@+id/bt_edit_breakfast"
@@ -325,7 +318,6 @@
                     android:paddingHorizontal="@dimen/main_padding">
 
                     <TextView
-                        android:id="@+id/lunch_label"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/icon_size"
                         android:gravity="center"
@@ -373,7 +365,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:rippleColor="@color/light_gray" />
+                        app:rippleColor="@color/light_gray"
+                        android:contentDescription="@string/add_food_to_lunch"/>
 
                     <ImageButton
                         android:id="@+id/bt_edit_lunch"
@@ -398,7 +391,6 @@
                     android:paddingHorizontal="@dimen/main_padding">
 
                     <TextView
-                        android:id="@+id/dinner_label"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/icon_size"
                         android:gravity="center"
@@ -446,7 +438,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:rippleColor="@color/light_gray" />
+                        app:rippleColor="@color/light_gray"
+                        android:contentDescription="@string/add_food_to_dinner"/>
 
                     <ImageButton
                         android:id="@+id/bt_edit_dinner"
@@ -471,7 +464,6 @@
                     android:paddingHorizontal="@dimen/main_padding">
 
                     <TextView
-                        android:id="@+id/snack_label"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/icon_size"
                         android:gravity="center"
@@ -519,7 +511,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:rippleColor="@color/light_gray" />
+                        app:rippleColor="@color/light_gray"
+                        android:contentDescription="@string/add_food_to_snack"/>
 
                     <ImageButton
                         android:id="@+id/bt_edit_snack"
