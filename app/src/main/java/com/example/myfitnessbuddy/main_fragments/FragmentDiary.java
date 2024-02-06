@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,10 +16,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.diary.AddToMealActivity;
+import com.example.myfitnessbuddy.activities.panel.UserPreferences;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Day;
 import com.example.myfitnessbuddy.database.models.Meal;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -59,9 +62,9 @@ public class FragmentDiary extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Navigation
-        setNavigationalButtons();
+        initDayId();
 
+        setNavigationalButtons();
         setTextViews();
     }
 
@@ -71,11 +74,16 @@ public class FragmentDiary extends Fragment {
         updateCalories();
     }
 
-    private void updateCalories() {
+    private void initDayId(){
         DatabaseHelper.executeInBackground(() -> {
             Day today = DatabaseHelper.DayHelper.getToday();
             dayId = today.getDayId();
+        });
+    }
 
+    private void updateCalories() {
+        DatabaseHelper.executeInBackground(() -> {
+            Day today = DatabaseHelper.DayHelper.getDayById(dayId);
             List<Integer> calories = DatabaseHelper.DayHelper.getCaloriesList(dayId);
 
             requireActivity().runOnUiThread(() -> {
@@ -123,6 +131,9 @@ public class FragmentDiary extends Fragment {
         ImageButton editDinner = getView().findViewById(R.id.bt_edit_dinner);
         ImageButton editSnack = getView().findViewById(R.id.bt_edit_snack);
 
+        ImageButton btDateBack = getView().findViewById(R.id.bt_date_back);
+        ImageButton btDateForward = getView().findViewById(R.id.bt_date_forward);
+
         addBreakfast.setOnClickListener(v -> addFoodToMeal(R.string.breakfast));
         addLunch.setOnClickListener(v -> addFoodToMeal(R.string.lunch));
         addDinner.setOnClickListener(v -> addFoodToMeal(R.string.dinner));
@@ -132,6 +143,45 @@ public class FragmentDiary extends Fragment {
         editLunch.setOnClickListener(v -> editMeal(R.string.lunch));
         editDinner.setOnClickListener(v -> editMeal(R.string.dinner));
         editSnack.setOnClickListener(v -> editMeal(R.string.snack));
+
+        btDateBack.setOnClickListener(v -> {
+            updateDay(true);
+        });
+
+        btDateForward.setOnClickListener(v -> {
+            updateDay(false);
+        });
+    }
+
+    private void updateDay(boolean goBack) {
+        DatabaseHelper.executeInBackground(() -> {
+            int visitingDayId = goBack ? dayId - 1 : dayId + 1;
+
+            Day day = DatabaseHelper.DayHelper.getDayById(visitingDayId);
+
+            requireActivity().runOnUiThread(() -> {
+                if(day == null){
+                    Toast.makeText(getActivity(), R.string.no_more_day, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                dayId = visitingDayId;
+                TextView dateText = getView().findViewById(R.id.date_text);
+
+                if(!day.getDate().equals(LocalDate.now())){
+                    if(!day.getDate().equals(LocalDate.now().minusDays(1))){
+                        dateText.setText(R.string.yesterday);
+                    }else{
+                        dateText.setText(UserPreferences.convertLocalDateToString(day.getDate()));
+                    }
+                }else{
+                    dateText.setText(R.string.today);
+                }
+
+                updateCalories();
+            });
+
+        });
     }
 
     private void editMeal(int title) {

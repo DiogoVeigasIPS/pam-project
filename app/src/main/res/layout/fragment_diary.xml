@@ -63,14 +63,14 @@
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
                 android:backgroundTint="@color/white"
-                android:contentDescription="@string/back_arrow"
+                android:contentDescription="@string/visit_previous_day"
                 android:src="@drawable/backward_arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/dateText"
+                android:id="@+id/date_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -87,7 +87,7 @@
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
                 android:backgroundTint="@color/white"
-                android:contentDescription="@string/front_arrow"
+                android:contentDescription="@string/visit_next_day"
                 android:src="@drawable/forward_arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
