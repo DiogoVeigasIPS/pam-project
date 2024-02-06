@@ -3,7 +3,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="25dp">
+    android:padding="25dp"
+    android:background="?colorLighterBackground">
 
     <TextView
         android:layout_width="match_parent"
@@ -16,11 +17,8 @@
         android:id="@+id/weight_input"
         android:inputType="number"
         android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/top_dialog_margin"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
         android:hint="@string/weight_in_kg"
         android:autofillHints="" />
 

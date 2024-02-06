@@ -53,11 +53,11 @@ public class Dish {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
-        this.name = name;
+        this.name = name.trim();
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = description.trim();
     }
 
     public void setIcon(int icon) {

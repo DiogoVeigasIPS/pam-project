@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_gray"
     tools:context=".main_fragments.FragmentDiary">
 
     <LinearLayout
         android:id="@+id/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/top_bar"
         android:gravity="center"
+        android:background="?attr/topNavigation"
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/header_padding"
         android:paddingVertical="@dimen/header_vertical_padding"
@@ -25,9 +24,11 @@
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="@dimen/nav_arrow_margin"
             android:layout_weight="0.2"
-            android:backgroundTint="@color/top_bar"
+            android:backgroundTint="?attr/topNavigation"
             android:contentDescription="@string/back_arrow"
-            android:src="@drawable/back_arrow" />
+            android:src="@drawable/back_arrow"
+            android:background="?attr/topNavigation"
+            app:tint="?attr/textColor"/>
 
         <TextView
             android:id="@+id/title"
@@ -35,8 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/diary"
-            android:textColor="@color/black"
-            android:textSize="@dimen/title_size" />
+            android:textSize="@dimen/navigation_title_size" />
     </LinearLayout>
 
     <LinearLayout
@@ -53,29 +53,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/header_vertical_padding"
-            android:background="@color/white"
             android:elevation="@dimen/grouped_spacing"
             android:padding="@dimen/grouped_spacing"
-            android:layout_marginTop="@dimen/header_vertical_padding">
+            android:layout_marginTop="@dimen/header_vertical_padding"
+            android:background="?attr/colorCardBackground">
 
             <ImageButton
                 android:id="@+id/bt_date_back"
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
-                android:backgroundTint="@color/white"
-                android:contentDescription="@string/back_arrow"
+                android:contentDescription="@string/visit_previous_day"
                 android:src="@drawable/backward_arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:backgroundTint="?attr/colorCardBackground"
+                app:tint="?attr/textColor"/>
 
             <TextView
-                android:id="@+id/dateText"
+                android:id="@+id/date_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/today"
-                android:textColor="@color/black"
                 android:textSize="@dimen/diary_time"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/bt_date_forward"
@@ -86,8 +86,9 @@
                 android:id="@+id/bt_date_forward"
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
-                android:backgroundTint="@color/white"
-                android:contentDescription="@string/front_arrow"
+                android:backgroundTint="?attr/colorCardBackground"
+                app:tint="?attr/textColor"
+                android:contentDescription="@string/visit_next_day"
                 android:src="@drawable/forward_arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -98,15 +99,14 @@
             android:layout_width="match_parent"
             android:layout_height="125dp"
             android:layout_marginBottom="@dimen/header_vertical_padding"
-            android:background="@color/white"
             android:elevation="@dimen/grouped_spacing"
             android:gravity="center_vertical|center"
             android:orientation="horizontal"
             android:padding="@dimen/header_padding"
-            android:paddingHorizontal="@dimen/main_padding">
+            android:paddingHorizontal="@dimen/main_padding"
+            android:background="?attr/colorCardBackground">
 
             <LinearLayout
-                android:id="@+id/goal_group"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -120,17 +120,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/minus"
-                    android:textColor="@color/black"
                     android:textSize="@dimen/diary_head_number"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/goal_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
                     android:text="@string/goal"
-                    android:textColor="@color/hint_gray"
                     android:textSize="@dimen/body_size"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@id/goal_output"
@@ -144,11 +141,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/math_padding"
                 android:text="@string/minus"
-                android:textColor="@color/black"
                 android:textSize="@dimen/card_additional_info" />
 
             <LinearLayout
-                android:id="@+id/food_group"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -162,7 +157,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/minus"
-                    android:textColor="@color/black"
                     android:textSize="@dimen/diary_head_number"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -171,11 +165,9 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/food_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/foods"
-                    android:textColor="@color/hint_gray"
                     android:textSize="@dimen/body_size"
                     app:layout_constraintEnd_toEndOf="@id/food_output"
                     app:layout_constraintStart_toStartOf="@id/food_output"
@@ -188,11 +180,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/math_padding"
                 android:text="@string/equal"
-                android:textColor="@color/black"
                 android:textSize="@dimen/card_additional_info" />
 
             <LinearLayout
-                android:id="@+id/leftover_goal_group"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -206,7 +196,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/minus"
-                    android:textColor="@color/black"
                     android:textSize="@dimen/diary_head_number"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -214,11 +203,9 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/leftover_goal_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/remaining"
-                    android:textColor="@color/hint_gray"
                     android:textSize="@dimen/body_size"
                     app:layout_constraintEnd_toEndOf="@id/leftover_goal_output"
                     app:layout_constraintStart_toStartOf="@id/leftover_goal_output"
@@ -236,27 +223,23 @@
             app:layout_constraintTop_toBottomOf="@id/first_group">
 
             <LinearLayout
-                android:id="@+id/second_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:weightSum="6">
+                android:orientation="vertical">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/spacing_popup"
                     android:layout_weight="1"
-                    android:background="@color/white"
-                    android:paddingHorizontal="@dimen/main_padding">
+                    android:paddingHorizontal="@dimen/main_padding"
+                    android:background="?attr/colorCardBackground">
 
                     <TextView
-                        android:id="@+id/breakfast_label"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/icon_size"
                         android:gravity="center"
                         android:text="@string/breakfast"
-                        android:textColor="@color/black"
                         android:textSize="@dimen/body_size"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -269,7 +252,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:text="@string/output_value"
-                        android:textColor="@color/black"
                         android:textSize="@dimen/body_size"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -282,14 +264,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/header_vertical_padding"
                     android:layout_weight="0.5"
-                    android:background="@color/white"
-                    android:paddingHorizontal="@dimen/main_padding">
+                    android:paddingHorizontal="@dimen/main_padding"
+                    android:background="?attr/colorCardBackground">
 
                     <Button
                         android:id="@+id/add_breakfast"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/icon_size"
-                        android:backgroundTint="@color/white"
                         android:gravity="center"
                         android:paddingHorizontal="0dp"
                         android:text="@string/add_food"
@@ -299,19 +280,22 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:rippleColor="@color/light_gray" />
+                        android:backgroundTint="?colorCardBackground"
+                        app:rippleColor="@color/light_gray"
+                        android:contentDescription="@string/add_food_to_breakfast"
+                        />
 
                     <ImageButton
                         android:id="@+id/bt_edit_breakfast"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
-                        android:backgroundTint="@color/white"
                         app:tint="@color/clickable_blue"
                         android:src="@drawable/baseline_visibility_24"
                         android:contentDescription="@string/breakfast_details"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        android:backgroundTint="?colorCardBackground"
                         app:rippleColor="@color/light_gray" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -321,16 +305,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/spacing_popup"
                     android:layout_weight="1"
-                    android:background="@color/white"
-                    android:paddingHorizontal="@dimen/main_padding">
+                    android:paddingHorizontal="@dimen/main_padding"
+                    android:background="?attr/colorCardBackground">
 
                     <TextView
-                        android:id="@+id/lunch_label"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/icon_size"
                         android:gravity="center"
                         android:text="@string/lunch"
-                        android:textColor="@color/black"
                         android:textSize="@dimen/body_size"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -343,7 +325,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:text="@string/output_value"
-                        android:textColor="@color/black"
                         android:textSize="@dimen/body_size"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -356,14 +337,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/header_vertical_padding"
                     android:layout_weight="0.5"
-                    android:background="@color/white"
-                    android:paddingHorizontal="@dimen/main_padding">
+                    android:paddingHorizontal="@dimen/main_padding"
+                    android:background="?attr/colorCardBackground">
 
                     <Button
                         android:id="@+id/add_lunch"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/icon_size"
-                        android:backgroundTint="@color/white"
                         android:gravity="center"
                         android:paddingHorizontal="0dp"
                         android:text="@string/add_food"
@@ -373,19 +353,21 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:rippleColor="@color/light_gray" />
+                        android:backgroundTint="?colorCardBackground"
+                        app:rippleColor="@color/light_gray"
+                        android:contentDescription="@string/add_food_to_lunch"/>
 
                     <ImageButton
                         android:id="@+id/bt_edit_lunch"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
-                        android:backgroundTint="@color/white"
                         app:tint="@color/clickable_blue"
                         android:src="@drawable/baseline_visibility_24"
                         android:contentDescription="@string/lunch_details"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        android:backgroundTint="?colorCardBackground"
                         app:rippleColor="@color/light_gray" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -394,16 +376,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/spacing_popup"
                     android:layout_weight="1"
-                    android:background="@color/white"
-                    android:paddingHorizontal="@dimen/main_padding">
+                    android:paddingHorizontal="@dimen/main_padding"
+                    android:background="?attr/colorCardBackground">
 
                     <TextView
-                        android:id="@+id/dinner_label"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/icon_size"
                         android:gravity="center"
                         android:text="@string/dinner"
-                        android:textColor="@color/black"
                         android:textSize="@dimen/body_size"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -416,7 +396,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:text="@string/output_value"
-                        android:textColor="@color/black"
                         android:textSize="@dimen/body_size"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -429,14 +408,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/header_vertical_padding"
                     android:layout_weight="0.5"
-                    android:background="@color/white"
-                    android:paddingHorizontal="@dimen/main_padding">
+                    android:paddingHorizontal="@dimen/main_padding"
+                    android:background="?attr/colorCardBackground">
 
                     <Button
                         android:id="@+id/add_dinner"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/icon_size"
-                        android:backgroundTint="@color/white"
                         android:gravity="center"
                         android:paddingHorizontal="0dp"
                         android:text="@string/add_food"
@@ -446,19 +424,21 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:rippleColor="@color/light_gray" />
+                        android:backgroundTint="?colorCardBackground"
+                        app:rippleColor="@color/light_gray"
+                        android:contentDescription="@string/add_food_to_dinner"/>
 
                     <ImageButton
                         android:id="@+id/bt_edit_dinner"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
-                        android:backgroundTint="@color/white"
                         app:tint="@color/clickable_blue"
                         android:src="@drawable/baseline_visibility_24"
                         android:contentDescription="@string/dinner_details"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        android:backgroundTint="?colorCardBackground"
                         app:rippleColor="@color/light_gray" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -467,16 +447,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/spacing_popup"
                     android:layout_weight="1"
-                    android:background="@color/white"
-                    android:paddingHorizontal="@dimen/main_padding">
+                    android:paddingHorizontal="@dimen/main_padding"
+                    android:background="?attr/colorCardBackground">
 
                     <TextView
-                        android:id="@+id/snack_label"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/icon_size"
                         android:gravity="center"
                         android:text="@string/snack"
-                        android:textColor="@color/black"
                         android:textSize="@dimen/body_size"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -489,7 +467,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:text="@string/output_value"
-                        android:textColor="@color/black"
                         android:textSize="@dimen/body_size"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -502,14 +479,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/header_vertical_padding"
                     android:layout_weight="0.5"
-                    android:background="@color/white"
-                    android:paddingHorizontal="@dimen/main_padding">
+                    android:paddingHorizontal="@dimen/main_padding"
+                    android:background="?attr/colorCardBackground">
 
                     <Button
                         android:id="@+id/add_snack"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/icon_size"
-                        android:backgroundTint="@color/white"
                         android:gravity="center"
                         android:paddingHorizontal="0dp"
                         android:text="@string/add_food"
@@ -519,19 +495,21 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:rippleColor="@color/light_gray" />
+                        android:backgroundTint="?colorCardBackground"
+                        app:rippleColor="@color/light_gray"
+                        android:contentDescription="@string/add_food_to_snack"/>
 
                     <ImageButton
                         android:id="@+id/bt_edit_snack"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
-                        android:backgroundTint="@color/white"
                         app:tint="@color/clickable_blue"
                         android:src="@drawable/baseline_visibility_24"
                         android:contentDescription="@string/snack_details"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        android:backgroundTint="?colorCardBackground"
                         app:rippleColor="@color/light_gray" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>

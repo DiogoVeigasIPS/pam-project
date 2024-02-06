@@ -3,6 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="?colorLighterBackground"
     android:padding="25dp">
 
     <TextView
@@ -16,11 +17,8 @@
         android:id="@+id/calorie_goal_input"
         android:inputType="number"
         android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/top_dialog_margin"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
         android:hint="@string/calculated_calorie_goal"
         android:autofillHints="" />
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="topNavigation" format="color" />
+    <attr name="colorPrimary" format="color" />
+    <attr name="colorSecondary" format="color" />
+    <attr name="colorAccent" format="color" />
+    <attr name="textColor" format="color" />
+    <attr name="textColorHint" format="color" />
+    <attr name="colorBackground" format="color" />
+    <attr name="colorLighterBackground" format="color" />
+    <attr name="colorCardBackground" format="color" />
+    <attr name="colorSmallCardBackground" format="color" />
+    <attr name="colorCircularTracker" format="color" />
+    <attr name="colorDetailsButton" format="color" />
+</resources>

@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main_fragments.FragmentFoods">
+    tools:context=".main_fragments.FragmentFoods"
+    android:background="?colorLighterBackground">
 
     <LinearLayout
         android:id="@+id/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/top_bar"
         android:gravity="center"
+        android:background="?attr/topNavigation"
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/header_padding"
         android:paddingVertical="@dimen/header_vertical_padding"
@@ -24,9 +25,10 @@
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="@dimen/nav_arrow_margin"
             android:layout_weight="0.2"
-            android:backgroundTint="@color/top_bar"
+            android:background="?attr/topNavigation"
             android:contentDescription="@string/back_arrow"
-            android:src="@drawable/back_arrow" />
+            android:src="@drawable/back_arrow"
+            app:tint="?attr/textColor" />
 
         <TextView
             android:id="@+id/title"
@@ -34,15 +36,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/foods"
-            android:textColor="@color/black"
-            android:textSize="@dimen/title_size" />
+            android:textSize="@dimen/navigation_title_size" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/foods_search_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,13 +55,13 @@
             android:layout_marginStart="@dimen/nav_arrow_margin"
             android:layout_marginEnd="@dimen/nav_arrow_margin"
             android:contentDescription="@string/search_icon"
+            app:tint="?attr/textColor"
             android:src="@drawable/magnifying_glass" />
 
         <EditText
             android:id="@+id/foods_search"
             android:layout_width="match_parent"
             android:layout_height="@dimen/icon_size"
-            android:backgroundTint="@color/white"
             android:hint="@string/search_foods"
             android:imeOptions="actionSearch"
             android:importantForAutofill="no"
@@ -83,7 +83,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider">
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        android:backgroundTint="?colorCardBackground">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -114,7 +115,6 @@
         android:layout_marginTop="@dimen/empty_list_margin"
         android:gravity="center"
         android:text="@string/this_list_seems_to_be_empty"
-        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="italic"
         android:visibility="gone"
@@ -129,11 +129,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/main_padding"
         android:layout_marginBottom="@dimen/main_padding"
-        android:backgroundTint="@color/colorAccent"
+        android:backgroundTint="?attr/colorPrimary"
         android:contentDescription="@string/add_food"
         android:isScrollContainer="false"
         app:srcCompat="@drawable/add"
-        app:tint="@color/white"
+        app:tint="?attr/colorBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="50dp" />
