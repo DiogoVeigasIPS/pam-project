@@ -2,8 +2,10 @@ package com.example.myfitnessbuddy.main_fragments;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -135,7 +138,14 @@ public class FragmentPanel extends Fragment {
 
                 Goal goal = user.getGoal();
 
-                if(goal == Goal.MAINTAIN) return;
+                if(goal == Goal.MAINTAIN) {
+                    TypedValue typedValue = new TypedValue();
+                    Resources.Theme theme = getActivity().getTheme();
+                    theme.resolveAttribute(R.attr.textColor, typedValue, true);
+                    @ColorInt int color = typedValue.data;
+                    todayWeight.setTextColor(color);
+                    return;
+                }
 
                 int colorResourceId;
                 if ((goal == Goal.GAIN && lastMonthAverage < lastWeight) || (goal == Goal.LOSE && lastMonthAverage > lastWeight)) {
