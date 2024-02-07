@@ -67,7 +67,8 @@
             android:importantForAutofill="no"
             android:inputType="textCapSentences"
             android:padding="@dimen/grouped_spacing"
-            android:textSize="@dimen/body_size" />
+            android:textSize="@dimen/body_size"
+            android:backgroundTint="?colorBackground"/>
     </LinearLayout>
 
     <View
