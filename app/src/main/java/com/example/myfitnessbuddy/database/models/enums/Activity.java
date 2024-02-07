@@ -1,19 +1,26 @@
 package com.example.myfitnessbuddy.database.models.enums;
 
+import android.content.Context;
+import com.example.myfitnessbuddy.R;
+
 public enum Activity {
-    NOT_DEFINED("Not Defined"),
-    NOT_ACTIVE("Not Active"),
-    SLIGHTLY_ACTIVE("Slightly Active"),
-    ACTIVE("Active"),
-    VERY_ACTIVE("Very Active");
+    NOT_DEFINED(R.string.not_defined),
+    NOT_ACTIVE(R.string.not_active),
+    SLIGHTLY_ACTIVE(R.string.slightly_active),
+    ACTIVE(R.string.active),
+    VERY_ACTIVE(R.string.very_active);
 
-    private final String text;
+    private final int textResId;
 
-    Activity(String text) {
-        this.text = text;
+    Activity(int textResId) {
+        this.textResId = textResId;
     }
 
-    public String getText() {
-        return text;
+    public int getTextResId() {
+        return textResId;
+    }
+
+    public String getText(Context context) {
+        return context.getString(textResId);
     }
 }

@@ -309,6 +309,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                                     ((AddDishActivity) getActivity()).updateFoodList();
                                 else if(actionType == ActionType.ADD_TO_DISH)
                                     ((AddToDishActivity) getActivity()).updateDishData();
+                                else if(actionType == ActionType.EDIT_IN_MEAL)
+                                    ((AddToMealActivity) getActivity()).updateFoodList();
 
                                 dialog.dismiss();
                             }

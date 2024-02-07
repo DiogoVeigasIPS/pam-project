@@ -169,7 +169,7 @@ public class FragmentDiary extends Fragment {
                 TextView dateText = getView().findViewById(R.id.date_text);
 
                 if(!day.getDate().equals(LocalDate.now())){
-                    if(!day.getDate().equals(LocalDate.now().minusDays(1))){
+                    if(day.getDate().equals(LocalDate.now().minusDays(1))){
                         dateText.setText(R.string.yesterday);
                     }else{
                         dateText.setText(UserPreferences.convertLocalDateToString(day.getDate()));

@@ -132,9 +132,11 @@ public class FragmentPanel extends Fragment {
                 User user = UserPreferences.readUserPreferences(getActivity());
                 if(user == null) return;
 
-                int colorResourceId;
                 Goal goal = user.getGoal();
 
+                if(goal == Goal.MAINTAIN) return;
+
+                int colorResourceId;
                 if ((goal == Goal.GAIN && lastMonthAverage < lastWeight) || (goal == Goal.LOSE && lastMonthAverage > lastWeight)) {
                     colorResourceId = R.color.success;
                 } else {
