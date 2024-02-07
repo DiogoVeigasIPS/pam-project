@@ -27,7 +27,7 @@
 
     <!--Extra accent colors-->
     <color name="danger">#dc3545</color>
-    <color name="success">#198754</color>
+    <color name="success">#229E4B</color>
 
     <!--Shades and others-->
     <color name="light_gray">#D9D9D9</color>

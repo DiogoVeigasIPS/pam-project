@@ -146,5 +146,8 @@
     <string name="delete_confirmation">Are you sure you want to delete the</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="dish_updated">Dish updated successfully!</string>
+    <string name="dish_created">Dish created successfully!</string>
+    <string name="toast_status_message">Toast status message</string>
 
 </resources>

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.database.models.Food;
+import com.example.myfitnessbuddy.utils.CustomToast;
 
 public class AddFoodActivity extends AppCompatActivity {
     public static String FOOD_ID = "FOOD_ID";
@@ -141,7 +142,7 @@ public class AddFoodActivity extends AppCompatActivity {
         }
 
         if(nameStr.trim().equals("") || portionStr.trim().equals("") ||  unitStr.trim().equals("") || calorieStr.trim().equals("")){
-            Toast.makeText(AddFoodActivity.this, R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
+            CustomToast.showErrorToast(AddFoodActivity.this, R.string.fill_all_fields, Toast.LENGTH_SHORT);
             return null;
         }
 
@@ -149,7 +150,7 @@ public class AddFoodActivity extends AppCompatActivity {
         try {
             portion = Double.parseDouble(portionStr);
         } catch (NumberFormatException numberFormatException) {
-            Toast.makeText(AddFoodActivity.this, R.string.invalid_portion_format, Toast.LENGTH_SHORT).show();
+            CustomToast.showErrorToast(AddFoodActivity.this, R.string.invalid_portion_format, Toast.LENGTH_SHORT);
             return null;
         }
 
@@ -157,7 +158,7 @@ public class AddFoodActivity extends AppCompatActivity {
         try {
             calorie = Double.parseDouble(calorieStr);
         } catch (NumberFormatException numberFormatException) {
-            Toast.makeText(AddFoodActivity.this, R.string.invalid_calorie_format, Toast.LENGTH_SHORT).show();
+            CustomToast.showErrorToast(AddFoodActivity.this, R.string.invalid_calorie_format, Toast.LENGTH_SHORT);
             return null;
         }
 
@@ -166,7 +167,7 @@ public class AddFoodActivity extends AppCompatActivity {
             food = new Food(nameStr, descriptionStr, selectedIcon, portion, calorie, unitStr);
         } catch (IllegalArgumentException illegalArgumentException) {
             Log.d(getClass().getSimpleName(), illegalArgumentException.toString());
-            Toast.makeText(AddFoodActivity.this, R.string.invalid_details, Toast.LENGTH_SHORT).show();
+            CustomToast.showErrorToast(AddFoodActivity.this, R.string.invalid_details, Toast.LENGTH_SHORT);
             return null;
         }
         return food;
