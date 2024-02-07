@@ -28,6 +28,7 @@ import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Day;
 import com.example.myfitnessbuddy.database.models.User;
 import com.example.myfitnessbuddy.database.models.enums.Goal;
+import com.example.myfitnessbuddy.utils.CustomToast;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 /**
@@ -176,7 +177,7 @@ public class FragmentPanel extends Fragment {
                     String weightStr = weightInput.getText().toString();
 
                     if(weightStr.trim().equals("")){
-                        Toast.makeText(getActivity(), R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
+                        CustomToast.showErrorToast(getActivity(), R.string.fill_all_fields, Toast.LENGTH_SHORT);
                         return;
                     }
 
@@ -189,7 +190,7 @@ public class FragmentPanel extends Fragment {
 
                             requireActivity().runOnUiThread(() -> {
                                 if(isAdded()){
-                                    Toast.makeText(getActivity(), R.string.weight_updated, Toast.LENGTH_SHORT).show();
+                                    CustomToast.showSuccessToast(getActivity(), R.string.weight_updated, Toast.LENGTH_SHORT);
                                     ((FragmentPanel) getParentFragment()).updateUI();
                                     dialog.dismiss();
                                 }
@@ -198,7 +199,7 @@ public class FragmentPanel extends Fragment {
 
                     } catch (NumberFormatException numberFormatException){
                         Log.e("WeightDialogFragment", "Error parsing weight", numberFormatException);
-                        Toast.makeText(getActivity(), R.string.invalid_weight_format, Toast.LENGTH_SHORT).show();
+                        CustomToast.showErrorToast(getActivity(), R.string.invalid_weight_format, Toast.LENGTH_SHORT);
                     }
                 });
             });
@@ -242,7 +243,7 @@ public class FragmentPanel extends Fragment {
                                 requireActivity().runOnUiThread(() -> {
                                     // Check if the fragment is still attached to the activity
                                     if (isAdded()) {
-                                        Toast.makeText(getActivity(), R.string.calorie_goal_updated, Toast.LENGTH_SHORT).show();
+                                        CustomToast.showSuccessToast(getActivity(), R.string.calorie_goal_updated, Toast.LENGTH_SHORT);
                                         ((FragmentPanel) getParentFragment()).updateUI();
                                         dialog.dismiss();
                                     }
@@ -251,7 +252,7 @@ public class FragmentPanel extends Fragment {
                                 Log.e("CalorieGoalDialogFragment", "Error parsing calorie goal", numberFormatException);
                                 requireActivity().runOnUiThread(() -> {
                                     if (isAdded())
-                                        Toast.makeText(getActivity(), R.string.invalid_calorie_format, Toast.LENGTH_SHORT).show();
+                                        CustomToast.showErrorToast(getActivity(), R.string.invalid_calorie_format, Toast.LENGTH_SHORT);
                                 });
                             }
                         } else {
@@ -260,7 +261,7 @@ public class FragmentPanel extends Fragment {
                             if (user == null) {
                                 requireActivity().runOnUiThread(() -> {
                                     if (isAdded())
-                                        Toast.makeText(getActivity(), R.string.user_preferences_or_calorie, Toast.LENGTH_LONG).show();
+                                        CustomToast.showErrorToast(getActivity(), R.string.user_preferences_or_calorie, Toast.LENGTH_LONG);
                                 });
                                 return;
                             }
@@ -271,7 +272,7 @@ public class FragmentPanel extends Fragment {
                             if(weight == 0) {
                                 requireActivity().runOnUiThread(() -> {
                                     if (isAdded()) {
-                                        Toast.makeText(getActivity(), R.string.user_preferences_or_calorie, Toast.LENGTH_SHORT).show();
+                                        CustomToast.showErrorToast(getActivity(), R.string.user_preferences_or_calorie, Toast.LENGTH_SHORT);
                                     }
                                 });
                                 return;
@@ -284,7 +285,7 @@ public class FragmentPanel extends Fragment {
                             requireActivity().runOnUiThread(() -> {
                                 // Check if the fragment is still attached to the activity
                                 if (isAdded()) {
-                                    Toast.makeText(getActivity(), R.string.calorie_goal_updated, Toast.LENGTH_SHORT).show();
+                                    CustomToast.showSuccessToast(getActivity(), R.string.calorie_goal_updated, Toast.LENGTH_SHORT);
                                     ((FragmentPanel) getParentFragment()).updateUI();
                                     dialog.dismiss();
                                 }

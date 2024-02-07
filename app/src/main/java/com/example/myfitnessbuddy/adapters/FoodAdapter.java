@@ -35,6 +35,7 @@ import com.example.myfitnessbuddy.database.models.QuickAddition;
 import com.example.myfitnessbuddy.database.models.associatios.DishMealCrossRef;
 import com.example.myfitnessbuddy.database.models.associatios.DishWithQuantifiedFoods;
 import com.example.myfitnessbuddy.database.models.associatios.ListableFood;
+import com.example.myfitnessbuddy.utils.CustomToast;
 
 import java.util.List;
 
@@ -117,7 +118,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                         DatabaseHelper.MealHelper.removeDishFromMeal(dishMealCrossRef);
 
                         v.post(() -> {
-                            Toast.makeText(v.getContext(), R.string.dish_deleted, Toast.LENGTH_SHORT).show();
+                            CustomToast.showSuccessToast(v.getContext(), R.string.dish_deleted, Toast.LENGTH_SHORT);
                             ((AddToMealActivity) v.getContext()).updateFoodList();
                         });
                     });
@@ -166,7 +167,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
                         if(isDuplicate){
                             v.post(() -> {
-                                Toast.makeText(v.getContext(), R.string.dish_duplicated, Toast.LENGTH_LONG).show();
+                                CustomToast.showErrorToast(v.getContext(), R.string.dish_duplicated, Toast.LENGTH_LONG);
                             });
                             return;
                         }
@@ -174,7 +175,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                         DatabaseHelper.MealHelper.insertDishInMeal(new DishMealCrossRef(dish.getId(), givenId));
                         v.post(() -> {
                             ((AddToMealActivity) v.getContext()).updateMealData();
-                            Toast.makeText(v.getContext(), R.string.dish_added_meal, Toast.LENGTH_SHORT).show();
+                            CustomToast.showSuccessToast(v.getContext(), R.string.dish_added_meal, Toast.LENGTH_SHORT);
                         });
                     });
                 });
@@ -283,7 +284,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                     String quantityStr = quantityInput.getText().toString();
 
                     if(quantityStr.trim().equals("")){
-                        Toast.makeText(getActivity(), R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
+                        CustomToast.showErrorToast(getActivity(), R.string.fill_all_fields, Toast.LENGTH_SHORT);
                         return;
                     }
 
@@ -303,7 +304,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
                         requireActivity().runOnUiThread(() -> {
                             if(isAdded()){
-                                Toast.makeText(getActivity(), R.string.food_removed, Toast.LENGTH_SHORT).show();
+                                CustomToast.showSuccessToast(getActivity(), R.string.food_removed, Toast.LENGTH_SHORT);
 
                                 if(actionType == ActionType.EDIT_IN_DISH)
                                     ((AddDishActivity) getActivity()).updateFoodList();
@@ -332,7 +333,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
                     requireActivity().runOnUiThread(() -> {
                         if(isAdded()){
-                            Toast.makeText(getActivity(), R.string.food_updated, Toast.LENGTH_SHORT).show();
+                            CustomToast.showSuccessToast(getActivity(), R.string.food_updated, Toast.LENGTH_SHORT);
 
                             if(actionType == ActionType.EDIT_IN_DISH)
                                 ((AddDishActivity) getActivity()).updateFoodList();
@@ -346,7 +347,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
             } catch (NumberFormatException numberFormatException){
                 Log.e("QuantityDialogFragment", "Error parsing quantity", numberFormatException);
-                Toast.makeText(getActivity(), R.string.invalid_quantity_format, Toast.LENGTH_SHORT).show();
+                CustomToast.showErrorToast(getActivity(), R.string.invalid_quantity_format, Toast.LENGTH_SHORT);
             }
         }
 
@@ -365,7 +366,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
                     requireActivity().runOnUiThread(() -> {
                         if(isAdded()){
-                            Toast.makeText(getActivity(), R.string.food_added, Toast.LENGTH_SHORT).show();
+                            CustomToast.showSuccessToast(getActivity(), R.string.food_added, Toast.LENGTH_SHORT);
 
                             if(actionType == ActionType.ADD_TO_MEAL)
                                 ((AddToMealActivity) getActivity()).updateMealData();
@@ -379,7 +380,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
             } catch (NumberFormatException numberFormatException){
                 Log.e("QuantityDialogFragment", "Error parsing quantity", numberFormatException);
-                Toast.makeText(getActivity(), R.string.invalid_quantity_format, Toast.LENGTH_SHORT).show();
+                CustomToast.showErrorToast(getActivity(), R.string.invalid_quantity_format, Toast.LENGTH_SHORT);
             }
         }
     }

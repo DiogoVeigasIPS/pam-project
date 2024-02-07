@@ -147,5 +147,8 @@
     <string name="delete_confirmation">Tem a certeza de que quer eliminar </string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
+    <string name="dish_updated">Prato atualizado com sucesso!</string>
+    <string name="dish_created">Prato criado com sucesso!</string>
+    <string name="toast_status_message">Mensagem de estado do Toast</string>
 
 </resources>

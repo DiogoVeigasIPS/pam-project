@@ -23,6 +23,7 @@ import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Dish;
 import com.example.myfitnessbuddy.database.models.associatios.DishWithQuantifiedFoods;
 import com.example.myfitnessbuddy.database.models.associatios.ListableFood;
+import com.example.myfitnessbuddy.utils.CustomToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -179,6 +180,7 @@ public class AddDishActivity extends AppCompatActivity {
     private void editDish(Dish dish) {
         updateFoodProperties(dish);
         DatabaseHelper.DishHelper.updateDish(dish);
+        CustomToast.showSuccessToast(this, R.string.dish_updated, Toast.LENGTH_SHORT);
         //finish();
     }
 
@@ -217,6 +219,7 @@ public class AddDishActivity extends AppCompatActivity {
                 updateTitle();
                 setEditDishActions();
                 updateDishCalories(addedDish);
+                CustomToast.showSuccessToast(this, R.string.dish_created, Toast.LENGTH_SHORT);
             });
         });
 
@@ -241,7 +244,7 @@ public class AddDishActivity extends AppCompatActivity {
         }
 
         if(nameStr.trim().equals("")){
-            Toast.makeText(AddDishActivity.this, R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
+            CustomToast.showErrorToast(AddDishActivity.this, R.string.fill_all_fields, Toast.LENGTH_SHORT);
             return null;
         }
 
@@ -250,7 +253,7 @@ public class AddDishActivity extends AppCompatActivity {
             dish = new Dish(nameStr, descriptionStr, selectedIcon);
         } catch (IllegalArgumentException illegalArgumentException) {
             Log.d(getClass().getSimpleName(), illegalArgumentException.toString());
-            Toast.makeText(AddDishActivity.this, R.string.invalid_details, Toast.LENGTH_SHORT).show();
+            CustomToast.showErrorToast(AddDishActivity.this, R.string.invalid_details, Toast.LENGTH_SHORT);
             return null;
         }
 

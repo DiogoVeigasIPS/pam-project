@@ -16,6 +16,7 @@ import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Food;
 import com.example.myfitnessbuddy.database.models.QuickAddition;
+import com.example.myfitnessbuddy.utils.CustomToast;
 
 public class QuickAddActivity extends AppCompatActivity {
 
@@ -110,7 +111,7 @@ public class QuickAddActivity extends AppCompatActivity {
         String caloriesStr = caloriesInput.getText().toString();
 
         if(nameStr.trim().equals("") || caloriesStr.trim().equals("")){
-            Toast.makeText(this, R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
+            CustomToast.showErrorToast(this, R.string.fill_all_fields, Toast.LENGTH_SHORT);
             return null;
         }
 
@@ -118,7 +119,7 @@ public class QuickAddActivity extends AppCompatActivity {
         try{
             calories = Integer.parseInt(caloriesStr);
         }catch (NumberFormatException numberFormatException){
-            Toast.makeText(this, R.string.invalid_calorie_format, Toast.LENGTH_SHORT).show();
+            CustomToast.showErrorToast(this, R.string.invalid_calorie_format, Toast.LENGTH_SHORT);
             return null;
         }
 
@@ -127,7 +128,7 @@ public class QuickAddActivity extends AppCompatActivity {
             quickAddition = new QuickAddition(nameStr, calories, mealId);
         } catch (IllegalArgumentException illegalArgumentException) {
             Log.d(getClass().getSimpleName(), illegalArgumentException.toString());
-            Toast.makeText(QuickAddActivity.this, R.string.invalid_details, Toast.LENGTH_SHORT).show();
+            CustomToast.showErrorToast(this, R.string.invalid_details, Toast.LENGTH_SHORT);
             return null;
         }
 
