@@ -199,7 +199,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 if (view instanceof TextView) {
-                    ((TextView) view).setText(getItem(position).getText());
+                    ((TextView) view).setText(getItem(position).getText(getContext()));
                 }
                 return view;
             }
@@ -208,7 +208,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 if (view instanceof TextView) {
-                    ((TextView) view).setText(getItem(position).getText());
+                    ((TextView) view).setText(getItem(position).getText(getContext()));
                 }
                 return view;
             }
@@ -224,7 +224,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 if (view instanceof TextView) {
-                    ((TextView) view).setText(getItem(position).getText());
+                    ((TextView) view).setText(getItem(position).getText(getContext()));
                 }
                 return view;
             }
@@ -233,7 +233,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 if (view instanceof TextView) {
-                    ((TextView) view).setText(getItem(position).getText());
+                    ((TextView) view).setText(getItem(position).getText(getContext()));
                 }
                 return view;
             }

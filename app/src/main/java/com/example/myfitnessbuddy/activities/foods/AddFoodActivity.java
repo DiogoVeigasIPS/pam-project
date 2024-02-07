@@ -65,15 +65,15 @@ public class AddFoodActivity extends AppCompatActivity {
     }
 
     private void showDeleteConfirmationDialog(Food food) {
-        String message = "Are you sure you want to delete the <b>" + food.getCompoundName() + "</b> ?";
+        String message = getString(R.string.delete_confirmation) + " <b>" + food.getCompoundName() + "</b> ?";
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(Html.fromHtml(message))
-                .setPositiveButton("Yes", (dialog, which) -> {
+                .setPositiveButton(getString(R.string.yes), (dialog, which) -> {
                     DatabaseHelper.FoodHelper.deleteFood(food);
                     finish();
                 })
-                .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                .setNegativeButton(getString(R.string.no), (dialog, which) -> dialog.dismiss())
                 .create()
                 .show();
     }
