@@ -2,8 +2,10 @@ package com.example.myfitnessbuddy.main_fragments;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -28,6 +31,7 @@ import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Day;
 import com.example.myfitnessbuddy.database.models.User;
 import com.example.myfitnessbuddy.database.models.enums.Goal;
+import com.example.myfitnessbuddy.utils.CustomToast;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 /**
@@ -132,9 +136,18 @@ public class FragmentPanel extends Fragment {
                 User user = UserPreferences.readUserPreferences(getActivity());
                 if(user == null) return;
 
-                int colorResourceId;
                 Goal goal = user.getGoal();
 
+                if(goal == Goal.MAINTAIN) {
+                    TypedValue typedValue = new TypedValue();
+                    Resources.Theme theme = getActivity().getTheme();
+                    theme.resolveAttribute(R.attr.textColor, typedValue, true);
+                    @ColorInt int color = typedValue.data;
+                    todayWeight.setTextColor(color);
+                    return;
+                }
+
+                int colorResourceId;
                 if ((goal == Goal.GAIN && lastMonthAverage < lastWeight) || (goal == Goal.LOSE && lastMonthAverage > lastWeight)) {
                     colorResourceId = R.color.success;
                 } else {
@@ -174,7 +187,7 @@ public class FragmentPanel extends Fragment {
                     String weightStr = weightInput.getText().toString();
 
                     if(weightStr.trim().equals("")){
-                        Toast.makeText(getActivity(), R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
+                        CustomToast.showErrorToast(getActivity(), R.string.fill_all_fields, Toast.LENGTH_SHORT);
                         return;
                     }
 
@@ -187,7 +200,7 @@ public class FragmentPanel extends Fragment {
 
                             requireActivity().runOnUiThread(() -> {
                                 if(isAdded()){
-                                    Toast.makeText(getActivity(), R.string.weight_updated, Toast.LENGTH_SHORT).show();
+                                    CustomToast.showSuccessToast(getActivity(), R.string.weight_updated, Toast.LENGTH_SHORT);
                                     ((FragmentPanel) getParentFragment()).updateUI();
                                     dialog.dismiss();
                                 }
@@ -196,7 +209,7 @@ public class FragmentPanel extends Fragment {
 
                     } catch (NumberFormatException numberFormatException){
                         Log.e("WeightDialogFragment", "Error parsing weight", numberFormatException);
-                        Toast.makeText(getActivity(), R.string.invalid_weight_format, Toast.LENGTH_SHORT).show();
+                        CustomToast.showErrorToast(getActivity(), R.string.invalid_weight_format, Toast.LENGTH_SHORT);
                     }
                 });
             });
@@ -240,7 +253,7 @@ public class FragmentPanel extends Fragment {
                                 requireActivity().runOnUiThread(() -> {
                                     // Check if the fragment is still attached to the activity
                                     if (isAdded()) {
-                                        Toast.makeText(getActivity(), R.string.calorie_goal_updated, Toast.LENGTH_SHORT).show();
+                                        CustomToast.showSuccessToast(getActivity(), R.string.calorie_goal_updated, Toast.LENGTH_SHORT);
                                         ((FragmentPanel) getParentFragment()).updateUI();
                                         dialog.dismiss();
                                     }
@@ -249,7 +262,7 @@ public class FragmentPanel extends Fragment {
                                 Log.e("CalorieGoalDialogFragment", "Error parsing calorie goal", numberFormatException);
                                 requireActivity().runOnUiThread(() -> {
                                     if (isAdded())
-                                        Toast.makeText(getActivity(), R.string.invalid_calorie_format, Toast.LENGTH_SHORT).show();
+                                        CustomToast.showErrorToast(getActivity(), R.string.invalid_calorie_format, Toast.LENGTH_SHORT);
                                 });
                             }
                         } else {
@@ -258,7 +271,7 @@ public class FragmentPanel extends Fragment {
                             if (user == null) {
                                 requireActivity().runOnUiThread(() -> {
                                     if (isAdded())
-                                        Toast.makeText(getActivity(), R.string.user_preferences_or_calorie, Toast.LENGTH_LONG).show();
+                                        CustomToast.showErrorToast(getActivity(), R.string.user_preferences_or_calorie, Toast.LENGTH_LONG);
                                 });
                                 return;
                             }
@@ -269,7 +282,7 @@ public class FragmentPanel extends Fragment {
                             if(weight == 0) {
                                 requireActivity().runOnUiThread(() -> {
                                     if (isAdded()) {
-                                        Toast.makeText(getActivity(), R.string.user_preferences_or_calorie, Toast.LENGTH_SHORT).show();
+                                        CustomToast.showErrorToast(getActivity(), R.string.user_preferences_or_calorie, Toast.LENGTH_SHORT);
                                     }
                                 });
                                 return;
@@ -282,7 +295,7 @@ public class FragmentPanel extends Fragment {
                             requireActivity().runOnUiThread(() -> {
                                 // Check if the fragment is still attached to the activity
                                 if (isAdded()) {
-                                    Toast.makeText(getActivity(), R.string.calorie_goal_updated, Toast.LENGTH_SHORT).show();
+                                    CustomToast.showSuccessToast(getActivity(), R.string.calorie_goal_updated, Toast.LENGTH_SHORT);
                                     ((FragmentPanel) getParentFragment()).updateUI();
                                     dialog.dismiss();
                                 }

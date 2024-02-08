@@ -16,10 +16,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.diary.AddToMealActivity;
+import com.example.myfitnessbuddy.activities.panel.UpdateDetailsActivity;
 import com.example.myfitnessbuddy.activities.panel.UserPreferences;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Day;
 import com.example.myfitnessbuddy.database.models.Meal;
+import com.example.myfitnessbuddy.utils.CustomToast;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -161,7 +163,7 @@ public class FragmentDiary extends Fragment {
 
             requireActivity().runOnUiThread(() -> {
                 if(day == null){
-                    Toast.makeText(getActivity(), R.string.no_more_day, Toast.LENGTH_SHORT).show();
+                    CustomToast.showErrorToast(getActivity(), R.string.no_more_day, Toast.LENGTH_SHORT);
                     return;
                 }
 
@@ -169,7 +171,7 @@ public class FragmentDiary extends Fragment {
                 TextView dateText = getView().findViewById(R.id.date_text);
 
                 if(!day.getDate().equals(LocalDate.now())){
-                    if(!day.getDate().equals(LocalDate.now().minusDays(1))){
+                    if(day.getDate().equals(LocalDate.now().minusDays(1))){
                         dateText.setText(R.string.yesterday);
                     }else{
                         dateText.setText(UserPreferences.convertLocalDateToString(day.getDate()));

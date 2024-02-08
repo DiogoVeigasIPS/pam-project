@@ -8,6 +8,7 @@
         <item name="android:textColorHint">@color/colorTextHintDark</item>
         <item name="android:colorBackground">@color/colorBackgroundDark</item>
         <item name="android:windowBackground">@color/colorBackgroundDark</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
 
         <item name="topNavigation">@color/topBarDark</item>
         <item name="textColor">@color/colorTextDark</item>

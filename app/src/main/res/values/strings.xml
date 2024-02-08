@@ -135,5 +135,19 @@
     <string name="add_food_to_lunch">Add food to lunch</string>
     <string name="add_food_to_dinner">Add food to dinner</string>
     <string name="add_food_to_snack">Add food to snack</string>
+    <string name="not_defined">Not Defined</string>
+    <string name="lose_weight">Lose Weight</string>
+    <string name="maintain_weight">Maintain Weight</string>
+    <string name="gain_weight">Gain Weight</string>
+    <string name="not_active">Not Active</string>
+    <string name="slightly_active">Slightly Active</string>
+    <string name="active">Active</string>
+    <string name="very_active">Very Active</string>
+    <string name="delete_confirmation">Are you sure you want to delete the</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="dish_updated">Dish updated successfully!</string>
+    <string name="dish_created">Dish created successfully!</string>
+    <string name="toast_status_message">Toast status message</string>
 
 </resources>

@@ -8,7 +8,7 @@
     <string name="breakfast">Pequeno-Almoço</string>
     <string name="lunch">Almoço</string>
     <string name="dinner">Jantar</string>
-    <string name="snack">Snack</string>
+    <string name="snack">Lanchinho</string>
     <string name="calorie">Calorias</string>
     <string name="goal_base">Meta Base</string>
     <string name="remaining">Restantes</string>
@@ -136,5 +136,19 @@
     <string name="add_food_to_lunch">Adicionar alimento ao almoço</string>
     <string name="add_food_to_dinner">Adicionar alimento ao jantar</string>
     <string name="add_food_to_snack">Adicionar alimento ao snack</string>
+    <string name="not_defined">Não Definido</string>
+    <string name="lose_weight">Perder Peso</string>
+    <string name="maintain_weight">Manter Peso</string>
+    <string name="gain_weight">Ganhar Peso</string>
+    <string name="not_active">Inativo</string>
+    <string name="slightly_active">Levemente Ativo</string>
+    <string name="active">Ativo</string>
+    <string name="very_active">Muito Ativo</string>
+    <string name="delete_confirmation">Tem a certeza de que quer eliminar </string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="dish_updated">Prato atualizado com sucesso!</string>
+    <string name="dish_created">Prato criado com sucesso!</string>
+    <string name="toast_status_message">Mensagem de estado do Toast</string>
 
 </resources>

@@ -1,6 +1,6 @@
 # My Fitness Buddy - Android App
 
-Esta é uma aplicação desenvolvida como projeto da unidade curricular de Programação de Aplicações Móveis, realizada pelos alunos:
+Esta é uma aplicação desenvolvida como projeto da unidade curricular (UC) de Programação de Aplicações Móveis (PAM), realizada pelos alunos:
 - André Carvalho 202200878
 - Diogo Veigas 202200879
 
@@ -52,3 +52,7 @@ As bibliotecas de persistência de dados, isto é, Room, foram bastante utilizad
 
 - *Room Compiler* (androidx.room:room-compiler:2.4.1):
   - Processador de anotações usado pelo Room para gerar código relacionado a bases de dados SQLite durante a compilação. Isso inclui a geração de consultas SQL e o código para aceder à base de dados de maneira eficiente.
+
+## Direitos de autor
+
+Como referido no início deste documento, este é um projeto com o intuito de ser avaliado pelo docente responsável pela UC de PAM lecionada pelo professor David Sanguinetti do [IPS](https://www.ips.pt/ips_si/web_page.inicial).

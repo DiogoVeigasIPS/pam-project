@@ -18,11 +18,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myfitnessbuddy.R;
+import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
 import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.database.models.Day;
 import com.example.myfitnessbuddy.database.models.enums.Activity;
 import com.example.myfitnessbuddy.database.models.enums.Goal;
 import com.example.myfitnessbuddy.database.models.User;
+import com.example.myfitnessbuddy.utils.CustomToast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -103,12 +105,12 @@ public class UpdateDetailsActivity extends AppCompatActivity {
         String weightStr = weightInput.getText().toString();
 
         if (weightStr.trim().equals("") || heightStr.trim().equals("") || selectedGoal == Goal.NOT_DEFINED || selectedActivity == Activity.NOT_DEFINED) {
-            Toast.makeText(UpdateDetailsActivity.this, R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
+            CustomToast.showErrorToast(UpdateDetailsActivity.this, R.string.fill_all_fields, Toast.LENGTH_SHORT);
             return;
         }
 
         if (!dateIsValid(birthDateStr)) {
-            Toast.makeText(UpdateDetailsActivity.this, R.string.invalid_date, Toast.LENGTH_SHORT).show();
+            CustomToast.showErrorToast(UpdateDetailsActivity.this, R.string.invalid_date, Toast.LENGTH_SHORT);
             return;
         }
 
@@ -119,7 +121,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             height = Integer.parseInt(heightStr);
         } catch (NumberFormatException numberFormatException) {
             Log.d("UpdateDetailsActivity", numberFormatException.toString());
-            Toast.makeText(UpdateDetailsActivity.this, R.string.invalid_height_format, Toast.LENGTH_SHORT).show();
+            CustomToast.showErrorToast(UpdateDetailsActivity.this, R.string.invalid_height_format, Toast.LENGTH_SHORT);
             return;
         }
 
@@ -128,7 +130,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             weight = Integer.parseInt(weightStr);
         } catch (NumberFormatException numberFormatException) {
             Log.d("UpdateDetailsActivity", numberFormatException.toString());
-            Toast.makeText(UpdateDetailsActivity.this, R.string.invalid_weight_format, Toast.LENGTH_SHORT).show();
+            CustomToast.showErrorToast(UpdateDetailsActivity.this, R.string.invalid_weight_format, Toast.LENGTH_SHORT);
             return;
         }
 
@@ -137,7 +139,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             UserPreferences.writeUserPreferences(UpdateDetailsActivity.this, user);
         } catch (IllegalArgumentException illegalArgumentException) {
             Log.d("UpdateDetailsActivity", illegalArgumentException.toString());
-            Toast.makeText(UpdateDetailsActivity.this, R.string.invalid_details, Toast.LENGTH_SHORT).show();
+            CustomToast.showErrorToast(UpdateDetailsActivity.this, R.string.invalid_details, Toast.LENGTH_SHORT);
         }
 
         DatabaseHelper.executeInBackground(() -> {
@@ -180,7 +182,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
                         String formattedDate = UserPreferences.convertLocalDateToString(selectedDate);
                         birthDateInput.setText(formattedDate);
                     } catch (Exception e) {
-                        Toast.makeText(UpdateDetailsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                        CustomToast.showErrorToast(UpdateDetailsActivity.this, R.string.invalid_date, Toast.LENGTH_SHORT);
                     }
 
                 },
@@ -199,7 +201,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 if (view instanceof TextView) {
-                    ((TextView) view).setText(getItem(position).getText());
+                    ((TextView) view).setText(getItem(position).getText(getContext()));
                 }
                 return view;
             }
@@ -208,7 +210,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 if (view instanceof TextView) {
-                    ((TextView) view).setText(getItem(position).getText());
+                    ((TextView) view).setText(getItem(position).getText(getContext()));
                 }
                 return view;
             }
@@ -224,7 +226,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 if (view instanceof TextView) {
-                    ((TextView) view).setText(getItem(position).getText());
+                    ((TextView) view).setText(getItem(position).getText(getContext()));
                 }
                 return view;
             }
@@ -233,7 +235,7 @@ public class UpdateDetailsActivity extends AppCompatActivity {
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 if (view instanceof TextView) {
-                    ((TextView) view).setText(getItem(position).getText());
+                    ((TextView) view).setText(getItem(position).getText(getContext()));
                 }
                 return view;
             }
