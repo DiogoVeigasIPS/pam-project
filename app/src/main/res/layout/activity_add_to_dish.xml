@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?colorLighterBackground"
     tools:context=".activities.diary.AddToMealActivity">
 
     <LinearLayout
         android:id="@+id/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/top_bar"
+        android:background="?attr/topNavigation"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/header_padding"
@@ -24,9 +25,10 @@
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="@dimen/nav_arrow_margin"
             android:layout_weight="0.2"
-            android:backgroundTint="@color/top_bar"
+            android:backgroundTint="?attr/topNavigation"
             android:contentDescription="@string/back_arrow"
-            android:src="@drawable/back_arrow" />
+            android:src="@drawable/back_arrow"
+            app:tint="?attr/textColor"/>
 
         <TextView
             android:id="@+id/title"
@@ -34,8 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/lasagna_1975"
-            android:textColor="@color/black"
-            android:textSize="@dimen/title_size" />
+            android:textSize="@dimen/navigation_title_size" />
     </LinearLayout>
 
     <LinearLayout
@@ -45,7 +46,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/navigation_bar"
-        android:background="@color/white"
         android:orientation="horizontal"
         >
         <ImageView
@@ -55,6 +55,7 @@
             android:layout_gravity="center"
             android:layout_marginEnd="@dimen/nav_arrow_margin"
             android:layout_marginStart="@dimen/nav_arrow_margin"
+            app:tint="?attr/textColor"
             android:contentDescription="@string/search_icon"/>
         <EditText
             android:id="@+id/foods_search"
@@ -65,10 +66,17 @@
             android:importantForAutofill="no"
             android:inputType="textCapSentences"
             android:padding="@dimen/grouped_spacing"
-            android:backgroundTint="@color/white"
             android:textSize="@dimen/body_size"
+            android:backgroundTint="?colorBackground"
             />
     </LinearLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hint_gray"
+        app:layout_constraintTop_toBottomOf="@id/foods_search_layout"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/foods_list"
@@ -78,7 +86,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/foods_search_layout" />
+        app:layout_constraintTop_toBottomOf="@id/divider" />
 
     <TextView
         android:id="@+id/empty_list"

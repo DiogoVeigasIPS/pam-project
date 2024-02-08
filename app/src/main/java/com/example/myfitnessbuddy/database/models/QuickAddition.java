@@ -9,17 +9,20 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import com.example.myfitnessbuddy.R;
+import com.example.myfitnessbuddy.database.models.associatios.ListableFood;
+
 @Entity(tableName = "quickAddition",
         foreignKeys = @ForeignKey(
                 entity = Meal.class,
-                parentColumns = "id",
+                parentColumns = "mealId",
                 childColumns = "mealId",
                 onDelete = CASCADE
         ), indices = {@Index("mealId")}
 )
-public class QuickAddition{
+public class QuickAddition implements ListableFood {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int quickAdditionId;
     @ColumnInfo(name = "name")
     private String name;
     @ColumnInfo(name = "calories")
@@ -39,8 +42,8 @@ public class QuickAddition{
     }
 
     // Getter methods
-    public int getId() {
-        return id;
+    public int getQuickAdditionId() {
+        return quickAdditionId;
     }
 
     public String getName() {
@@ -56,15 +59,15 @@ public class QuickAddition{
     }
 
     // Setter methods
-    public void setId(int id){
-        this.id = id;
+    public void setQuickAdditionId(int quickAdditionId){
+        this.quickAdditionId = quickAdditionId;
     }
 
     public void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
-        this.name = name;
+        this.name = name.trim();
     }
 
     public void setCalories(int calories) {
@@ -84,5 +87,30 @@ public class QuickAddition{
 
     public void setMealId(int mealId) {
         this.mealId = mealId;
+    }
+
+    @Override
+    public String getCompoundName() {
+        return name;
+    }
+
+    @Override
+    public String getDetailsLabel() {
+        return detailsLabel();
+    }
+
+    @Override
+    public int getIcon() {
+        return R.drawable.flatware;
+    }
+
+    @Override
+    public int getId() {
+        return quickAdditionId;
+    }
+
+    @Override
+    public String getUnits() {
+        return null;
     }
 }

@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?colorLighterBackground"
     tools:context=".activities.diary.AddToMealActivity">
 
     <LinearLayout
         android:id="@+id/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/top_bar"
+        android:background="?attr/topNavigation"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/header_padding"
@@ -24,9 +25,10 @@
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="@dimen/nav_arrow_margin"
             android:layout_weight="0.2"
-            android:backgroundTint="@color/top_bar"
+            android:background="?attr/topNavigation"
             android:contentDescription="@string/back_arrow"
-            android:src="@drawable/back_arrow" />
+            android:src="@drawable/back_arrow"
+            app:tint="?attr/textColor"/>
 
         <TextView
             android:id="@+id/title"
@@ -34,8 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/breakfast_865_kcal"
-            android:textColor="@color/black"
-            android:textSize="@dimen/title_size" />
+            android:textSize="@dimen/navigation_title_size" />
     </LinearLayout>
 
     <LinearLayout
@@ -45,7 +46,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/navigation_bar"
-        android:background="@color/white"
         android:orientation="horizontal"
         >
         <ImageView
@@ -55,6 +55,7 @@
             android:layout_gravity="center"
             android:layout_marginEnd="@dimen/nav_arrow_margin"
             android:layout_marginStart="@dimen/nav_arrow_margin"
+            app:tint="?attr/textColor"
             android:contentDescription="@string/search_icon"/>
         <EditText
             android:id="@+id/foods_search"
@@ -65,8 +66,8 @@
             android:importantForAutofill="no"
             android:inputType="textCapSentences"
             android:padding="@dimen/grouped_spacing"
-            android:backgroundTint="@color/white"
             android:textSize="@dimen/body_size"
+            android:backgroundTint="?colorBackground"
             />
     </LinearLayout>
 
@@ -83,7 +84,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider">
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        android:backgroundTint="?colorCardBackground">
 
         <com.google.android.material.tabs.TabItem
             android:layout_height="wrap_content"
@@ -129,17 +131,17 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/padding_button_selector"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="?attr/colorBackground"
         android:padding="13dp"
         android:text="@string/quick_add"
         android:textAllCaps="false"
-        android:textColor="@color/menu_blue"
+        android:textColor="?attr/colorPrimary"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:rippleColor="@color/light_gray"
-        app:strokeColor="@color/menu_blue"
+        app:strokeColor="?attr/colorPrimary"
         app:strokeWidth="3dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

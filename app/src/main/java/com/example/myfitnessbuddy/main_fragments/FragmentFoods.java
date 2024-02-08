@@ -25,7 +25,7 @@ import com.example.myfitnessbuddy.database.DatabaseHelper;
 import com.example.myfitnessbuddy.R;
 import com.example.myfitnessbuddy.activities.foods.AddFoodActivity;
 import com.example.myfitnessbuddy.adapters.FoodAdapter;
-import com.example.myfitnessbuddy.database.models.ListableFood;
+import com.example.myfitnessbuddy.database.models.associatios.ListableFood;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 

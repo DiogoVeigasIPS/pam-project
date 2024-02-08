@@ -108,7 +108,7 @@ public class FragmentPanel extends Fragment {
     private void updateUI(){
         DatabaseHelper.executeInBackground(() -> {
             Day today = DatabaseHelper.DayHelper.getToday();
-            int dayId = today.getId();
+            int dayId = today.getDayId();
 
             int totalCalories = DatabaseHelper.DayHelper.getTotalCalories(dayId);
             int calorieGoal = today.getCalorieGoal();
@@ -116,9 +116,6 @@ public class FragmentPanel extends Fragment {
 
             int lastMonthAverage = DatabaseHelper.DayHelper.getLastMonthAverageCalories();
             int lastWeight = today.getWeight();
-
-            User user = UserPreferences.readUserPreferences(getActivity());
-            Goal goal = user.getGoal();
 
             requireActivity().runOnUiThread(() -> {
                 mainGoal.setText(String.valueOf(calorieGoal));
@@ -131,7 +128,12 @@ public class FragmentPanel extends Fragment {
                 lastMonthWeight.setText(String.valueOf(lastMonthAverage));
                 todayWeight.setText(String.valueOf(lastWeight));
 
+                // Colors
+                User user = UserPreferences.readUserPreferences(getActivity());
+                if(user == null) return;
+
                 int colorResourceId;
+                Goal goal = user.getGoal();
 
                 if ((goal == Goal.GAIN && lastMonthAverage < lastWeight) || (goal == Goal.LOSE && lastMonthAverage > lastWeight)) {
                     colorResourceId = R.color.success;
@@ -262,7 +264,19 @@ public class FragmentPanel extends Fragment {
                             }
 
                             Day today = DatabaseHelper.DayHelper.getToday();
-                            today.setCalorieGoal(user.calculateCalorieGoal(today.getWeight()));
+
+                            int weight = today.getWeight();
+                            if(weight == 0) {
+                                requireActivity().runOnUiThread(() -> {
+                                    if (isAdded()) {
+                                        Toast.makeText(getActivity(), R.string.user_preferences_or_calorie, Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                return;
+                            }
+
+                            today.setCalorieGoal(user.calculateCalorieGoal(weight));
+
                             DatabaseHelper.DayHelper.updateDay(today);
 
                             requireActivity().runOnUiThread(() -> {

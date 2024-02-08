@@ -1,16 +1,18 @@
-package com.example.myfitnessbuddy.database.models;
+package com.example.myfitnessbuddy.database.models.associatios;
 
 import androidx.room.Embedded;
 import androidx.room.Relation;
 
-import java.util.ArrayList;
+import com.example.myfitnessbuddy.database.models.Dish;
+import com.example.myfitnessbuddy.database.models.QuantifiedFood;
+
 import java.util.List;
 
 public class DishWithQuantifiedFoods implements ListableFood {
     @Embedded
     private Dish dish;
     @Relation(
-            parentColumn = "id",
+            parentColumn = "dishId",
             entityColumn = "dishId"
     )
     private List<QuantifiedFood> quantifiedFoods;
@@ -67,6 +69,11 @@ public class DishWithQuantifiedFoods implements ListableFood {
 
     @Override
     public int getId() {
-        return dish.getId();
+        return dish.getDishId();
+    }
+
+    @Override
+    public String getUnits() {
+        return null;
     }
 }

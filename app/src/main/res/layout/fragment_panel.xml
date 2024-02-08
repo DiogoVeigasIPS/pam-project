@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/main_padding"
+    android:background="?colorLighterBackground"
     tools:context=".main_fragments.FragmentPanel">
 
     <TextView
@@ -12,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_full_name"
-        android:textColor="@color/menu_blue"
+        android:textColor="?attr/colorPrimary"
         android:textSize="@dimen/title_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/app_name_title_padding"
         android:text="@string/today"
-        android:textColor="@color/black"
         android:textSize="@dimen/title_size"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,12 +50,12 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="7dp"
+                android:backgroundTint="?attr/colorCardBackground"
                 android:layout_marginHorizontal="5dp"
                 android:layout_marginTop="@dimen/header_padding"
                 >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/main_calorie_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/header_padding"
@@ -66,7 +66,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/calorie"
-                        android:textColor="@color/black"
                         android:textSize="@dimen/body_size"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +75,8 @@
                         android:id="@+id/mbt_calorie_add"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
-                        android:backgroundTint="@color/white"
+                        android:backgroundTint="?attr/colorCardBackground"
+                        app:tint="?attr/textColor"
                         android:contentDescription="@string/add_calorie_goal"
                         android:src="@drawable/add_black"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -90,11 +90,11 @@
                         android:layout_marginTop="@dimen/header_padding"
                         android:max="100"
                         android:progress="0"
-                        app:indicatorColor="@color/menu_blue"
+                        app:indicatorColor="?attr/colorPrimary"
                         app:indicatorSize="100dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/label_calorie"
-                        app:trackColor="@color/light_gray"
+                        app:trackColor="?attr/colorCircularTracker"
                         app:trackThickness="10dp"/>
 
                     <TextView
@@ -104,7 +104,6 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:text="@string/minus"
-                        android:textColor="@color/black"
                         android:textSize="@dimen/title_size"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@id/calorie_progress"
@@ -137,7 +136,6 @@
                         android:layout_marginTop="10dp"
                         android:gravity="start"
                         android:text="@string/minus"
-                        android:textColor="@color/black"
                         android:textSize="@dimen/body_size"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -161,7 +159,6 @@
                         android:layout_marginTop="10dp"
                         android:gravity="start"
                         android:text="@string/minus"
-                        android:textColor="@color/black"
                         android:textSize="@dimen/body_size"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/main_goal"
@@ -178,10 +175,10 @@
                 android:layout_marginBottom="@dimen/main_padding"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="7dp"
-                android:layout_marginHorizontal="5dp">
+                android:layout_marginHorizontal="5dp"
+                android:backgroundTint="?attr/colorCardBackground">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/main_weight_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/header_padding">
@@ -191,7 +188,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/weight"
-                        android:textColor="@color/black"
                         android:textSize="@dimen/body_size"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
@@ -201,7 +197,8 @@
                         android:id="@+id/mbt_weight_add"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
-                        android:backgroundTint="@color/white"
+                        android:backgroundTint="?attr/colorCardBackground"
+                        app:tint="?attr/textColor"
                         android:contentDescription="@string/set_weight"
                         android:src="@drawable/add_black"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -237,7 +234,6 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <LinearLayout
-                                android:id="@+id/last_month_layout"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -251,7 +247,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:text="@string/minus"
-                                    android:textColor="@color/black"
                                     android:textSize="@dimen/title_size"
                                     android:textStyle="bold"
                                     android:layout_marginEnd="@dimen/nav_arrow_margin"/>
@@ -274,7 +269,6 @@
                             android:paddingVertical="@dimen/main_padding">
 
                             <TextView
-                                android:id="@+id/label_today"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/main_padding"
@@ -295,7 +289,6 @@
                                 app:layout_constraintGuide_percent="0.65" />
 
                             <LinearLayout
-                                android:id="@+id/today_layout"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -310,7 +303,6 @@
                                     android:layout_gravity="center"
                                     android:layout_marginEnd="@dimen/nav_arrow_margin"
                                     android:text="@string/minus"
-                                    android:textColor="@color/black"
                                     android:textSize="@dimen/title_size"
                                     android:textStyle="bold" />
 
@@ -335,9 +327,8 @@
         android:id="@+id/bt_personal_details"
         android:layout_width="match_parent"
         android:layout_height="@dimen/icon_size"
-        android:backgroundTint="@color/bt_light_gray"
+        android:backgroundTint="?attr/colorDetailsButton"
         android:text="@string/bt_details_submit"
-        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

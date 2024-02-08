@@ -1,8 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Myfitnessbuddy" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">#1d4fcd</item>
-        <item name="colorSecondary">#112e79</item>
-        <item name="colorAccent">#0a38ae</item>
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorSecondary">@color/colorSecondaryDark</item>
+        <item name="colorAccent">@color/colorAccentDark</item>
+        <item name="android:textColor">@color/colorTextDark</item>
+        <item name="android:textColorHint">@color/colorTextHintDark</item>
+        <item name="android:colorBackground">@color/colorBackgroundDark</item>
+        <item name="android:windowBackground">@color/colorBackgroundDark</item>
+
+        <item name="topNavigation">@color/topBarDark</item>
+        <item name="textColor">@color/colorTextDark</item>
+        <item name="colorBackground">@color/colorBackgroundDark</item>
+        <item name="colorCardBackground">@color/colorCardBackgroundDark</item>
+        <item name="colorSmallCardBackground">@color/colorSmallCardBackgroundDark</item>
+        <item name="colorCircularTracker">@color/colorBackgroundDark</item>
+        <item name="colorDetailsButton">@color/colorCardBackgroundDark</item>
+        <item name="colorLighterBackground">@color/colorBackgroundDark</item>
     </style>
 </resources>

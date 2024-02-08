@@ -7,12 +7,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
-import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.RoomWarnings;
 
-import com.example.myfitnessbuddy.R;
+import com.example.myfitnessbuddy.database.models.associatios.ListableFood;
 
 import java.text.DecimalFormat;
 
@@ -20,16 +19,22 @@ import java.text.DecimalFormat;
         foreignKeys = {
             @ForeignKey(
                     entity = Meal.class,
-                    parentColumns = "id",
+                    parentColumns = "mealId",
                     childColumns = "mealId",
+                    onDelete = CASCADE
+            ),
+            @ForeignKey(
+                    entity = Dish.class,
+                    parentColumns = "dishId",
+                    childColumns = "dishId",
                     onDelete = CASCADE
             )
         },
         indices = {@Index("mealId"), @Index("dishId")}
 )
-public class QuantifiedFood implements ListableFood{
+public class QuantifiedFood implements ListableFood {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int quantifiedFoodId;
     @ColumnInfo(name = "quantity")
     private double quantity;
     @Nullable
@@ -50,10 +55,14 @@ public class QuantifiedFood implements ListableFood{
     }
 
     // Getter methods
-    public int getId(){
-        return id;
+    public int getQuantifiedFoodId(){
+        return quantifiedFoodId;
     }
 
+    @Override
+    public String getUnits() {
+        return food.getUnits();
+    }
     public Food getFood(){
         return this.food;
     }
@@ -77,8 +86,8 @@ public class QuantifiedFood implements ListableFood{
     }
 
     // Setter methods with data validation
-    public void setId(int id){
-        this.id = id;
+    public void setQuantifiedFoodId(int quantifiedFoodId){
+        this.quantifiedFoodId = quantifiedFoodId;
     }
     public void setFood(Food food) {
         if (food == null) {
@@ -151,5 +160,10 @@ public class QuantifiedFood implements ListableFood{
     @Override
     public int getIcon() {
         return food.getIcon();
+    }
+
+    @Override
+    public int getId() {
+        return quantifiedFoodId;
     }
 }

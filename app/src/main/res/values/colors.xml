@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Black and white-->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!--Theme colors (Light)-->
+    <color name="colorPrimary">#3263E2</color>
+    <color name="colorSecondary">#87a5ef</color>
+    <color name="colorAccent">#5381f5</color>
+    <color name="colorText">#050316</color>
+    <color name="colorTextHint">#26214C</color>
+    <color name="colorBackground">#fbfbfe</color>
+    <color name="colorSmallCardBackground">#DDDDDD</color>
+    <color name="topBar">#E8E8E8</color>
+
+    <!--Theme colors (Dark)-->
+    <color name="colorPrimaryDark">#1d4fcd</color>
+    <color name="colorSecondaryDark">#112e79</color>
+    <color name="colorAccentDark">#0a38ae</color>
+    <color name="colorTextDark">#eae9fc</color>
+    <color name="colorTextHintDark">#B2AEE3</color>
+    <color name="colorBackgroundDark">#010104</color>
+    <color name="colorCardBackgroundDark">#202020</color>
+    <color name="colorSmallCardBackgroundDark">#3C3C3C</color>
+    <color name="topBarDark">#141424</color>
+
+    <!--Extra accent colors-->
+    <color name="danger">#dc3545</color>
+    <color name="success">#198754</color>
+
+    <!--Shades and others-->
     <color name="light_gray">#D9D9D9</color>
     <color name="card_gray">#B9B9B9</color>
     <color name="bt_light_gray">#C4C4C4</color>
-    <color name="ash_color">#808080</color>
-    <color name="lightest_gray">#F0F0F0</color>
     <color name="clickable_blue">#3498db</color>
     <color name="menu_blue">#3263E2</color>
     <color name="menu_indicator_blue">#E45B80E1</color>
     <color name="ripple_menu_blue">#16378F</color>
-    <color name="containers_shadow">#33000000</color>
     <color name="hint_gray">#757575</color>
-
-    <color name="top_bar">#E8E8E8</color>
-
-    <color name="danger">#dc3545</color>
-    <color name="success">#198754</color>
     <color name="splash_background">#0464ec</color>
-
-    <color name="colorPrimary">#3263E2</color>
-    <color name="colorSecondary">#87a5ef</color>
-    <color name="colorAccent">#5381f5</color>
 </resources>

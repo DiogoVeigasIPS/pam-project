@@ -12,6 +12,6 @@
 
     <item android:title="@string/foods"
         android:id="@+id/bt_foods"
-        android:icon="@drawable/baseline_rice_bowl_48"/>
+        android:icon="@drawable/baseline_apple_48"/>
 
 </menu>
